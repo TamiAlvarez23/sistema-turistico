@@ -61,8 +61,8 @@ public class CiudadData {
 
     public List<Ciudad> obtenerTodasLasCiudades() {
         List<Ciudad> ciudades = new ArrayList<>();
-        String selectQuery = "SELECT * FROM Ciudad";
-        try (PreparedStatement ps = con.prepareStatement(selectQuery)) {
+        String sql = "SELECT * FROM Ciudad";
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
             ResultSet resultSet = ps.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("idCiudad");

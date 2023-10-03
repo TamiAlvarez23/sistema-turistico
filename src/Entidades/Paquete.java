@@ -12,7 +12,7 @@ public class Paquete {
 
     private Ciudad destino;
 
-    private Alojamiento alojamiento;
+    public Alojamiento alojamiento;
 
     private Pasaje pasaje;
 
