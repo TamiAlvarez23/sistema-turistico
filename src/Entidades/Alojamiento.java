@@ -8,7 +8,7 @@ import java.util.Date;
  */
 public class Alojamiento {
 
-    private int Alojamiento;
+    private int idAlojamiento;
 
     private Date fechaIngreso;
 
@@ -27,7 +27,7 @@ public class Alojamiento {
     
 
     public Alojamiento(int Alojamiento, Date fechaIngreso, Date fechaEgreso, boolean estado, String servicio, double importeDiario, Ciudad ciudadDestino) {
-        this.Alojamiento = Alojamiento;
+        this.idAlojamiento = Alojamiento;
         this.fechaIngreso = fechaIngreso;
         this.fechaEgreso = fechaEgreso;
         this.estado = estado;
@@ -37,11 +37,11 @@ public class Alojamiento {
     }
 
     public int getAlojamiento() {
-        return Alojamiento;
+        return idAlojamiento;
     }
 
     public void setAlojamiento(int Alojamiento) {
-        this.Alojamiento = Alojamiento;
+        this.idAlojamiento = Alojamiento;
     }
 
     public Date getFechaIngreso() {
