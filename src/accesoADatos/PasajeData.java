@@ -64,14 +64,14 @@ public class PasajeData {
     public List<Pasaje> obtenerTodosLosPasajes() {
         List<Pasaje> pasajes = new ArrayList<>();
         String selectQuery = "SELECT * FROM Pasaje";
-        try (PreparedStatement preparedStatement = con.prepareStatement(selectQuery)) {
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                int id = resultSet.getInt("idPasaje");
-                String tipoTransporte = resultSet.getString("tipoTransporte");
-                double importe = resultSet.getDouble("importe");
-                String nombreCiudadOrigen = resultSet.getString("nombreCiudadOrigen");
-                boolean estado = resultSet.getBoolean("estado");
+        try (PreparedStatement ps = con.prepareStatement(selectQuery)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("idPasaje");
+                String tipoTransporte = rs.getString("tipoTransporte");
+                double importe = rs.getDouble("importe");
+                String nombreCiudadOrigen = rs.getString("nombreCiudadOrigen");
+                boolean estado = rs.getBoolean("estado");
                 pasajes.add(new Pasaje(id, tipoTransporte, importe, nombreCiudadOrigen, estado));
             }
         } catch (SQLException e) {

@@ -45,9 +45,8 @@ public class AlojamientoData {
             ps.setInt(1, idAlojamiento);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                // Obtener los valores de la consulta y crear una instancia de Alojamiento
-                int id = rs.getInt("idAlojamiento");
-                return new Alojamiento();
+               int id = rs.getInt("idAlojamiento");
+               return new Alojamiento();
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "error al acceder a la tabla alojamiento");
