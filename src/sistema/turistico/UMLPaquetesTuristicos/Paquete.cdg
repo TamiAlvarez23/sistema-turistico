@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Paquete">
+  <ClassDiagramComponents>
+    <Class name="Paquete" package="" visibility="public" xPosition="161.0" yPosition="107.0">
+      <Fields>
+        <Field name="IdPaquete" type="int" visibility="private"/>
+        <Field name="origen" type="Ciudad" visibility="private"/>
+        <Field name="destino" type="Ciudad" visibility="private"/>
+        <Field name="alojamiento" type="Alojamiento" visibility="private"/>
+        <Field name="pasaje" type="Pasaje" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Ciudad" package="" visibility="public" xPosition="815.0" yPosition="107.0">
+      <Fields>
+        <Field name="IdCiudad" type="int" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="pais" type="String" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
+        <Field name="provincia" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Alojamiento" package="" visibility="public" xPosition="165.0" yPosition="435.0">
+      <Fields>
+        <Field name="Alojamiento" type="int" visibility="private"/>
+        <Field name="fechaIngreso" type="Date" visibility="private"/>
+        <Field name="fechaEgreso" type="Date" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
+        <Field name="servicio" type="String" visibility="private"/>
+        <Field name="importeDiario" type="double" visibility="private"/>
+        <Field name="ciudadDestino" type="Ciudad" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Pasaje" package="" visibility="public" xPosition="796.0" yPosition="435.0">
+      <Fields>
+        <Field name="IdPasaje" type="int" visibility="private"/>
+        <Field name="TipoTransporte" type="String" visibility="private"/>
+        <Field name="Importe" type="double" visibility="private"/>
+        <Field name="nombreCiudadOrigen" type="Ciudad" visibility="private"/>
+        <Field name="estado" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="Tiene" source="Alojamiento" target="Ciudad" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Tiene" source="Paquete" target="Alojamiento" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Origen" source="Paquete" target="Ciudad" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Tiene" source="Paquete" target="Pasaje" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Tiene" source="Pasaje" target="Ciudad" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Destino" source="Paquete" target="Ciudad" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
