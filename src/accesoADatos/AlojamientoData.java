@@ -56,6 +56,33 @@ public class AlojamientoData {
         return null;
     }
 
+    public List<Alojamiento> obtenerAlojamientosPorCiudadDestino(Ciudad ciudadDestino) {
+        List<Alojamiento> alojamientos = new ArrayList<>();
+        String sql = "SELECT * FROM Alojamiento WHERE ciudadDestino = ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, ciudadDestino.getIdCiudad());
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                
+                Alojamiento alojamiento = new Alojamiento();
+                alojamiento.setAlojamiento(rs.getInt("idAlojamiento"));
+                alojamiento.setFechaIngreso(rs.getDate("fechaInicio"));
+                alojamiento.setFechaEgreso(rs.getDate("fechaFin"));
+                alojamiento.setEstado(rs.getBoolean("estado"));
+                alojamiento.setServicio(rs.getString("servicio"));
+                alojamiento.setImporteDiario(rs.getDouble("importeDiario"));
+
+                alojamientos.add(alojamiento);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "error a la tabla alojamiento data");
+        }
+
+        return alojamientos;
+    }
     public List<Alojamiento> obtenerTodosLosAlojamientos() {
 
         List<Alojamiento> alojamientos = new ArrayList<>();
