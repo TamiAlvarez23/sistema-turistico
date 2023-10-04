@@ -24,6 +24,10 @@ public class Paquete {
         this.pasaje = pasaje;
     }
 
+    public Paquete() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public int getIdPaquete() {
         return idPaquete;
     }

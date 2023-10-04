@@ -24,7 +24,8 @@ public class CiudadData {
 }
     public void agregarCiudad(Ciudad ciudad) {
         String sql = "INSERT INTO Ciudad (nombre, pais, estado, provincia) VALUES (?, ?, ?, ?)";
-        try (PreparedStatement ps = con.prepareStatement(sql)) {
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, ciudad.getNombre());
             ps.setString(2, ciudad.getPais());
             ps.setBoolean(3, ciudad.isEstado());
@@ -37,8 +38,6 @@ public class CiudadData {
 
     public Ciudad obtenerCiudadPorId(int idCiudad) {
         String sql = "SELECT * FROM Ciudad WHERE idCiudad = ?";
-        
-        
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idCiudad);
@@ -101,10 +100,5 @@ public class CiudadData {
            JOptionPane.showMessageDialog(null, "no se puede acceder a la tabla ciudad");
         }
     }
-    
-    
-    
-    
-    
-    
+   
 }

@@ -44,7 +44,8 @@ public class PasajeData {
     public Pasaje obtenerPasajePorId(int idPasaje) {
         String sql = "SELECT * FROM Pasaje WHERE idPasaje = ?";
         
-        try (PreparedStatement ps = con.prepareStatement(sql)) {
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idPasaje);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
