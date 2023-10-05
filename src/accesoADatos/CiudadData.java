@@ -23,18 +23,28 @@ public class CiudadData {
     
 }
     public void agregarCiudad(Ciudad ciudad) {
-        String sql = "INSERT INTO Ciudad (nombre, pais, estado, provincia) VALUES (?, ?, ?, ?)";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, ciudad.getNombre());
-            ps.setString(2, ciudad.getPais());
-            ps.setBoolean(3, ciudad.isEstado());
-            ps.setString(4, ciudad.getProvincia());
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " error al acceder a la tabla ciudad");
+    String sql = "INSERT INTO `ciudad` (`nombre`, `pais`, `estado`, `provincia`) VALUES (?, ?, ?, ?)";
+    try {
+        PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+       
+        ps.setString(1, ciudad.getNombre());
+        ps.setString(2, ciudad.getPais());
+        ps.setBoolean(3,ciudad.isEstado()); 
+        ps.setString(4, ciudad.getProvincia());
+        
+        ps.executeUpdate();
+        
+        ResultSet rs = ps.getGeneratedKeys();
+        if (rs.next()) {
+            ciudad.setIdCiudad(rs.getInt(1));
         }
+        
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ciudad");
     }
+}
+
 
     public Ciudad obtenerCiudadPorId(int idCiudad) {
         String sql = "SELECT * FROM Ciudad WHERE idCiudad = ?";

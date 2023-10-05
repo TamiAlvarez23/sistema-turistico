@@ -16,6 +16,15 @@ public class Ciudad {
 
     private String provincia;
 
+    public Ciudad(String nombre, String pais, boolean estado, String provincia) {
+        this.nombre = nombre;
+        this.pais = pais;
+        this.estado = estado;
+        this.provincia = provincia;
+    }
+    
+    
+
     public Ciudad(int idCiudad, String nombre, String pais, boolean estado, String provincia) {
         this.idCiudad = idCiudad;
         this.nombre = nombre;
