@@ -1,5 +1,6 @@
 package Entidades;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -10,9 +11,9 @@ public class Alojamiento {
 
     private int idAlojamiento;
 
-    private Date fechaIngreso;
+    private LocalDate fechaIngreso;
 
-    private Date fechaEgreso;
+    private LocalDate fechaEgreso;
 
     private boolean estado;
 
@@ -27,14 +28,14 @@ public class Alojamiento {
     }
     
 
-    public Alojamiento(Date fechaIngreso, Date fechaEgreso, boolean estado, double importeDiario) {
+    public Alojamiento(LocalDate fechaIngreso, LocalDate fechaEgreso, boolean estado, double importeDiario) {
         this.fechaIngreso = fechaIngreso;
         this.fechaEgreso = fechaEgreso;
         this.estado = estado;
         this.importeDiario = importeDiario;
     }
 
-    public Alojamiento(Date fechaIngreso, Date fechaEgreso, boolean estado, String servicio, double importeDiario) {
+    public Alojamiento(LocalDate fechaIngreso, LocalDate fechaEgreso, boolean estado, String servicio, double importeDiario) {
         this.fechaIngreso = fechaIngreso;
         this.fechaEgreso = fechaEgreso;
         this.estado = estado;
@@ -45,7 +46,7 @@ public class Alojamiento {
     public Alojamiento() {
     }
 
-    public Alojamiento(Date fechaIngreso, Date fechaEgreso, boolean estado, String servicio, double importeDiario, Ciudad ciudadDestino) {
+    public Alojamiento(LocalDate fechaIngreso, LocalDate fechaEgreso, boolean estado, String servicio, double importeDiario, Ciudad ciudadDestino) {
         this.fechaIngreso = fechaIngreso;
         this.fechaEgreso = fechaEgreso;
         this.estado = estado;
@@ -55,7 +56,7 @@ public class Alojamiento {
     }
     
 
-    public Alojamiento(int Alojamiento, Date fechaIngreso, Date fechaEgreso, boolean estado, String servicio, double importeDiario, Ciudad ciudadDestino) {
+    public Alojamiento(int Alojamiento, LocalDate fechaIngreso, LocalDate fechaEgreso, boolean estado, String servicio, double importeDiario, Ciudad ciudadDestino) {
         this.idAlojamiento = Alojamiento;
         this.fechaIngreso = fechaIngreso;
         this.fechaEgreso = fechaEgreso;
@@ -73,19 +74,19 @@ public class Alojamiento {
         this.idAlojamiento = Alojamiento;
     }
 
-    public Date getFechaIngreso() {
+    public LocalDate getFechaIngreso() {
         return fechaIngreso;
     }
 
-    public void setFechaIngreso(Date fechaIngreso) {
+    public void setFechaIngreso(LocalDate fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
     }
 
-    public Date getFechaEgreso() {
+    public LocalDate getFechaEgreso() {
         return fechaEgreso;
     }
 
-    public void setFechaEgreso(Date fechaEgreso) {
+    public void setFechaEgreso(LocalDate fechaEgreso) {
         this.fechaEgreso = fechaEgreso;
     }
 

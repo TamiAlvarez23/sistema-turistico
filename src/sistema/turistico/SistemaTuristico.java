@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,11 +34,7 @@ public class SistemaTuristico {
      */
     public static void main(String[] args) {
 
-        CiudadData ciudadData = new CiudadData();
-        AlojamientoData alojamientoData = new AlojamientoData();
-        PasajeData pasajeData = new PasajeData(/* conexión a la base de datos */);
-        PaqueteData paqueteData = new PaqueteData(/* conexión a la base de datos */);
-
+     
         while (true) {
             String opcion = JOptionPane.showInputDialog(
                     "Menú de opciones:\n"
@@ -100,8 +97,8 @@ public static void cargarAlojamiento() {
   AlojamientoData alojamientoData = new AlojamientoData();
     Alojamiento nuevoAlojamiento = new Alojamiento();
     
-    nuevoAlojamiento.setFechaIngreso(new Date(2020,06,12)); 
-    nuevoAlojamiento.setFechaEgreso(new Date(2021,05,13)); 
+    nuevoAlojamiento.setFechaIngreso(LocalDate.of(2020, Month.MARCH, 23)); 
+    nuevoAlojamiento.setFechaEgreso(LocalDate.of(2020, Month.MARCH, 30)); 
     nuevoAlojamiento.setEstado(true);
     nuevoAlojamiento.setServicio("desayuno"); 
     nuevoAlojamiento.setImporteDiario(450.0); 
