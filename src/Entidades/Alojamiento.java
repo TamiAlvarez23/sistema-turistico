@@ -22,7 +22,36 @@ public class Alojamiento {
 
     private Ciudad ciudadDestino;
 
+    public Alojamiento(Ciudad ciudadDestino) {
+        this.ciudadDestino = ciudadDestino;
+    }
+    
+
+    public Alojamiento(Date fechaIngreso, Date fechaEgreso, boolean estado, double importeDiario) {
+        this.fechaIngreso = fechaIngreso;
+        this.fechaEgreso = fechaEgreso;
+        this.estado = estado;
+        this.importeDiario = importeDiario;
+    }
+
+    public Alojamiento(Date fechaIngreso, Date fechaEgreso, boolean estado, String servicio, double importeDiario) {
+        this.fechaIngreso = fechaIngreso;
+        this.fechaEgreso = fechaEgreso;
+        this.estado = estado;
+        this.servicio = servicio;
+        this.importeDiario = importeDiario;
+    }
+
     public Alojamiento() {
+    }
+
+    public Alojamiento(Date fechaIngreso, Date fechaEgreso, boolean estado, String servicio, double importeDiario, Ciudad ciudadDestino) {
+        this.fechaIngreso = fechaIngreso;
+        this.fechaEgreso = fechaEgreso;
+        this.estado = estado;
+        this.servicio = servicio;
+        this.importeDiario = importeDiario;
+        this.ciudadDestino = ciudadDestino;
     }
     
 

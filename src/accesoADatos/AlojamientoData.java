@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 /**
  *
@@ -27,8 +28,12 @@ public class AlojamientoData {
         String sql = "INSERT INTO Alojamiento (fechaIngreso, fechaEgreso, estado, servicio, importeDiario, ciudadDestino) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setDate(1, (Date) alojamiento.getFechaIngreso());
-            ps.setDate(2, (Date) alojamiento.getFechaEgreso());
+            java.util.Date fechaIngreso1 = alojamiento.getFechaIngreso();
+            java.util.Date fechaEgreso2 = alojamiento.getFechaEgreso();
+            java.sql.Date fechaIng = new java.sql.Date(fechaIngreso1.getTime());
+            java.sql.Date fechaEgr = new java.sql.Date(fechaEgreso2.getTime());
+            ps.setDate(1, fechaIng);
+            ps.setDate(2, fechaEgr);
             ps.setBoolean(3, alojamiento.isEstado());
             ps.setString(4, alojamiento.getServicio());
             ps.setDouble(5, alojamiento.getImporteDiario());
@@ -66,7 +71,7 @@ public class AlojamientoData {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                
+
                 Alojamiento alojamiento = new Alojamiento();
                 alojamiento.setAlojamiento(rs.getInt("idAlojamiento"));
                 alojamiento.setFechaIngreso(rs.getDate("fechaInicio"));
@@ -83,6 +88,7 @@ public class AlojamientoData {
 
         return alojamientos;
     }
+
     public List<Alojamiento> obtenerTodosLosAlojamientos() {
 
         List<Alojamiento> alojamientos = new ArrayList<>();
@@ -114,8 +120,12 @@ public class AlojamientoData {
         String sql = "UPDATE Alojamiento SET fechaIngreso = ?, fechaEgreso = ?, estado = ?, servicio = ?, importeDiario = ?, ciudadDestino = ? WHERE idAlojamiento = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setDate(1, (Date) alojamiento.getFechaIngreso());
-            ps.setDate(2, (Date) alojamiento.getFechaEgreso());
+            java.util.Date fechaIngreso1 = alojamiento.getFechaIngreso();
+            java.util.Date fechaEgreso2 = alojamiento.getFechaEgreso();
+            java.sql.Date fechaIng = new java.sql.Date(fechaIngreso1.getTime());
+            java.sql.Date fechaEgr = new java.sql.Date(fechaEgreso2.getTime());
+             ps.setDate(1, fechaIng);
+            ps.setDate(2, fechaEgr);
             ps.setBoolean(3, alojamiento.isEstado());
             ps.setString(4, alojamiento.getServicio());
             ps.setDouble(5, alojamiento.getImporteDiario());
