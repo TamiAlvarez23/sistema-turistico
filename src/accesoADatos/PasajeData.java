@@ -43,6 +43,7 @@ public class PasajeData {
 
     public Pasaje obtenerPasajePorId(int idPasaje) {
         String sql = "SELECT * FROM Pasaje WHERE idPasaje = ?";
+        Pasaje pasaje = null;
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -54,12 +55,12 @@ public class PasajeData {
                 double importe = rs.getDouble("importe");
                 String nombreCiudadOrigen = rs.getString("nombreCiudadOrigen");
                 boolean estado = rs.getBoolean("estado");
-                return new Pasaje(id, tipoTransporte, importe, nombreCiudadOrigen, estado);
+                 pasaje = new Pasaje(id, tipoTransporte, importe, nombreCiudadOrigen, estado);
             }
         } catch (SQLException e) {
            JOptionPane.showMessageDialog(null, "no se pudo acceder a la tabla pasaje");
         }
-        return null;
+        return pasaje;
     }
 
     public List<Pasaje> obtenerTodosLosPasajes() {
