@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-10-2023 a las 15:20:24
+-- Tiempo de generación: 09-10-2023 a las 17:29:41
 -- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Versión de PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,13 +28,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `alojamiento` (
-  `idAlojamiento` int(15) NOT NULL,
+  `idAlojamiento` int(11) NOT NULL,
   `fechaIngreso` date NOT NULL,
   `fechaEgreso` date NOT NULL,
   `estado` tinyint(1) NOT NULL,
-  `servicio` varchar(50) NOT NULL,
+  `servicio` varchar(100) NOT NULL,
   `importeDiario` double NOT NULL,
-  `ciudadDestino` int(15) NOT NULL
+  `ciudadDestino` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -45,10 +45,10 @@ CREATE TABLE `alojamiento` (
 
 CREATE TABLE `ciudad` (
   `idCiudad` int(15) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `pais` varchar(50) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `pais` varchar(100) NOT NULL,
   `estado` tinyint(1) NOT NULL,
-  `provincia` varchar(50) NOT NULL
+  `provincia` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -72,11 +72,27 @@ CREATE TABLE `paquete` (
 --
 
 CREATE TABLE `pasaje` (
-  `idPasaje` int(15) NOT NULL,
-  `tipoTransporte` varchar(50) NOT NULL,
+  `idPasaje` int(11) NOT NULL,
+  `tipoTransporte` varchar(100) NOT NULL,
   `importe` double NOT NULL,
-  `nombreCiudadOrigen` int(15) NOT NULL,
+  `nombreCiudadOrigen` int(11) NOT NULL,
   `estado` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `idUsuario` int(100) NOT NULL,
+  `nombreUsuario` varchar(100) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `apellido` varchar(100) NOT NULL,
+  `mail` varchar(100) NOT NULL,
+  `claveUsuario` varchar(100) NOT NULL,
+  `estadoUsuario` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -114,6 +130,12 @@ ALTER TABLE `pasaje`
   ADD KEY `pasaje_nombreCiudadOrigen_foreign` (`nombreCiudadOrigen`);
 
 --
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`idUsuario`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -121,7 +143,7 @@ ALTER TABLE `pasaje`
 -- AUTO_INCREMENT de la tabla `alojamiento`
 --
 ALTER TABLE `alojamiento`
-  MODIFY `idAlojamiento` int(15) NOT NULL AUTO_INCREMENT;
+  MODIFY `idAlojamiento` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `ciudad`
@@ -139,7 +161,13 @@ ALTER TABLE `paquete`
 -- AUTO_INCREMENT de la tabla `pasaje`
 --
 ALTER TABLE `pasaje`
-  MODIFY `idPasaje` int(15) NOT NULL AUTO_INCREMENT;
+  MODIFY `idPasaje` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `idUsuario` int(100) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
