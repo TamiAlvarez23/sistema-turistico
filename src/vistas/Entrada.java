@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import utils.Slide;
@@ -18,12 +19,9 @@ import utils.Slide;
  * @author Agustin Colongne
  */
 public class Entrada extends javax.swing.JFrame {
-
     FondoPanel panelFondo = new FondoPanel();
     Slide slide;
     int medio;
-    int izq;
-    int der;
     
 
     /**
@@ -49,7 +47,7 @@ public class Entrada extends javax.swing.JFrame {
         panelPrincipal = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jtUsuario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         panelRegistrar = new javax.swing.JPanel();
@@ -92,7 +90,7 @@ public class Entrada extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("Usuario:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
@@ -165,6 +163,11 @@ public class Entrada extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Entrar");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelEntrarLogearLayout = new javax.swing.GroupLayout(panelEntrarLogear);
         panelEntrarLogear.setLayout(panelEntrarLogearLayout);
@@ -282,7 +285,7 @@ public class Entrada extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1)
+                    .addComponent(jtUsuario)
                     .addComponent(jLabel2)
                     .addComponent(jTextField2)
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
@@ -323,7 +326,7 @@ public class Entrada extends javax.swing.JFrame {
                 .addGap(221, 221, 221)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(jLabel2)
                 .addGap(37, 37, 37)
@@ -377,8 +380,10 @@ public class Entrada extends javax.swing.JFrame {
 
     private void jbEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbEntrarMouseClicked
         // TODO add your handling code here:
-        moverDerecha();
-        der = panelPrincipal.getX();
+        if(panelPrincipal.getX() == medio){
+             moverDerecha();
+        }
+    
     }//GEN-LAST:event_jbEntrarMouseClicked
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
@@ -388,7 +393,6 @@ public class Entrada extends javax.swing.JFrame {
     private void jbRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarseMouseClicked
         // TODO add your handling code here:
         moverIzquierda();
-        izq = panelPrincipal.getX();
     }//GEN-LAST:event_jbRegistrarseMouseClicked
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -409,6 +413,16 @@ public class Entrada extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // TODO add your handling code here:  
+        String usuarioLogeado = jtUsuario.getText();
+        Menu mv = new Menu();
+        mv.setVisible(true);
+        mv.recuperarUsuario(usuarioLogeado);
+        System.out.println(usuarioLogeado);
+        cargarJFrame(mv);
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -457,7 +471,6 @@ public class Entrada extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
@@ -466,6 +479,7 @@ public class Entrada extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JLabel jbEntrar;
     private javax.swing.JLabel jbRegistrarse;
+    private javax.swing.JTextField jtUsuario;
     private javax.swing.JLabel logo;
     private javax.swing.JPanel panelCancelarLogear;
     private javax.swing.JPanel panelCancelarRegstro;
@@ -508,5 +522,10 @@ public class Entrada extends javax.swing.JFrame {
     public void centrarDesdeDerecha() {
         slide.jPanelXDerecha(panelPrincipal.getX(), medio, 10, 10, panelPrincipal);
 
+    }
+    private void cargarJFrame(JFrame panel) {   
+        this.dispose();
+        
+        panel.setVisible(true);
     }
 }
