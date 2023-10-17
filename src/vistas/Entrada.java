@@ -34,7 +34,7 @@ public class Entrada extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         medio = panelPrincipal.getX();
         slide = new Slide();
-
+        
     }
 
     /**
@@ -58,13 +58,13 @@ public class Entrada extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         panelCancelarLogear = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        jtApellido = new javax.swing.JTextField();
+        jtMail = new javax.swing.JTextField();
+        jtNombreUsuario = new javax.swing.JTextField();
+        jtContrasenia = new javax.swing.JTextField();
+        jtNombre = new javax.swing.JTextField();
         panelRegistrarRegistro = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        labelRegistrarseRegistro = new javax.swing.JLabel();
         panelCancelarRegstro = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -74,16 +74,14 @@ public class Entrada extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1500, 750));
         setMinimumSize(new java.awt.Dimension(1500, 750));
-        setPreferredSize(new java.awt.Dimension(1500, 750));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelPrincipal.setBackground(new java.awt.Color(255, 51, 102,0));
 
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/logo viaja sin fondo.png"))); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo viaja sin fondo.png"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -208,29 +206,34 @@ public class Entrada extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        jtNombreUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                jtNombreUsuarioActionPerformed(evt);
             }
         });
 
         panelRegistrarRegistro.setBackground(new java.awt.Color(60, 147, 214));
         panelRegistrarRegistro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jLabel10.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Registrarse");
+        labelRegistrarseRegistro.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
+        labelRegistrarseRegistro.setForeground(new java.awt.Color(255, 255, 255));
+        labelRegistrarseRegistro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelRegistrarseRegistro.setText("Registrarse");
+        labelRegistrarseRegistro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelRegistrarseRegistroMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelRegistrarRegistroLayout = new javax.swing.GroupLayout(panelRegistrarRegistro);
         panelRegistrarRegistro.setLayout(panelRegistrarRegistroLayout);
         panelRegistrarRegistroLayout.setHorizontalGroup(
             panelRegistrarRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+            .addComponent(labelRegistrarseRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
         );
         panelRegistrarRegistroLayout.setVerticalGroup(
             panelRegistrarRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(labelRegistrarseRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
         panelCancelarRegstro.setBackground(new java.awt.Color(60, 147, 214));
@@ -306,16 +309,16 @@ public class Entrada extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(jLabel7)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(panelPrincipalLayout.createSequentialGroup()
                             .addComponent(panelRegistrarRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(panelCancelarRegstro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(47, 47, 47))
@@ -349,23 +352,23 @@ public class Entrada extends javax.swing.JFrame {
                                 .addComponent(panelEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(panelRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelPrincipalLayout.createSequentialGroup()
-                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel6)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel7)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel8)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(63, 63, 63)
                                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(panelRegistrarRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -386,9 +389,9 @@ public class Entrada extends javax.swing.JFrame {
     
     }//GEN-LAST:event_jbEntrarMouseClicked
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void jtNombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNombreUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_jtNombreUsuarioActionPerformed
 
     private void jbRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbRegistrarseMouseClicked
         // TODO add your handling code here:
@@ -423,6 +426,22 @@ public class Entrada extends javax.swing.JFrame {
         System.out.println(usuarioLogeado);
         cargarJFrame(mv);
     }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void labelRegistrarseRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelRegistrarseRegistroMouseClicked
+        // TODO add your handling code here:
+        String nombre = jtNombre.getText();
+        String apellido = jtApellido.getText();
+        String nombreUsuario = jtNombreUsuario.getText();
+        String contraseña = jtContrasenia.getText();
+        
+        boolean estado = true;
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_labelRegistrarseRegistroMouseClicked
 
     /**
      * @param args the command line arguments
@@ -461,7 +480,6 @@ public class Entrada extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -472,14 +490,15 @@ public class Entrada extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JLabel jbEntrar;
     private javax.swing.JLabel jbRegistrarse;
+    private javax.swing.JTextField jtApellido;
+    private javax.swing.JTextField jtContrasenia;
+    private javax.swing.JTextField jtMail;
+    private javax.swing.JTextField jtNombre;
+    private javax.swing.JTextField jtNombreUsuario;
     private javax.swing.JTextField jtUsuario;
+    private javax.swing.JLabel labelRegistrarseRegistro;
     private javax.swing.JLabel logo;
     private javax.swing.JPanel panelCancelarLogear;
     private javax.swing.JPanel panelCancelarRegstro;

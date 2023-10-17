@@ -72,9 +72,7 @@ public class Menu extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1500, 750));
         setMinimumSize(new java.awt.Dimension(1500, 750));
-        setPreferredSize(new java.awt.Dimension(1500, 750));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -316,7 +314,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(0, 433, Short.MAX_VALUE))
         );
 
-        getContentPane().add(panelBarraTareas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 828));
+        getContentPane().add(panelBarraTareas, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 0, 370, 828));
 
         PanelMiCuenta.setBackground(new java.awt.Color(255, 0, 0));
 
