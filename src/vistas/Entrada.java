@@ -74,6 +74,7 @@ public class Entrada extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1500, 750));
         setMinimumSize(new java.awt.Dimension(1500, 750));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -376,7 +377,7 @@ public class Entrada extends javax.swing.JFrame {
                 .addGap(75, 75, 75))
         );
 
-        getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(-560, 0, 2620, 750));
+        getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1110, -20, 2620, 750));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
