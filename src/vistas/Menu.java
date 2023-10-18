@@ -47,6 +47,13 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        PanelMiCuenta = new javax.swing.JPanel();
+        jPmisVentas = new javax.swing.JPanel();
+        jlMisVentas = new javax.swing.JLabel();
+        jPcambiarSesion = new javax.swing.JPanel();
+        jLcambiarSesion = new javax.swing.JLabel();
+        panelBotonEditarPerfil = new javax.swing.JPanel();
+        jlEditarPerfil = new javax.swing.JLabel();
         panelBarraTareas = new javax.swing.JPanel();
         panelNombreUsuario = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -64,13 +71,14 @@ public class Menu extends javax.swing.JFrame {
         panelBotonPaquetes = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        PanelMiCuenta = new javax.swing.JPanel();
-        jPeditarPerfil = new javax.swing.JPanel();
-        jLeditarPerfil = new javax.swing.JLabel();
-        jPmisVentas = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        jPcambiarSesion = new javax.swing.JPanel();
-        jLcambiarSesion = new javax.swing.JLabel();
+        PanelViajes = new javax.swing.JPanel();
+        panelHoteles = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        panelPaquetes = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        jPanelVerMisVentas = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jPaneleditarPerfil = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jtNombre = new javax.swing.JTextField();
@@ -86,15 +94,6 @@ public class Menu extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         labelRegistrarseRegistro = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTventas = new javax.swing.JTable();
-        PanelViajes = new javax.swing.JPanel();
-        panelHoteles = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        panelPaquetes = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1500, 750));
@@ -102,6 +101,114 @@ public class Menu extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1500, 750));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        PanelMiCuenta.setBackground(new Color(0,0,0,0));
+        PanelMiCuenta.setMaximumSize(new java.awt.Dimension(1500, 750));
+        PanelMiCuenta.setMinimumSize(new java.awt.Dimension(1500, 750));
+        PanelMiCuenta.setPreferredSize(new java.awt.Dimension(1500, 750));
+
+        jPmisVentas.setBackground(new java.awt.Color(60, 147, 214));
+        jPmisVentas.setMaximumSize(new java.awt.Dimension(125, 40));
+        jPmisVentas.setMinimumSize(new java.awt.Dimension(125, 40));
+        jPmisVentas.setPreferredSize(new java.awt.Dimension(125, 40));
+
+        jlMisVentas.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jlMisVentas.setForeground(new java.awt.Color(255, 255, 255));
+        jlMisVentas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlMisVentas.setText("Mis ventas");
+        jlMisVentas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlMisVentasMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPmisVentasLayout = new javax.swing.GroupLayout(jPmisVentas);
+        jPmisVentas.setLayout(jPmisVentasLayout);
+        jPmisVentasLayout.setHorizontalGroup(
+            jPmisVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlMisVentas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPmisVentasLayout.setVerticalGroup(
+            jPmisVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlMisVentas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        jPcambiarSesion.setBackground(new java.awt.Color(60, 147, 214));
+        jPcambiarSesion.setMaximumSize(new java.awt.Dimension(125, 40));
+        jPcambiarSesion.setMinimumSize(new java.awt.Dimension(125, 40));
+        jPcambiarSesion.setPreferredSize(new java.awt.Dimension(125, 40));
+
+        jLcambiarSesion.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jLcambiarSesion.setForeground(new java.awt.Color(255, 255, 255));
+        jLcambiarSesion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLcambiarSesion.setText("Cambiar Sesión");
+        jLcambiarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLcambiarSesionMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPcambiarSesionLayout = new javax.swing.GroupLayout(jPcambiarSesion);
+        jPcambiarSesion.setLayout(jPcambiarSesionLayout);
+        jPcambiarSesionLayout.setHorizontalGroup(
+            jPcambiarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPcambiarSesionLayout.createSequentialGroup()
+                .addComponent(jLcambiarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+        jPcambiarSesionLayout.setVerticalGroup(
+            jPcambiarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLcambiarSesion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        panelBotonEditarPerfil.setBackground(new java.awt.Color(60, 147, 214));
+
+        jlEditarPerfil.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jlEditarPerfil.setForeground(new java.awt.Color(255, 255, 255));
+        jlEditarPerfil.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlEditarPerfil.setText("Editar Perfil");
+        jlEditarPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlEditarPerfilMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelBotonEditarPerfilLayout = new javax.swing.GroupLayout(panelBotonEditarPerfil);
+        panelBotonEditarPerfil.setLayout(panelBotonEditarPerfilLayout);
+        panelBotonEditarPerfilLayout.setHorizontalGroup(
+            panelBotonEditarPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlEditarPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        panelBotonEditarPerfilLayout.setVerticalGroup(
+            panelBotonEditarPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlEditarPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout PanelMiCuentaLayout = new javax.swing.GroupLayout(PanelMiCuenta);
+        PanelMiCuenta.setLayout(PanelMiCuentaLayout);
+        PanelMiCuentaLayout.setHorizontalGroup(
+            PanelMiCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelMiCuentaLayout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addGroup(PanelMiCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPmisVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPcambiarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelBotonEditarPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(1275, Short.MAX_VALUE))
+        );
+        PanelMiCuentaLayout.setVerticalGroup(
+            PanelMiCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelMiCuentaLayout.createSequentialGroup()
+                .addGap(167, 167, 167)
+                .addComponent(panelBotonEditarPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80)
+                .addComponent(jPmisVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80)
+                .addComponent(jPcambiarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(303, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(PanelMiCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1430, 750));
 
         panelBarraTareas.setBackground(new java.awt.Color(100, 100, 100));
 
@@ -343,89 +450,105 @@ public class Menu extends javax.swing.JFrame {
 
         getContentPane().add(panelBarraTareas, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 0, 370, 828));
 
-        PanelMiCuenta.setBackground(new Color(0,0,0,0));
-        PanelMiCuenta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        PanelViajes.setBackground(new java.awt.Color(51, 255, 204));
 
-        jPeditarPerfil.setBackground(new java.awt.Color(60, 147, 214));
-        jPeditarPerfil.setMaximumSize(new java.awt.Dimension(125, 40));
-        jPeditarPerfil.setMinimumSize(new java.awt.Dimension(125, 40));
-        jPeditarPerfil.setPreferredSize(new java.awt.Dimension(125, 40));
+        javax.swing.GroupLayout PanelViajesLayout = new javax.swing.GroupLayout(PanelViajes);
+        PanelViajes.setLayout(PanelViajesLayout);
+        PanelViajesLayout.setHorizontalGroup(
+            PanelViajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1430, Short.MAX_VALUE)
+        );
+        PanelViajesLayout.setVerticalGroup(
+            PanelViajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 750, Short.MAX_VALUE)
+        );
 
-        jLeditarPerfil.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
-        jLeditarPerfil.setForeground(new java.awt.Color(255, 255, 255));
-        jLeditarPerfil.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLeditarPerfil.setText("Editar Perfil");
-        jLeditarPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLeditarPerfilMouseClicked(evt);
+        getContentPane().add(PanelViajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1430, 750));
+
+        panelHoteles.setBackground(new java.awt.Color(0, 255, 0));
+
+        jButton3.setText("jButton3");
+
+        javax.swing.GroupLayout panelHotelesLayout = new javax.swing.GroupLayout(panelHoteles);
+        panelHoteles.setLayout(panelHotelesLayout);
+        panelHotelesLayout.setHorizontalGroup(
+            panelHotelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHotelesLayout.createSequentialGroup()
+                .addContainerGap(762, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(591, 591, 591))
+        );
+        panelHotelesLayout.setVerticalGroup(
+            panelHotelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelHotelesLayout.createSequentialGroup()
+                .addGap(239, 239, 239)
+                .addComponent(jButton3)
+                .addContainerGap(479, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(panelHoteles, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1430, 750));
+
+        panelPaquetes.setBackground(new java.awt.Color(255, 0, 204));
+
+        jButton2.setText("jButton2");
+
+        javax.swing.GroupLayout panelPaquetesLayout = new javax.swing.GroupLayout(panelPaquetes);
+        panelPaquetes.setLayout(panelPaquetesLayout);
+        panelPaquetesLayout.setHorizontalGroup(
+            panelPaquetesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPaquetesLayout.createSequentialGroup()
+                .addContainerGap(1048, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(305, 305, 305))
+        );
+        panelPaquetesLayout.setVerticalGroup(
+            panelPaquetesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPaquetesLayout.createSequentialGroup()
+                .addGap(289, 289, 289)
+                .addComponent(jButton2)
+                .addContainerGap(429, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(panelPaquetes, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1430, 750));
+
+        jPanelVerMisVentas.setBackground(new java.awt.Color(255, 255, 102));
+        jPanelVerMisVentas.setMaximumSize(new java.awt.Dimension(1030, 460));
+        jPanelVerMisVentas.setMinimumSize(new java.awt.Dimension(1030, 460));
+        jPanelVerMisVentas.setPreferredSize(new java.awt.Dimension(1030, 460));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        });
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
-        javax.swing.GroupLayout jPeditarPerfilLayout = new javax.swing.GroupLayout(jPeditarPerfil);
-        jPeditarPerfil.setLayout(jPeditarPerfilLayout);
-        jPeditarPerfilLayout.setHorizontalGroup(
-            jPeditarPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLeditarPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout jPanelVerMisVentasLayout = new javax.swing.GroupLayout(jPanelVerMisVentas);
+        jPanelVerMisVentas.setLayout(jPanelVerMisVentasLayout);
+        jPanelVerMisVentasLayout.setHorizontalGroup(
+            jPanelVerMisVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelVerMisVentasLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(277, 277, 277))
         );
-        jPeditarPerfilLayout.setVerticalGroup(
-            jPeditarPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLeditarPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-        );
-
-        PanelMiCuenta.add(jPeditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, -1, -1));
-
-        jPmisVentas.setBackground(new java.awt.Color(60, 147, 214));
-        jPmisVentas.setMaximumSize(new java.awt.Dimension(125, 40));
-        jPmisVentas.setMinimumSize(new java.awt.Dimension(125, 40));
-        jPmisVentas.setPreferredSize(new java.awt.Dimension(125, 40));
-
-        jLabel13.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setText("Mis ventas");
-
-        javax.swing.GroupLayout jPmisVentasLayout = new javax.swing.GroupLayout(jPmisVentas);
-        jPmisVentas.setLayout(jPmisVentasLayout);
-        jPmisVentasLayout.setHorizontalGroup(
-            jPmisVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPmisVentasLayout.setVerticalGroup(
-            jPmisVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        jPanelVerMisVentasLayout.setVerticalGroup(
+            jPanelVerMisVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelVerMisVentasLayout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
-        PanelMiCuenta.add(jPmisVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 181, -1, -1));
+        getContentPane().add(jPanelVerMisVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, -470, 770, 460));
 
-        jPcambiarSesion.setBackground(new java.awt.Color(60, 147, 214));
-        jPcambiarSesion.setMaximumSize(new java.awt.Dimension(125, 40));
-        jPcambiarSesion.setMinimumSize(new java.awt.Dimension(125, 40));
-        jPcambiarSesion.setPreferredSize(new java.awt.Dimension(125, 40));
-
-        jLcambiarSesion.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
-        jLcambiarSesion.setForeground(new java.awt.Color(255, 255, 255));
-        jLcambiarSesion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLcambiarSesion.setText("Cambiar Sesión");
-        jLcambiarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLcambiarSesionMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPcambiarSesionLayout = new javax.swing.GroupLayout(jPcambiarSesion);
-        jPcambiarSesion.setLayout(jPcambiarSesionLayout);
-        jPcambiarSesionLayout.setHorizontalGroup(
-            jPcambiarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPcambiarSesionLayout.createSequentialGroup()
-                .addComponent(jLcambiarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPcambiarSesionLayout.setVerticalGroup(
-            jPcambiarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLcambiarSesion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-        );
-
-        PanelMiCuenta.add(jPcambiarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 252, -1, -1));
+        jPaneleditarPerfil.setBackground(new java.awt.Color(51, 51, 255));
 
         jLabel11.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
@@ -511,7 +634,7 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(jPaneleditarPerfilLayout.createSequentialGroup()
                 .addGap(283, 283, 283)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(263, 263, 263))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPaneleditarPerfilLayout.createSequentialGroup()
@@ -534,7 +657,7 @@ public class Menu extends javax.swing.JFrame {
         jPaneleditarPerfilLayout.setVerticalGroup(
             jPaneleditarPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPaneleditarPerfilLayout.createSequentialGroup()
-                .addGap(62, 62, 62)
+                .addGap(0, 0, 0)
                 .addGroup(jPaneleditarPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17))
@@ -545,7 +668,6 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addGroup(jPaneleditarPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPaneleditarPerfilLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPaneleditarPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11))
@@ -558,122 +680,14 @@ public class Menu extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPaneleditarPerfilLayout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(jLabel16)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                 .addGroup(jPaneleditarPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25))
         );
 
-        PanelMiCuenta.add(jPaneleditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 125, -1, -1));
-
-        jTventas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Paquete", "Cantidad", "Cliente", "Fecha creación"
-            }
-        ));
-        jScrollPane1.setViewportView(jTventas);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 766, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(162, Short.MAX_VALUE))
-        );
-
-        PanelMiCuenta.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 750, 830, 390));
-
-        getContentPane().add(PanelMiCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 1430, 750));
-
-        PanelViajes.setBackground(new java.awt.Color(51, 255, 204));
-
-        javax.swing.GroupLayout PanelViajesLayout = new javax.swing.GroupLayout(PanelViajes);
-        PanelViajes.setLayout(PanelViajesLayout);
-        PanelViajesLayout.setHorizontalGroup(
-            PanelViajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1430, Short.MAX_VALUE)
-        );
-        PanelViajesLayout.setVerticalGroup(
-            PanelViajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(PanelViajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1430, 750));
-
-        panelHoteles.setBackground(new java.awt.Color(0, 255, 0));
-
-        jButton3.setText("jButton3");
-
-        javax.swing.GroupLayout panelHotelesLayout = new javax.swing.GroupLayout(panelHoteles);
-        panelHoteles.setLayout(panelHotelesLayout);
-        panelHotelesLayout.setHorizontalGroup(
-            panelHotelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHotelesLayout.createSequentialGroup()
-                .addContainerGap(762, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(591, 591, 591))
-        );
-        panelHotelesLayout.setVerticalGroup(
-            panelHotelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelHotelesLayout.createSequentialGroup()
-                .addGap(239, 239, 239)
-                .addComponent(jButton3)
-                .addContainerGap(479, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(panelHoteles, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1430, 750));
-
-        panelPaquetes.setBackground(new java.awt.Color(255, 0, 204));
-
-        jButton2.setText("jButton2");
-
-        javax.swing.GroupLayout panelPaquetesLayout = new javax.swing.GroupLayout(panelPaquetes);
-        panelPaquetes.setLayout(panelPaquetesLayout);
-        panelPaquetesLayout.setHorizontalGroup(
-            panelPaquetesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPaquetesLayout.createSequentialGroup()
-                .addContainerGap(1048, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(305, 305, 305))
-        );
-        panelPaquetesLayout.setVerticalGroup(
-            panelPaquetesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPaquetesLayout.createSequentialGroup()
-                .addGap(289, 289, 289)
-                .addComponent(jButton2)
-                .addContainerGap(429, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(panelPaquetes, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1430, 750));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 700, -1, -1));
+        getContentPane().add(jPaneleditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, -470, 770, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -823,10 +837,15 @@ public class Menu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jLcambiarSesionMouseClicked
 
-    private void jLeditarPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLeditarPerfilMouseClicked
+    private void jlEditarPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEditarPerfilMouseClicked
         // TODO add your handling code here:
-        slide.jPanelYArriba(jPaneleditarPerfil.getY(), 125, 10, 10, jPaneleditarPerfil);
-    }//GEN-LAST:event_jLeditarPerfilMouseClicked
+        bajarPanel(jPaneleditarPerfil);
+    }//GEN-LAST:event_jlEditarPerfilMouseClicked
+
+    private void jlMisVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMisVentasMouseClicked
+        // TODO add your handling code here:
+        bajarPanel(jPanelVerMisVentas);
+    }//GEN-LAST:event_jlMisVentasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -873,7 +892,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -887,17 +905,16 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLcambiarSesion;
-    private javax.swing.JLabel jLeditarPerfil;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanelVerMisVentas;
     private javax.swing.JPanel jPaneleditarPerfil;
     private javax.swing.JPanel jPcambiarSesion;
-    private javax.swing.JPanel jPeditarPerfil;
     private javax.swing.JPanel jPmisVentas;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTventas;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel jlEditarPerfil;
+    private javax.swing.JLabel jlMisVentas;
     private javax.swing.JLabel jlUsuario;
     private javax.swing.JTextField jtApellido;
     private javax.swing.JTextField jtContrasenia;
@@ -906,6 +923,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField jtNombreUsuario;
     private javax.swing.JLabel labelRegistrarseRegistro;
     private javax.swing.JPanel panelBarraTareas;
+    private javax.swing.JPanel panelBotonEditarPerfil;
     private javax.swing.JPanel panelBotonMiCuenta;
     private javax.swing.JPanel panelBotonPaquetes;
     private javax.swing.JPanel panelBotonViajes;
@@ -958,7 +976,7 @@ public class Menu extends javax.swing.JFrame {
             slide.jPanelXDerecha(panelPaquetes.getX(), 1500, 10, 10, panelPaquetes);
         }
     }
-
+    
     public void validacionColorEntered(JPanel panel) {
         if (c.getRGB() != panel.getBackground().getRGB() && n.getRGB() == panel.getBackground().getRGB()) {
             entrada(panel);
@@ -994,6 +1012,15 @@ public class Menu extends javax.swing.JFrame {
             slide.jPanelXIzquierda(panel.getX(), 70, 10, 10, panel);
         }
 
+    }
+    
+    public void bajarPanel(JPanel panel){
+        slide.jPanelYAbajo(panel.getY(), 100, 10, 10, panel);
+        if(panelBarraTareas.getX() == 0){
+            slide.jPanelXDerecha(panel.getX(), 520, 10, 100, panel);
+        
+        }
+    
     }
 
     public void recuperarUsuario(String usuarioRecuperado) {

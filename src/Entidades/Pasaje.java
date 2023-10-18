@@ -12,7 +12,7 @@ public class Pasaje {
     private String TipoTransporte;
 
     private double Importe;
-
+    
     public Ciudad nombreCiudadOrigen;
 
     private boolean estado;

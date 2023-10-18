@@ -13,61 +13,49 @@ import javax.swing.JPanel;
  * @author Luis Vidal
  */
 public class Slide {
-    
-    public void jLabelXIzquierda(final int start, final int stop, final int delay, final int increment, final JLabel jLabel)
-  {
-    if (jLabel.getX() == start) {
-      new Thread()
-      {
-        public void run()
-        {
-          while (jLabel.getX() > stop) {
-            for (int i = start; i >= stop; i -= increment) {
-              try
-              {
-                Thread.sleep(delay);
-                jLabel.setLocation(i, jLabel.getY());
-              }
-              catch (InterruptedException e)
-              {
-                System.out.println("Error Thread Interrupted: " + e);
-              }
-            }
-          }
-          jLabel.setLocation(stop, jLabel.getY());
+
+    public void jLabelXIzquierda(final int start, final int stop, final int delay, final int increment, final JLabel jLabel) {
+        if (jLabel.getX() == start) {
+            new Thread() {
+                public void run() {
+                    while (jLabel.getX() > stop) {
+                        for (int i = start; i >= stop; i -= increment) {
+                            try {
+                                Thread.sleep(delay);
+                                jLabel.setLocation(i, jLabel.getY());
+                            } catch (InterruptedException e) {
+                                System.out.println("Error Thread Interrupted: " + e);
+                            }
+                        }
+                    }
+                    jLabel.setLocation(stop, jLabel.getY());
+                }
+            }.start();
         }
-      }.start();
     }
-  }
-  
-  public void jLabelXDerecha(final int start, final int stop, final int delay, final int increment, final JLabel jLabel)
-  {
-    if (jLabel.getX() == start) {
-      new Thread()
-      {
-        public void run()
-        {
-          while (jLabel.getX() <= start) {
-            for (int i = start; i <= stop; i += increment) {
-              try
-              {
-                Thread.sleep(delay);
-                
-                jLabel.setLocation(i, jLabel.getY());
-              }
-              catch (InterruptedException e)
-              {
-                System.out.println("Error Thread Interrupted: " + e);
-              }
-            }
-          }
-          jLabel.setLocation(stop, jLabel.getY());
+
+    public void jLabelXDerecha(final int start, final int stop, final int delay, final int increment, final JLabel jLabel) {
+        if (jLabel.getX() == start) {
+            new Thread() {
+                public void run() {
+                    while (jLabel.getX() <= start) {
+                        for (int i = start; i <= stop; i += increment) {
+                            try {
+                                Thread.sleep(delay);
+
+                                jLabel.setLocation(i, jLabel.getY());
+                            } catch (InterruptedException e) {
+                                System.out.println("Error Thread Interrupted: " + e);
+                            }
+                        }
+                    }
+                    jLabel.setLocation(stop, jLabel.getY());
+                }
+            }.start();
         }
-      }.start();
     }
-  }
-  
-  public void jPanelXDerecha(final int start, final int stop, final int delay, final int increment, final JPanel JPanel) {
+
+    public void jPanelXDerecha(final int start, final int stop, final int delay, final int increment, final JPanel JPanel) {
         if (JPanel.getX() == start) {
             new Thread() {
                 public void run() {
@@ -87,8 +75,8 @@ public class Slide {
             }.start();
         }
     }
-  
-  public void jPanelXIzquierda(final int start, final int stop, final int delay, final int increment, final JPanel JPanel) {
+
+    public void jPanelXIzquierda(final int start, final int stop, final int delay, final int increment, final JPanel JPanel) {
         if (JPanel.getX() == start) {
             new Thread() {
                 public void run() {
@@ -107,60 +95,49 @@ public class Slide {
             }.start();
         }
     }
-  
-  //-----> swing arriba y abajo
-  
-  public void jPanelYArriba(final int start, final int stop, final int delay, final int increment, final JPanel jPabel)
-  {
-    if (jPabel.getY() == start) {
-      new Thread()
-      {
-        public void run()
-        {
-          while (jPabel.getY() > stop) {
-            for (int i = start; i >= stop; i -= increment) {
-              try
-              {
-                Thread.sleep(delay);
-                jPabel.setLocation(jPabel.getX(), i);
-              }
-              catch (InterruptedException e)
-              {
-                System.out.println("Error Thread Interrupted: " + e);
-              }
-            }
-          }
-          jPabel.setLocation(jPabel.getX(), stop);
+
+    //-----> swing arriba y abajo
+    public void jPanelYArriba(final int start, final int stop, final int delay, final int increment, final JPanel jPabel) {
+        if (jPabel.getY() == start) {
+            new Thread() {
+                public void run() {
+                    while (jPabel.getY() > stop) {
+                        for (int i = start; i >= stop; i -= increment) {
+                            try {
+                                Thread.sleep(delay);
+                                jPabel.setLocation(jPabel.getX(), i);
+                            } catch (InterruptedException e) {
+                                System.out.println("Error Thread Interrupted: " + e);
+                            }
+                        }
+                    }
+                    
+                    jPabel.setLocation(jPabel.getX(), stop);
+                    System.out.println(jPabel.getY());
+                }
+            }.start();
         }
-      }.start();
     }
-  }
-  
-  public void jPanelYAbajo(final int start, final int stop, final int delay, final int increment, final JPanel jPanel)
-  {
-    if (jPanel.getY() == start) {
-      new Thread()
-      {
-        public void run()
-        {
-          while (jPanel.getY() <= start) {
-            for (int i = start; i <= stop; i += increment) {
-              try
-              {
-                Thread.sleep(delay);
-                
-                jPanel.setLocation(jPanel.getX(), i);
-              }
-              catch (InterruptedException e)
-              {
-                System.out.println("Error Thread Interrupted: " + e);
-              }
-            }
-          }
-          jPanel.setLocation(jPanel.getX(), stop);
+
+    public void jPanelYAbajo(final int start, final int stop, final int delay, final int increment, final JPanel jPanel) {
+        if (jPanel.getY() == start) {
+            new Thread() {
+                public void run() {
+                    while (jPanel.getY() <= start) {
+                        for (int i = start; i <= stop; i += increment) {
+                            try {
+                                Thread.sleep(delay);
+
+                                jPanel.setLocation(jPanel.getX(), i);
+                            } catch (InterruptedException e) {
+                                System.out.println("Error Thread Interrupted: " + e);
+                            }
+                        }
+                    }
+                    jPanel.setLocation(jPanel.getX(), stop);
+                }
+            }.start();
         }
-      }.start();
     }
-  }
-    
+
 }
