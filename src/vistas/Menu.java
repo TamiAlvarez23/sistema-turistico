@@ -25,7 +25,7 @@ public class Menu extends javax.swing.JFrame {
     Slide slide;
     Color c = new Color(246, 135, 18);
     Color n = new Color(100, 100, 100);
-    private String u;
+    private Usuario u = null;
 
     /**
      * Creates new form Menu
@@ -1660,9 +1660,11 @@ public class Menu extends javax.swing.JFrame {
     
     }
 
-    public void recuperarUsuario(String usuarioRecuperado) {
+    public void recuperarUsuario(Usuario usuarioRecuperado) {
         u = usuarioRecuperado;
-        jlUsuario.setText(u);
+        jlUsuario.setText(u.getNombre() + " " + u.getApellido());
+        
+   
 
     }
 }

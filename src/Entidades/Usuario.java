@@ -16,27 +16,25 @@ public class Usuario {
     
     private int idUsuario;
     
-    private String nombreUsuario, nombre, apellido, mail;
+    private String nombreUsuario, nombre, apellido;
 
     private String claveUsuario;
     
     private boolean estadoUsuario;
 
-    public Usuario(String nombreUsuario, String nombre, String apellido, String mail, String claveUsuario, boolean estadoUsuario) {
+    public Usuario(String nombreUsuario, String nombre, String apellido, String claveUsuario, boolean estadoUsuario) {
         this.nombreUsuario = nombreUsuario;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.mail = mail;
         this.claveUsuario = claveUsuario;
         this.estadoUsuario = estadoUsuario;
     }
 
-    public Usuario(int idUsuario, String nombreUsuario, String nombre, String apellido, String mail, String claveUsuario, boolean estadoUsuario) {
+    public Usuario(int idUsuario, String nombreUsuario, String nombre, String apellido, String claveUsuario, boolean estadoUsuario) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.mail = mail;
         this.claveUsuario = claveUsuario;
         this.estadoUsuario = estadoUsuario;
     }
@@ -76,15 +74,7 @@ public class Usuario {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
+    
     public String getClaveUsuario() {
         return claveUsuario;
     }
