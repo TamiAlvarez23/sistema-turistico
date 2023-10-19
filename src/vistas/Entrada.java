@@ -7,6 +7,17 @@ package vistas;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.NoSuchProviderException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -22,6 +33,15 @@ public class Entrada extends javax.swing.JFrame {
     FondoPanel panelFondo = new FondoPanel();
     Slide slide;
     int medio;
+    private static  String emailDesde = "agusfurini@gmail.com"; 
+    private static  String claveEmali = "zgob fksk aalp vdre";
+    private String emailHasta;
+    private String asunto;
+    private String mensaje;
+    
+    private Properties mProperties;
+    private Session mSession;
+    private MimeMessage mCorreo;
     
 
     /**
@@ -34,7 +54,52 @@ public class Entrada extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         medio = panelPrincipal.getX();
         slide = new Slide();
+        mProperties = new Properties();
         
+    }
+    
+    private void registrarUsuario(){
+        emailHasta = "aguscolongne@gmail.com";
+        asunto = "Registro de Usuario";
+        mensaje = "Ingrese en la app el codigo";
+        
+        mProperties.put("mail.smtp.host", "smtp.gmail.com");
+        mProperties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        mProperties.setProperty("mail.smtp.starttls.enable", "true");
+        mProperties.setProperty("mail.smtp.port", "587");
+        mProperties.setProperty("mail.smtp.user", emailDesde);
+        mProperties.setProperty("mail.smtp.ssl.protocols", "TLSv1.2");
+        mProperties.setProperty("mail.smtp.auth", "true");
+        
+        mSession = Session.getDefaultInstance(mProperties);
+        
+        mCorreo = new MimeMessage(mSession);
+        try {
+            mCorreo.setFrom(new InternetAddress(emailDesde));
+            mCorreo.setRecipient(Message.RecipientType.TO, new InternetAddress(emailHasta));
+            mCorreo.setSubject(asunto);
+            mCorreo.setText(mensaje);
+            
+        } catch (AddressException ex) {
+            Logger.getLogger(Entrada.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MessagingException ex) {
+            Logger.getLogger(Entrada.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void enviarCorreo(){
+        try {
+            Transport mTransport = mSession.getTransport("smtp");
+            mTransport.connect(emailDesde, claveEmali);
+            mTransport.sendMessage(mCorreo, mCorreo.getRecipients(Message.RecipientType.TO));
+            mTransport.close();
+        } catch (NoSuchProviderException ex) {
+            Logger.getLogger(Entrada.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MessagingException ex) {
+            Logger.getLogger(Entrada.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    
     }
 
     /**
@@ -74,9 +139,7 @@ public class Entrada extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1500, 750));
         setMinimumSize(new java.awt.Dimension(1500, 750));
-        setPreferredSize(new java.awt.Dimension(1500, 750));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -378,7 +441,7 @@ public class Entrada extends javax.swing.JFrame {
                 .addGap(75, 75, 75))
         );
 
-        getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(-560, 0, 2620, 750));
+        getContentPane().add(panelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1110, 0, 2620, 750));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -433,16 +496,15 @@ public class Entrada extends javax.swing.JFrame {
         // TODO add your handling code here:
         String nombre = jtNombre.getText();
         String apellido = jtApellido.getText();
-        String nombreUsuario = jtNombreUsuario.getText();
-        String contraseña = jtContrasenia.getText();
-        
-        boolean estado = true;
-        
+        String mailUsuario = jtMail.getText();
+        String nombreUsuario = jtUsuario.getText();
+        String contrasenia = jtContrasenia.getText();
         
         
         
         
-        
+        registrarUsuario();
+        enviarCorreo(); 
     }//GEN-LAST:event_labelRegistrarseRegistroMouseClicked
 
     /**

@@ -726,9 +726,8 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(39, 39, 39)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                                .addComponent(jTextField5)))
+                            .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(70, 70, 70)
                         .addComponent(jLabel29)
                         .addGap(40, 40, 40)
@@ -1057,7 +1056,7 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap(117, Short.MAX_VALUE))
         );
 
-        getContentPane().add(panelPaquetes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1430, 750));
+        getContentPane().add(panelPaquetes, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1430, 750));
 
         jPanelVerMisVentas.setBackground(new java.awt.Color(255, 255, 102));
         jPanelVerMisVentas.setMaximumSize(new java.awt.Dimension(1030, 460));
