@@ -491,7 +491,11 @@ public class Entrada extends javax.swing.JFrame {
                 Menu mv = new Menu();
                 mv.setVisible(true);
                 mv.recuperarUsuario(usurioLogeado);
+                jtUsuario.setText("");
+                jtContraseniaLogeo.setText("");
                 cargarJFrame(mv);
+                
+                
             } else {
                 JOptionPane.showMessageDialog(null, "La contraeña es incorrecta");
 
@@ -527,6 +531,7 @@ public class Entrada extends javax.swing.JFrame {
 
             if (usuarioBD.getNombreUsuario() == jtNombreUsuario.getText()) {
                 JOptionPane.showMessageDialog(null, "El usuario ya esta en uso");
+                jtNombreUsuario.setText("");
             } else {
                 registrarUsuario();
                 enviarCorreo();
@@ -535,7 +540,11 @@ public class Entrada extends javax.swing.JFrame {
                     Usuario usurio = new Usuario(nombreUsuario, nombre, apellido, contrasenia, true);
                     usuarioData.agregarUsuario(usurio);
                     JOptionPane.showMessageDialog(null, "Se guardo el usuario " + nombreUsuario + " con exito");
-
+                    jtNombre.setText("");
+                    jtApellido.setText("");
+                    jtNombreUsuario.setText("");
+                    jtContrasenia.setText("");
+                            
                 }
 
             }
