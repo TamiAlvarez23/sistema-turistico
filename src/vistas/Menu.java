@@ -647,7 +647,7 @@ public class Menu extends javax.swing.JFrame {
         panelHoteles.setMaximumSize(new java.awt.Dimension(1430, 750));
         panelHoteles.setMinimumSize(new java.awt.Dimension(1430, 750));
 
-        jPanel11.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel11.setBackground(new java.awt.Color(204, 255, 204,0));
 
         jLabel47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/ubicacion (1).png"))); // NOI18N
         jLabel47.setText("Ciudad origen");
@@ -805,16 +805,16 @@ public class Menu extends javax.swing.JFrame {
         panelHotelesLayout.setHorizontalGroup(
             panelHotelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelHotelesLayout.createSequentialGroup()
-                .addGap(210, 210, 210)
+                .addGap(152, 152, 152)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(222, Short.MAX_VALUE))
+                .addContainerGap(280, Short.MAX_VALUE))
         );
         panelHotelesLayout.setVerticalGroup(
             panelHotelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        getContentPane().add(panelHoteles, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 1430, 750));
+        getContentPane().add(panelHoteles, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1430, 750));
 
         panelPaquetes.setBackground(new java.awt.Color(255, 0, 204));
 
