@@ -186,7 +186,9 @@ public class Menu extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1500, 750));
         setMinimumSize(new java.awt.Dimension(1500, 750));
+        setPreferredSize(new java.awt.Dimension(1500, 750));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -521,7 +523,9 @@ public class Menu extends javax.swing.JFrame {
 
         getContentPane().add(panelBarraTareas, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 0, 370, 828));
 
-        PanelViajes.setBackground(new java.awt.Color(51, 255, 204));
+        PanelViajes.setBackground(new Color(0,0,0,0));
+
+        jPanel13.setBackground(new Color(0,0,0,0));
 
         jLabel54.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/ubicacion (1).png"))); // NOI18N
         jLabel54.setText("Ciudad origen");
@@ -797,9 +801,9 @@ public class Menu extends javax.swing.JFrame {
 
         getContentPane().add(panelHoteles, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1430, 750));
 
-        panelPaquetes.setBackground(new java.awt.Color(255, 0, 204));
+        panelPaquetes.setBackground(new Color(0,0,0,0));
 
-        jPanel8.setBackground(new java.awt.Color(60, 147, 214));
+        jPanel8.setBackground(new Color(0,0,0,0));
         jPanel8.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
         jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/ubicacion (1).png"))); // NOI18N
@@ -944,7 +948,7 @@ public class Menu extends javax.swing.JFrame {
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/buscar.png"))); // NOI18N
 
-        jLabel48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Paquete.png"))); // NOI18N
+        jLabel48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/logo sin fondo ni letras.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -1037,9 +1041,9 @@ public class Menu extends javax.swing.JFrame {
         panelPaquetesLayout.setHorizontalGroup(
             panelPaquetesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPaquetesLayout.createSequentialGroup()
-                .addGap(222, 222, 222)
+                .addGap(130, 130, 130)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(233, Short.MAX_VALUE))
+                .addContainerGap(325, Short.MAX_VALUE))
         );
         panelPaquetesLayout.setVerticalGroup(
             panelPaquetesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1433,14 +1437,24 @@ public class Menu extends javax.swing.JFrame {
             achicarPanel(PanelViajes);
             achicarPanel(panelHoteles);
             achicarPanel(panelPaquetes);
-            
-
+            if(jPaneleditarPerfil.getX() == 350){
+                slide.jPanelXDerecha(350, 600, 10, 10, jPaneleditarPerfil);
+            }
+            if(jPanelVerMisVentas.getX() == 350){
+                slide.jPanelXDerecha(350, 600, 10, 10, jPanelVerMisVentas);
+            }
         } else {
             slide.jPanelXIzquierda(panelBarraTareas.getX(), -300, 10, 10, panelBarraTareas);
             agrandarPanel(PanelViajes);
             agrandarPanel(PanelMiCuenta);
             agrandarPanel(panelHoteles);
             agrandarPanel(panelPaquetes);
+            if(jPaneleditarPerfil.getX() == 600){
+                slide.jPanelXIzquierda(600, 350, 10, 10, jPaneleditarPerfil);
+            }
+            if(jPanelVerMisVentas.getX() == 600){
+                slide.jPanelXIzquierda(600, 350, 10, 10, jPanelVerMisVentas);
+            }
         }
 
 
