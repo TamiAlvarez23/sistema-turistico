@@ -25,8 +25,13 @@ public class Paquete {
     }
 
     public Paquete() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    public Paquete(int idPaquete) {
+        this.idPaquete = idPaquete;
+    }
+
+  
 
     public int getIdPaquete() {
         return idPaquete;

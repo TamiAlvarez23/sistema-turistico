@@ -20,6 +20,8 @@ public class Alojamiento {
     private String servicio;
 
     private double importeDiario;
+    
+    private int cupoAlojamiento;
 
     private Ciudad ciudadDestino;
 
@@ -66,12 +68,16 @@ public class Alojamiento {
         this.ciudadDestino = ciudadDestino;
     }
 
-    public int getAlojamiento() {
+    public Alojamiento(int cupoAlojamiento) {
+        this.cupoAlojamiento = cupoAlojamiento;
+    }
+
+    public int getIdAlojamiento() {
         return idAlojamiento;
     }
 
-    public void setAlojamiento(int Alojamiento) {
-        this.idAlojamiento = Alojamiento;
+    public void setIdAlojamiento(int idAlojamiento) {
+        this.idAlojamiento = idAlojamiento;
     }
 
     public LocalDate getFechaIngreso() {
@@ -114,6 +120,14 @@ public class Alojamiento {
         this.importeDiario = importeDiario;
     }
 
+    public int getCupoAlojamiento() {
+        return cupoAlojamiento;
+    }
+
+    public void setCupoAlojamiento(int cupoAlojamiento) {
+        this.cupoAlojamiento = cupoAlojamiento;
+    }
+
     public Ciudad getCiudadDestino() {
         return ciudadDestino;
     }
@@ -121,6 +135,8 @@ public class Alojamiento {
     public void setCiudadDestino(Ciudad ciudadDestino) {
         this.ciudadDestino = ciudadDestino;
     }
-    
+
+   
+ 
     
 }

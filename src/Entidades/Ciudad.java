@@ -29,6 +29,10 @@ public class Ciudad {
 
     public Ciudad() {
     }
+
+    public Ciudad(int idCiudad) {
+        this.idCiudad = idCiudad;
+    }
     
     
 

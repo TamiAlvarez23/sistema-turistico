@@ -69,7 +69,7 @@ public class AlojamientoData {
             while (rs.next()) {
                 
                 Alojamiento alojamiento = new Alojamiento();
-                alojamiento.setAlojamiento(rs.getInt("idAlojamiento"));
+                alojamiento.setIdAlojamiento(rs.getInt("idAlojamiento"));
                 alojamiento.setFechaIngreso(rs.getDate("fechaInicio").toLocalDate());
                 alojamiento.setFechaEgreso(rs.getDate("fechaFin").toLocalDate());
                 alojamiento.setEstado(rs.getBoolean("estado"));
@@ -95,7 +95,7 @@ public class AlojamientoData {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Alojamiento alojamiento = new Alojamiento();
-                alojamiento.setAlojamiento(rs.getInt("idAlojamiento"));
+                alojamiento.setIdAlojamiento(rs.getInt("idAlojamiento"));
                 alojamiento.setFechaIngreso(rs.getDate("fechaIngreso").toLocalDate());
                 alojamiento.setFechaEgreso(rs.getDate("fechaEgreso").toLocalDate());
                 alojamiento.setEstado(true);
