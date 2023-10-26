@@ -546,11 +546,11 @@ public class Entrada extends javax.swing.JFrame {
         if (usuarioBD == null) {
             registrarUsuario();
             enviarCorreo();
-            int codigoIngresado = Integer.parseInt(JOptionPane.showInputDialog("Ingreseo el codigo que se envio al gmail del empleador"));
+            int codigoIngresado = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el código que se envió al gmail del empleador"));
             if (codigoIngresado == codigoValidacion) {
                 Usuario usurio = new Usuario(nombreUsuario, nombre, apellido, contrasenia, true);
                 usuarioData.agregarUsuario(usurio);
-                JOptionPane.showMessageDialog(null, "Se guardo el usuario " + nombreUsuario + " con exito");
+                JOptionPane.showMessageDialog(null, "Se guardo el usuario " + nombreUsuario + " con éxito");
             } else {
                 JOptionPane.showMessageDialog(null, "El codigo es invalido");
             }
