@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-10-2023 a las 15:38:08
+-- Tiempo de generación: 26-10-2023 a las 16:06:38
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
@@ -84,6 +84,24 @@ CREATE TABLE `pasaje` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `presupuesto`
+--
+
+CREATE TABLE `presupuesto` (
+  `idPresupuesto` int(50) NOT NULL,
+  `idPaquete` int(50) NOT NULL,
+  `nombreCliente` varchar(100) NOT NULL,
+  `apellidoCliente` varchar(100) NOT NULL,
+  `dniCliente` int(50) NOT NULL,
+  `telefonoCliente` int(50) NOT NULL,
+  `mailCliente` varchar(100) NOT NULL,
+  `pagoCliente` varchar(100) NOT NULL,
+  `cuotasCliente` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuario`
 --
 
@@ -94,7 +112,8 @@ CREATE TABLE `usuario` (
   `nombre` varchar(100) NOT NULL,
   `apellido` varchar(100) NOT NULL,
   `claveUsuario` varchar(100) NOT NULL,
-  `estadoUsuario` tinyint(1) NOT NULL
+  `estadoUsuario` tinyint(1) NOT NULL,
+  `idPresupuesto` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -132,10 +151,18 @@ ALTER TABLE `pasaje`
   ADD KEY `pasaje_nombreCiudadOrigen_foreign` (`nombreCiudadOrigen`);
 
 --
+-- Indices de la tabla `presupuesto`
+--
+ALTER TABLE `presupuesto`
+  ADD PRIMARY KEY (`idPresupuesto`),
+  ADD KEY `presupuesto_paquete_foreign` (`idPaquete`);
+
+--
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`idUsuario`);
+  ADD PRIMARY KEY (`idUsuario`),
+  ADD KEY `usuario_presupuesto_foreign` (`idPresupuesto`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -164,6 +191,12 @@ ALTER TABLE `paquete`
 --
 ALTER TABLE `pasaje`
   MODIFY `idPasaje` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `presupuesto`
+--
+ALTER TABLE `presupuesto`
+  MODIFY `idPresupuesto` int(50) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -195,6 +228,18 @@ ALTER TABLE `paquete`
 --
 ALTER TABLE `pasaje`
   ADD CONSTRAINT `pasaje_nombreCiudadOrigen_foreign` FOREIGN KEY (`nombreCiudadOrigen`) REFERENCES `ciudad` (`idCiudad`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `presupuesto`
+--
+ALTER TABLE `presupuesto`
+  ADD CONSTRAINT `presupuesto_paquete_foreign` FOREIGN KEY (`idPaquete`) REFERENCES `paquete` (`idPaquete`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD CONSTRAINT `usuario_presupuesto_foreign` FOREIGN KEY (`idPresupuesto`) REFERENCES `presupuesto` (`idPresupuesto`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

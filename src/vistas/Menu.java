@@ -52,9 +52,18 @@ public class Menu extends javax.swing.JFrame {
         jPmisVentas = new javax.swing.JPanel();
         jlMisVentas = new javax.swing.JLabel();
         jPcambiarSesion = new javax.swing.JPanel();
-        jLcambiarSesion = new javax.swing.JLabel();
+        jPcambiarSesion1 = new javax.swing.JPanel();
+        jLcambiarSesion2 = new javax.swing.JLabel();
         panelBotonEditarPerfil = new javax.swing.JPanel();
         jlEditarPerfil = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLcambiarSesion = new javax.swing.JLabel();
+        jPanelEmpleado = new javax.swing.JPanel();
+        jLabel28 = new javax.swing.JLabel();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        jRadioButton4 = new javax.swing.JRadioButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
         panelBarraTareas = new javax.swing.JPanel();
         panelNombreUsuario = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -231,27 +240,55 @@ public class Menu extends javax.swing.JFrame {
         jPcambiarSesion.setMinimumSize(new java.awt.Dimension(125, 40));
         jPcambiarSesion.setPreferredSize(new java.awt.Dimension(125, 40));
 
-        jLcambiarSesion.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
-        jLcambiarSesion.setForeground(new java.awt.Color(255, 255, 255));
-        jLcambiarSesion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLcambiarSesion.setText("Cambiar Sesión");
-        jLcambiarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPcambiarSesion1.setBackground(new java.awt.Color(60, 147, 214));
+        jPcambiarSesion1.setMaximumSize(new java.awt.Dimension(125, 40));
+        jPcambiarSesion1.setMinimumSize(new java.awt.Dimension(125, 40));
+
+        jLcambiarSesion2.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jLcambiarSesion2.setForeground(new java.awt.Color(255, 255, 255));
+        jLcambiarSesion2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLcambiarSesion2.setText("Cambiar Sesión");
+        jLcambiarSesion2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLcambiarSesionMouseClicked(evt);
+                jLcambiarSesion2MouseClicked(evt);
             }
         });
+
+        javax.swing.GroupLayout jPcambiarSesion1Layout = new javax.swing.GroupLayout(jPcambiarSesion1);
+        jPcambiarSesion1.setLayout(jPcambiarSesion1Layout);
+        jPcambiarSesion1Layout.setHorizontalGroup(
+            jPcambiarSesion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPcambiarSesion1Layout.createSequentialGroup()
+                .addComponent(jLcambiarSesion2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
+        );
+        jPcambiarSesion1Layout.setVerticalGroup(
+            jPcambiarSesion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPcambiarSesion1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLcambiarSesion2, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout jPcambiarSesionLayout = new javax.swing.GroupLayout(jPcambiarSesion);
         jPcambiarSesion.setLayout(jPcambiarSesionLayout);
         jPcambiarSesionLayout.setHorizontalGroup(
             jPcambiarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPcambiarSesionLayout.createSequentialGroup()
-                .addComponent(jLcambiarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 2, Short.MAX_VALUE))
+            .addGap(0, 125, Short.MAX_VALUE)
+            .addGroup(jPcambiarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPcambiarSesionLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPcambiarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPcambiarSesionLayout.setVerticalGroup(
             jPcambiarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLcambiarSesion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addGap(0, 40, Short.MAX_VALUE)
+            .addGroup(jPcambiarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPcambiarSesionLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPcambiarSesion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         PanelMiCuenta.add(jPcambiarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 407, -1, -1));
@@ -280,6 +317,93 @@ public class Menu extends javax.swing.JFrame {
         );
 
         PanelMiCuenta.add(panelBotonEditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 167, 125, -1));
+
+        jPanel1.setBackground(new java.awt.Color(60, 147, 214));
+
+        jLcambiarSesion.setBackground(new java.awt.Color(60, 147, 214));
+        jLcambiarSesion.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jLcambiarSesion.setForeground(new java.awt.Color(255, 255, 255));
+        jLcambiarSesion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLcambiarSesion.setText("Empleados");
+        jLcambiarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLcambiarSesionMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLcambiarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLcambiarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        PanelMiCuenta.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 500, 130, 40));
+
+        jPanelEmpleado.setBackground(new Color (0,0,0,0));
+
+        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/ingeniero (2).png"))); // NOI18N
+
+        jRadioButton3.setText("Empleados activos");
+
+        jRadioButton4.setText("Empleado inactivo");
+
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nombre empleado", "Apellido empleado", "DNI", "Estado"
+            }
+        ));
+        jScrollPane4.setViewportView(jTable3);
+
+        javax.swing.GroupLayout jPanelEmpleadoLayout = new javax.swing.GroupLayout(jPanelEmpleado);
+        jPanelEmpleado.setLayout(jPanelEmpleadoLayout);
+        jPanelEmpleadoLayout.setHorizontalGroup(
+            jPanelEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelEmpleadoLayout.createSequentialGroup()
+                .addGroup(jPanelEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelEmpleadoLayout.createSequentialGroup()
+                        .addGap(452, 452, 452)
+                        .addComponent(jLabel28))
+                    .addGroup(jPanelEmpleadoLayout.createSequentialGroup()
+                        .addGap(205, 205, 205)
+                        .addComponent(jRadioButton3)
+                        .addGap(298, 298, 298)
+                        .addComponent(jRadioButton4))
+                    .addGroup(jPanelEmpleadoLayout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 897, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(98, Short.MAX_VALUE))
+        );
+        jPanelEmpleadoLayout.setVerticalGroup(
+            jPanelEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelEmpleadoLayout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addComponent(jLabel28)
+                .addGap(40, 40, 40)
+                .addGroup(jPanelEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButton3)
+                    .addComponent(jRadioButton4))
+                .addGap(37, 37, 37)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(175, Short.MAX_VALUE))
+        );
+
+        PanelMiCuenta.add(jPanelEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 40, 1080, 610));
 
         getContentPane().add(PanelMiCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1500, 750));
 
@@ -1598,6 +1722,10 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton16ActionPerformed
 
+    private void jLcambiarSesion2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcambiarSesion2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLcambiarSesion2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1690,6 +1818,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
@@ -1721,6 +1850,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLcambiarSesion;
+    private javax.swing.JLabel jLcambiarSesion2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
@@ -1729,19 +1860,25 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel jPanelEmpleado;
     private javax.swing.JPanel jPanelVerMisVentas;
     private javax.swing.JPanel jPaneleditarPerfil;
     private javax.swing.JPanel jParmarpaquete;
     private javax.swing.JPanel jPcambiarSesion;
+    private javax.swing.JPanel jPcambiarSesion1;
     private javax.swing.JPanel jPmisVentas;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable7;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
