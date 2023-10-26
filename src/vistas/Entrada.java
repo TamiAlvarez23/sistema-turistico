@@ -62,8 +62,9 @@ public class Entrada extends javax.swing.JFrame {
     }
 
     private void registrarUsuario() {
+        codigoValidacion = 0;
 
-        emailHasta = "aguscolongne@gmail.com";
+        emailHasta = "Tagus.paqueteturistico23@gmail.com";
         asunto = "Registro de Usuario";
         mensaje = "Ingrese en la app el codigo " + codigoValidacion;
 
