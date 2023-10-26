@@ -30,15 +30,16 @@ public class UsuarioData {
     }
 
     public void agregarUsuario(Usuario usuario) {
-        String sql = "INSERT INTO usuario (nombreUsuario, nombre, apellido, claveUsuario, estadoUsuario) VALUES (?, ?, ?, ?,?)";
+        String sql = "INSERT INTO usuario (nombreUsuario, rango, nombre, apellido, claveUsuario, estadoUsuario) VALUES (?, ?, ?, ?, ?,?)";
         PreparedStatement ps;
         try {
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, usuario.getNombreUsuario());
-            ps.setString(2, usuario.getNombre());
-            ps.setString(3, usuario.getApellido());
-            ps.setString(4, usuario.getClaveUsuario());
-            ps.setBoolean(5, usuario.isEstadoUsuario());
+            ps.setString(2, usuario.getRango());
+            ps.setString(3, usuario.getNombre());
+            ps.setString(4, usuario.getApellido());
+            ps.setString(5, usuario.getClaveUsuario());
+            ps.setBoolean(6, usuario.isEstadoUsuario());
             ps.execute();
 
         } catch (SQLException ex) {
@@ -57,12 +58,12 @@ public class UsuarioData {
             if (rs.next()) {
                 int id = rs.getInt("idUsuario");
                 String nombreUsuario = rs.getString("nombreUsuario");
+                String rango = rs.getString("rango");
                 String nombre = rs.getString("nombre");
                 String apellido = rs.getString("apellido");
-                String mail = rs.getString("mail");
                 String claveUsuario = rs.getString("claveUsuario");
                 boolean estadoUsuario = rs.getBoolean("estadoUsuario");
-                usuario = new Usuario(id, nombreUsuario, nombre, apellido, claveUsuario, estadoUsuario);
+                usuario = new Usuario(id, nombreUsuario, nombre, apellido, claveUsuario, estadoUsuario, rango);
 
             }
         } catch (SQLException ex) {

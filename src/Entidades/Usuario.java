@@ -20,23 +20,35 @@ public class Usuario {
 
     private String claveUsuario;
     
+    private String rango;
+    
     private boolean estadoUsuario;
 
-    public Usuario(String nombreUsuario, String nombre, String apellido, String claveUsuario, boolean estadoUsuario) {
+    public Usuario(String nombreUsuario, String nombre, String apellido, String claveUsuario, boolean estadoUsuario, String rango) {
         this.nombreUsuario = nombreUsuario;
         this.nombre = nombre;
         this.apellido = apellido;
         this.claveUsuario = claveUsuario;
         this.estadoUsuario = estadoUsuario;
+        this.rango = rango;
     }
 
-    public Usuario(int idUsuario, String nombreUsuario, String nombre, String apellido, String claveUsuario, boolean estadoUsuario) {
+    public Usuario(int idUsuario, String nombreUsuario, String nombre, String apellido, String claveUsuario, boolean estadoUsuario, String rango) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.nombre = nombre;
         this.apellido = apellido;
         this.claveUsuario = claveUsuario;
         this.estadoUsuario = estadoUsuario;
+        this.rango = rango;
+    }
+
+    public String getRango() {
+        return rango;
+    }
+
+    public void setRango(String rango) {
+        this.rango = rango;
     }
 
     public Usuario() {

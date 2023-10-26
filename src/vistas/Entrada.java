@@ -142,7 +142,7 @@ public class Entrada extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jcbRango = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1500, 750));
@@ -365,8 +365,8 @@ public class Entrada extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Rango:");
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "                 ", "Admiistrador", "Vendedor" }));
+        jcbRango.setBackground(new java.awt.Color(255, 255, 255));
+        jcbRango.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "                 ", "Admiistrador", "Vendedor" }));
 
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
@@ -408,7 +408,7 @@ public class Entrada extends javax.swing.JFrame {
                     .addComponent(jtContrasenia, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
                     .addComponent(jLabel8)
                     .addComponent(jLabel6)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jcbRango, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(47, 47, 47))
         );
         panelPrincipalLayout.setVerticalGroup(
@@ -449,7 +449,7 @@ public class Entrada extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel6)
                                 .addGap(28, 28, 28)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jcbRango, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(32, 32, 32)
                                 .addComponent(jLabel7)
                                 .addGap(18, 18, 18)
@@ -515,7 +515,6 @@ public class Entrada extends javax.swing.JFrame {
 
         } else {
             if (usurioLogeado.getClaveUsuario().equals(jtContraseniaLogeo.getText())) {
-                
 
                 Menu mv = new Menu();
                 mv.setVisible(true);
@@ -523,8 +522,7 @@ public class Entrada extends javax.swing.JFrame {
                 jtUsuario.setText("");
                 jtContraseniaLogeo.setText("");
                 cargarJFrame(mv);
-                
-                
+
             } else {
                 JOptionPane.showMessageDialog(null, "La contraeña es incorrecta");
 
@@ -542,6 +540,7 @@ public class Entrada extends javax.swing.JFrame {
         String apellido = jtApellido.getText();
         String nombreUsuario = jtNombreUsuario.getText();
         String contrasenia = jtContrasenia.getText();
+        String rango = (String) jcbRango.getSelectedItem();
         Usuario usuarioBD = usuarioData.buscarUsuario(nombreUsuario);
 
         if (usuarioBD == null) {
@@ -549,9 +548,14 @@ public class Entrada extends javax.swing.JFrame {
             enviarCorreo();
             int codigoIngresado = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el código que se envió al gmail del empleador"));
             if (codigoIngresado == codigoValidacion) {
-                Usuario usurio = new Usuario(nombreUsuario, nombre, apellido, contrasenia, true);
+                Usuario usurio = new Usuario(nombreUsuario, nombre, apellido, contrasenia, true, rango);
                 usuarioData.agregarUsuario(usurio);
                 JOptionPane.showMessageDialog(null, "Se guardo el usuario " + nombreUsuario + " con éxito");
+                jtNombre.setText("");
+                jtApellido.setText("");
+                jtNombreUsuario.setText("");
+                jtContrasenia.setText("");
+                jcbRango.setSelectedItem("");
             } else {
                 JOptionPane.showMessageDialog(null, "El codigo es invalido");
             }
@@ -566,14 +570,15 @@ public class Entrada extends javax.swing.JFrame {
                 enviarCorreo();
                 int codigoIngresado = Integer.parseInt(JOptionPane.showInputDialog("Ingreseo el codigo que se envio al gmail del empleador"));
                 if (codigoIngresado == codigoValidacion) {
-                    Usuario usurio = new Usuario(nombreUsuario, nombre, apellido, contrasenia, true);
+                    Usuario usurio = new Usuario(nombreUsuario, nombre, apellido, contrasenia, true, rango);
                     usuarioData.agregarUsuario(usurio);
                     JOptionPane.showMessageDialog(null, "Se guardo el usuario " + nombreUsuario + " con exito");
                     jtNombre.setText("");
                     jtApellido.setText("");
                     jtNombreUsuario.setText("");
                     jtContrasenia.setText("");
-                            
+                    jcbRango.setSelectedItem("");
+
                 }
 
             }
@@ -626,7 +631,6 @@ public class Entrada extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
@@ -639,6 +643,7 @@ public class Entrada extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jbEntrar;
     private javax.swing.JLabel jbRegistrarse;
+    private javax.swing.JComboBox<String> jcbRango;
     private javax.swing.JTextField jtApellido;
     private javax.swing.JTextField jtContrasenia;
     private javax.swing.JTextField jtContraseniaLogeo;
