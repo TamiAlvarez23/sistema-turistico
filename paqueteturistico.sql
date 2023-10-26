@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-10-2023 a las 16:06:38
+-- Tiempo de generación: 26-10-2023 a las 16:39:53
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
@@ -96,7 +96,8 @@ CREATE TABLE `presupuesto` (
   `telefonoCliente` int(50) NOT NULL,
   `mailCliente` varchar(100) NOT NULL,
   `pagoCliente` varchar(100) NOT NULL,
-  `cuotasCliente` int(50) NOT NULL
+  `cuotasCliente` int(50) NOT NULL,
+  `idUsuario` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -112,8 +113,7 @@ CREATE TABLE `usuario` (
   `nombre` varchar(100) NOT NULL,
   `apellido` varchar(100) NOT NULL,
   `claveUsuario` varchar(100) NOT NULL,
-  `estadoUsuario` tinyint(1) NOT NULL,
-  `idPresupuesto` int(50) NOT NULL
+  `estadoUsuario` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -155,14 +155,14 @@ ALTER TABLE `pasaje`
 --
 ALTER TABLE `presupuesto`
   ADD PRIMARY KEY (`idPresupuesto`),
-  ADD KEY `presupuesto_paquete_foreign` (`idPaquete`);
+  ADD KEY `presupuesto_paquete_foreign` (`idPaquete`),
+  ADD KEY `presupuesto_usuario_foreign` (`idUsuario`);
 
 --
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`idUsuario`),
-  ADD KEY `usuario_presupuesto_foreign` (`idPresupuesto`);
+  ADD PRIMARY KEY (`idUsuario`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -202,7 +202,7 @@ ALTER TABLE `presupuesto`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idUsuario` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `idUsuario` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
@@ -233,13 +233,8 @@ ALTER TABLE `pasaje`
 -- Filtros para la tabla `presupuesto`
 --
 ALTER TABLE `presupuesto`
-  ADD CONSTRAINT `presupuesto_paquete_foreign` FOREIGN KEY (`idPaquete`) REFERENCES `paquete` (`idPaquete`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD CONSTRAINT `usuario_presupuesto_foreign` FOREIGN KEY (`idPresupuesto`) REFERENCES `presupuesto` (`idPresupuesto`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `presupuesto_paquete_foreign` FOREIGN KEY (`idPaquete`) REFERENCES `paquete` (`idPaquete`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `presupuesto_usuario_foreign` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
