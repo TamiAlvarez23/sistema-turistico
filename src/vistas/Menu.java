@@ -16,10 +16,13 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableModel;
 import utils.Slide;
 
 /**
@@ -31,10 +34,11 @@ public class Menu extends javax.swing.JFrame {
     FondoPanel fondo = new FondoPanel();
 
     Slide slide;
-    Color celeste = new Color(60,147,214);
+    Color celeste = new Color(60, 147, 214);
     Color c = new Color(246, 135, 18);
     Color n = new Color(100, 100, 100);
     private Usuario u = null;
+    private DefaultTableModel modelo = new DefaultTableModel();
 
     /**
      * Creates new form Menu
@@ -44,6 +48,7 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         slide = new Slide();
+        armarCabeceraTablaCiudad();
         llenarComboHotel();
     }
 
@@ -56,8 +61,6 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        jLabel59 = new javax.swing.JLabel();
         PanelMiCuenta = new javax.swing.JPanel();
         jPmisVentas = new javax.swing.JPanel();
         jlMisVentas = new javax.swing.JLabel();
@@ -137,7 +140,6 @@ public class Menu extends javax.swing.JFrame {
         jLabel65 = new javax.swing.JLabel();
         jPguardarAlojamiento = new javax.swing.JPanel();
         jLabel66 = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jLabel67 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
@@ -185,7 +187,7 @@ public class Menu extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel53 = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
-        jLabel74 = new javax.swing.JLabel();
+        jlSacarPanelVerMisVentas = new javax.swing.JLabel();
         jPaneleditarPerfil = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
@@ -200,12 +202,11 @@ public class Menu extends javax.swing.JFrame {
         jtContraseniaInvisible = new javax.swing.JPasswordField();
         jtContraseniaVisible = new javax.swing.JTextField();
         jPguardarperfil = new javax.swing.JPanel();
-        jLabel61 = new javax.swing.JLabel();
+        jlGuardarUsuario = new javax.swing.JLabel();
         jPguardarperfil1 = new javax.swing.JPanel();
-        jLabel60 = new javax.swing.JLabel();
-        jPguardarperfil2 = new javax.swing.JPanel();
+        jlCancelarUsuario = new javax.swing.JLabel();
         jPguardarperfil3 = new javax.swing.JPanel();
-        jLabel62 = new javax.swing.JLabel();
+        jlsacarPanelUsuario = new javax.swing.JLabel();
         jParmarpaquete = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
@@ -236,19 +237,38 @@ public class Menu extends javax.swing.JFrame {
         jtProvincia = new javax.swing.JTextField();
         jrEstado = new javax.swing.JRadioButton();
         jLabel44 = new javax.swing.JLabel();
-        jBotonGuardarCiudad = new javax.swing.JButton();
         jLabel47 = new javax.swing.JLabel();
-        jBotonSacarPanelCiudad = new javax.swing.JButton();
-        jBotonBuscarCiudad = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-
-        jLabel59.setText("jLabel59");
+        jPanel10 = new javax.swing.JPanel();
+        jlGuardarCiudad = new javax.swing.JLabel();
+        jPanel22 = new javax.swing.JPanel();
+        jlCancelarCudad = new javax.swing.JLabel();
+        jPanel23 = new javax.swing.JPanel();
+        jlSalirCiudad = new javax.swing.JLabel();
+        jPanel24 = new javax.swing.JPanel();
+        jLabel59 = new javax.swing.JLabel();
+        jPanel25 = new javax.swing.JPanel();
+        jlBuscarCiudad = new javax.swing.JLabel();
+        jpanelBuscarCiudad = new javax.swing.JPanel();
+        jLabel61 = new javax.swing.JLabel();
+        jcbTipoBusquedaCiudad = new javax.swing.JComboBox<>();
+        jLabel60 = new javax.swing.JLabel();
+        jtBusquedaCiudad = new javax.swing.JTextField();
+        jLabel62 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTablaCiudades = new javax.swing.JTable();
+        jPanel27 = new javax.swing.JPanel();
+        jlSalirBuscarCiudad = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1500, 750));
         setMinimumSize(new java.awt.Dimension(1500, 750));
         setPreferredSize(new java.awt.Dimension(1500, 750));
         setResizable(false);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PanelMiCuenta.setBackground(new Color(0,0,0,0));
@@ -423,7 +443,7 @@ public class Menu extends javax.swing.JFrame {
 
         PanelMiCuenta.add(jPanelEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 40, 1080, 610));
 
-        getContentPane().add(PanelMiCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 0, 1500, 750));
+        getContentPane().add(PanelMiCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1430, 750));
 
         panelBarraTareas.setBackground(new java.awt.Color(100, 100, 100));
 
@@ -730,11 +750,11 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel27.setText("Importe:");
 
-        jPanel2.setBackground(Celeste);
+        jPanel2.setBackground(new Color(60,147,214));
         jPanel2.setMinimumSize(new java.awt.Dimension(105, 36));
         jPanel2.setPreferredSize(new java.awt.Dimension(105, 36));
 
-        jPanel3.setBackground(Celeste);
+        jPanel3.setBackground(new Color(60,147,214));
         jPanel3.setMinimumSize(new java.awt.Dimension(105, 36));
 
         jLabel64.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/verificado (1).png"))); // NOI18N
@@ -770,9 +790,10 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel5.setBackground(new Color(60,147,214));
         jPanel5.setPreferredSize(new java.awt.Dimension(105, 36));
 
         jLabel63.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/boton-eliminar.png"))); // NOI18N
@@ -795,7 +816,7 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel16.setBackground(Celeste);
+        jPanel16.setBackground(new Color(60,147,214));
         jPanel16.setPreferredSize(new java.awt.Dimension(105, 36));
 
         jLabel70.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Login_37128.png"))); // NOI18N
@@ -814,7 +835,7 @@ public class Menu extends javax.swing.JFrame {
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addComponent(jLabel70)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 3, Short.MAX_VALUE))
         );
 
         jLabel72.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/aprobado.png"))); // NOI18N
@@ -898,21 +919,22 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(62, 62, 62)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel55)
-                            .addComponent(jLabel71)
-                            .addComponent(jLabel72))
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel72, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel55)
+                                .addComponent(jLabel71)))
                         .addGap(33, 33, 33)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel27)
                             .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(77, 77, 77)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jLabel73, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout PanelViajesLayout = new javax.swing.GroupLayout(PanelViajes);
@@ -961,7 +983,7 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel15.setText("Servicios");
 
-        jPBuscarAlojamiento.setBackground(Celeste);
+        jPBuscarAlojamiento.setBackground(new Color(60,147,214));
         jPBuscarAlojamiento.setPreferredSize(new java.awt.Dimension(105, 36));
 
         jLabel65.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/buscar (1).png"))); // NOI18N
@@ -983,7 +1005,7 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jLabel65))
         );
 
-        jPguardarAlojamiento.setBackground(Celeste);
+        jPguardarAlojamiento.setBackground(new Color(60,147,214));
         jPguardarAlojamiento.setPreferredSize(new java.awt.Dimension(105, 36));
 
         jLabel66.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/verificado (1).png"))); // NOI18N
@@ -1006,24 +1028,9 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel10.setFocusCycleRoot(true);
-        jPanel10.setMinimumSize(new java.awt.Dimension(105, 36));
-        jPanel10.setPreferredSize(new java.awt.Dimension(105, 36));
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 105, Short.MAX_VALUE)
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 36, Short.MAX_VALUE)
-        );
-
         jLabel67.setText("Nombre de hotel");
 
-        jPanel12.setBackground(Celeste);
+        jPanel12.setBackground(new Color(60,147,214));
         jPanel12.setMinimumSize(new java.awt.Dimension(105, 36));
         jPanel12.setPreferredSize(new java.awt.Dimension(105, 36));
 
@@ -1047,6 +1054,7 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel14.setBackground(new Color(60,147,214));
         jPanel14.setPreferredSize(new java.awt.Dimension(105, 36));
 
         jLabel69.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Login_37128.png"))); // NOI18N
@@ -1109,15 +1117,10 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGap(229, 229, 229)
                 .addComponent(jPguardarAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGap(107, 107, 107)
-                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(130, 130, 130)
-                        .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(128, 128, 128)
+                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(130, 130, 130)
+                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
@@ -1160,21 +1163,14 @@ public class Menu extends javax.swing.JFrame {
                             .addGroup(jPanel11Layout.createSequentialGroup()
                                 .addGap(29, 29, 29)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(105, 105, 105)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel11Layout.createSequentialGroup()
-                                .addGap(105, 105, 105)
-                                .addComponent(jPguardarAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel11Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
-                                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPanel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(24, Short.MAX_VALUE))
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(jLabel50)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jPguardarAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jPanel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jLabel50))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelHotelesLayout = new javax.swing.GroupLayout(panelHoteles);
@@ -1464,26 +1460,29 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel53.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/usuario.png"))); // NOI18N
 
-        jPanel17.setBackground(Celeste);
+        jPanel17.setBackground(new java.awt.Color(60, 147, 214));
         jPanel17.setPreferredSize(new java.awt.Dimension(105, 36));
 
-        jLabel74.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Login_37128.png"))); // NOI18N
-        jLabel74.setText("Salir");
+        jlSacarPanelVerMisVentas.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jlSacarPanelVerMisVentas.setForeground(new java.awt.Color(255, 255, 255));
+        jlSacarPanelVerMisVentas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlSacarPanelVerMisVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Login_37128.png"))); // NOI18N
+        jlSacarPanelVerMisVentas.setText("Salir");
+        jlSacarPanelVerMisVentas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlSacarPanelVerMisVentasMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
         jPanel17Layout.setHorizontalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel17Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel74, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jlSacarPanelVerMisVentas, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel17Layout.createSequentialGroup()
-                .addComponent(jLabel74)
-                .addGap(0, 4, Short.MAX_VALUE))
+            .addComponent(jlSacarPanelVerMisVentas, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanelVerMisVentasLayout = new javax.swing.GroupLayout(jPanelVerMisVentas);
@@ -1500,7 +1499,7 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelVerMisVentasLayout.createSequentialGroup()
                         .addGap(311, 311, 311)
-                        .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanelVerMisVentasLayout.setVerticalGroup(
@@ -1510,8 +1509,8 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jLabel53)
                 .addGap(38, 38, 38)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
-                .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(102, 102, 102))
         );
 
@@ -1577,95 +1576,78 @@ public class Menu extends javax.swing.JFrame {
         jtContraseniaVisible.setSelectionColor(new Color(0,0,0,0));
         jPanel6.add(jtContraseniaVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 350, 35));
 
-        jPguardarperfil.setBackground(Celeste);
+        jPguardarperfil.setBackground(new java.awt.Color(60, 147, 214));
         jPguardarperfil.setPreferredSize(new java.awt.Dimension(105, 36));
 
-        jLabel61.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/verificado (1).png"))); // NOI18N
-        jLabel61.setText("Guardar");
+        jlGuardarUsuario.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jlGuardarUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        jlGuardarUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlGuardarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/verificado (1).png"))); // NOI18N
+        jlGuardarUsuario.setText("Guardar");
+        jlGuardarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlGuardarUsuarioMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPguardarperfilLayout = new javax.swing.GroupLayout(jPguardarperfil);
         jPguardarperfil.setLayout(jPguardarperfilLayout);
         jPguardarperfilLayout.setHorizontalGroup(
             jPguardarperfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPguardarperfilLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel61, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jlGuardarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
         );
         jPguardarperfilLayout.setVerticalGroup(
             jPguardarperfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPguardarperfilLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel61)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jlGuardarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        jPguardarperfil1.setBackground(Celeste);
+        jPguardarperfil1.setBackground(new java.awt.Color(60, 147, 214));
         jPguardarperfil1.setPreferredSize(new java.awt.Dimension(105, 36));
 
-        jLabel60.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/boton-eliminar.png"))); // NOI18N
-        jLabel60.setText("Eliminar");
-
-        jPguardarperfil2.setBackground(Celeste);
-
-        javax.swing.GroupLayout jPguardarperfil2Layout = new javax.swing.GroupLayout(jPguardarperfil2);
-        jPguardarperfil2.setLayout(jPguardarperfil2Layout);
-        jPguardarperfil2Layout.setHorizontalGroup(
-            jPguardarperfil2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 126, Short.MAX_VALUE)
-        );
-        jPguardarperfil2Layout.setVerticalGroup(
-            jPguardarperfil2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
-        );
+        jlCancelarUsuario.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jlCancelarUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        jlCancelarUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlCancelarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/boton-eliminar.png"))); // NOI18N
+        jlCancelarUsuario.setText("Cancelar");
+        jlCancelarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlCancelarUsuarioMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPguardarperfil1Layout = new javax.swing.GroupLayout(jPguardarperfil1);
         jPguardarperfil1.setLayout(jPguardarperfil1Layout);
         jPguardarperfil1Layout.setHorizontalGroup(
             jPguardarperfil1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPguardarperfil1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPguardarperfil1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPguardarperfil1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPguardarperfil2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addComponent(jlCancelarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
         );
         jPguardarperfil1Layout.setVerticalGroup(
             jPguardarperfil1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPguardarperfil1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel60)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPguardarperfil1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPguardarperfil1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPguardarperfil2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addComponent(jlCancelarUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        jPguardarperfil3.setBackground(Celeste);
+        jPguardarperfil3.setBackground(new java.awt.Color(60, 147, 214));
 
-        jLabel62.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Login_37128.png"))); // NOI18N
-        jLabel62.setText("Salir");
+        jlsacarPanelUsuario.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jlsacarPanelUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        jlsacarPanelUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlsacarPanelUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Login_37128.png"))); // NOI18N
+        jlsacarPanelUsuario.setText("Salir");
+        jlsacarPanelUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlsacarPanelUsuarioMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPguardarperfil3Layout = new javax.swing.GroupLayout(jPguardarperfil3);
         jPguardarperfil3.setLayout(jPguardarperfil3Layout);
         jPguardarperfil3Layout.setHorizontalGroup(
             jPguardarperfil3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPguardarperfil3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jlsacarPanelUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
         );
         jPguardarperfil3Layout.setVerticalGroup(
             jPguardarperfil3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPguardarperfil3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jlsacarPanelUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPaneleditarPerfilLayout = new javax.swing.GroupLayout(jPaneleditarPerfil);
@@ -1681,30 +1663,27 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPaneleditarPerfilLayout.createSequentialGroup()
-                .addGroup(jPaneleditarPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPaneleditarPerfilLayout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(jPguardarperfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPaneleditarPerfilLayout.createSequentialGroup()
-                        .addGap(260, 260, 260)
-                        .addComponent(jPguardarperfil1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap()
+                .addComponent(jPguardarperfil, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(181, 181, 181)
+                .addComponent(jPguardarperfil1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPguardarperfil3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(167, 167, 167))
+                .addContainerGap())
         );
         jPaneleditarPerfilLayout.setVerticalGroup(
             jPaneleditarPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPaneleditarPerfilLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addGroup(jPaneleditarPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPguardarperfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPguardarperfil, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPguardarperfil3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPguardarperfil1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                    .addComponent(jPguardarperfil1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPaneleditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 100, -1, 520));
@@ -1723,7 +1702,7 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel24.setText("Precio:");
 
-        jPanel18.setBackground(Celeste);
+        jPanel18.setBackground(new Color(60,147,214));
         jPanel18.setPreferredSize(new java.awt.Dimension(105, 36));
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/verificado (1).png"))); // NOI18N
@@ -1746,7 +1725,7 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel19.setBackground(Celeste);
+        jPanel19.setBackground(new Color(60,147,214));
         jPanel19.setPreferredSize(new java.awt.Dimension(105, 36));
 
         jLabel75.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/boton-eliminar.png"))); // NOI18N
@@ -1769,7 +1748,7 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel20.setBackground(Celeste);
+        jPanel20.setBackground(new Color(60,147,214));
         jPanel20.setPreferredSize(new java.awt.Dimension(105, 36));
 
         jLabel76.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/borrar (1).png"))); // NOI18N
@@ -1792,7 +1771,7 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel21.setBackground(Celeste);
+        jPanel21.setBackground(new Color(60,147,214));
         jPanel21.setPreferredSize(new java.awt.Dimension(105, 36));
 
         jLabel77.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Login_37128.png"))); // NOI18N
@@ -1947,38 +1926,130 @@ public class Menu extends javax.swing.JFrame {
         jLabel44.setForeground(new java.awt.Color(0, 0, 0));
         jLabel44.setText("Estado:");
 
-        jBotonGuardarCiudad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/save_file_disk_open_searsh_loading_clipboard_1513.png"))); // NOI18N
-        jBotonGuardarCiudad.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jBotonGuardarCiudadMouseClicked(evt);
-            }
-        });
-
         jLabel47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/ciudad color 128.png"))); // NOI18N
 
-        jBotonSacarPanelCiudad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Login_37128.png"))); // NOI18N
-        jBotonSacarPanelCiudad.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel10.setBackground(new java.awt.Color(60, 147, 214));
+
+        jlGuardarCiudad.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jlGuardarCiudad.setForeground(new java.awt.Color(255, 255, 255));
+        jlGuardarCiudad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlGuardarCiudad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/save_file_disk_open_searsh_loading_clipboard_1513.png"))); // NOI18N
+        jlGuardarCiudad.setText("Guardar");
+        jlGuardarCiudad.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jBotonSacarPanelCiudadMouseClicked(evt);
+                jlGuardarCiudadMouseClicked(evt);
             }
         });
 
-        jBotonBuscarCiudad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/buscar (1).png"))); // NOI18N
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlGuardarCiudad, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlGuardarCiudad, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/boton-eliminar.png"))); // NOI18N
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel22.setBackground(new java.awt.Color(60, 147, 214));
+
+        jlCancelarCudad.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jlCancelarCudad.setForeground(new java.awt.Color(255, 255, 255));
+        jlCancelarCudad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlCancelarCudad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/boton-eliminar.png"))); // NOI18N
+        jlCancelarCudad.setText("Cancelar");
+        jlCancelarCudad.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton4MouseClicked(evt);
+                jlCancelarCudadMouseClicked(evt);
             }
         });
+
+        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
+        jPanel22.setLayout(jPanel22Layout);
+        jPanel22Layout.setHorizontalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlCancelarCudad, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+        );
+        jPanel22Layout.setVerticalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlCancelarCudad, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        jPanel23.setBackground(new java.awt.Color(60, 147, 214));
+
+        jlSalirCiudad.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jlSalirCiudad.setForeground(new java.awt.Color(255, 255, 255));
+        jlSalirCiudad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlSalirCiudad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Login_37128.png"))); // NOI18N
+        jlSalirCiudad.setText("Salir");
+        jlSalirCiudad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlSalirCiudadMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
+        jPanel23.setLayout(jPanel23Layout);
+        jPanel23Layout.setHorizontalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlSalirCiudad, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+        );
+        jPanel23Layout.setVerticalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlSalirCiudad, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        jPanel24.setBackground(new java.awt.Color(60, 147, 214));
+
+        jLabel59.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jLabel59.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel59.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel59.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/borrar (1).png"))); // NOI18N
+        jLabel59.setText("Eliminar");
+
+        javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
+        jPanel24.setLayout(jPanel24Layout);
+        jPanel24Layout.setHorizontalGroup(
+            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel59, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+        );
+        jPanel24Layout.setVerticalGroup(
+            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel59, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        jPanel25.setBackground(new java.awt.Color(60, 147, 214));
+
+        jlBuscarCiudad.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jlBuscarCiudad.setForeground(new java.awt.Color(255, 255, 255));
+        jlBuscarCiudad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlBuscarCiudad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/buscar (1).png"))); // NOI18N
+        jlBuscarCiudad.setText("Buscar");
+        jlBuscarCiudad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlBuscarCiudadMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
+        jPanel25.setLayout(jPanel25Layout);
+        jPanel25Layout.setHorizontalGroup(
+            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlBuscarCiudad, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+        );
+        jPanel25Layout.setVerticalGroup(
+            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlBuscarCiudad, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(177, 177, 177)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(233, 233, 233)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1988,23 +2059,28 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(67, 67, 67)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jrEstado)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jtCiudad)
-                                .addComponent(jtPais)
-                                .addComponent(jtProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jtCiudad)
+                                    .addComponent(jtPais)
+                                    .addComponent(jtProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jBotonGuardarCiudad)
-                        .addGap(110, 110, 110)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(103, 103, 103)
-                        .addComponent(jBotonSacarPanelCiudad)))
-                .addContainerGap(191, Short.MAX_VALUE))
+                        .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(176, 176, 176)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(184, 184, 184)
-                .addComponent(jBotonBuscarCiudad)
+                .addContainerGap(114, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(521, 521, 521))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(146, 146, 146)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(98, 98, 98))
         );
         jPanel4Layout.setVerticalGroup(
@@ -2012,12 +2088,12 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(jBotonBuscarCiudad))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
-                        .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                        .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel41)
                     .addComponent(jtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2029,16 +2105,21 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel43)
                     .addComponent(jtProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jrEstado)
-                    .addComponent(jLabel44))
-                .addGap(109, 109, 109)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBotonGuardarCiudad)
-                    .addComponent(jBotonSacarPanelCiudad)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jrEstado)
+                            .addComponent(jLabel44))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(36, 36, 36))
         );
 
         javax.swing.GroupLayout jPanelCiudadLayout = new javax.swing.GroupLayout(jPanelCiudad);
@@ -2048,17 +2129,118 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(jPanelCiudadLayout.createSequentialGroup()
                 .addGap(295, 295, 295)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(327, Short.MAX_VALUE))
+                .addContainerGap(277, Short.MAX_VALUE))
         );
         jPanelCiudadLayout.setVerticalGroup(
             jPanelCiudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCiudadLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanelCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1430, 750));
+
+        jpanelBuscarCiudad.setBackground(new Color(0,0,0,0));
+
+        jLabel61.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/mapa 128.png"))); // NOI18N
+
+        jcbTipoBusquedaCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ciudad", "Provincia", "Pais" }));
+
+        jLabel60.setText("Buscar por:");
+
+        jtBusquedaCiudad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtBusquedaCiudadKeyReleased(evt);
+            }
+        });
+
+        jLabel62.setText("Ingrese la plabra clave:");
+
+        jTablaCiudades.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane5.setViewportView(jTablaCiudades);
+
+        jPanel27.setBackground(new java.awt.Color(60, 147, 214));
+
+        jlSalirBuscarCiudad.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jlSalirBuscarCiudad.setForeground(new java.awt.Color(255, 255, 255));
+        jlSalirBuscarCiudad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlSalirBuscarCiudad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Login_37128.png"))); // NOI18N
+        jlSalirBuscarCiudad.setText("Salir");
+        jlSalirBuscarCiudad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlSalirBuscarCiudadMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
+        jPanel27.setLayout(jPanel27Layout);
+        jPanel27Layout.setHorizontalGroup(
+            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlSalirBuscarCiudad, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+        );
+        jPanel27Layout.setVerticalGroup(
+            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlSalirBuscarCiudad, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jpanelBuscarCiudadLayout = new javax.swing.GroupLayout(jpanelBuscarCiudad);
+        jpanelBuscarCiudad.setLayout(jpanelBuscarCiudadLayout);
+        jpanelBuscarCiudadLayout.setHorizontalGroup(
+            jpanelBuscarCiudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpanelBuscarCiudadLayout.createSequentialGroup()
+                .addGroup(jpanelBuscarCiudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpanelBuscarCiudadLayout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addGroup(jpanelBuscarCiudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel62)
+                            .addComponent(jLabel60))
+                        .addGap(65, 65, 65)
+                        .addGroup(jpanelBuscarCiudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtBusquedaCiudad)
+                            .addComponent(jcbTipoBusquedaCiudad, 0, 272, Short.MAX_VALUE)))
+                    .addGroup(jpanelBuscarCiudadLayout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 646, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(57, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpanelBuscarCiudadLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jpanelBuscarCiudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpanelBuscarCiudadLayout.createSequentialGroup()
+                        .addComponent(jLabel61)
+                        .addGap(311, 311, 311))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpanelBuscarCiudadLayout.createSequentialGroup()
+                        .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(305, 305, 305))))
+        );
+        jpanelBuscarCiudadLayout.setVerticalGroup(
+            jpanelBuscarCiudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpanelBuscarCiudadLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel61, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jpanelBuscarCiudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jcbTipoBusquedaCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel60))
+                .addGap(50, 50, 50)
+                .addGroup(jpanelBuscarCiudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtBusquedaCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel62))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+        );
+
+        getContentPane().add(jpanelBuscarCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 60, 750, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -2072,12 +2254,9 @@ public class Menu extends javax.swing.JFrame {
             achicarPanel(panelHoteles);
             achicarPanel(panelPaquetes);
             achicarPanel(jPanelCiudad);
-            if (jPaneleditarPerfil.getX() == 350) {
-                slide.jPanelXDerecha(350, 600, 10, 10, jPaneleditarPerfil);
-            }
-            if (jPanelVerMisVentas.getX() == 350) {
-                slide.jPanelXDerecha(350, 600, 10, 10, jPanelVerMisVentas);
-            }
+            achicarPanelSecundario(jPaneleditarPerfil);
+            achicarPanelSecundario(jPanelVerMisVentas);
+            achicarPanelSecundario(jpanelBuscarCiudad);
         } else {
             slide.jPanelXIzquierda(panelBarraTareas.getX(), -300, 10, 10, panelBarraTareas);
             agrandarPanel(PanelViajes);
@@ -2085,12 +2264,10 @@ public class Menu extends javax.swing.JFrame {
             agrandarPanel(panelHoteles);
             agrandarPanel(panelPaquetes);
             agrandarPanel(jPanelCiudad);
-            if (jPaneleditarPerfil.getX() == 600) {
-                slide.jPanelXIzquierda(600, 350, 10, 10, jPaneleditarPerfil);
-            }
-            if (jPanelVerMisVentas.getX() == 600) {
-                slide.jPanelXIzquierda(600, 350, 10, 10, jPanelVerMisVentas);
-            }
+            agrandarPanelSecundario(jPaneleditarPerfil);
+            agrandarPanelSecundario(jPanelVerMisVentas);
+            agrandarPanelSecundario(jpanelBuscarCiudad);
+
         }
 
 
@@ -2115,8 +2292,6 @@ public class Menu extends javax.swing.JFrame {
     private void panelBotonMiCuentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBotonMiCuentaMouseExited
         // TODO add your handling code here:
         validacionColorExited(panelBotonMiCuenta);
-
-
     }//GEN-LAST:event_panelBotonMiCuentaMouseExited
 
     private void panelBotonViajesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBotonViajesMouseEntered
@@ -2236,7 +2411,6 @@ public class Menu extends javax.swing.JFrame {
     private void jcContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcContraseniaActionPerformed
         // TODO add your handling code here:
         visibleONo();
-        jPanel6.setBackground(new Color(0,0,0,0));
     }//GEN-LAST:event_jcContraseniaActionPerformed
 
     private void jPanelBotonCiudadMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBotonCiudadMouseEntered
@@ -2257,9 +2431,43 @@ public class Menu extends javax.swing.JFrame {
         traerPanel(jPanelCiudad);
     }//GEN-LAST:event_jPanelBotonCiudadMouseClicked
 
-    private void jBotonGuardarCiudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBotonGuardarCiudadMouseClicked
+    private void jlGuardarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlGuardarUsuarioMouseClicked
         // TODO add your handling code here:
+        UsuarioData usuarioData = new UsuarioData();
+        Usuario usuarioEditar = null;
+        String nombreUsuarioEditar = jtNombreUsuario.getText();
+        String nombreEditar = jtNombre.getText();
+        String apellidoEditar = jtApellido.getText();
+        String contraseniaEditar = jtContraseniaVisible.getText();
 
+        if (nombreUsuarioEditar.equals(u.getNombreUsuario()) && nombreEditar.equals(u.getNombre()) && apellidoEditar.equals(u.getApellido()) && contraseniaEditar.equals(u.getClaveUsuario())) {
+            JOptionPane.showMessageDialog(null, "No hay modificaciones para hacer");
+        } else {
+            usuarioEditar = new Usuario(u.getIdUsuario(), nombreUsuarioEditar, nombreEditar, apellidoEditar, contraseniaEditar);
+            usuarioData.editarUsuario(usuarioEditar);
+            u = usuarioEditar;
+            usuarioFormulario();
+        }
+
+    }//GEN-LAST:event_jlGuardarUsuarioMouseClicked
+
+    private void jlCancelarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCancelarUsuarioMouseClicked
+        // TODO add your handling code here:
+        usuarioFormulario();
+    }//GEN-LAST:event_jlCancelarUsuarioMouseClicked
+
+    private void jlsacarPanelUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlsacarPanelUsuarioMouseClicked
+        // TODO add your handling code here:
+        slide.jPanelXDerecha(jPaneleditarPerfil.getX(), 1500, 10, 10, jPaneleditarPerfil);
+    }//GEN-LAST:event_jlsacarPanelUsuarioMouseClicked
+
+    private void jlSacarPanelVerMisVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlSacarPanelVerMisVentasMouseClicked
+        // TODO add your handling code here:
+        slide.jPanelXDerecha(jPanelVerMisVentas.getX(), 1500, 10, 10, jPanelVerMisVentas);
+    }//GEN-LAST:event_jlSacarPanelVerMisVentasMouseClicked
+
+    private void jlGuardarCiudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlGuardarCiudadMouseClicked
+        // TODO add your handling code here:
         CiudadData ciudadData = new CiudadData();
         String nombreCiudad = jtCiudad.getText();
         String pais = jtPais.getText();
@@ -2269,23 +2477,113 @@ public class Menu extends javax.swing.JFrame {
 
         ciudadData.agregarCiudad(ciudad);
         llenarComboHotel();
+    }//GEN-LAST:event_jlGuardarCiudadMouseClicked
 
-    }//GEN-LAST:event_jBotonGuardarCiudadMouseClicked
-
-    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+    private void jlCancelarCudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCancelarCudadMouseClicked
         // TODO add your handling code here:
         jtCiudad.setText("");
         jtPais.setText("");
         jtProvincia.setText("");
         jrEstado.setSelected(false);
-    }//GEN-LAST:event_jButton4MouseClicked
+    }//GEN-LAST:event_jlCancelarCudadMouseClicked
 
-    private void jBotonSacarPanelCiudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBotonSacarPanelCiudadMouseClicked
+    private void jlSalirCiudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlSalirCiudadMouseClicked
         // TODO add your handling code here:
         salida(jPanelBotonCiudad);
         slide.jPanelXDerecha(jPanelCiudad.getX(), 1500, 10, 10, jPanelCiudad);
 
-    }//GEN-LAST:event_jBotonSacarPanelCiudadMouseClicked
+    }//GEN-LAST:event_jlSalirCiudadMouseClicked
+
+    private void jlBuscarCiudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBuscarCiudadMouseClicked
+        // TODO add your handling code here:
+        slide.jPanelXIzquierda(jpanelBuscarCiudad.getX(), 350, 10, 10, jpanelBuscarCiudad);
+        slide.jPanelXDerecha(jPanelCiudad.getX(), 1500, 10, 10, jPanelCiudad);
+
+        borrarfilas(jTablaCiudades);
+        CiudadData ciudadData = new CiudadData();
+        List<Ciudad> ciudades = new ArrayList<>();
+        ciudades = ciudadData.obtenerTodasLasCiudades();
+        for (Ciudad ciudad : ciudades) {
+            modelo.addRow(new Object[]{
+                ciudad.getNombre(),
+                ciudad.getProvincia(),
+                ciudad.getPais(),
+                ciudad.getHabilitacion()
+            });
+        }
+
+
+    }//GEN-LAST:event_jlBuscarCiudadMouseClicked
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+        
+
+    }//GEN-LAST:event_formMouseClicked
+
+    private void jtBusquedaCiudadKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtBusquedaCiudadKeyReleased
+        // TODO add your handling code here:
+        CiudadData ciudadData = new CiudadData();
+        List<Ciudad> ciudades = new ArrayList<>();
+        ciudades = ciudadData.obtenerTodasLasCiudades();
+        String tipoSeleccionadoCiudad = (String) jcbTipoBusquedaCiudad.getSelectedItem();
+
+        borrarfilas(jTablaCiudades);
+        switch (tipoSeleccionadoCiudad) {
+            case "Ciudad": {
+                for (Ciudad ciudad : ciudades) {
+                    if (ciudad.getNombre().toUpperCase().startsWith(jtBusquedaCiudad.getText().toUpperCase())) {
+                        modelo.addRow(new Object[]{
+                            ciudad.getNombre(),
+                            ciudad.getProvincia(),
+                            ciudad.getPais(),
+                            ciudad.getHabilitacion()
+                        });
+                    }
+                }
+                break;
+            }
+
+            case "Provincia": {
+                for (Ciudad ciudad : ciudades) {
+                    if (ciudad.getProvincia().toUpperCase().startsWith(jtBusquedaCiudad.getText().toUpperCase())) {
+                        modelo.addRow(new Object[]{
+                            ciudad.getNombre(),
+                            ciudad.getProvincia(),
+                            ciudad.getPais(),
+                            ciudad.getHabilitacion()
+                        });
+                    }
+                }
+                break;
+
+            }
+
+            case "Pais": {
+                for (Ciudad ciudad : ciudades) {
+                    if (ciudad.getPais().toUpperCase().startsWith(jtBusquedaCiudad.getText().toUpperCase())) {
+                        modelo.addRow(new Object[]{
+                            ciudad.getNombre(),
+                            ciudad.getProvincia(),
+                            ciudad.getPais(),
+                            ciudad.getHabilitacion()
+                        });
+                    }
+                }
+                break;
+
+            }
+
+        }
+
+
+    }//GEN-LAST:event_jtBusquedaCiudadKeyReleased
+
+    private void jlSalirBuscarCiudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlSalirBuscarCiudadMouseClicked
+        // TODO add your handling code here:
+        slide.jPanelXDerecha(jpanelBuscarCiudad.getX(), 1500, 10, 10, jpanelBuscarCiudad);
+        slide.jPanelXIzquierda(jPanelCiudad.getX(), 70, 10, 10, jPanelCiudad);
+    }//GEN-LAST:event_jlSalirBuscarCiudadMouseClicked
 
     /**
      * @param args the command line arguments
@@ -2326,13 +2624,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel PanelBotonHoteles;
     private javax.swing.JPanel PanelMiCuenta;
     private javax.swing.JPanel PanelViajes;
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> comboCiudadHotel;
-    private javax.swing.JButton jBotonBuscarCiudad;
-    private javax.swing.JButton jBotonGuardarCiudad;
-    private javax.swing.JButton jBotonSacarPanelCiudad;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
@@ -2420,7 +2713,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel73;
-    private javax.swing.JLabel jLabel74;
     private javax.swing.JLabel jLabel75;
     private javax.swing.JLabel jLabel76;
     private javax.swing.JLabel jLabel77;
@@ -2443,6 +2735,11 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
+    private javax.swing.JPanel jPanel22;
+    private javax.swing.JPanel jPanel23;
+    private javax.swing.JPanel jPanel24;
+    private javax.swing.JPanel jPanel25;
+    private javax.swing.JPanel jPanel27;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -2460,7 +2757,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPguardarAlojamiento;
     private javax.swing.JPanel jPguardarperfil;
     private javax.swing.JPanel jPguardarperfil1;
-    private javax.swing.JPanel jPguardarperfil2;
     private javax.swing.JPanel jPguardarperfil3;
     private javax.swing.JPanel jPmisVentas;
     private javax.swing.JRadioButton jRadioButton3;
@@ -2469,6 +2765,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTable jTablaCiudades;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
@@ -2483,13 +2781,25 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JCheckBox jcContrasenia;
+    private javax.swing.JComboBox<String> jcbTipoBusquedaCiudad;
     private com.toedter.calendar.JDateChooser jdFechaRegreso;
     private com.toedter.calendar.JDateChooser jdFechaSalida;
+    private javax.swing.JLabel jlBuscarCiudad;
+    private javax.swing.JLabel jlCancelarCudad;
+    private javax.swing.JLabel jlCancelarUsuario;
     private javax.swing.JLabel jlEditarPerfil;
+    private javax.swing.JLabel jlGuardarCiudad;
+    private javax.swing.JLabel jlGuardarUsuario;
     private javax.swing.JLabel jlMisVentas;
+    private javax.swing.JLabel jlSacarPanelVerMisVentas;
+    private javax.swing.JLabel jlSalirBuscarCiudad;
+    private javax.swing.JLabel jlSalirCiudad;
     private javax.swing.JLabel jlUsuario;
+    private javax.swing.JLabel jlsacarPanelUsuario;
+    private javax.swing.JPanel jpanelBuscarCiudad;
     private javax.swing.JRadioButton jrEstado;
     private javax.swing.JTextField jtApellido;
+    private javax.swing.JTextField jtBusquedaCiudad;
     private javax.swing.JTextField jtCiudad;
     private javax.swing.JPasswordField jtContraseniaInvisible;
     private javax.swing.JTextField jtContraseniaVisible;
@@ -2647,4 +2957,37 @@ public class Menu extends javax.swing.JFrame {
             comboCiudadHotel.addItem(ciudad.getNombre() + ", " + ciudad.getProvincia() + ", " + ciudad.getPais());
         }
     }
+
+    public void achicarPanelSecundario(JPanel panel) {
+        if (panel.getX() == 350) {
+            slide.jPanelXDerecha(panel.getX(), 600, 10, 10, panel);
+        }
+
+    }
+
+    public void agrandarPanelSecundario(JPanel panel) {
+        if (panel.getX() == 600) {
+            slide.jPanelXIzquierda(panel.getX(), 350, 10, 10, panel);
+        }
+
+    }
+
+    private void armarCabeceraTablaCiudad() {
+
+        modelo.addColumn("Ciudad");
+        modelo.addColumn("Provincia");
+        modelo.addColumn("Pais");
+        modelo.addColumn("Estado");
+        jTablaCiudades.setModel(modelo);
+    }
+
+    public void borrarfilas(JTable tabla) {
+        int f = tabla.getRowCount() - 1;
+        for (; f >= 0; f--) {
+            modelo.removeRow(f);
+
+        }
+
+    }
+
 }

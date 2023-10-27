@@ -74,5 +74,13 @@ public class Ciudad {
         this.provincia = provincia;
     }
     
+    public String getHabilitacion(){
+        if(estado == true){
+            return "Habilitado";
+        }else{
+            return "Inabilitado";
+        }
+    }
+    
     
 }
