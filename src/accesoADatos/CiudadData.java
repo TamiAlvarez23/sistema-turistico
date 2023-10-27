@@ -71,7 +71,7 @@ public class CiudadData {
 
     public List<Ciudad> obtenerTodasLasCiudades() {
         List<Ciudad> ciudades = new ArrayList<>();
-        String sql = "SELECT * FROM Ciudad";
+        String sql = "SELECT * FROM Ciudad where estado = 1";
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ResultSet resultSet = ps.executeQuery();
             while (resultSet.next()) {

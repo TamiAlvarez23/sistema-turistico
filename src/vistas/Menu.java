@@ -12,9 +12,14 @@ import accesoADatos.UsuarioData;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 import utils.Slide;
 
 /**
@@ -26,6 +31,7 @@ public class Menu extends javax.swing.JFrame {
     FondoPanel fondo = new FondoPanel();
 
     Slide slide;
+    Color celeste = new Color(60,147,214);
     Color c = new Color(246, 135, 18);
     Color n = new Color(100, 100, 100);
     private Usuario u = null;
@@ -38,7 +44,7 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         slide = new Slide();
-
+        llenarComboHotel();
     }
 
     /**
@@ -106,24 +112,25 @@ public class Menu extends javax.swing.JFrame {
         jButton16 = new javax.swing.JButton();
         panelHoteles = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
-        jDateChooser9 = new com.toedter.calendar.JDateChooser();
-        jDateChooser10 = new com.toedter.calendar.JDateChooser();
+        jdFechaSalida = new com.toedter.calendar.JDateChooser();
+        jdFechaRegreso = new com.toedter.calendar.JDateChooser();
         jLabel49 = new javax.swing.JLabel();
-        jTextField16 = new javax.swing.JTextField();
         jLabel50 = new javax.swing.JLabel();
         jLabel51 = new javax.swing.JLabel();
         jLabel52 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jtImporteDiario = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jtCupoHotel = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jtServicios = new javax.swing.JTextArea();
         jLabel15 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        jBotonGuardarHotel = new javax.swing.JButton();
+        jBotonCancelarHotel = new javax.swing.JButton();
+        jBotonBuscarHotel = new javax.swing.JButton();
+        rbEstadoHotel = new javax.swing.JRadioButton();
+        comboCiudadHotel = new javax.swing.JComboBox<>();
+        jBotonCerrarHotel = new javax.swing.JButton();
         panelPaquetes = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jDateChooser5 = new com.toedter.calendar.JDateChooser();
@@ -823,19 +830,26 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel14.setText("Cupo");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane3.setViewportView(jTextArea1);
+        jtServicios.setColumns(20);
+        jtServicios.setRows(5);
+        jScrollPane3.setViewportView(jtServicios);
 
         jLabel15.setText("Servicios");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/save_file_disk_open_searsh_loading_clipboard_1513.png"))); // NOI18N
+        jBotonGuardarHotel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/save_file_disk_open_searsh_loading_clipboard_1513.png"))); // NOI18N
+        jBotonGuardarHotel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBotonGuardarHotelActionPerformed(evt);
+            }
+        });
 
-        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/boton-eliminar.png"))); // NOI18N
+        jBotonCancelarHotel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/boton-eliminar.png"))); // NOI18N
 
-        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/buscar (1).png"))); // NOI18N
+        jBotonBuscarHotel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/buscar (1).png"))); // NOI18N
 
-        jRadioButton1.setText("Estado");
+        rbEstadoHotel.setText("Estado");
+
+        jBotonCerrarHotel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Login_37128.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -860,29 +874,32 @@ public class Menu extends javax.swing.JFrame {
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel11Layout.createSequentialGroup()
                                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jDateChooser9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                                    .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jdFechaSalida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jtImporteDiario, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                                    .addComponent(rbEstadoHotel))
                                 .addGap(211, 211, 211)
                                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jDateChooser10, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jdFechaRegreso, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(comboCiudadHotel, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jtCupoHotel))
                                         .addGap(3, 3, 3))))
                             .addGroup(jPanel11Layout.createSequentialGroup()
                                 .addComponent(jLabel52)
                                 .addGap(226, 226, 226)
-                                .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jBotonBuscarHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(159, Short.MAX_VALUE))
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel11Layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton12))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel11Layout.createSequentialGroup()
+                                .addGap(126, 126, 126)
+                                .addComponent(jBotonGuardarHotel)
+                                .addGap(143, 143, 143)
+                                .addComponent(jBotonCancelarHotel)
+                                .addGap(129, 129, 129)
+                                .addComponent(jBotonCerrarHotel)))
                         .addGap(0, 162, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -903,38 +920,41 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(jLabel52))
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGap(60, 60, 60)
-                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jBotonBuscarHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel51)
                     .addComponent(jLabel50))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jDateChooser9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser10, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jdFechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jdFechaRegreso, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addComponent(jLabel49)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton1))
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbEstadoHotel)
+                    .addComponent(comboCiudadHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(jLabel14))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtImporteDiario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtCupoHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
-                .addComponent(jLabel15)
-                .addGap(25, 25, 25)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(jLabel15)
+                        .addGap(25, 25, 25)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jBotonCancelarHotel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBotonGuardarHotel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jBotonCerrarHotel))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelHotelesLayout = new javax.swing.GroupLayout(panelHoteles);
@@ -1269,6 +1289,7 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel6.setBackground(new Color(0,0,0,0));
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos ", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        jPanel6.setForeground(new Color(187,187,187,0));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jtApellido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -1287,6 +1308,8 @@ public class Menu extends javax.swing.JFrame {
         jtNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel6.add(jtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 350, 35));
 
+        jtNombreUsuario.setBorder(null);
+        jtNombreUsuario.setCaretColor(new Color(0,0,0,0));
         jtNombreUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel6.add(jtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 350, 35));
 
@@ -1300,15 +1323,23 @@ public class Menu extends javax.swing.JFrame {
         jLabel18.setText("Contraseña:");
         jPanel6.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 200, -1, -1));
 
+        jcContrasenia.setBackground(new Color(0,0,0,0));
+        jcContrasenia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 0));
         jcContrasenia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcContraseniaActionPerformed(evt);
             }
         });
-        jPanel6.add(jcContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, -1, -1));
+        jPanel6.add(jcContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 210, -1, -1));
+
+        jtContraseniaInvisible.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 102), 0));
+        jtContraseniaInvisible.setCaretColor(new Color(0,0,0,0));
+        jtContraseniaInvisible.setSelectionColor(new Color(0,0,0,0));
         jPanel6.add(jtContraseniaInvisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 350, 35));
 
-        jtContraseniaVisible.setText("jTextField7");
+        jtContraseniaVisible.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 0));
+        jtContraseniaVisible.setCaretColor(new Color(0,0,0,0));
+        jtContraseniaVisible.setSelectionColor(new Color(0,0,0,0));
         jPanel6.add(jtContraseniaVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 350, 35));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/verificado.png"))); // NOI18N
@@ -1326,6 +1357,8 @@ public class Menu extends javax.swing.JFrame {
         });
 
         jbCerrarEditarPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Login_37128.png"))); // NOI18N
+        jbCerrarEditarPerfil.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 0));
+        jbCerrarEditarPerfil.setBorderPainted(false);
         jbCerrarEditarPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbCerrarEditarPerfilActionPerformed(evt);
@@ -1503,7 +1536,7 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jParmarpaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 1430, 750));
+        getContentPane().add(jParmarpaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1430, 750));
 
         jPanelCiudad.setBackground(new Color(0,0,0,0));
 
@@ -1818,6 +1851,7 @@ public class Menu extends javax.swing.JFrame {
     private void jcContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcContraseniaActionPerformed
         // TODO add your handling code here:
         visibleONo();
+        jPanel6.setBackground(new Color(0,0,0,0));
     }//GEN-LAST:event_jcContraseniaActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -1849,19 +1883,19 @@ public class Menu extends javax.swing.JFrame {
     private void jbCerrarVerMisVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCerrarVerMisVentasActionPerformed
         // TODO add your handling code here:
         slide.jPanelXDerecha(jPanelVerMisVentas.getX(), 1500, 10, 10, jPanelVerMisVentas);
-        
+
     }//GEN-LAST:event_jbCerrarVerMisVentasActionPerformed
 
     private void jbCerrarEditarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCerrarEditarPerfilActionPerformed
         // TODO add your handling code here:
         slide.jPanelXDerecha(jPaneleditarPerfil.getX(), 1500, 10, 10, jPaneleditarPerfil);
-        
+
     }//GEN-LAST:event_jbCerrarEditarPerfilActionPerformed
 
     private void jPanelBotonCiudadMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBotonCiudadMouseEntered
         // TODO add your handling code here:
         validacionColorEntered(jPanelBotonCiudad);
-        
+
     }//GEN-LAST:event_jPanelBotonCiudadMouseEntered
 
     private void jPanelBotonCiudadMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBotonCiudadMouseExited
@@ -1878,16 +1912,17 @@ public class Menu extends javax.swing.JFrame {
 
     private void jBotonGuardarCiudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBotonGuardarCiudadMouseClicked
         // TODO add your handling code here:
-        
+
         CiudadData ciudadData = new CiudadData();
         String nombreCiudad = jtCiudad.getText();
         String pais = jtPais.getText();
         String provincia = jtProvincia.getText();
         boolean estado = jrEstado.isSelected();
         Ciudad ciudad = new Ciudad(nombreCiudad, pais, estado, provincia);
-        
+
         ciudadData.agregarCiudad(ciudad);
-        
+        llenarComboHotel();
+
     }//GEN-LAST:event_jBotonGuardarCiudadMouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
@@ -1902,8 +1937,24 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         salida(jPanelBotonCiudad);
         slide.jPanelXDerecha(jPanelCiudad.getX(), 1500, 10, 10, jPanelCiudad);
-        
+
     }//GEN-LAST:event_jBotonSacarPanelCiudadMouseClicked
+
+    private void jBotonGuardarHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonGuardarHotelActionPerformed
+        // TODO add your handling code here:
+        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+        String ffSalidaHotel = formato.format(jdFechaSalida.getDate());
+        String ffRegresoHotel = formato.format(jdFechaRegreso.getDate());
+        LocalDate fechaSalidaHotel = LocalDate.parse(ffSalidaHotel, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        LocalDate fechaRegresoHotel = LocalDate.parse(ffRegresoHotel, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        boolean estadoHotel = rbEstadoHotel.isSelected();
+        Ciudad ciudadHotel = (Ciudad) comboCiudadHotel.getSelectedItem();
+        Double importeDiario = Double.parseDouble(jtImporteDiario.getText());
+        int cupoHotel = Integer.parseInt(jtCupoHotel.getText());
+        
+
+
+    }//GEN-LAST:event_jBotonGuardarHotelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1945,14 +1996,16 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel PanelMiCuenta;
     private javax.swing.JPanel PanelViajes;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> comboCiudadHotel;
     private javax.swing.JButton jBotonBuscarCiudad;
+    private javax.swing.JButton jBotonBuscarHotel;
+    private javax.swing.JButton jBotonCancelarHotel;
+    private javax.swing.JButton jBotonCerrarHotel;
     private javax.swing.JButton jBotonGuardarCiudad;
+    private javax.swing.JButton jBotonGuardarHotel;
     private javax.swing.JButton jBotonSacarPanelCiudad;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton2;
@@ -1972,12 +2025,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox7;
     private javax.swing.JComboBox<String> jComboBox8;
     private javax.swing.JComboBox<String> jComboBox9;
-    private com.toedter.calendar.JDateChooser jDateChooser10;
     private com.toedter.calendar.JDateChooser jDateChooser11;
     private com.toedter.calendar.JDateChooser jDateChooser12;
     private com.toedter.calendar.JDateChooser jDateChooser5;
     private com.toedter.calendar.JDateChooser jDateChooser6;
-    private com.toedter.calendar.JDateChooser jDateChooser9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2056,7 +2107,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jParmarpaquete;
     private javax.swing.JPanel jPcambiarSesion;
     private javax.swing.JPanel jPmisVentas;
-    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
@@ -2067,14 +2117,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField18;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
@@ -2083,6 +2129,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton jbCerrarEditarPerfil;
     private javax.swing.JButton jbCerrarVerMisVentas;
     private javax.swing.JCheckBox jcContrasenia;
+    private com.toedter.calendar.JDateChooser jdFechaRegreso;
+    private com.toedter.calendar.JDateChooser jdFechaSalida;
     private javax.swing.JLabel jlEditarPerfil;
     private javax.swing.JLabel jlMisVentas;
     private javax.swing.JLabel jlUsuario;
@@ -2091,10 +2139,13 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField jtCiudad;
     private javax.swing.JPasswordField jtContraseniaInvisible;
     private javax.swing.JTextField jtContraseniaVisible;
+    private javax.swing.JTextField jtCupoHotel;
+    private javax.swing.JTextField jtImporteDiario;
     private javax.swing.JTextField jtNombre;
     private javax.swing.JTextField jtNombreUsuario;
     private javax.swing.JTextField jtPais;
     private javax.swing.JTextField jtProvincia;
+    private javax.swing.JTextArea jtServicios;
     private javax.swing.JPanel panelBarraTareas;
     private javax.swing.JPanel panelBotonEditarPerfil;
     private javax.swing.JPanel panelBotonMiCuenta;
@@ -2103,6 +2154,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel panelHoteles;
     private javax.swing.JPanel panelNombreUsuario;
     private javax.swing.JPanel panelPaquetes;
+    private javax.swing.JRadioButton rbEstadoHotel;
     // End of variables declaration//GEN-END:variables
   class FondoPanel extends JPanel {
 
@@ -2231,5 +2283,15 @@ public class Menu extends javax.swing.JFrame {
         jtContraseniaInvisible.setText(u.getClaveUsuario());
         jtContraseniaVisible.setText(u.getClaveUsuario());
         jlUsuario.setText(u.getNombre() + " " + u.getApellido());
+    }
+
+    public void llenarComboHotel() {
+        CiudadData ciudadData = new CiudadData();
+        ArrayList<Ciudad> ciudades = new ArrayList<>();
+        ciudades = (ArrayList<Ciudad>) ciudadData.obtenerTodasLasCiudades();
+        comboCiudadHotel.removeAllItems();
+        for (Ciudad ciudad : ciudades) {
+            comboCiudadHotel.addItem(ciudad.getNombre() + ", " + ciudad.getProvincia() + ", " + ciudad.getPais());
+        }
     }
 }

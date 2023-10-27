@@ -24,7 +24,7 @@ public class AlojamientoData {
     }
     
     public void agregarAlojamiento(Alojamiento alojamiento) {
-        String sql = "INSERT INTO Alojamiento (fechaIngreso, fechaEgreso, estado, servicio, importeDiario, ciudadDestino) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Alojamiento (fechaIngreso, fechaEgreso, estado, servicio, importeDiario, ciudadDestino, nombre) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             
@@ -34,6 +34,7 @@ public class AlojamientoData {
             ps.setString(4, alojamiento.getServicio());
             ps.setDouble(5, alojamiento.getImporteDiario());
             ps.setInt(6, alojamiento.getCiudadDestino().getIdCiudad());
+            ps.setString(7, alojamiento.getNombre());
             ps.executeUpdate();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "error al acceder a la tabla alojamiento");
@@ -101,6 +102,7 @@ public class AlojamientoData {
                 alojamiento.setEstado(true);
                 alojamiento.setServicio(rs.getString("servicio"));
                 alojamiento.setImporteDiario(rs.getDouble("importeDiario"));
+                alojamiento.setNombre(rs.getString("nombre"));
                 int idCiudadDestino = rs.getInt("ciudadDestino");
                 Ciudad ciudadDestino = (Ciudad) rs.getObject("ciudadDestino");
                 alojamiento.setCiudadDestino(ciudadDestino);
@@ -113,7 +115,7 @@ public class AlojamientoData {
     }
     
     public void actualizarAlojamiento(Alojamiento alojamiento) {
-        String sql = "UPDATE Alojamiento SET fechaIngreso = ?, fechaEgreso = ?, estado = ?, servicio = ?, importeDiario = ?, ciudadDestino = ? WHERE idAlojamiento = ?";
+        String sql = "UPDATE Alojamiento SET fechaIngreso = ?, fechaEgreso = ?, estado = ?, servicio = ?, importeDiario = ?, ciudadDestino = ?, nombre = ? WHERE idAlojamiento = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             
@@ -123,6 +125,7 @@ public class AlojamientoData {
             ps.setString(4, alojamiento.getServicio());
             ps.setDouble(5, alojamiento.getImporteDiario());
             ps.setInt(6, alojamiento.getCiudadDestino().getIdCiudad());
+            ps.setString(7, alojamiento.getNombre());
             ps.executeUpdate();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "error al acceder a la tabla alojamiento");

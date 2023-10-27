@@ -24,54 +24,44 @@ public class Alojamiento {
     private int cupoAlojamiento;
 
     private Ciudad ciudadDestino;
-
-    public Alojamiento(Ciudad ciudadDestino) {
-        this.ciudadDestino = ciudadDestino;
-    }
     
-
-    public Alojamiento(LocalDate fechaIngreso, LocalDate fechaEgreso, boolean estado, double importeDiario) {
-        this.fechaIngreso = fechaIngreso;
-        this.fechaEgreso = fechaEgreso;
-        this.estado = estado;
-        this.importeDiario = importeDiario;
-    }
-
-    public Alojamiento(LocalDate fechaIngreso, LocalDate fechaEgreso, boolean estado, String servicio, double importeDiario) {
-        this.fechaIngreso = fechaIngreso;
-        this.fechaEgreso = fechaEgreso;
-        this.estado = estado;
-        this.servicio = servicio;
-        this.importeDiario = importeDiario;
-    }
+    private String nombre;
 
     public Alojamiento() {
     }
 
-    public Alojamiento(LocalDate fechaIngreso, LocalDate fechaEgreso, boolean estado, String servicio, double importeDiario, Ciudad ciudadDestino) {
+    public Alojamiento(LocalDate fechaIngreso, LocalDate fechaEgreso, boolean estado, String servicio, double importeDiario, Ciudad ciudadDestino, String nombre) {
         this.fechaIngreso = fechaIngreso;
         this.fechaEgreso = fechaEgreso;
         this.estado = estado;
         this.servicio = servicio;
         this.importeDiario = importeDiario;
         this.ciudadDestino = ciudadDestino;
+        this.nombre = nombre;
     }
     
 
-    public Alojamiento(int Alojamiento, LocalDate fechaIngreso, LocalDate fechaEgreso, boolean estado, String servicio, double importeDiario, Ciudad ciudadDestino) {
-        this.idAlojamiento = Alojamiento;
+    public Alojamiento(int idAlojamiento, LocalDate fechaIngreso, LocalDate fechaEgreso, boolean estado, String servicio, double importeDiario, Ciudad ciudadDestino, String nombre) {
+        this.idAlojamiento = idAlojamiento;
         this.fechaIngreso = fechaIngreso;
         this.fechaEgreso = fechaEgreso;
         this.estado = estado;
         this.servicio = servicio;
         this.importeDiario = importeDiario;
         this.ciudadDestino = ciudadDestino;
+        this.nombre = nombre;
     }
 
-    public Alojamiento(int cupoAlojamiento) {
-        this.cupoAlojamiento = cupoAlojamiento;
+    public String getNombre() {
+        return nombre;
     }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    
+    
     public int getIdAlojamiento() {
         return idAlojamiento;
     }
