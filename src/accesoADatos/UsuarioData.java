@@ -71,5 +71,28 @@ public class UsuarioData {
         }
         return usuario;
     }
+    
+    
+    public void editarUsuario(Usuario usuario){
+        String sql = "UPDATE usuario SET nombreUsuario = ? , nombre = ? , apellido = ? , claveUsuario = ? WHERE idUsuario = ?";
+        try {
+            PreparedStatement ps= con.prepareStatement(sql);
+            ps.setString(1, usuario.getNombreUsuario());
+            ps.setString(2, usuario.getNombre());
+            ps.setString(3, usuario.getApellido());
+            ps.setString(4, usuario.getClaveUsuario());
+            ps.setInt(5, usuario.getIdUsuario() );
+            
+            int exito = ps.executeUpdate();
+         
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Perfil modificado");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    
+    }
 
 }

@@ -5,7 +5,10 @@
  */
 package vistas;
 
+import Entidades.Ciudad;
 import Entidades.Usuario;
+import accesoADatos.CiudadData;
+import accesoADatos.UsuarioData;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -21,7 +24,7 @@ import utils.Slide;
 public class Menu extends javax.swing.JFrame {
 
     FondoPanel fondo = new FondoPanel();
-    
+
     Slide slide;
     Color c = new Color(246, 135, 18);
     Color n = new Color(100, 100, 100);
@@ -48,6 +51,7 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jLabel59 = new javax.swing.JLabel();
         PanelMiCuenta = new javax.swing.JPanel();
         jPmisVentas = new javax.swing.JPanel();
         jlMisVentas = new javax.swing.JLabel();
@@ -80,6 +84,9 @@ public class Menu extends javax.swing.JFrame {
         panelBotonPaquetes = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jPanelBotonCiudad = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
         PanelViajes = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jDateChooser11 = new com.toedter.calendar.JDateChooser();
@@ -157,6 +164,7 @@ public class Menu extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel53 = new javax.swing.JLabel();
+        jbCerrarVerMisVentas = new javax.swing.JButton();
         jPaneleditarPerfil = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
@@ -172,7 +180,7 @@ public class Menu extends javax.swing.JFrame {
         jtContraseniaVisible = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jbCerrarEditarPerfil = new javax.swing.JButton();
         jParmarpaquete = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
@@ -194,6 +202,23 @@ public class Menu extends javax.swing.JFrame {
         jButton11 = new javax.swing.JButton();
         jTextField5 = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
+        jPanelCiudad = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel41 = new javax.swing.JLabel();
+        jtCiudad = new javax.swing.JTextField();
+        jLabel42 = new javax.swing.JLabel();
+        jtPais = new javax.swing.JTextField();
+        jLabel43 = new javax.swing.JLabel();
+        jtProvincia = new javax.swing.JTextField();
+        jrEstado = new javax.swing.JRadioButton();
+        jLabel44 = new javax.swing.JLabel();
+        jBotonGuardarCiudad = new javax.swing.JButton();
+        jLabel47 = new javax.swing.JLabel();
+        jBotonSacarPanelCiudad = new javax.swing.JButton();
+        jBotonBuscarCiudad = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+
+        jLabel59.setText("jLabel59");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1500, 750));
@@ -586,6 +611,45 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jPanelBotonCiudad.setBackground(new java.awt.Color(100, 100, 100));
+        jPanelBotonCiudad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanelBotonCiudadMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanelBotonCiudadMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanelBotonCiudadMouseExited(evt);
+            }
+        });
+
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/ciudad32.png"))); // NOI18N
+
+        jLabel40.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel40.setText("Ciudad");
+
+        javax.swing.GroupLayout jPanelBotonCiudadLayout = new javax.swing.GroupLayout(jPanelBotonCiudad);
+        jPanelBotonCiudad.setLayout(jPanelBotonCiudadLayout);
+        jPanelBotonCiudadLayout.setHorizontalGroup(
+            jPanelBotonCiudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBotonCiudadLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanelBotonCiudadLayout.setVerticalGroup(
+            jPanelBotonCiudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBotonCiudadLayout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
+        );
+
         javax.swing.GroupLayout panelBarraTareasLayout = new javax.swing.GroupLayout(panelBarraTareas);
         panelBarraTareas.setLayout(panelBarraTareasLayout);
         panelBarraTareasLayout.setHorizontalGroup(
@@ -595,6 +659,7 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(panelBotonPaquetes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(PanelBotonHoteles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(panelBotonViajes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelBotonCiudad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelBarraTareasLayout.setVerticalGroup(
             panelBarraTareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -604,11 +669,13 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(panelBotonMiCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(panelBotonPaquetes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(10, 10, 10)
+                .addComponent(jPanelBotonCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
                 .addComponent(PanelBotonHoteles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addGap(10, 10, 10)
                 .addComponent(panelBotonViajes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 433, Short.MAX_VALUE))
+                .addGap(0, 345, Short.MAX_VALUE))
         );
 
         getContentPane().add(panelBarraTareas, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, 0, 370, 828));
@@ -1162,6 +1229,13 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel53.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/usuario.png"))); // NOI18N
 
+        jbCerrarVerMisVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Login_37128.png"))); // NOI18N
+        jbCerrarVerMisVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCerrarVerMisVentasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelVerMisVentasLayout = new javax.swing.GroupLayout(jPanelVerMisVentas);
         jPanelVerMisVentas.setLayout(jPanelVerMisVentasLayout);
         jPanelVerMisVentasLayout.setHorizontalGroup(
@@ -1173,20 +1247,25 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(jLabel53))
                     .addGroup(jPanelVerMisVentasLayout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelVerMisVentasLayout.createSequentialGroup()
+                        .addGap(329, 329, 329)
+                        .addComponent(jbCerrarVerMisVentas)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanelVerMisVentasLayout.setVerticalGroup(
             jPanelVerMisVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelVerMisVentasLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel53)
-                .addGap(32, 32, 32)
+                .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jbCerrarVerMisVentas)
+                .addGap(25, 25, 25))
         );
 
-        getContentPane().add(jPanelVerMisVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 80, -1, -1));
+        getContentPane().add(jPanelVerMisVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 80, -1, 570));
 
         jPaneleditarPerfil.setBackground(new Color(0,0,0,0));
         jPaneleditarPerfil.setPreferredSize(new java.awt.Dimension(750, 530));
@@ -1238,10 +1317,25 @@ public class Menu extends javax.swing.JFrame {
         jPanel6.add(jtContraseniaVisible, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 350, 35));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/verificado.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/boton-eliminar.png"))); // NOI18N
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Login_37128.png"))); // NOI18N
+        jbCerrarEditarPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Login_37128.png"))); // NOI18N
+        jbCerrarEditarPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCerrarEditarPerfilActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPaneleditarPerfilLayout = new javax.swing.GroupLayout(jPaneleditarPerfil);
         jPaneleditarPerfil.setLayout(jPaneleditarPerfilLayout);
@@ -1253,14 +1347,16 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(314, 314, 314))
             .addGroup(jPaneleditarPerfilLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPaneleditarPerfilLayout.createSequentialGroup()
-                .addGap(220, 220, 220)
+                .addGap(169, 169, 169)
                 .addComponent(jButton2)
-                .addGap(98, 98, 98)
+                .addGap(116, 116, 116)
                 .addComponent(jButton8)
-                .addGap(106, 106, 106)
-                .addComponent(jButton4))
+                .addGap(120, 120, 120)
+                .addComponent(jbCerrarEditarPerfil)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPaneleditarPerfilLayout.setVerticalGroup(
             jPaneleditarPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1273,7 +1369,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(jPaneleditarPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2)
                     .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
+                    .addComponent(jbCerrarEditarPerfil))
                 .addGap(22, 22, 22))
         );
 
@@ -1484,6 +1580,139 @@ public class Menu extends javax.swing.JFrame {
 
         getContentPane().add(jParmarpaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1430, 750));
 
+        jPanelCiudad.setBackground(new Color(0,0,0,0));
+
+        jPanel4.setBackground(new Color(0,0,0,0));
+
+        jLabel41.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
+        jLabel41.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel41.setText("Ciudad");
+
+        jLabel42.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
+        jLabel42.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel42.setText("Pais:");
+
+        jLabel43.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel43.setText("Provincia:");
+
+        jLabel44.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
+        jLabel44.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel44.setText("Estado:");
+
+        jBotonGuardarCiudad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/save_file_disk_open_searsh_loading_clipboard_1513.png"))); // NOI18N
+        jBotonGuardarCiudad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBotonGuardarCiudadMouseClicked(evt);
+            }
+        });
+
+        jLabel47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/ciudad color 128.png"))); // NOI18N
+
+        jBotonSacarPanelCiudad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Login_37128.png"))); // NOI18N
+        jBotonSacarPanelCiudad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBotonSacarPanelCiudadMouseClicked(evt);
+            }
+        });
+
+        jBotonBuscarCiudad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/buscar (1).png"))); // NOI18N
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/boton-eliminar.png"))); // NOI18N
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(177, 177, 177)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel43)
+                            .addComponent(jLabel44)
+                            .addComponent(jLabel41))
+                        .addGap(67, 67, 67)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jrEstado)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jtCiudad)
+                                .addComponent(jtPais)
+                                .addComponent(jtProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jBotonGuardarCiudad)
+                        .addGap(110, 110, 110)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(103, 103, 103)
+                        .addComponent(jBotonSacarPanelCiudad)))
+                .addContainerGap(191, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(184, 184, 184)
+                .addComponent(jBotonBuscarCiudad)
+                .addGap(98, 98, 98))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addComponent(jBotonBuscarCiudad))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel41)
+                    .addComponent(jtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel42)
+                    .addComponent(jtPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(49, 49, 49)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel43)
+                    .addComponent(jtProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jrEstado)
+                    .addComponent(jLabel44))
+                .addGap(109, 109, 109)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBotonGuardarCiudad)
+                    .addComponent(jBotonSacarPanelCiudad)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33))
+        );
+
+        javax.swing.GroupLayout jPanelCiudadLayout = new javax.swing.GroupLayout(jPanelCiudad);
+        jPanelCiudad.setLayout(jPanelCiudadLayout);
+        jPanelCiudadLayout.setHorizontalGroup(
+            jPanelCiudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCiudadLayout.createSequentialGroup()
+                .addGap(295, 295, 295)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(327, Short.MAX_VALUE))
+        );
+        jPanelCiudadLayout.setVerticalGroup(
+            jPanelCiudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCiudadLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanelCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1430, 750));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1495,10 +1724,11 @@ public class Menu extends javax.swing.JFrame {
             achicarPanel(PanelViajes);
             achicarPanel(panelHoteles);
             achicarPanel(panelPaquetes);
-            if(jPaneleditarPerfil.getX() == 350){
+            achicarPanel(jPanelCiudad);
+            if (jPaneleditarPerfil.getX() == 350) {
                 slide.jPanelXDerecha(350, 600, 10, 10, jPaneleditarPerfil);
             }
-            if(jPanelVerMisVentas.getX() == 350){
+            if (jPanelVerMisVentas.getX() == 350) {
                 slide.jPanelXDerecha(350, 600, 10, 10, jPanelVerMisVentas);
             }
         } else {
@@ -1507,10 +1737,11 @@ public class Menu extends javax.swing.JFrame {
             agrandarPanel(PanelMiCuenta);
             agrandarPanel(panelHoteles);
             agrandarPanel(panelPaquetes);
-            if(jPaneleditarPerfil.getX() == 600){
+            agrandarPanel(jPanelCiudad);
+            if (jPaneleditarPerfil.getX() == 600) {
                 slide.jPanelXIzquierda(600, 350, 10, 10, jPaneleditarPerfil);
             }
-            if(jPanelVerMisVentas.getX() == 600){
+            if (jPanelVerMisVentas.getX() == 600) {
                 slide.jPanelXIzquierda(600, 350, 10, 10, jPanelVerMisVentas);
             }
         }
@@ -1634,14 +1865,8 @@ public class Menu extends javax.swing.JFrame {
             slide.jPanelXIzquierda(jPaneleditarPerfil.getX(), 350, 10, 10, jPaneleditarPerfil);
 
         }
-        
-        visibleONo();
-        jtNombre.setText(u.getNombre());
-        jtApellido.setText(u.getApellido());
-        jtNombreUsuario.setText(u.getNombreUsuario());
-        jtContraseniaInvisible.setText(u.getClaveUsuario());
-        jtContraseniaVisible.setText(u.getClaveUsuario());
-        
+        usuarioFormulario();
+
 
     }//GEN-LAST:event_jlEditarPerfilMouseClicked
 
@@ -1669,6 +1894,91 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         visibleONo();
     }//GEN-LAST:event_jcContraseniaActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        UsuarioData usuarioData = new UsuarioData();
+        Usuario usuarioEditar = null;
+        String nombreUsuarioEditar = jtNombreUsuario.getText();
+        String nombreEditar = jtNombre.getText();
+        String apellidoEditar = jtApellido.getText();
+        String contraseniaEditar = jtContraseniaVisible.getText();
+
+        if (nombreUsuarioEditar.equals(u.getNombreUsuario()) && nombreEditar.equals(u.getNombre()) && apellidoEditar.equals(u.getApellido()) && contraseniaEditar.equals(u.getClaveUsuario())) {
+            JOptionPane.showMessageDialog(null, "No hay modificaciones para hacer");
+        } else {
+            usuarioEditar = new Usuario(u.getIdUsuario(), nombreUsuarioEditar, nombreEditar, apellidoEditar, contraseniaEditar);
+            usuarioData.editarUsuario(usuarioEditar);
+            u = usuarioEditar;
+            usuarioFormulario();
+        }
+
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        usuarioFormulario();
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jbCerrarVerMisVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCerrarVerMisVentasActionPerformed
+        // TODO add your handling code here:
+        slide.jPanelXDerecha(jPanelVerMisVentas.getX(), 1500, 10, 10, jPanelVerMisVentas);
+        
+    }//GEN-LAST:event_jbCerrarVerMisVentasActionPerformed
+
+    private void jbCerrarEditarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCerrarEditarPerfilActionPerformed
+        // TODO add your handling code here:
+        slide.jPanelXDerecha(jPaneleditarPerfil.getX(), 1500, 10, 10, jPaneleditarPerfil);
+        
+    }//GEN-LAST:event_jbCerrarEditarPerfilActionPerformed
+
+    private void jPanelBotonCiudadMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBotonCiudadMouseEntered
+        // TODO add your handling code here:
+        validacionColorEntered(jPanelBotonCiudad);
+        
+    }//GEN-LAST:event_jPanelBotonCiudadMouseEntered
+
+    private void jPanelBotonCiudadMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBotonCiudadMouseExited
+        // TODO add your handling code here:
+        validacionColorExited(jPanelBotonCiudad);
+    }//GEN-LAST:event_jPanelBotonCiudadMouseExited
+
+    private void jPanelBotonCiudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelBotonCiudadMouseClicked
+        // TODO add your handling code here:
+        jPanelBotonCiudad.setBackground(new Color(246, 135, 18));
+        sacarPaneles();
+        traerPanel(jPanelCiudad);
+    }//GEN-LAST:event_jPanelBotonCiudadMouseClicked
+
+    private void jBotonGuardarCiudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBotonGuardarCiudadMouseClicked
+        // TODO add your handling code here:
+        
+        CiudadData ciudadData = new CiudadData();
+        String nombreCiudad = jtCiudad.getText();
+        String pais = jtPais.getText();
+        String provincia = jtProvincia.getText();
+        boolean estado = jrEstado.isSelected();
+        Ciudad ciudad = new Ciudad(nombreCiudad, pais, estado, provincia);
+        
+        ciudadData.agregarCiudad(ciudad);
+        
+    }//GEN-LAST:event_jBotonGuardarCiudadMouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        jtCiudad.setText("");
+        jtPais.setText("");
+        jtProvincia.setText("");
+        jrEstado.setSelected(false);
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jBotonSacarPanelCiudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBotonSacarPanelCiudadMouseClicked
+        // TODO add your handling code here:
+        salida(jPanelBotonCiudad);
+        slide.jPanelXDerecha(jPanelCiudad.getX(), 1500, 10, 10, jPanelCiudad);
+        
+    }//GEN-LAST:event_jBotonSacarPanelCiudadMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1710,6 +2020,9 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel PanelMiCuenta;
     private javax.swing.JPanel PanelViajes;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jBotonBuscarCiudad;
+    private javax.swing.JButton jBotonGuardarCiudad;
+    private javax.swing.JButton jBotonSacarPanelCiudad;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -1763,6 +2076,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
@@ -1775,8 +2089,14 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
@@ -1789,6 +2109,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1800,10 +2121,13 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel jPanelBotonCiudad;
+    private javax.swing.JPanel jPanelCiudad;
     private javax.swing.JPanel jPanelEmpleado;
     private javax.swing.JPanel jPanelVerMisVentas;
     private javax.swing.JPanel jPaneleditarPerfil;
@@ -1836,15 +2160,21 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JButton jbCerrarEditarPerfil;
+    private javax.swing.JButton jbCerrarVerMisVentas;
     private javax.swing.JCheckBox jcContrasenia;
     private javax.swing.JLabel jlEditarPerfil;
     private javax.swing.JLabel jlMisVentas;
     private javax.swing.JLabel jlUsuario;
+    private javax.swing.JRadioButton jrEstado;
     private javax.swing.JTextField jtApellido;
+    private javax.swing.JTextField jtCiudad;
     private javax.swing.JPasswordField jtContraseniaInvisible;
     private javax.swing.JTextField jtContraseniaVisible;
     private javax.swing.JTextField jtNombre;
     private javax.swing.JTextField jtNombreUsuario;
+    private javax.swing.JTextField jtPais;
+    private javax.swing.JTextField jtProvincia;
     private javax.swing.JPanel panelBarraTareas;
     private javax.swing.JPanel panelBotonEditarPerfil;
     private javax.swing.JPanel panelBotonMiCuenta;
@@ -1894,6 +2224,10 @@ public class Menu extends javax.swing.JFrame {
             PanelBotonHoteles.setBackground(n);
             slide.jPanelXDerecha(panelHoteles.getX(), 1500, 10, 10, panelHoteles);
         }
+        if (jPanelCiudad.getX() == 370 || jPanelCiudad.getX() == 70) {
+            jPanelBotonCiudad.setBackground(n);
+            slide.jPanelXDerecha(jPanelCiudad.getX(), 1500, 10, 10, jPanelCiudad);
+        }
         if (panelPaquetes.getX() == 370 || panelPaquetes.getX() == 70) {
             panelBotonPaquetes.setBackground(n);
             slide.jPanelXDerecha(panelPaquetes.getX(), 1500, 10, 10, panelPaquetes);
@@ -1901,7 +2235,7 @@ public class Menu extends javax.swing.JFrame {
         if (jPaneleditarPerfil.getX() == 350 || jPaneleditarPerfil.getX() == 600) {
             slide.jPanelXDerecha(jPaneleditarPerfil.getX(), 1500, 10, 10, jPaneleditarPerfil);
         }
-        if (jPanelVerMisVentas.getX() == 350 || jPaneleditarPerfil.getX() == 600) {
+        if (jPanelVerMisVentas.getX() == 350 || jPanelVerMisVentas.getX() == 600) {
             slide.jPanelXDerecha(jPanelVerMisVentas.getX(), 1500, 10, 10, jPanelVerMisVentas);
         }
     }
@@ -1957,17 +2291,25 @@ public class Menu extends javax.swing.JFrame {
         jlUsuario.setText(u.getNombre() + " " + u.getApellido());
 
     }
-    
-    public void visibleONo(){
+
+    public void visibleONo() {
         jtContraseniaVisible.setVisible(false);
         jtContraseniaInvisible.setVisible(false);
-        if(jcContrasenia.isSelected()){
+        if (jcContrasenia.isSelected()) {
             jtContraseniaVisible.setVisible(true);
-        }else{
+        } else {
             jtContraseniaInvisible.setVisible(true);
-            
-        
+
         }
-  
+
+    }
+
+    public void usuarioFormulario() {
+        jtNombre.setText(u.getNombre());
+        jtApellido.setText(u.getApellido());
+        jtNombreUsuario.setText(u.getNombreUsuario());
+        jtContraseniaInvisible.setText(u.getClaveUsuario());
+        jtContraseniaVisible.setText(u.getClaveUsuario());
+        jlUsuario.setText(u.getNombre() + " " + u.getApellido());
     }
 }

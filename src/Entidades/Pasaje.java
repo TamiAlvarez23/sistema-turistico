@@ -1,5 +1,6 @@
-
 package Entidades;
+
+import java.time.LocalDate;
 
 /**
  *
@@ -12,22 +13,23 @@ public class Pasaje {
     private String TipoTransporte;
 
     private double Importe;
-    
+
     public Ciudad nombreCiudadOrigen;
 
     private boolean estado;
 
-    public Pasaje(int id, String tipoTransporte, double importe, String nombreCiudadOrigen1, boolean estado1) {
-    }
-    
-    
+    private LocalDate fechaSalida;
 
-    public Pasaje(int idPasaje, String TipoTransporte, double Importe, Ciudad nombreCiudadOrigen, boolean estado) {
+    private LocalDate fechaRegreso;
+
+    public Pasaje(int idPasaje, String TipoTransporte, double Importe, Ciudad nombreCiudadOrigen, boolean estado, LocalDate fechaSalida, LocalDate fechaRegreso) {
         this.idPasaje = idPasaje;
         this.TipoTransporte = TipoTransporte;
         this.Importe = Importe;
         this.nombreCiudadOrigen = nombreCiudadOrigen;
         this.estado = estado;
+        this.fechaSalida = fechaSalida;
+        this.fechaRegreso = this.fechaRegreso;
     }
 
     public Pasaje() {
@@ -38,9 +40,23 @@ public class Pasaje {
         return idPasaje;
     }
 
-    public void setIdPasaje(int idPasaje) {
-        this.idPasaje = idPasaje;
+    public LocalDate getFechaSalida() {
+        return fechaSalida;
     }
+
+    public void setFechaSalida(LocalDate fechaSalida) {
+        this.fechaSalida = fechaSalida;
+    }
+
+    public LocalDate getFechaRegreso() {
+        return fechaRegreso;
+    }
+
+    public void setFechaRegreso(LocalDate fechaRegreso) {
+        this.fechaRegreso = fechaRegreso;
+    }
+    
+    
 
     public String getTipoTransporte() {
         return TipoTransporte;
@@ -73,8 +89,5 @@ public class Pasaje {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-    
-    
-   
 
 }

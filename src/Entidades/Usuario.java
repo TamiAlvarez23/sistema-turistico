@@ -43,6 +43,17 @@ public class Usuario {
         this.rango = rango;
     }
 
+    public Usuario(int idUsuario, String nombreUsuario, String nombre, String apellido, String claveUsuario) {
+        this.idUsuario = idUsuario;
+        this.nombreUsuario = nombreUsuario;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.claveUsuario = claveUsuario;
+        
+    }
+    
+    
+
     public String getRango() {
         return rango;
     }
@@ -51,9 +62,7 @@ public class Usuario {
         this.rango = rango;
     }
 
-    public Usuario() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 
     public int getIdUsuario() {
         return idUsuario;

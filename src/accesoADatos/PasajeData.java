@@ -1,11 +1,14 @@
 package accesoADatos;
 
+import Entidades.Ciudad;
 import Entidades.Pasaje;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -25,16 +28,19 @@ public class PasajeData {
     }
 
     public void agregarPasaje(Pasaje pasaje) {
-        String sql = "INSERT INTO Pasaje (tipoTransporte, importe, nombreCiudadOrigen, estado) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO Pasaje (tipoTransporte, importe, nombreCiudadOrigen, estado, fechaSalida, fechaRegreso) VALUES (?, ?, ?, ?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, pasaje.getTipoTransporte());
             ps.setDouble(2, pasaje.getImporte());
-            ps.setString(3, pasaje.getNombreCiudadOrigen().getNombre());
+            ps.setObject(3, pasaje.getNombreCiudadOrigen());
             ps.setBoolean(4, pasaje.isEstado());
+            ps.setDate(5, Date.valueOf(pasaje.getFechaSalida()));
+            ps.setDate(6, Date.valueOf(pasaje.getFechaRegreso()));
+            
             ps.executeUpdate();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "no se pudo acceder a la tabla pasaje");
+            JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla pasaje");
         }
     }
 
@@ -50,12 +56,14 @@ public class PasajeData {
                 int id = rs.getInt("idPasaje");
                 String tipoTransporte = rs.getString("tipoTransporte");
                 double importe = rs.getDouble("importe");
-                String nombreCiudadOrigen = rs.getString("nombreCiudadOrigen");
+                Ciudad nombreCiudadOrigen = (Ciudad) rs.getObject("nombreCiudadOrigen");
                 boolean estado = rs.getBoolean("estado");
-                pasaje = new Pasaje(id, tipoTransporte, importe, nombreCiudadOrigen, estado);
+                LocalDate fechaSalida = rs.getDate("fechaSalida").toLocalDate();
+                LocalDate fechaRegreso = rs.getDate("fechaRegreso").toLocalDate();
+                pasaje = new Pasaje(id, tipoTransporte, importe, nombreCiudadOrigen, estado, fechaSalida, fechaRegreso);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "no se pudo acceder a la tabla pasaje");
+            JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla pasaje");
         }
         return pasaje;
     }
@@ -69,27 +77,30 @@ public class PasajeData {
                 int id = rs.getInt("idPasaje");
                 String tipoTransporte = rs.getString("tipoTransporte");
                 double importe = rs.getDouble("importe");
-                String nombreCiudadOrigen = rs.getString("nombreCiudadOrigen");
+                Ciudad nombreCiudadOrigen = (Ciudad) rs.getObject("nombreCiudadOrigen");
                 boolean estado = rs.getBoolean("estado");
-                pasajes.add(new Pasaje(id, tipoTransporte, importe, nombreCiudadOrigen, estado));
+                LocalDate fechaSalida = rs.getDate("fechaSalida").toLocalDate();
+                LocalDate fechaRegreso = rs.getDate("fechaRegreso").toLocalDate();
+                pasajes.add(new Pasaje(id, tipoTransporte, importe, nombreCiudadOrigen, estado, fechaSalida, fechaRegreso));
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "no se pudo acceder a la tabla pasaje");
+            JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla pasaje");
         }
         return pasajes;
     }
 
     public void actualizarPasaje(Pasaje pasaje) {
-        String updateQuery = "UPDATE Pasaje SET tipoTransporte = ?, importe = ?, nombreCiudadOrigen = ?, estado = ? WHERE idPasaje = ?";
+        String updateQuery = "UPDATE Pasaje SET tipoTransporte = ?, importe = ?, nombreCiudadOrigen = ?, estado = ? ,fechaSalida = ?, fechaRegreso = ?  WHERE idPasaje = ?";
         try (PreparedStatement ps = con.prepareStatement(updateQuery)) {
             ps.setString(1, pasaje.getTipoTransporte());
             ps.setDouble(2, pasaje.getImporte());
-            ps.setString(3, pasaje.getNombreCiudadOrigen().getNombre());
+            ps.setObject(3, pasaje.getNombreCiudadOrigen());
             ps.setBoolean(4, pasaje.isEstado());
-            ps.setInt(5, pasaje.getIdPasaje());
+            ps.setDate(5, Date.valueOf(pasaje.getFechaSalida()));
+            ps.setDate(6, Date.valueOf(pasaje.getFechaRegreso()));
             ps.executeUpdate();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error al acceder a la tabla de pasaje");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de pasaje");
         }
     }
 
@@ -99,7 +110,7 @@ public class PasajeData {
             preparedStatement.setInt(1, idPasaje);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "no se pudo acceder a la tabla pasaje");
+            JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla pasaje");
         }
     }
 }

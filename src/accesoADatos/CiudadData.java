@@ -23,7 +23,7 @@ public class CiudadData {
     
 }
     public void agregarCiudad(Ciudad ciudad) {
-    String sql = "INSERT INTO `ciudad` (`nombre`, `pais`, `estado`, `provincia`) VALUES (?, ?, ?, ?)";
+    String sql = "INSERT INTO ciudad (nombre, pais, estado, provincia) VALUES (?, ?, ?, ?)";
     try {
         PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
        
@@ -37,6 +37,7 @@ public class CiudadData {
         ResultSet rs = ps.getGeneratedKeys();
         if (rs.next()) {
             ciudad.setIdCiudad(rs.getInt(1));
+            JOptionPane.showMessageDialog(null, "Se guardo con exito la ciudad");
         }
         
         ps.close();
