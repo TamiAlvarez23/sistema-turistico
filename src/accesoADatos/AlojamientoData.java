@@ -24,7 +24,7 @@ public class AlojamientoData {
     }
     
     public void agregarAlojamiento(Alojamiento alojamiento) {
-        String sql = "INSERT INTO Alojamiento (fechaIngreso, fechaEgreso, estado, servicio, importeDiario, ciudadDestino, nombre) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Alojamiento (fechaIngreso, fechaEgreso, estado, servicio, importeDiario, ciudadDestino, nombre, tipoAlojamiento) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             
@@ -35,9 +35,10 @@ public class AlojamientoData {
             ps.setDouble(5, alojamiento.getImporteDiario());
             ps.setInt(6, alojamiento.getCiudadDestino().getIdCiudad());
             ps.setString(7, alojamiento.getNombre());
+            ps.setString(8, alojamiento.getTipoAlojamiento());
             ps.executeUpdate();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error al acceder a la tabla alojamiento");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alojamiento");
         }
     }
     
@@ -53,14 +54,14 @@ public class AlojamientoData {
                 return new Alojamiento();
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error al acceder a la tabla alojamiento");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alojamiento");
         }
         return null;
     }
     
     public List<Alojamiento> obtenerAlojamientosPorCiudadDestino(Ciudad ciudadDestino) {
         List<Alojamiento> alojamientos = new ArrayList<>();
-        String sql = "SELECT * FROM Alojamiento WHERE ciudadDestino = ?";
+        String sql = "SELECT * FROM Alojamiento WHERE ciudadDestino = ? AND estado = 1";
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -76,11 +77,12 @@ public class AlojamientoData {
                 alojamiento.setEstado(rs.getBoolean("estado"));
                 alojamiento.setServicio(rs.getString("servicio"));
                 alojamiento.setImporteDiario(rs.getDouble("importeDiario"));
+                alojamiento.setTipoAlojamiento(rs.getString("tipoAlojamiento"));
                 
                 alojamientos.add(alojamiento);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error a la tabla alojamiento data");
+            JOptionPane.showMessageDialog(null, "Error a la tabla alojamiento data");
         }
         
         return alojamientos;
@@ -103,19 +105,20 @@ public class AlojamientoData {
                 alojamiento.setServicio(rs.getString("servicio"));
                 alojamiento.setImporteDiario(rs.getDouble("importeDiario"));
                 alojamiento.setNombre(rs.getString("nombre"));
+                alojamiento.setTipoAlojamiento(rs.getString("tipoAlojamiento"));
                 int idCiudadDestino = rs.getInt("ciudadDestino");
                 Ciudad ciudadDestino = (Ciudad) rs.getObject("ciudadDestino");
                 alojamiento.setCiudadDestino(ciudadDestino);
                 alojamientos.add(alojamiento);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error al acceder a la tabla alojamiento");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alojamiento");
         }
         return alojamientos;
     }
     
     public void actualizarAlojamiento(Alojamiento alojamiento) {
-        String sql = "UPDATE Alojamiento SET fechaIngreso = ?, fechaEgreso = ?, estado = ?, servicio = ?, importeDiario = ?, ciudadDestino = ?, nombre = ? WHERE idAlojamiento = ?";
+        String sql = "UPDATE Alojamiento SET fechaIngreso = ?, fechaEgreso = ?, estado = ?, servicio = ?, importeDiario = ?, ciudadDestino = ?, nombre = ?, tipoAlojamiento = ? WHERE idAlojamiento = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             
@@ -126,9 +129,10 @@ public class AlojamientoData {
             ps.setDouble(5, alojamiento.getImporteDiario());
             ps.setInt(6, alojamiento.getCiudadDestino().getIdCiudad());
             ps.setString(7, alojamiento.getNombre());
+            ps.setString(8, alojamiento.getTipoAlojamiento());
             ps.executeUpdate();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error al acceder a la tabla alojamiento");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alojamiento");
         }
     }
     
@@ -139,7 +143,7 @@ public class AlojamientoData {
             ps.setInt(1, idAlojamiento);
             ps.executeUpdate();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error al acceder a la tabla alojamiento");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alojamiento");
         }
     }
 }

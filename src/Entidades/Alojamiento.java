@@ -26,11 +26,12 @@ public class Alojamiento {
     private Ciudad ciudadDestino;
     
     private String nombre;
+    private String tipoAlojamiento;
 
     public Alojamiento() {
     }
 
-    public Alojamiento(LocalDate fechaIngreso, LocalDate fechaEgreso, boolean estado, String servicio, double importeDiario, Ciudad ciudadDestino, String nombre) {
+    public Alojamiento(LocalDate fechaIngreso, LocalDate fechaEgreso, boolean estado, String servicio, double importeDiario, Ciudad ciudadDestino, String nombre, String tipoAlojamiento) {
         this.fechaIngreso = fechaIngreso;
         this.fechaEgreso = fechaEgreso;
         this.estado = estado;
@@ -38,10 +39,11 @@ public class Alojamiento {
         this.importeDiario = importeDiario;
         this.ciudadDestino = ciudadDestino;
         this.nombre = nombre;
+        this.tipoAlojamiento = tipoAlojamiento;
     }
     
 
-    public Alojamiento(int idAlojamiento, LocalDate fechaIngreso, LocalDate fechaEgreso, boolean estado, String servicio, double importeDiario, Ciudad ciudadDestino, String nombre) {
+    public Alojamiento(int idAlojamiento, LocalDate fechaIngreso, LocalDate fechaEgreso, boolean estado, String servicio, double importeDiario, Ciudad ciudadDestino, String nombre, String tipoAlojamiento) {
         this.idAlojamiento = idAlojamiento;
         this.fechaIngreso = fechaIngreso;
         this.fechaEgreso = fechaEgreso;
@@ -50,6 +52,7 @@ public class Alojamiento {
         this.importeDiario = importeDiario;
         this.ciudadDestino = ciudadDestino;
         this.nombre = nombre;
+        this.tipoAlojamiento = tipoAlojamiento;
     }
 
     public String getNombre() {
@@ -125,6 +128,16 @@ public class Alojamiento {
     public void setCiudadDestino(Ciudad ciudadDestino) {
         this.ciudadDestino = ciudadDestino;
     }
+
+    public String getTipoAlojamiento() {
+        return tipoAlojamiento;
+    }
+
+    public void setTipoAlojamiento(String tipoAlojamiento) {
+        this.tipoAlojamiento = tipoAlojamiento;
+    }
+    
+    
 
    
  
