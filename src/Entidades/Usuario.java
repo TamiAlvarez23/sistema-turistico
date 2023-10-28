@@ -12,17 +12,23 @@ import java.time.LocalDate;
  * @author FamiliaSic
  */
 public class Usuario {
-    
-    
+
     private int idUsuario;
-    
+
     private String nombreUsuario, nombre, apellido;
 
     private String claveUsuario;
-    
+
     private String rango;
-    
+
     private boolean estadoUsuario;
+
+    private String habilitacion;
+
+    public Usuario() {
+    }
+    
+    
 
     public Usuario(String nombreUsuario, String nombre, String apellido, String claveUsuario, boolean estadoUsuario, String rango) {
         this.nombreUsuario = nombreUsuario;
@@ -43,16 +49,15 @@ public class Usuario {
         this.rango = rango;
     }
 
-    public Usuario(int idUsuario, String nombreUsuario, String nombre, String apellido, String claveUsuario) {
+    public Usuario(int idUsuario, String nombreUsuario, String nombre, String apellido, String claveUsuario, boolean estadoUsuario) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.nombre = nombre;
         this.apellido = apellido;
         this.claveUsuario = claveUsuario;
-        
+        this.estadoUsuario = estadoUsuario;
+
     }
-    
-    
 
     public String getRango() {
         return rango;
@@ -61,8 +66,6 @@ public class Usuario {
     public void setRango(String rango) {
         this.rango = rango;
     }
-
-   
 
     public int getIdUsuario() {
         return idUsuario;
@@ -95,7 +98,7 @@ public class Usuario {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-    
+
     public String getClaveUsuario() {
         return claveUsuario;
     }
@@ -111,5 +114,17 @@ public class Usuario {
     public void setEstadoUsuario(boolean estadoUsuario) {
         this.estadoUsuario = estadoUsuario;
     }
+
+    public String getHabilitacion() {
+        if(estadoUsuario){
+            return "Habilitado";
+        
+        }else{
+            return "Desabilitado";
+        
+        }
+        
+    }
+
+  
 }
-   

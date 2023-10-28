@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -38,8 +39,9 @@ public class Menu extends javax.swing.JFrame {
     Color c = new Color(246, 135, 18);
     Color n = new Color(100, 100, 100);
     private Usuario u = null;
-    private DefaultTableModel modelo = new DefaultTableModel();
-    private Ciudad ciudadRecuperada= new Ciudad();
+    private DefaultTableModel modeloCiudad = new DefaultTableModel();
+    private DefaultTableModel modeloEmpleado = new DefaultTableModel();
+    private Ciudad ciudadRecuperada = new Ciudad();
 
     /**
      * Creates new form Menu
@@ -50,6 +52,8 @@ public class Menu extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         slide = new Slide();
         armarCabeceraTablaCiudad();
+        armarCabeceraTablaEmpleados();
+        agruparJRB();
         llenarComboHotel();
     }
 
@@ -69,14 +73,8 @@ public class Menu extends javax.swing.JFrame {
         jLcambiarSesion = new javax.swing.JLabel();
         panelBotonEditarPerfil = new javax.swing.JPanel();
         jlEditarPerfil = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLcambiarSesion2 = new javax.swing.JLabel();
-        jPanelEmpleado = new javax.swing.JPanel();
-        jLabel28 = new javax.swing.JLabel();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        panelBotonEmpleados = new javax.swing.JPanel();
+        jlBotonEmpleados = new javax.swing.JLabel();
         panelBarraTareas = new javax.swing.JPanel();
         panelNombreUsuario = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -258,6 +256,15 @@ public class Menu extends javax.swing.JFrame {
         jTablaCiudades = new javax.swing.JTable();
         jPanel27 = new javax.swing.JPanel();
         jlSalirBuscarCiudad = new javax.swing.JLabel();
+        jPanelVerEmpleados = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jtEmpleados = new javax.swing.JTable();
+        jPanel28 = new javax.swing.JPanel();
+        jlHabilitar = new javax.swing.JLabel();
+        jPanel29 = new javax.swing.JPanel();
+        jlDesabilitar = new javax.swing.JLabel();
+        jrHabilitado = new javax.swing.JRadioButton();
+        jrDesabilitado = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1500, 750));
@@ -362,86 +369,30 @@ public class Menu extends javax.swing.JFrame {
 
         PanelMiCuenta.add(panelBotonEditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 167, 125, -1));
 
-        jPanel1.setBackground(new java.awt.Color(60, 147, 214));
+        panelBotonEmpleados.setBackground(new java.awt.Color(60, 147, 214));
 
-        jLcambiarSesion2.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
-        jLcambiarSesion2.setForeground(new java.awt.Color(255, 255, 255));
-        jLcambiarSesion2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLcambiarSesion2.setText("Empleados");
-        jLcambiarSesion2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jlBotonEmpleados.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jlBotonEmpleados.setForeground(new java.awt.Color(255, 255, 255));
+        jlBotonEmpleados.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlBotonEmpleados.setText("Empleados");
+        jlBotonEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLcambiarSesion2MouseClicked(evt);
+                jlBotonEmpleadosMouseClicked(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLcambiarSesion2, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+        javax.swing.GroupLayout panelBotonEmpleadosLayout = new javax.swing.GroupLayout(panelBotonEmpleados);
+        panelBotonEmpleados.setLayout(panelBotonEmpleadosLayout);
+        panelBotonEmpleadosLayout.setHorizontalGroup(
+            panelBotonEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlBotonEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLcambiarSesion2, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-        );
-
-        PanelMiCuenta.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 500, 130, 40));
-
-        jPanelEmpleado.setBackground(new Color (0,0,0,0));
-
-        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/ingeniero (2).png"))); // NOI18N
-
-        jRadioButton3.setText("Empleados activos");
-
-        jRadioButton4.setText("Empleado inactivo");
-
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Nombre empleado", "Apellido empleado", "DNI", "Estado"
-            }
-        ));
-        jScrollPane4.setViewportView(jTable3);
-
-        javax.swing.GroupLayout jPanelEmpleadoLayout = new javax.swing.GroupLayout(jPanelEmpleado);
-        jPanelEmpleado.setLayout(jPanelEmpleadoLayout);
-        jPanelEmpleadoLayout.setHorizontalGroup(
-            jPanelEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelEmpleadoLayout.createSequentialGroup()
-                .addGroup(jPanelEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelEmpleadoLayout.createSequentialGroup()
-                        .addGap(452, 452, 452)
-                        .addComponent(jLabel28))
-                    .addGroup(jPanelEmpleadoLayout.createSequentialGroup()
-                        .addGap(205, 205, 205)
-                        .addComponent(jRadioButton3)
-                        .addGap(298, 298, 298)
-                        .addComponent(jRadioButton4))
-                    .addGroup(jPanelEmpleadoLayout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 897, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(98, Short.MAX_VALUE))
-        );
-        jPanelEmpleadoLayout.setVerticalGroup(
-            jPanelEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelEmpleadoLayout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(jLabel28)
-                .addGap(40, 40, 40)
-                .addGroup(jPanelEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton4))
-                .addGap(37, 37, 37)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(175, Short.MAX_VALUE))
+        panelBotonEmpleadosLayout.setVerticalGroup(
+            panelBotonEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlBotonEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        PanelMiCuenta.add(jPanelEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 40, 1080, 610));
+        PanelMiCuenta.add(panelBotonEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 500, 130, 40));
 
         getContentPane().add(PanelMiCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1430, 750));
 
@@ -2135,7 +2086,7 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanelCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 1430, 750));
+        getContentPane().add(jPanelCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1430, 750));
 
         jpanelBuscarCiudad.setBackground(new Color(0,0,0,0));
 
@@ -2243,6 +2194,123 @@ public class Menu extends javax.swing.JFrame {
 
         getContentPane().add(jpanelBuscarCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 60, 750, 600));
 
+        jPanelVerEmpleados.setBackground(new Color(0,0,0,0));
+
+        jtEmpleados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane6.setViewportView(jtEmpleados);
+
+        jPanel28.setBackground(new java.awt.Color(60, 147, 214));
+
+        jlHabilitar.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jlHabilitar.setForeground(new java.awt.Color(255, 255, 255));
+        jlHabilitar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlHabilitar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/aprobado.png"))); // NOI18N
+        jlHabilitar.setText("Habilitar");
+        jlHabilitar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlHabilitarMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
+        jPanel28.setLayout(jPanel28Layout);
+        jPanel28Layout.setHorizontalGroup(
+            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlHabilitar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+        );
+        jPanel28Layout.setVerticalGroup(
+            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlHabilitar, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        jPanel29.setBackground(new java.awt.Color(60, 147, 214));
+
+        jlDesabilitar.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jlDesabilitar.setForeground(new java.awt.Color(255, 255, 255));
+        jlDesabilitar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlDesabilitar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/cancelar.png"))); // NOI18N
+        jlDesabilitar.setText("Desabilitar");
+        jlDesabilitar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlDesabilitarMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
+        jPanel29.setLayout(jPanel29Layout);
+        jPanel29Layout.setHorizontalGroup(
+            jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlDesabilitar, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+        );
+        jPanel29Layout.setVerticalGroup(
+            jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlDesabilitar, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        jrHabilitado.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jrHabilitado.setForeground(new java.awt.Color(0, 0, 0));
+        jrHabilitado.setText("Habilitado");
+        jrHabilitado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jrHabilitadoMouseClicked(evt);
+            }
+        });
+
+        jrDesabilitado.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jrDesabilitado.setForeground(new java.awt.Color(0, 0, 0));
+        jrDesabilitado.setText("Desabilitado");
+        jrDesabilitado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jrDesabilitadoMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelVerEmpleadosLayout = new javax.swing.GroupLayout(jPanelVerEmpleados);
+        jPanelVerEmpleados.setLayout(jPanelVerEmpleadosLayout);
+        jPanelVerEmpleadosLayout.setHorizontalGroup(
+            jPanelVerEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelVerEmpleadosLayout.createSequentialGroup()
+                .addGap(172, 172, 172)
+                .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(180, 180, 180))
+            .addGroup(jPanelVerEmpleadosLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 732, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelVerEmpleadosLayout.createSequentialGroup()
+                .addGap(185, 185, 185)
+                .addComponent(jrHabilitado)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jrDesabilitado)
+                .addGap(149, 149, 149))
+        );
+        jPanelVerEmpleadosLayout.setVerticalGroup(
+            jPanelVerEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelVerEmpleadosLayout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addGroup(jPanelVerEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jrHabilitado)
+                    .addComponent(jrDesabilitado))
+                .addGap(60, 60, 60)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addGroup(jPanelVerEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(80, 80, 80))
+        );
+
+        getContentPane().add(jPanelVerEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 110, 810, 480));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -2258,6 +2326,7 @@ public class Menu extends javax.swing.JFrame {
             achicarPanelSecundario(jPaneleditarPerfil);
             achicarPanelSecundario(jPanelVerMisVentas);
             achicarPanelSecundario(jpanelBuscarCiudad);
+            achicarPanelSecundario(jPanelVerEmpleados);
         } else {
             slide.jPanelXIzquierda(panelBarraTareas.getX(), -300, 10, 10, panelBarraTareas);
             agrandarPanel(PanelViajes);
@@ -2268,6 +2337,7 @@ public class Menu extends javax.swing.JFrame {
             agrandarPanelSecundario(jPaneleditarPerfil);
             agrandarPanelSecundario(jPanelVerMisVentas);
             agrandarPanelSecundario(jpanelBuscarCiudad);
+            agrandarPanelSecundario(jPanelVerEmpleados);
 
         }
 
@@ -2381,6 +2451,9 @@ public class Menu extends javax.swing.JFrame {
         if (jPanelVerMisVentas.getX() == 350 || jPanelVerMisVentas.getX() == 600) {
             slide.jPanelXDerecha(jPanelVerMisVentas.getX(), 1500, 10, 10, jPanelVerMisVentas);
         }
+        if (jPanelVerEmpleados.getX() == 350 || jPanelVerEmpleados.getX() == 600) {
+            slide.jPanelXDerecha(jPanelVerEmpleados.getX(), 1500, 10, 10, jPanelVerEmpleados);
+        }
         if (panelBarraTareas.getX() == 0) {
             slide.jPanelXIzquierda(jPaneleditarPerfil.getX(), 600, 10, 10, jPaneleditarPerfil);
 
@@ -2398,6 +2471,9 @@ public class Menu extends javax.swing.JFrame {
         if (jPaneleditarPerfil.getX() == 350 || jPaneleditarPerfil.getX() == 600) {
             slide.jPanelXDerecha(jPaneleditarPerfil.getX(), 1500, 10, 10, jPaneleditarPerfil);
         }
+        if (jPanelVerEmpleados.getX() == 350 || jPanelVerEmpleados.getX() == 600) {
+            slide.jPanelXDerecha(jPanelVerEmpleados.getX(), 1500, 10, 10, jPanelVerEmpleados);
+        }
         if (panelBarraTareas.getX() == 0) {
             slide.jPanelXIzquierda(jPanelVerMisVentas.getX(), 600, 10, 10, jPanelVerMisVentas);
         } else {
@@ -2405,9 +2481,24 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jlMisVentasMouseClicked
 
-    private void jLcambiarSesion2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLcambiarSesion2MouseClicked
+    private void jlBotonEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBotonEmpleadosMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jLcambiarSesion2MouseClicked
+        slide.jPanelXIzquierda(jPanelVerEmpleados.getX(), 350, 10, 10, jPanelVerEmpleados);
+        if (jPanelVerMisVentas.getX() == 350 || jPanelVerMisVentas.getX() == 600) {
+            slide.jPanelXDerecha(jPanelVerMisVentas.getX(), 1500, 10, 10, jPanelVerMisVentas);
+        }
+        if (jPaneleditarPerfil.getX() == 350 || jPaneleditarPerfil.getX() == 600) {
+            slide.jPanelXDerecha(jPaneleditarPerfil.getX(), 1500, 10, 10, jPaneleditarPerfil);
+        }
+        if (panelBarraTareas.getX() == 0) {
+            slide.jPanelXIzquierda(jPanelVerEmpleados.getX(), 600, 10, 10, jPanelVerEmpleados);
+
+        } else {
+            slide.jPanelXIzquierda(jPanelVerEmpleados.getX(), 350, 10, 10, jPanelVerEmpleados);
+
+        }
+        traerEmpleadosATabla();
+    }//GEN-LAST:event_jlBotonEmpleadosMouseClicked
 
     private void jcContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcContraseniaActionPerformed
         // TODO add your handling code here:
@@ -2444,7 +2535,7 @@ public class Menu extends javax.swing.JFrame {
         if (nombreUsuarioEditar.equals(u.getNombreUsuario()) && nombreEditar.equals(u.getNombre()) && apellidoEditar.equals(u.getApellido()) && contraseniaEditar.equals(u.getClaveUsuario())) {
             JOptionPane.showMessageDialog(null, "No hay modificaciones para hacer");
         } else {
-            usuarioEditar = new Usuario(u.getIdUsuario(), nombreUsuarioEditar, nombreEditar, apellidoEditar, contraseniaEditar);
+            usuarioEditar = new Usuario(u.getIdUsuario(), nombreUsuarioEditar, nombreEditar, apellidoEditar, contraseniaEditar, true);
             usuarioData.editarUsuario(usuarioEditar);
             u = usuarioEditar;
             usuarioFormulario();
@@ -2469,16 +2560,22 @@ public class Menu extends javax.swing.JFrame {
 
     private void jlGuardarCiudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlGuardarCiudadMouseClicked
         // TODO add your handling code here:
-        
+
         CiudadData ciudadData = new CiudadData();
+        Ciudad ciudad = new Ciudad();
         int idCiudad = Integer.parseInt(jlIdCiudad.getText());
+        ciudad = ciudadData.obtenerCiudadPorId(idCiudad);
         String nombreCiudad = jtCiudad.getText();
         String pais = jtPais.getText();
         String provincia = jtProvincia.getText();
         boolean estado = jrEstadoCiudad.isSelected();
-        Ciudad ciudad = new Ciudad(nombreCiudad, pais, estado, provincia);
-
-        ciudadData.agregarCiudad(ciudad);
+        if (ciudad == null) {
+            ciudad = new Ciudad(nombreCiudad, pais, estado, provincia);
+            ciudadData.agregarCiudad(ciudad);
+        } else {
+            ciudad = new Ciudad(idCiudad, nombreCiudad, pais, estado, provincia);
+            ciudadData.actualizarCiudad(ciudad);
+        }
         llenarComboHotel();
     }//GEN-LAST:event_jlGuardarCiudadMouseClicked
 
@@ -2507,7 +2604,7 @@ public class Menu extends javax.swing.JFrame {
         List<Ciudad> ciudades = new ArrayList<>();
         ciudades = ciudadData.obtenerTodasLasCiudades();
         for (Ciudad ciudad : ciudades) {
-            modelo.addRow(new Object[]{
+            modeloCiudad.addRow(new Object[]{
                 ciudad.getIdCiudad(),
                 ciudad.getNombre(),
                 ciudad.getProvincia(),
@@ -2521,7 +2618,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         // TODO add your handling code here:
-        
+
 
     }//GEN-LAST:event_formMouseClicked
 
@@ -2537,7 +2634,7 @@ public class Menu extends javax.swing.JFrame {
             case "Ciudad": {
                 for (Ciudad ciudad : ciudades) {
                     if (ciudad.getNombre().toUpperCase().startsWith(jtBusquedaCiudad.getText().toUpperCase())) {
-                        modelo.addRow(new Object[]{
+                        modeloCiudad.addRow(new Object[]{
                             ciudad.getIdCiudad(),
                             ciudad.getNombre(),
                             ciudad.getProvincia(),
@@ -2552,7 +2649,7 @@ public class Menu extends javax.swing.JFrame {
             case "Provincia": {
                 for (Ciudad ciudad : ciudades) {
                     if (ciudad.getProvincia().toUpperCase().startsWith(jtBusquedaCiudad.getText().toUpperCase())) {
-                        modelo.addRow(new Object[]{
+                        modeloCiudad.addRow(new Object[]{
                             ciudad.getIdCiudad(),
                             ciudad.getNombre(),
                             ciudad.getProvincia(),
@@ -2568,7 +2665,7 @@ public class Menu extends javax.swing.JFrame {
             case "Pais": {
                 for (Ciudad ciudad : ciudades) {
                     if (ciudad.getPais().toUpperCase().startsWith(jtBusquedaCiudad.getText().toUpperCase())) {
-                        modelo.addRow(new Object[]{
+                        modeloCiudad.addRow(new Object[]{
                             ciudad.getIdCiudad(),
                             ciudad.getNombre(),
                             ciudad.getProvincia(),
@@ -2594,26 +2691,77 @@ public class Menu extends javax.swing.JFrame {
 
     private void jTablaCiudadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablaCiudadesMouseClicked
         // TODO add your handling code here:
-        CiudadData ciudadData = new CiudadData();
         slide.jPanelXDerecha(jpanelBuscarCiudad.getX(), 1500, 10, 10, jpanelBuscarCiudad);
         slide.jPanelXIzquierda(jPanelCiudad.getX(), 70, 10, 10, jPanelCiudad);
-        
+
         int filaCiudad = jTablaCiudades.getSelectedRow();
-        
-        
 
         jtCiudad.setText((String) jTablaCiudades.getValueAt(filaCiudad, 1));
-        jtProvincia.setText((String)jTablaCiudades.getValueAt(filaCiudad, 2));
+        jtProvincia.setText((String) jTablaCiudades.getValueAt(filaCiudad, 2));
         jtPais.setText((String) jTablaCiudades.getValueAt(filaCiudad, 3));
-        if("Habilitado".equalsIgnoreCase(jTablaCiudades.getValueAt(filaCiudad, 4).toString())){
+        if ("Habilitado".equalsIgnoreCase(jTablaCiudades.getValueAt(filaCiudad, 4).toString())) {
             jrEstadoCiudad.setSelected(true);
-        }else{
+        } else {
             jrEstadoCiudad.setSelected(false);
         }
-        jlIdCiudad.setText((String) jTablaCiudades.getValueAt(filaCiudad, 0).toString() );
-        
-        
+        jlIdCiudad.setText((String) jTablaCiudades.getValueAt(filaCiudad, 0).toString());
+
+
     }//GEN-LAST:event_jTablaCiudadesMouseClicked
+
+    private void jrHabilitadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jrHabilitadoMouseClicked
+        // TODO add your handling code here:
+        traerEmpleadosATabla();
+    }//GEN-LAST:event_jrHabilitadoMouseClicked
+
+    private void jrDesabilitadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jrDesabilitadoMouseClicked
+        // TODO add your handling code here:
+        traerEmpleadosATabla();
+    }//GEN-LAST:event_jrDesabilitadoMouseClicked
+
+    private void jlHabilitarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlHabilitarMouseClicked
+        // TODO add your handling code here:
+        UsuarioData usuarioData = new UsuarioData();
+        Usuario usuario = new Usuario();
+        int filaSeleccionada = jtEmpleados.getSelectedRow();
+        if (jrHabilitado.isSelected()) {
+            JOptionPane.showMessageDialog(null, "No se puede habilitar un empleado habilitado");
+        } else {
+            int empleadoSeleccionado = (int) jtEmpleados.getValueAt(filaSeleccionada, 0);
+            usuario = (Usuario) usuarioData.buscarUsuarioPorId(empleadoSeleccionado);
+            usuario.setEstadoUsuario(true);
+            usuarioData.editarUsuario(usuario);
+        }
+        traerEmpleadosATabla();
+    }//GEN-LAST:event_jlHabilitarMouseClicked
+
+    private void jlDesabilitarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlDesabilitarMouseClicked
+        // TODO add your handling code here:
+        UsuarioData usuarioData = new UsuarioData();
+        Usuario usuario = null;
+        int filaSeleccionada = jtEmpleados.getSelectedRow();
+
+        if (jrDesabilitado.isSelected()) {
+            JOptionPane.showMessageDialog(null, "No se puede desabilitar un empleado desabilitado");
+        } else {
+            int empleadoSeleccionado = (int) jtEmpleados.getValueAt(filaSeleccionada, 0);
+
+            usuario = usuarioData.buscarUsuarioPorId(empleadoSeleccionado);
+            if (usuario.getIdUsuario() == u.getIdUsuario()) {
+                JOptionPane.showMessageDialog(null, "No se puede Desabiliar un perfil logeado");
+
+            } else {
+                usuario.setEstadoUsuario(false);
+
+                usuarioData.editarUsuario(usuario);
+
+            }
+
+        }
+        traerEmpleadosATabla();
+
+
+    }//GEN-LAST:event_jlDesabilitarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -2690,7 +2838,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
@@ -2748,9 +2895,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLcambiarSesion;
-    private javax.swing.JLabel jLcambiarSesion2;
     private javax.swing.JPanel jPBuscarAlojamiento;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
@@ -2770,6 +2915,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel25;
     private javax.swing.JPanel jPanel26;
     private javax.swing.JPanel jPanel27;
+    private javax.swing.JPanel jPanel28;
+    private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -2779,7 +2926,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel jPanelBotonCiudad;
     private javax.swing.JPanel jPanelCiudad;
-    private javax.swing.JPanel jPanelEmpleado;
+    private javax.swing.JPanel jPanelVerEmpleados;
     private javax.swing.JPanel jPanelVerMisVentas;
     private javax.swing.JPanel jPaneleditarPerfil;
     private javax.swing.JPanel jParmarpaquete;
@@ -2789,17 +2936,14 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPguardarperfil1;
     private javax.swing.JPanel jPguardarperfil3;
     private javax.swing.JPanel jPmisVentas;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTable jTablaCiudades;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
@@ -2812,12 +2956,15 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jcbTipoBusquedaCiudad;
     private com.toedter.calendar.JDateChooser jdFechaRegreso;
     private com.toedter.calendar.JDateChooser jdFechaSalida;
+    private javax.swing.JLabel jlBotonEmpleados;
     private javax.swing.JLabel jlBuscarCiudad;
     private javax.swing.JLabel jlCancelarCudad;
     private javax.swing.JLabel jlCancelarUsuario;
+    private javax.swing.JLabel jlDesabilitar;
     private javax.swing.JLabel jlEditarPerfil;
     private javax.swing.JLabel jlGuardarCiudad;
     private javax.swing.JLabel jlGuardarUsuario;
+    private javax.swing.JLabel jlHabilitar;
     private javax.swing.JLabel jlIdCiudad;
     private javax.swing.JLabel jlMisVentas;
     private javax.swing.JLabel jlSacarPanelVerMisVentas;
@@ -2826,13 +2973,16 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlUsuario;
     private javax.swing.JLabel jlsacarPanelUsuario;
     private javax.swing.JPanel jpanelBuscarCiudad;
+    private javax.swing.JRadioButton jrDesabilitado;
     private javax.swing.JRadioButton jrEstadoCiudad;
+    private javax.swing.JRadioButton jrHabilitado;
     private javax.swing.JTextField jtApellido;
     private javax.swing.JTextField jtBusquedaCiudad;
     private javax.swing.JTextField jtCiudad;
     private javax.swing.JPasswordField jtContraseniaInvisible;
     private javax.swing.JTextField jtContraseniaVisible;
     private javax.swing.JTextField jtCupoHotel;
+    private javax.swing.JTable jtEmpleados;
     private javax.swing.JTextField jtImporteDiario;
     private javax.swing.JTextField jtNombre;
     private javax.swing.JTextField jtNombreUsuario;
@@ -2841,6 +2991,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextArea jtServicios;
     private javax.swing.JPanel panelBarraTareas;
     private javax.swing.JPanel panelBotonEditarPerfil;
+    private javax.swing.JPanel panelBotonEmpleados;
     private javax.swing.JPanel panelBotonMiCuenta;
     private javax.swing.JPanel panelBotonPaquetes;
     private javax.swing.JPanel panelBotonViajes;
@@ -2901,6 +3052,9 @@ public class Menu extends javax.swing.JFrame {
         }
         if (jPanelVerMisVentas.getX() == 350 || jPanelVerMisVentas.getX() == 600) {
             slide.jPanelXDerecha(jPanelVerMisVentas.getX(), 1500, 10, 10, jPanelVerMisVentas);
+        }
+        if (jPanelVerEmpleados.getX() == 350 || jPanelVerEmpleados.getX() == 600) {
+            slide.jPanelXDerecha(jPanelVerEmpleados.getX(), 1500, 10, 10, jPanelVerEmpleados);
         }
     }
 
@@ -3003,20 +3157,68 @@ public class Menu extends javax.swing.JFrame {
 
     private void armarCabeceraTablaCiudad() {
 
-        modelo.addColumn("Id");
-        modelo.addColumn("Ciudad");
-        modelo.addColumn("Provincia");
-        modelo.addColumn("Pais");
-        modelo.addColumn("Estado");
-        jTablaCiudades.setModel(modelo);
+        modeloCiudad.addColumn("Id");
+        modeloCiudad.addColumn("Ciudad");
+        modeloCiudad.addColumn("Provincia");
+        modeloCiudad.addColumn("Pais");
+        modeloCiudad.addColumn("Estado");
+        jTablaCiudades.setModel(modeloCiudad);
+    }
+
+    private void armarCabeceraTablaEmpleados() {
+
+        modeloEmpleado.addColumn("Id");
+        modeloEmpleado.addColumn("Nombre usuario");
+        modeloEmpleado.addColumn("Nombre completo");
+        modeloEmpleado.addColumn("Rango");
+        modeloEmpleado.addColumn("Estado");
+        jtEmpleados.setModel(modeloEmpleado);
     }
 
     public void borrarfilas(JTable tabla) {
         int f = tabla.getRowCount() - 1;
         for (; f >= 0; f--) {
-            modelo.removeRow(f);
+            modeloCiudad.removeRow(f);
 
         }
+
+    }
+
+    public void borrarfilasEmpleado(JTable tabla) {
+        int f = tabla.getRowCount() - 1;
+        for (; f >= 0; f--) {
+            modeloEmpleado.removeRow(f);
+
+        }
+
+    }
+
+    public void traerEmpleadosATabla() {
+        List<Usuario> usuarios = new ArrayList<>();
+        UsuarioData usuarioData = new UsuarioData();
+        if (jrHabilitado.isSelected()) {
+
+            usuarios = usuarioData.traerTodosSegunEstado(1);
+        } else {
+            usuarios = usuarioData.traerTodosSegunEstado(0);
+        }
+        borrarfilasEmpleado(jtEmpleados);
+        for (Usuario usuario : usuarios) {
+            modeloEmpleado.addRow(new Object[]{
+                usuario.getIdUsuario(),
+                usuario.getNombreUsuario(),
+                usuario.getNombre() + " " + usuario.getApellido(),
+                usuario.getRango(),
+                usuario.getHabilitacion(),});
+
+        }
+    }
+
+    private void agruparJRB() {
+
+        ButtonGroup botones = new ButtonGroup();
+        botones.add(jrHabilitado);
+        botones.add(jrDesabilitado);
 
     }
 

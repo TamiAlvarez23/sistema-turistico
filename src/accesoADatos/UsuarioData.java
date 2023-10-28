@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -71,28 +73,75 @@ public class UsuarioData {
         }
         return usuario;
     }
-    
-    
-    public void editarUsuario(Usuario usuario){
-        String sql = "UPDATE usuario SET nombreUsuario = ? , nombre = ? , apellido = ? , claveUsuario = ? WHERE idUsuario = ?";
+    public Usuario buscarUsuarioPorId(int idEnviado) {
+        String sql = "SELECT * FROM usuario WHERE idUsuario = ?";
+        Usuario usuario = null;
         try {
-            PreparedStatement ps= con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, idEnviado);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                int id = rs.getInt("idUsuario");
+                String nombreUsuario = rs.getString("nombreUsuario");
+                String rango = rs.getString("rango");
+                String nombre = rs.getString("nombre");
+                String apellido = rs.getString("apellido");
+                String claveUsuario = rs.getString("claveUsuario");
+                boolean estadoUsuario = rs.getBoolean("estadoUsuario");
+                usuario = new Usuario(id, nombreUsuario, nombre, apellido, claveUsuario, estadoUsuario, rango);
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return usuario;
+    }
+
+    public void editarUsuario(Usuario usuario) {
+        String sql = "UPDATE usuario SET nombreUsuario = ? , nombre = ? , apellido = ? , claveUsuario = ?, estadoUsuario = ? WHERE idUsuario = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, usuario.getNombreUsuario());
             ps.setString(2, usuario.getNombre());
             ps.setString(3, usuario.getApellido());
             ps.setString(4, usuario.getClaveUsuario());
-            ps.setInt(5, usuario.getIdUsuario() );
-            
+            ps.setBoolean(5, usuario.isEstadoUsuario());
+            ps.setInt(6, usuario.getIdUsuario());
             int exito = ps.executeUpdate();
-         
+
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Perfil modificado");
             }
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioData.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+    }
+
+    public List<Usuario> traerTodosSegunEstado(int habilitacion) {
         
-    
+        String sql = "SELECT * FROM usuario WHERE estadoUsuario = ?";
+        List<Usuario> usuarios = new ArrayList<>();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, habilitacion);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                int id = rs.getInt("idUsuario");
+                String nombreUsuario = rs.getString("nombreUsuario");
+                String rango = rs.getString("rango");
+                String nombre = rs.getString("nombre");
+                String apellido = rs.getString("apellido");
+                String clave = rs.getString("claveUsuario");
+                boolean estado = rs.getBoolean("estadoUsuario");
+                usuarios.add(new Usuario(id, nombreUsuario,nombre,apellido,clave,estado,rango));
+            }
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Usuario" + ex);
+        }
+        return usuarios;
     }
 
 }
