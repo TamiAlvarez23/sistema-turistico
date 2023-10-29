@@ -69,9 +69,28 @@ public class CiudadData {
         return null;
     }
 
-    public List<Ciudad> obtenerTodasLasCiudades() {
+    public List<Ciudad> obtenerTodasLasCiudadesActivaas() {
         List<Ciudad> ciudades = new ArrayList<>();
         String sql = "SELECT * FROM Ciudad where estado = 1";
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ResultSet resultSet = ps.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("idCiudad");
+                String nombre = resultSet.getString("nombre");
+                String pais = resultSet.getString("pais");
+                boolean estado = resultSet.getBoolean("estado");
+                String provincia = resultSet.getString("provincia");
+                ciudades.add(new Ciudad(id, nombre, pais, estado, provincia));
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "error al acceder a la tabla ciudad");
+        }
+        return ciudades;
+    }
+    
+    public List<Ciudad> obtenerTodasLasCiudades() {
+        List<Ciudad> ciudades = new ArrayList<>();
+        String sql = "SELECT * FROM Ciudad ";
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ResultSet resultSet = ps.executeQuery();
             while (resultSet.next()) {
@@ -107,8 +126,12 @@ public class CiudadData {
         try (PreparedStatement ps = con.prepareStatement(deleteQuery)) {
             ps.setInt(1, idCiudad);
             ps.executeUpdate();
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "Se elimino la ciudad correctamente");
+            }
         } catch (SQLException e) {
-           JOptionPane.showMessageDialog(null, "no se puede acceder a la tabla ciudad");
+           JOptionPane.showMessageDialog(null, "No se puede acceder a la tabla ciudad");
         }
     }
    

@@ -81,6 +81,13 @@ public class Ciudad {
             return "Inabilitado";
         }
     }
+
+    @Override
+    public String toString() {
+        return pais +  provincia  + nombre ;
+    }
+    
+    
     
     
 }
