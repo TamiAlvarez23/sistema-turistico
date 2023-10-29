@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-10-2023 a las 16:39:53
+-- Tiempo de generación: 29-10-2023 a las 02:22:36
 -- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.0.28
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,7 +35,9 @@ CREATE TABLE `alojamiento` (
   `servicio` varchar(100) NOT NULL,
   `importeDiario` double NOT NULL,
   `cupoAlojamiento` int(11) NOT NULL,
-  `ciudadDestino` int(11) NOT NULL
+  `ciudadDestino` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `tipoAlojamiento` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -51,6 +53,17 @@ CREATE TABLE `ciudad` (
   `estado` tinyint(1) NOT NULL,
   `provincia` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `ciudad`
+--
+
+INSERT INTO `ciudad` (`idCiudad`, `nombre`, `pais`, `estado`, `provincia`) VALUES
+(5, 'Agustin Colongne', 'Argentina', 1, 'Cordoba'),
+(6, 'Villa Gecel', 'Argentina', 1, 'Buenos Aires'),
+(7, 'Mina Clavero', 'Argentina', 1, 'Cordoba'),
+(8, 'Cura Brochero', 'Argentina', 1, 'Cordoba'),
+(9, 'Alta gracia', 'Argentina', 1, 'Corodba');
 
 -- --------------------------------------------------------
 
@@ -78,7 +91,9 @@ CREATE TABLE `pasaje` (
   `importe` double NOT NULL,
   `nombreCiudadOrigen` int(11) NOT NULL,
   `cupoPasaje` int(11) NOT NULL,
-  `estado` tinyint(1) NOT NULL
+  `estado` tinyint(1) NOT NULL,
+  `fechaSalida` date NOT NULL,
+  `fechaRegreso` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -115,6 +130,15 @@ CREATE TABLE `usuario` (
   `claveUsuario` varchar(100) NOT NULL,
   `estadoUsuario` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`idUsuario`, `nombreUsuario`, `rango`, `nombre`, `apellido`, `claveUsuario`, `estadoUsuario`) VALUES
+(6, 'Agusco24', 'Admiistrador', 'Agustin', 'Colongne', 'agus123', 1),
+(7, 'fulgencio', 'Vendedor', '8', '9', 'fjhdgrdhdjhtf', 1),
+(8, 'a', 'Admiistrador', 'Agustin', 'Colongn', 'a', 1);
 
 --
 -- Índices para tablas volcadas
@@ -178,7 +202,7 @@ ALTER TABLE `alojamiento`
 -- AUTO_INCREMENT de la tabla `ciudad`
 --
 ALTER TABLE `ciudad`
-  MODIFY `idCiudad` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idCiudad` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `paquete`
@@ -202,7 +226,7 @@ ALTER TABLE `presupuesto`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idUsuario` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idUsuario` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas
