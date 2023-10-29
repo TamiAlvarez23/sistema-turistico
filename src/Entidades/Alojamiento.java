@@ -26,8 +26,9 @@ public class Alojamiento {
     private Ciudad ciudadDestino;
     
     private String nombre;
+    
     private String tipoAlojamiento;
-
+    
     public Alojamiento() {
     }
 
