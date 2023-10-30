@@ -44,6 +44,7 @@ public class Menu extends javax.swing.JFrame {
     private Usuario u = null;
     private DefaultTableModel modeloCiudad = new DefaultTableModel();
     private DefaultTableModel modeloEmpleado = new DefaultTableModel();
+    private DefaultTableModel modeloPasaje = new DefaultTableModel();
     private Ciudad ciudadRecuperada = new Ciudad();
 
     /**
@@ -51,20 +52,20 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         this.setContentPane(fondo);
-        
+
         initComponents();
-        
-        
+
         jlUsuario.setText(" ");
+        jlIdPasaje.setText(" ");
         this.setLocationRelativeTo(null);
         slide = new Slide();
         armarCabeceraTablaCiudad();
         armarCabeceraTablaEmpleados();
+        armarCabeceraTablaPasaje();
         agruparJRB();
         llenarComboConCiudades(comboCiudadHotel);
         llenarComboConCiudades(comboCiudadPasaje);
-        
-        
+
     }
 
     /**
@@ -127,9 +128,9 @@ public class Menu extends javax.swing.JFrame {
         jlBuscarPasaje = new javax.swing.JLabel();
         jPanel32 = new javax.swing.JPanel();
         jlBotonEliminarPasaje = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
+        jlIdPasaje = new javax.swing.JLabel();
         jLabel56 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jtCupoPasaje = new javax.swing.JTextField();
         panelHoteles = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jdFechaSalida = new com.toedter.calendar.JDateChooser();
@@ -281,6 +282,15 @@ public class Menu extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabel78 = new javax.swing.JLabel();
+        jPanelBuscarPasaje = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        jComboBuscarPasaje = new javax.swing.JComboBox<>();
+        jLabel57 = new javax.swing.JLabel();
+        jtPalabraClave = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTablaPasaje = new javax.swing.JTable();
+        jPanel34 = new javax.swing.JPanel();
+        salirBuscarPasaje = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1500, 750));
@@ -763,6 +773,11 @@ public class Menu extends javax.swing.JFrame {
         jlCancelarPasaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/boton-eliminar.png"))); // NOI18N
         jlCancelarPasaje.setText("Cancelar");
         jlCancelarPasaje.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlCancelarPasaje.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlCancelarPasajeMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -783,6 +798,11 @@ public class Menu extends javax.swing.JFrame {
         jlSalirPasaje.setForeground(new java.awt.Color(255, 255, 255));
         jlSalirPasaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Login_37128.png"))); // NOI18N
         jlSalirPasaje.setText("Salir");
+        jlSalirPasaje.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlSalirPasajeMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -802,6 +822,11 @@ public class Menu extends javax.swing.JFrame {
         jlBuscarPasaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlBuscarPasaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/buscar (1).png"))); // NOI18N
         jlBuscarPasaje.setText("Buscar");
+        jlBuscarPasaje.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlBuscarPasajeMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -821,6 +846,11 @@ public class Menu extends javax.swing.JFrame {
         jlBotonEliminarPasaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlBotonEliminarPasaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/borrar.png"))); // NOI18N
         jlBotonEliminarPasaje.setText("Eliminar");
+        jlBotonEliminarPasaje.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlBotonEliminarPasajeMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
         jPanel32.setLayout(jPanel32Layout);
@@ -833,8 +863,8 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(jlBotonEliminarPasaje, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        jLabel24.setForeground(new Color(0,0,0,0));
-        jLabel24.setText(" ");
+        jlIdPasaje.setForeground(new Color(0,0,0,0));
+        jlIdPasaje.setText(" ");
 
         jLabel56.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
         jLabel56.setForeground(new java.awt.Color(0, 0, 0));
@@ -880,11 +910,11 @@ public class Menu extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jcomboTipoTransporte, 0, 206, Short.MAX_VALUE)
-                                            .addComponent(jTextField2))))))
+                                            .addComponent(jtCupoPasaje))))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addGap(173, 173, 173)
-                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlIdPasaje, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel58)
                         .addGap(272, 272, 272)))
@@ -909,7 +939,7 @@ public class Menu extends javax.swing.JFrame {
                                 .addComponent(jLabel58))
                             .addGroup(jPanel13Layout.createSequentialGroup()
                                 .addGap(102, 102, 102)
-                                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jlIdPasaje, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(66, 66, 66)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel54)
@@ -919,15 +949,15 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(51, 51, 51)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel13Layout.createSequentialGroup()
-                                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel71)
-                                    .addComponent(jrEstadoPasaje))
+                                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jrEstadoPasaje)
+                                    .addComponent(jLabel71))
                                 .addGap(47, 47, 47)
                                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jtImportePasaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel56)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jtCupoPasaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -952,7 +982,7 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        getContentPane().add(PanelViajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 1430, 750));
+        getContentPane().add(PanelViajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1430, 750));
 
         panelHoteles.setBackground(new java.awt.Color(153, 153, 153,0));
         panelHoteles.setMaximumSize(new java.awt.Dimension(1430, 750));
@@ -2532,6 +2562,103 @@ public class Menu extends javax.swing.JFrame {
 
         getContentPane().add(jPanelVerEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 110, 810, 480));
 
+        jLabel24.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setText("Buscar por:");
+
+        jComboBuscarPasaje.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jComboBuscarPasaje.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre Ciudad Origen", "Tipo Transporte", " ", " ", " " }));
+
+        jLabel57.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jLabel57.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel57.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel57.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/lupa.png"))); // NOI18N
+
+        jTablaPasaje.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jTablaPasaje.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTablaPasaje.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTablaPasajeMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(jTablaPasaje);
+
+        jPanel34.setBackground(new java.awt.Color(60, 147, 214));
+
+        salirBuscarPasaje.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        salirBuscarPasaje.setForeground(new java.awt.Color(255, 255, 255));
+        salirBuscarPasaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        salirBuscarPasaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Login_37128.png"))); // NOI18N
+        salirBuscarPasaje.setText("Salir");
+        salirBuscarPasaje.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                salirBuscarPasajeMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel34Layout = new javax.swing.GroupLayout(jPanel34);
+        jPanel34.setLayout(jPanel34Layout);
+        jPanel34Layout.setHorizontalGroup(
+            jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(salirBuscarPasaje, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+        );
+        jPanel34Layout.setVerticalGroup(
+            jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(salirBuscarPasaje, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanelBuscarPasajeLayout = new javax.swing.GroupLayout(jPanelBuscarPasaje);
+        jPanelBuscarPasaje.setLayout(jPanelBuscarPasajeLayout);
+        jPanelBuscarPasajeLayout.setHorizontalGroup(
+            jPanelBuscarPasajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBuscarPasajeLayout.createSequentialGroup()
+                .addGroup(jPanelBuscarPasajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelBuscarPasajeLayout.createSequentialGroup()
+                        .addGap(154, 154, 154)
+                        .addGroup(jPanelBuscarPasajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel57)
+                            .addComponent(jLabel24))
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanelBuscarPasajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBuscarPasaje, 0, 198, Short.MAX_VALUE)
+                            .addComponent(jtPalabraClave)))
+                    .addGroup(jPanelBuscarPasajeLayout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(45, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBuscarPasajeLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(312, 312, 312))
+        );
+        jPanelBuscarPasajeLayout.setVerticalGroup(
+            jPanelBuscarPasajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBuscarPasajeLayout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addGroup(jPanelBuscarPasajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(jComboBuscarPasaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(jPanelBuscarPasajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel57)
+                    .addComponent(jtPalabraClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77)
+                .addComponent(jPanel34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(159, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanelBuscarPasaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 70, 750, 600));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -2644,6 +2771,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void PanelBotonHotelesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelBotonHotelesMouseClicked
         // TODO add your handling code here:
+        llenarComboConCiudades(comboCiudadHotel);
         PanelBotonHoteles.setBackground(new Color(246, 135, 18));
         sacarPaneles();
         traerPanel(panelHoteles);
@@ -2801,15 +2929,12 @@ public class Menu extends javax.swing.JFrame {
             ciudadData.actualizarCiudad(ciudad);
             formularioCiudad();
         }
-
-        llenarComboConCiudades(comboCiudadHotel);
-        
     }//GEN-LAST:event_jlGuardarCiudadMouseClicked
 
     private void jlCancelarCudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCancelarCudadMouseClicked
         // TODO add your handling code here:
         formularioCiudad();
-        
+
     }//GEN-LAST:event_jlCancelarCudadMouseClicked
 
     private void jlSalirCiudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlSalirCiudadMouseClicked
@@ -2991,32 +3116,173 @@ public class Menu extends javax.swing.JFrame {
     private void jlBotonEliminarCiudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBotonEliminarCiudadMouseClicked
         // TODO add your handling code here:
         CiudadData ciudadData = new CiudadData();
-        int confirmacionCiudad = JOptionPane.showConfirmDialog(null, "Se eliminara la ciudad DEFINITIVAMENTE ¿Esta seguro de esta accion?");
-        
-        if(confirmacionCiudad == 0){
+        int confirmacionCiudad = JOptionPane.showConfirmDialog(this.jPanelCiudad, "Se eliminara la ciudad DEFINITIVAMENTE ¿Esta seguro de esta accion?");
+
+        if (confirmacionCiudad == 0) {
             ciudadData.eliminarCiudad(Integer.parseInt(jlIdCiudad.getText()));
+
             llenarComboConCiudades(comboCiudadHotel);
+
             formularioCiudad();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "No se elimino la ciudad");
         }
-        
+
     }//GEN-LAST:event_jlBotonEliminarCiudadMouseClicked
 
     private void jlBotonGuardarPasajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBotonGuardarPasajeMouseClicked
         // TODO add your handling code here:
+
         PasajeData pasajeData = new PasajeData();
-        
+        int id;
+        int cupo = Integer.parseInt(jtCupoPasaje.getText());
         Ciudad ciudad = (Ciudad) comboCiudadPasaje.getSelectedItem();
         String tipoTransporte = (String) jcomboTipoTransporte.getSelectedItem();
         boolean estado = jrEstadoPasaje.isSelected();
         double importe = Double.parseDouble(jtImportePasaje.getText());
-        Pasaje pasaje = new Pasaje(tipoTransporte, importe, ciudad, estado);
-        pasajeData.agregarPasaje(pasaje);
-        
-        
-        
+
+        Pasaje pasaje;
+
+        switch (tipoTransporte) {
+            case "Avión": {
+                if (cupo > 0 || cupo <= 380) {
+                    if (jlIdPasaje.getText().equals(" ")) {
+                        JOptionPane.showMessageDialog(null, "v");
+                        pasaje = new Pasaje(tipoTransporte, importe, ciudad, estado, cupo);
+                        pasajeData.agregarPasaje(pasaje);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "f");
+                        id = Integer.parseInt(jlIdPasaje.getText());
+                        pasaje = new Pasaje(id, tipoTransporte, importe, ciudad, estado, cupo);
+                        pasajeData.actualizarPasaje(pasaje);
+                    }
+
+                    formularioPasaje();
+                } else {
+                    JOptionPane.showMessageDialog(this, "El cupo maximo del Avion es de: 380");
+                    jtCupoPasaje.setText("");
+                }
+                break;
+            }
+            case "Colectivo": {
+                if (cupo > 0 || cupo <= 60) {
+                    if (jlIdPasaje.getText().equals(" ")) {
+                        pasaje = new Pasaje(tipoTransporte, importe, ciudad, estado, cupo);
+                        pasajeData.agregarPasaje(pasaje);
+                    } else {
+                        id = Integer.parseInt(jlIdPasaje.getText());
+                        pasaje = new Pasaje(id, tipoTransporte, importe, ciudad, estado, cupo);
+                        pasajeData.actualizarPasaje(pasaje);
+                    }
+                    formularioPasaje();
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "El cupo maximo del Colectivo es de: 60");
+                    jtCupoPasaje.setText("");
+
+                }
+                break;
+            }
+
+            case "Tren": {
+                if (cupo > 0 || cupo <= 1600) {
+                    if (jlIdPasaje.getText().equals(" ")) {
+                        pasaje = new Pasaje(tipoTransporte, importe, ciudad, estado, cupo);
+                        pasajeData.agregarPasaje(pasaje);
+                    } else {
+                        id = Integer.parseInt(jlIdPasaje.getText());
+                        pasaje = new Pasaje(id, tipoTransporte, importe, ciudad, estado, cupo);
+                        pasajeData.actualizarPasaje(pasaje);
+                    }
+                    formularioPasaje();
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "El cupo maximo del Tren es de: 1600");
+                    jtCupoPasaje.setText("");
+
+                }
+
+            }
+
+        }
+
+
     }//GEN-LAST:event_jlBotonGuardarPasajeMouseClicked
+
+    private void jlBotonEliminarPasajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBotonEliminarPasajeMouseClicked
+        // TODO add your handling code here:
+        PasajeData pasajeData = new PasajeData();
+        int confirmacion = JOptionPane.showConfirmDialog(this, "Se eliminara definitivamente el pasaje ¿Esta seguro de esta accion?");
+        if (confirmacion == 0) {
+            pasajeData.eliminarPasaje(Integer.parseInt(jlIdPasaje.getText()));
+            formularioPasaje();
+        }
+    }//GEN-LAST:event_jlBotonEliminarPasajeMouseClicked
+
+    private void jlCancelarPasajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCancelarPasajeMouseClicked
+        // TODO add your handling code here:
+        formularioPasaje();
+    }//GEN-LAST:event_jlCancelarPasajeMouseClicked
+
+    private void jTablaPasajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablaPasajeMouseClicked
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        slide.jPanelXDerecha(jPanelBuscarPasaje.getX(), 1500, 10, 10, jPanelBuscarPasaje);
+        slide.jPanelXIzquierda(PanelViajes.getX(), 70, 10, 10, PanelViajes);
+
+        int filaPasaje = jTablaPasaje.getSelectedRow();
+        jlIdPasaje.setText((String) jTablaPasaje.getValueAt(filaPasaje, 0).toString());
+        comboCiudadPasaje.setSelectedItem(jTablaPasaje.getValueAt(filaPasaje, 1));
+
+        jcomboTipoTransporte.setSelectedItem(jTablaPasaje.getValueAt(filaPasaje, 2));
+        jtCupoPasaje.setText( jTablaPasaje.getValueAt(filaPasaje, 3).toString());
+        jtImportePasaje.setText( jTablaPasaje.getValueAt(filaPasaje, 4).toString());
+
+        if ("Habilitado".equalsIgnoreCase(jTablaPasaje.getValueAt(filaPasaje, 5).toString())) {
+            jrEstadoCiudad.setSelected(true);
+        } else {
+            jrEstadoCiudad.setSelected(false);
+        }
+
+    }//GEN-LAST:event_jTablaPasajeMouseClicked
+
+    private void jlBuscarPasajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBuscarPasajeMouseClicked
+        // TODO add your handling code here:
+
+        slide.jPanelXIzquierda(jPanelBuscarPasaje.getX(), 350, 10, 10, jPanelBuscarPasaje);
+        slide.jPanelXIzquierda(PanelViajes.getX(), 1500, 10, 10, PanelViajes);
+        borrarfilas(jTablaPasaje);
+        PasajeData pasajeData = new PasajeData();
+        List<Pasaje> pasajes = new ArrayList<>();
+        pasajes = pasajeData.obtenerTodosLosPasajes();
+        for (Pasaje pasaje : pasajes) {
+            modeloPasaje.addRow(new Object[]{
+                pasaje.getIdPasaje(),
+                pasaje.getNombreCiudadOrigen().getNombre(),
+                pasaje.getTipoTransporte(),
+                pasaje.getCupo(),
+                pasaje.getImporte(),
+                pasaje.getHabilitacion()
+
+            });
+
+        }
+    }//GEN-LAST:event_jlBuscarPasajeMouseClicked
+
+    private void jlSalirPasajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlSalirPasajeMouseClicked
+        // TODO add your handling code here:
+        salida(PanelViajes);
+        slide.jPanelXDerecha(PanelViajes.getX(), 1500, 10, 10, PanelViajes);
+
+    }//GEN-LAST:event_jlSalirPasajeMouseClicked
+
+    private void salirBuscarPasajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirBuscarPasajeMouseClicked
+        // TODO add your handling code here:
+
+        slide.jPanelXDerecha(jPanelBuscarPasaje.getX(), 1500, 10, 10, jPanelBuscarPasaje);
+        slide.jPanelXIzquierda(PanelViajes.getX(), 70, 10, 10, PanelViajes);
+
+    }//GEN-LAST:event_salirBuscarPasajeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -3067,6 +3333,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox7;
     private javax.swing.JComboBox<String> jComboBox8;
     private javax.swing.JComboBox<String> jComboBox9;
+    private javax.swing.JComboBox<String> jComboBuscarPasaje;
     private com.toedter.calendar.JDateChooser jDateChooser5;
     private com.toedter.calendar.JDateChooser jDateChooser6;
     private javax.swing.JLabel jLabel1;
@@ -3121,6 +3388,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
@@ -3171,6 +3439,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel31;
     private javax.swing.JPanel jPanel32;
+    private javax.swing.JPanel jPanel34;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -3178,6 +3447,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel jPanelBotonCiudad;
+    private javax.swing.JPanel jPanelBuscarPasaje;
     private javax.swing.JPanel jPanelCiudad;
     private javax.swing.JPanel jPanelVerEmpleados;
     private javax.swing.JPanel jPanelVerMisVentas;
@@ -3192,16 +3462,17 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTable jTablaCiudades;
+    private javax.swing.JTable jTablaPasaje;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JCheckBox jcContrasenia;
@@ -3224,6 +3495,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlGuardarUsuario;
     private javax.swing.JLabel jlHabilitar;
     private javax.swing.JLabel jlIdCiudad;
+    private javax.swing.JLabel jlIdPasaje;
     private javax.swing.JLabel jlMisVentas;
     private javax.swing.JLabel jlSacarPanelVerMisVentas;
     private javax.swing.JLabel jlSalirBuscarCiudad;
@@ -3242,12 +3514,14 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPasswordField jtContraseniaInvisible;
     private javax.swing.JTextField jtContraseniaVisible;
     private javax.swing.JTextField jtCupoHotel;
+    private javax.swing.JTextField jtCupoPasaje;
     private javax.swing.JTable jtEmpleados;
     private javax.swing.JTextField jtImporteDiario;
     private javax.swing.JTextField jtImportePasaje;
     private javax.swing.JTextField jtNombre;
     private javax.swing.JTextField jtNombreUsuario;
     private javax.swing.JTextField jtPais;
+    private javax.swing.JTextField jtPalabraClave;
     private javax.swing.JTextField jtProvincia;
     private javax.swing.JTextArea jtServicios;
     private javax.swing.JPanel panelBarraTareas;
@@ -3259,6 +3533,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel panelHoteles;
     private javax.swing.JPanel panelNombreUsuario;
     private javax.swing.JPanel panelPaquetes;
+    private javax.swing.JLabel salirBuscarPasaje;
     // End of variables declaration//GEN-END:variables
   class FondoPanel extends JPanel {
 
@@ -3356,8 +3631,6 @@ public class Menu extends javax.swing.JFrame {
 
     }
 
-    
-
     public void recuperarUsuario(Usuario usuarioRecuperado) {
         u = usuarioRecuperado;
         jlUsuario.setText(u.getNombre() + " " + u.getApellido());
@@ -3384,7 +3657,7 @@ public class Menu extends javax.swing.JFrame {
         jtContraseniaVisible.setText(u.getClaveUsuario());
         jlUsuario.setText(u.getNombre() + " " + u.getApellido());
     }
-    
+
     public void llenarComboConCiudades(JComboBox combo) {
         CiudadData ciudadData = new CiudadData();
         ArrayList<Ciudad> ciudades = new ArrayList<>();
@@ -3427,6 +3700,17 @@ public class Menu extends javax.swing.JFrame {
         modeloEmpleado.addColumn("Rango");
         modeloEmpleado.addColumn("Estado");
         jtEmpleados.setModel(modeloEmpleado);
+    }
+
+    private void armarCabeceraTablaPasaje() {
+//tipoTransporte, importe, ciudad, estado,cupo)
+        modeloPasaje.addColumn("Id");
+        modeloPasaje.addColumn("Nombre ciudad");
+        modeloPasaje.addColumn("Tipo Transporte");
+        modeloPasaje.addColumn("Cupo");
+        modeloPasaje.addColumn("Importe");
+        modeloPasaje.addColumn("Estado");
+        jTablaPasaje.setModel(modeloPasaje);
     }
 
     public void borrarfilas(JTable tabla) {
@@ -3474,15 +3758,24 @@ public class Menu extends javax.swing.JFrame {
         botones.add(jrDesabilitado);
 
     }
-    
-    private void formularioCiudad(){
+
+    private void formularioCiudad() {
         jlIdCiudad.setText(" ");
         jtPais.setText(" ");
         jtProvincia.setText(" ");
         jtCiudad.setText(" ");
         jrEstadoCiudad.setSelected(false);
-    
+
     }
-    
-   
+
+    private void formularioPasaje() {
+        jlIdPasaje.setText(" ");
+        comboCiudadPasaje.setSelectedItem(0);
+        jcomboTipoTransporte.setSelectedItem(0);
+        jrEstadoPasaje.setSelected(false);
+        jtImportePasaje.setText(" ");
+        jtCupoPasaje.setText(" ");
+
+    }
+
 }

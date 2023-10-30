@@ -17,22 +17,28 @@ public class Pasaje {
     public Ciudad nombreCiudadOrigen;
 
     private boolean estado;
+    
+    private int cupo;
+    
+    private String habilitacion;
 
-    public Pasaje(String TipoTransporte, double Importe, Ciudad nombreCiudadOrigen, boolean estado) {
+    public Pasaje(String TipoTransporte, double Importe, Ciudad nombreCiudadOrigen, boolean estado, int cupo) {
         this.TipoTransporte = TipoTransporte;
         this.Importe = Importe;
         this.nombreCiudadOrigen = nombreCiudadOrigen;
         this.estado = estado;
+        this.cupo = cupo;
     }
 
  
 
-    public Pasaje(int idPasaje, String TipoTransporte, double Importe, Ciudad nombreCiudadOrigen, boolean estado) {
+    public Pasaje(int idPasaje, String TipoTransporte, double Importe, Ciudad nombreCiudadOrigen, boolean estado, int cupo) {
         this.idPasaje = idPasaje;
         this.TipoTransporte = TipoTransporte;
         this.Importe = Importe;
         this.nombreCiudadOrigen = nombreCiudadOrigen;
         this.estado = estado;
+        this.cupo = cupo;
     }
 
     public Pasaje() {
@@ -74,4 +80,22 @@ public class Pasaje {
         this.estado = estado;
     }
 
+    public int getCupo() {
+        return cupo;
+    }
+
+    public void setCupo(int cupo) {
+        this.cupo = cupo;
+    }
+
+    public String getHabilitacion() {
+        if(estado){
+            return "Habilitado";
+        
+        }else{
+            return "Deshabilitado";
+        
+        }
+        
+    }
 }
