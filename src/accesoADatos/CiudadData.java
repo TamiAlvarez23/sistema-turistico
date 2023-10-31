@@ -68,6 +68,28 @@ public class CiudadData {
         }
         return null;
     }
+    
+    public Ciudad obtenerCiudadPorNombre(String nombre1) {
+        String sql = "SELECT * FROM Ciudad WHERE nombre = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nombre1);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                int id = rs.getInt("idCiudad");
+                String nombre = rs.getString("nombre");
+                String pais = rs.getString("pais");
+                boolean estado = rs.getBoolean("estado");
+                String provincia = rs.getString("provincia");
+                return new Ciudad(id, nombre, pais, estado, provincia);
+            }else{
+            JOptionPane.showMessageDialog(null, "no existe la ciudad");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "error al acceder a la tabla ciudad");
+        }
+        return null;
+    }
 
     public List<Ciudad> obtenerTodasLasCiudadesActivaas() {
         List<Ciudad> ciudades = new ArrayList<>();
