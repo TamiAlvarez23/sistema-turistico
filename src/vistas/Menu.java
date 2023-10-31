@@ -288,9 +288,9 @@ public class Menu extends javax.swing.JFrame {
         jLabel78 = new javax.swing.JLabel();
         jPanelBuscarPasaje = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
-        jComboBuscarPasaje = new javax.swing.JComboBox<>();
+        jTipoBusquedaPasaje = new javax.swing.JComboBox<>();
         jLabel57 = new javax.swing.JLabel();
-        jtPalabraClave = new javax.swing.JTextField();
+        jBusquedaPasaje = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTablaPasaje = new javax.swing.JTable();
         jPanel34 = new javax.swing.JPanel();
@@ -1014,7 +1014,7 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(jPanel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        getContentPane().add(PanelViajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1430, 750));
+        getContentPane().add(PanelViajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 1430, 750));
 
         panelHoteles.setBackground(new java.awt.Color(153, 153, 153,0));
         panelHoteles.setMaximumSize(new java.awt.Dimension(1430, 750));
@@ -1065,6 +1065,11 @@ public class Menu extends javax.swing.JFrame {
         jLabel65.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/buscar (1).png"))); // NOI18N
         jLabel65.setText("Buscar");
         jLabel65.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel65.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel65MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPBuscarAlojamientoLayout = new javax.swing.GroupLayout(jPBuscarAlojamiento);
         jPBuscarAlojamiento.setLayout(jPBuscarAlojamientoLayout);
@@ -1176,6 +1181,11 @@ public class Menu extends javax.swing.JFrame {
         jLabel84.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel84.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/editar (1).png"))); // NOI18N
         jLabel84.setText("Cargar Fecha");
+        jLabel84.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel84MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel35Layout = new javax.swing.GroupLayout(jPanel35);
         jPanel35.setLayout(jPanel35Layout);
@@ -1662,7 +1672,7 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        getContentPane().add(panelPaquetes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 1430, 750));
+        getContentPane().add(panelPaquetes, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1430, 750));
 
         jPanelVerMisVentas.setBackground(new Color(0,0,0,0));
         jPanelVerMisVentas.setMaximumSize(new java.awt.Dimension(750, 530));
@@ -2638,13 +2648,19 @@ public class Menu extends javax.swing.JFrame {
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel24.setText("Buscar por:");
 
-        jComboBuscarPasaje.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
-        jComboBuscarPasaje.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre Ciudad Origen", "Tipo Transporte", " ", " ", " " }));
+        jTipoBusquedaPasaje.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jTipoBusquedaPasaje.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre ciudad origen", "Tipo transporte", " ", " ", " ", " " }));
 
         jLabel57.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
         jLabel57.setForeground(new java.awt.Color(0, 0, 0));
         jLabel57.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel57.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/lupa.png"))); // NOI18N
+
+        jBusquedaPasaje.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jBusquedaPasajeKeyReleased(evt);
+            }
+        });
 
         jTablaPasaje.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
         jTablaPasaje.setModel(new javax.swing.table.DefaultTableModel(
@@ -2699,8 +2715,8 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(jLabel24))
                         .addGap(40, 40, 40)
                         .addGroup(jPanelBuscarPasajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBuscarPasaje, 0, 198, Short.MAX_VALUE)
-                            .addComponent(jtPalabraClave)))
+                            .addComponent(jTipoBusquedaPasaje, 0, 198, Short.MAX_VALUE)
+                            .addComponent(jBusquedaPasaje)))
                     .addGroup(jPanelBuscarPasajeLayout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -2716,11 +2732,11 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(72, 72, 72)
                 .addGroup(jPanelBuscarPasajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
-                    .addComponent(jComboBuscarPasaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTipoBusquedaPasaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(jPanelBuscarPasajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel57)
-                    .addComponent(jtPalabraClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jBusquedaPasaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(77, 77, 77)
@@ -3303,7 +3319,6 @@ public class Menu extends javax.swing.JFrame {
         List<Ciudad> ciudades = new ArrayList<>();
         ciudades = ciudadData.obtenerTodasLasCiudades();
         String tipoSeleccionadoCiudad = (String) jcbTipoBusquedaCiudad.getSelectedItem();
-
         borrarfilas(jTablaCiudades);
         switch (tipoSeleccionadoCiudad) {
             case "Ciudad": {
@@ -3470,7 +3485,7 @@ public class Menu extends javax.swing.JFrame {
 
         switch (tipoTransporte) {
             case "Avión": {
-                if (cupo > 0 || cupo <= 380) {
+                if (cupo > 0 && cupo <= 380) {
                     if (jlIdPasaje.getText().equals(" ")) {
                         JOptionPane.showMessageDialog(null, "v");
                         pasaje = new Pasaje(tipoTransporte, importe, ciudad, estado, cupo);
@@ -3490,7 +3505,7 @@ public class Menu extends javax.swing.JFrame {
                 break;
             }
             case "Colectivo": {
-                if (cupo > 0 || cupo <= 60) {
+                if (cupo > 0 && cupo <= 60) {
                     if (jlIdPasaje.getText().equals(" ")) {
                         pasaje = new Pasaje(tipoTransporte, importe, ciudad, estado, cupo);
                         pasajeData.agregarPasaje(pasaje);
@@ -3510,7 +3525,7 @@ public class Menu extends javax.swing.JFrame {
             }
 
             case "Tren": {
-                if (cupo > 0 || cupo <= 1600) {
+                if (cupo > 0 && cupo <= 1600) {
                     if (jlIdPasaje.getText().equals(" ")) {
                         pasaje = new Pasaje(tipoTransporte, importe, ciudad, estado, cupo);
                         pasajeData.agregarPasaje(pasaje);
@@ -3557,6 +3572,7 @@ public class Menu extends javax.swing.JFrame {
 
         int filaPasaje = jTablaPasaje.getSelectedRow();
         jlIdPasaje.setText((String) jTablaPasaje.getValueAt(filaPasaje, 0).toString());
+
         comboCiudadPasaje.setSelectedItem(jTablaPasaje.getValueAt(filaPasaje, 1));
 
         jcomboTipoTransporte.setSelectedItem(jTablaPasaje.getValueAt(filaPasaje, 2));
@@ -3564,9 +3580,9 @@ public class Menu extends javax.swing.JFrame {
         jtImportePasaje.setText(jTablaPasaje.getValueAt(filaPasaje, 4).toString());
 
         if ("Habilitado".equalsIgnoreCase(jTablaPasaje.getValueAt(filaPasaje, 5).toString())) {
-            jrEstadoCiudad.setSelected(true);
+            jrEstadoPasaje.setSelected(true);
         } else {
-            jrEstadoCiudad.setSelected(false);
+            jrEstadoPasaje.setSelected(false);
         }
 
     }//GEN-LAST:event_jTablaPasajeMouseClicked
@@ -3575,15 +3591,15 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         slide.jPanelXIzquierda(jPanelBuscarPasaje.getX(), 350, 10, 10, jPanelBuscarPasaje);
-        slide.jPanelXIzquierda(PanelViajes.getX(), 1500, 10, 10, PanelViajes);
-        borrarfilas(jTablaPasaje);
+        slide.jPanelXDerecha(PanelViajes.getX(), 1500, 10, 10, PanelViajes);
+        borrarfilasPasaje(jTablaPasaje);
         PasajeData pasajeData = new PasajeData();
         List<Pasaje> pasajes = new ArrayList<>();
         pasajes = pasajeData.obtenerTodosLosPasajes();
         for (Pasaje pasaje : pasajes) {
             modeloPasaje.addRow(new Object[]{
                 pasaje.getIdPasaje(),
-                pasaje.getNombreCiudadOrigen().getNombre(),
+                pasaje.getNombreCiudadOrigen().getPais() + " " + pasaje.getNombreCiudadOrigen().getProvincia() + " " + pasaje.getNombreCiudadOrigen().getNombre(),
                 pasaje.getTipoTransporte(),
                 pasaje.getCupo(),
                 pasaje.getImporte(),
@@ -3690,6 +3706,78 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
+    private void jLabel84MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel84MouseClicked
+        // TODO add your handling code here:
+        slide.jPanelXDerecha(panelHoteles.getX(), 1500, 10, 10, panelHoteles);
+        if (panelBarraTareas.getX() == 0) {
+            slide.jPanelXIzquierda(panelCargarFecha.getX(), 350, 10, 10, panelCargarFecha);
+        } else {
+            slide.jPanelXIzquierda(panelCargarFecha.getX(), 600, 10, 10, panelCargarFecha);
+        }
+
+
+    }//GEN-LAST:event_jLabel84MouseClicked
+
+    private void jLabel65MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel65MouseClicked
+        // TODO add your handling code here:
+        slide.jPanelXDerecha(panelHoteles.getX(), 1500, 10, 10, panelHoteles);
+        if (panelBarraTareas.getX() == 0) {
+            slide.jPanelXIzquierda(panelBuscarHotel.getX(), 350, 10, 10, panelBuscarHotel);
+        } else {
+            slide.jPanelXIzquierda(panelBuscarHotel.getX(), 600, 10, 10, panelBuscarHotel);
+        }
+
+    }//GEN-LAST:event_jLabel65MouseClicked
+
+    private void jBusquedaPasajeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBusquedaPasajeKeyReleased
+
+        PasajeData pasajeData = new PasajeData();
+        List<Pasaje> pasajes = new ArrayList<>();
+        pasajes = pasajeData.obtenerTodosLosPasajes();
+        String tipoBusqueda = jTipoBusquedaPasaje.getSelectedItem().toString();
+        borrarfilasPasaje(jTablaPasaje);
+        switch (tipoBusqueda) {
+            case "Nombre ciudad origen": {
+                for (Pasaje pasaje : pasajes) {
+                    if (pasaje.getNombreCiudadOrigen().getNombre().toUpperCase().startsWith(jBusquedaPasaje.getText().toUpperCase())) {
+                        modeloPasaje.addRow(new Object[]{
+                            pasaje.getIdPasaje(),
+                            pasaje.getNombreCiudadOrigen().getPais() + " " + pasaje.getNombreCiudadOrigen().getProvincia() + " " + pasaje.getNombreCiudadOrigen().getNombre(),
+                            pasaje.getTipoTransporte(),
+                            pasaje.getCupo(),
+                            pasaje.getImporte(),
+                            pasaje.getHabilitacion()
+
+                        });
+                    }
+                }
+
+                break;
+            }
+
+            case "Tipo transporte": {
+                for (Pasaje pasaje : pasajes) {
+                    if (pasaje.getTipoTransporte().toUpperCase().startsWith(jBusquedaPasaje.getText().toUpperCase())) {
+                        modeloPasaje.addRow(new Object[]{
+                            pasaje.getIdPasaje(),
+                            pasaje.getNombreCiudadOrigen().getPais() + " " + pasaje.getNombreCiudadOrigen().getProvincia() + " " + pasaje.getNombreCiudadOrigen().getNombre(),
+                            pasaje.getTipoTransporte(),
+                            pasaje.getCupo(),
+                            pasaje.getImporte(),
+                            pasaje.getHabilitacion()
+
+                        });
+                    }
+
+                }
+                break;
+            }
+
+        }
+
+
+    }//GEN-LAST:event_jBusquedaPasajeKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -3735,6 +3823,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboCiudadPasaje;
     private javax.swing.JSpinner diaRegreso;
     private javax.swing.JSpinner diaSalida;
+    private javax.swing.JTextField jBusquedaPasaje;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox10;
     private javax.swing.JComboBox<String> jComboBox2;
@@ -3744,7 +3833,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox7;
     private javax.swing.JComboBox<String> jComboBox8;
     private javax.swing.JComboBox<String> jComboBox9;
-    private javax.swing.JComboBox<String> jComboBuscarPasaje;
     private com.toedter.calendar.JDateChooser jDateChooser5;
     private com.toedter.calendar.JDateChooser jDateChooser6;
     private javax.swing.JLabel jLabel1;
@@ -3905,6 +3993,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JComboBox<String> jTipoBusquedaPasaje;
     private javax.swing.JCheckBox jcContrasenia;
     private javax.swing.JComboBox<String> jcbTipoBusquedaCiudad;
     private javax.swing.JComboBox<String> jcomboTipoTransporte;
@@ -3953,7 +4042,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField jtNombre;
     private javax.swing.JTextField jtNombreUsuario;
     private javax.swing.JTextField jtPais;
-    private javax.swing.JTextField jtPalabraClave;
     private javax.swing.JTextField jtProvincia;
     private javax.swing.JTextArea jtServicios;
     private javax.swing.JSpinner mesRegreso;
@@ -4100,7 +4188,7 @@ public class Menu extends javax.swing.JFrame {
         ciudades = (ArrayList<Ciudad>) ciudadData.obtenerTodasLasCiudadesActivaas();
         combo.removeAllItems();
         for (Ciudad ciudad : ciudades) {
-            combo.addItem(ciudad);
+            combo.addItem(ciudad.getPais() + " " + ciudad.getProvincia() + " " + ciudad.getNombre());
         }
     }
 
@@ -4167,6 +4255,15 @@ public class Menu extends javax.swing.JFrame {
 
     }
 
+    public void borrarfilasPasaje(JTable tabla) {
+        int f = tabla.getRowCount() - 1;
+        for (; f >= 0; f--) {
+            modeloPasaje.removeRow(f);
+
+        }
+
+    }
+
     public void traerEmpleadosATabla() {
         List<Usuario> usuarios = new ArrayList<>();
         UsuarioData usuarioData = new UsuarioData();
@@ -4213,7 +4310,5 @@ public class Menu extends javax.swing.JFrame {
         jtCupoPasaje.setText(" ");
 
     }
-    
-    
 
 }

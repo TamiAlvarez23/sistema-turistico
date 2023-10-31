@@ -682,7 +682,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="1500" y="0" width="1430" height="750"/>
+          <AbsoluteConstraints x="70" y="0" width="1430" height="750"/>
         </Constraint>
       </Constraints>
 
@@ -1515,6 +1515,9 @@
                       <Color id="Cursor de Mano"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel65MouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1753,6 +1756,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Cargar Fecha"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel84MouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1768,7 +1774,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="70" y="0" width="1430" height="750"/>
+          <AbsoluteConstraints x="1500" y="0" width="1430" height="750"/>
         </Constraint>
       </Constraints>
 
@@ -4406,8 +4412,8 @@
                           </Group>
                           <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jComboBuscarPasaje" pref="198" max="32767" attributes="0"/>
-                              <Component id="jtPalabraClave" max="32767" attributes="0"/>
+                              <Component id="jTipoBusquedaPasaje" pref="198" max="32767" attributes="0"/>
+                              <Component id="jBusquedaPasaje" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -4430,12 +4436,12 @@
                   <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBuscarPasaje" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTipoBusquedaPasaje" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jLabel57" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtPalabraClave" min="-2" max="-2" attributes="0"/>
+                      <Component id="jBusquedaPasaje" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   <Component id="jScrollPane4" min="-2" pref="128" max="-2" attributes="0"/>
@@ -4459,18 +4465,19 @@
             <Property name="text" type="java.lang.String" value="Buscar por:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBuscarPasaje">
+        <Component class="javax.swing.JComboBox" name="jTipoBusquedaPasaje">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Microsoft Yi Baiti" size="18" style="1"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="5">
-                <StringItem index="0" value="Nombre Ciudad Origen"/>
-                <StringItem index="1" value="Tipo Transporte"/>
+              <StringArray count="6">
+                <StringItem index="0" value="Nombre ciudad origen"/>
+                <StringItem index="1" value="Tipo transporte"/>
                 <StringItem index="2" value=" "/>
                 <StringItem index="3" value=" "/>
                 <StringItem index="4" value=" "/>
+                <StringItem index="5" value=" "/>
               </StringArray>
             </Property>
           </Properties>
@@ -4492,7 +4499,10 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtPalabraClave">
+        <Component class="javax.swing.JTextField" name="jBusquedaPasaje">
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jBusquedaPasajeKeyReleased"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane4">
           <AuxValues>
