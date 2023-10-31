@@ -18,7 +18,9 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import javafx.util.converter.LocalDateTimeStringConverter;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
@@ -133,8 +135,6 @@ public class Menu extends javax.swing.JFrame {
         jtCupoPasaje = new javax.swing.JTextField();
         panelHoteles = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
-        jdFechaSalida = new com.toedter.calendar.JDateChooser();
-        jdFechaRegreso = new com.toedter.calendar.JDateChooser();
         jLabel49 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
         jLabel51 = new javax.swing.JLabel();
@@ -159,6 +159,10 @@ public class Menu extends javax.swing.JFrame {
         jLabel69 = new javax.swing.JLabel();
         jPanel26 = new javax.swing.JPanel();
         jLabel74 = new javax.swing.JLabel();
+        jtFechaSalidaHotel = new javax.swing.JTextField();
+        jtFechaRegresoHotel = new javax.swing.JTextField();
+        jPanel35 = new javax.swing.JPanel();
+        jLabel84 = new javax.swing.JLabel();
         panelPaquetes = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jDateChooser5 = new com.toedter.calendar.JDateChooser();
@@ -291,6 +295,34 @@ public class Menu extends javax.swing.JFrame {
         jTablaPasaje = new javax.swing.JTable();
         jPanel34 = new javax.swing.JPanel();
         salirBuscarPasaje = new javax.swing.JLabel();
+        panelCargarFecha = new javax.swing.JPanel();
+        jLabel59 = new javax.swing.JLabel();
+        jLabel63 = new javax.swing.JLabel();
+        anioSalida = new javax.swing.JSpinner();
+        mesSalida = new javax.swing.JSpinner();
+        diaSalida = new javax.swing.JSpinner();
+        jLabel64 = new javax.swing.JLabel();
+        jLabel70 = new javax.swing.JLabel();
+        jLabel80 = new javax.swing.JLabel();
+        jLabel81 = new javax.swing.JLabel();
+        diaRegreso = new javax.swing.JSpinner();
+        jLabel82 = new javax.swing.JLabel();
+        mesRegreso = new javax.swing.JSpinner();
+        jLabel83 = new javax.swing.JLabel();
+        anioRegreso = new javax.swing.JSpinner();
+        jPanel33 = new javax.swing.JPanel();
+        jlGuardarCargarFecha = new javax.swing.JLabel();
+        jPanel37 = new javax.swing.JPanel();
+        jlSalirCargarFecha = new javax.swing.JLabel();
+        panelBuscarHotel = new javax.swing.JPanel();
+        jLabel85 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel86 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        jPanel36 = new javax.swing.JPanel();
+        jLabel87 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1500, 750));
@@ -1137,96 +1169,130 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(jLabel74, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
+        jPanel35.setBackground(new java.awt.Color(60, 147, 214));
+
+        jLabel84.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jLabel84.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel84.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel84.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/editar (1).png"))); // NOI18N
+        jLabel84.setText("Cargar Fecha");
+
+        javax.swing.GroupLayout jPanel35Layout = new javax.swing.GroupLayout(jPanel35);
+        jPanel35.setLayout(jPanel35Layout);
+        jPanel35Layout.setHorizontalGroup(
+            jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel84, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+        );
+        jPanel35Layout.setVerticalGroup(
+            jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel84, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                .addContainerGap(169, Short.MAX_VALUE)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                        .addComponent(jLabel52)
+                        .addGap(178, 178, 178)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPBuscarAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(159, 159, 159))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel49)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel67)
-                            .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(jLabel49)
+                                .addGap(10, 10, 10))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jdFechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(comboCiudadHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(61, 61, 61)
-                                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel67, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel50, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)))
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(comboCiudadHotel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTextField1)
+                                    .addComponent(jtFechaSalidaHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(55, 55, 55)
+                                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel14)
                                     .addComponent(jLabel51))
-                                .addGap(10, 10, 10)
-                                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jdFechaRegreso, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtImporteDiario, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtCupoHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 146, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jtCupoHotel, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtFechaRegresoHotel, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtImporteDiario, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane3))
+                        .addGap(133, 133, 133))
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel52)
-                        .addGap(258, 258, 258)
-                        .addComponent(jPBuscarAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)))
-                .addGap(19, 19, 19))
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGap(143, 143, 143)
-                .addComponent(jPguardarAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72)
-                .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73)
-                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82)
-                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(2, 2, 2)
+                        .addComponent(jPguardarAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(72, 72, 72)
+                        .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(73, 73, 73)
+                        .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(82, 82, 82)
+                        .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGap(79, 79, 79)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPBuscarAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel52))
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel52)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jPBuscarAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                        .addComponent(jPanel35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabel50))
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel50)
+                            .addComponent(jtFechaSalidaHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel51)
-                            .addComponent(jdFechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jdFechaRegreso, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
+                        .addGap(96, 96, 96)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel67)
+                            .addComponent(jLabel67))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(comboCiudadHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel49)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel51)
+                            .addComponent(jtFechaRegresoHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jtCupoHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel14))
                         .addGap(30, 30, 30)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(comboCiudadHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel49)
                             .addComponent(jLabel13)
                             .addComponent(jtImporteDiario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(39, 39, 39)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(67, 67, 67)
+                .addGap(63, 63, 63)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPguardarAlojamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelHotelesLayout = new javax.swing.GroupLayout(panelHoteles);
@@ -1234,7 +1300,7 @@ public class Menu extends javax.swing.JFrame {
         panelHotelesLayout.setHorizontalGroup(
             panelHotelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHotelesLayout.createSequentialGroup()
-                .addContainerGap(171, Short.MAX_VALUE)
+                .addContainerGap(122, Short.MAX_VALUE)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(226, 226, 226))
         );
@@ -1243,7 +1309,7 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        getContentPane().add(panelHoteles, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 1430, 750));
+        getContentPane().add(panelHoteles, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1430, 750));
 
         panelPaquetes.setBackground(new Color(0,0,0,0));
 
@@ -1596,7 +1662,7 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        getContentPane().add(panelPaquetes, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1430, 750));
+        getContentPane().add(panelPaquetes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 1430, 750));
 
         jPanelVerMisVentas.setBackground(new Color(0,0,0,0));
         jPanelVerMisVentas.setMaximumSize(new java.awt.Dimension(750, 530));
@@ -1866,6 +1932,11 @@ public class Menu extends javax.swing.JFrame {
 
         jComboBox2.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
         jComboBox3.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -2659,6 +2730,260 @@ public class Menu extends javax.swing.JFrame {
 
         getContentPane().add(jPanelBuscarPasaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 70, 750, 600));
 
+        panelCargarFecha.setBackground(new Color(0,0,0,0));
+
+        jLabel59.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jLabel59.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel59.setText("Dia:");
+
+        jLabel63.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jLabel63.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel63.setText("Mes:");
+
+        anioSalida.setModel(new javax.swing.SpinnerNumberModel(2023, 2023, null, 1));
+
+        mesSalida.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
+
+        diaSalida.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
+
+        jLabel64.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 36)); // NOI18N
+        jLabel64.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel64.setText("Fecha Salida:");
+
+        jLabel70.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jLabel70.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel70.setText("Año:");
+
+        jLabel80.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 36)); // NOI18N
+        jLabel80.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel80.setText("Fecha Regreso:");
+
+        jLabel81.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jLabel81.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel81.setText("Dia:");
+
+        diaRegreso.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
+
+        jLabel82.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jLabel82.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel82.setText("Mes:");
+
+        mesRegreso.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
+
+        jLabel83.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jLabel83.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel83.setText("Año:");
+
+        anioRegreso.setModel(new javax.swing.SpinnerNumberModel(2023, 2023, null, 1));
+
+        jPanel33.setBackground(new java.awt.Color(60, 147, 214));
+
+        jlGuardarCargarFecha.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jlGuardarCargarFecha.setForeground(new java.awt.Color(255, 255, 255));
+        jlGuardarCargarFecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlGuardarCargarFecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/save_file_disk_open_searsh_loading_clipboard_1513.png"))); // NOI18N
+        jlGuardarCargarFecha.setText("Guardar");
+        jlGuardarCargarFecha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlGuardarCargarFechaMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel33Layout = new javax.swing.GroupLayout(jPanel33);
+        jPanel33.setLayout(jPanel33Layout);
+        jPanel33Layout.setHorizontalGroup(
+            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlGuardarCargarFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+        );
+        jPanel33Layout.setVerticalGroup(
+            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlGuardarCargarFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        jPanel37.setBackground(new java.awt.Color(60, 147, 214));
+
+        jlSalirCargarFecha.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jlSalirCargarFecha.setForeground(new java.awt.Color(255, 255, 255));
+        jlSalirCargarFecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlSalirCargarFecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Login_37128.png"))); // NOI18N
+        jlSalirCargarFecha.setText("Salir");
+        jlSalirCargarFecha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlSalirCargarFechaMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel37Layout = new javax.swing.GroupLayout(jPanel37);
+        jPanel37.setLayout(jPanel37Layout);
+        jPanel37Layout.setHorizontalGroup(
+            jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlSalirCargarFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+        );
+        jPanel37Layout.setVerticalGroup(
+            jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlSalirCargarFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout panelCargarFechaLayout = new javax.swing.GroupLayout(panelCargarFecha);
+        panelCargarFecha.setLayout(panelCargarFechaLayout);
+        panelCargarFechaLayout.setHorizontalGroup(
+            panelCargarFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCargarFechaLayout.createSequentialGroup()
+                .addGroup(panelCargarFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCargarFechaLayout.createSequentialGroup()
+                        .addGap(182, 182, 182)
+                        .addComponent(jPanel33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(104, 104, 104)
+                        .addComponent(jPanel37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCargarFechaLayout.createSequentialGroup()
+                        .addGap(156, 156, 156)
+                        .addGroup(panelCargarFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel80)
+                            .addComponent(jLabel64)
+                            .addGroup(panelCargarFechaLayout.createSequentialGroup()
+                                .addGroup(panelCargarFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelCargarFechaLayout.createSequentialGroup()
+                                        .addComponent(jLabel81)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(diaRegreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(38, 38, 38)
+                                        .addComponent(jLabel82)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(mesRegreso))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelCargarFechaLayout.createSequentialGroup()
+                                        .addComponent(jLabel59)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(diaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(38, 38, 38)
+                                        .addComponent(jLabel63)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(mesSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(32, 32, 32)
+                                .addGroup(panelCargarFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelCargarFechaLayout.createSequentialGroup()
+                                        .addComponent(jLabel70)
+                                        .addGap(31, 31, 31)
+                                        .addComponent(anioSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCargarFechaLayout.createSequentialGroup()
+                                        .addComponent(jLabel83)
+                                        .addGap(31, 31, 31)
+                                        .addComponent(anioRegreso, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(156, Short.MAX_VALUE))
+        );
+        panelCargarFechaLayout.setVerticalGroup(
+            panelCargarFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCargarFechaLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel64)
+                .addGap(39, 39, 39)
+                .addGroup(panelCargarFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel59)
+                    .addComponent(diaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel63)
+                    .addComponent(mesSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(anioSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel70))
+                .addGap(55, 55, 55)
+                .addComponent(jLabel80)
+                .addGap(29, 29, 29)
+                .addGroup(panelCargarFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel81)
+                    .addComponent(diaRegreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel82)
+                    .addComponent(mesRegreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(anioRegreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel83))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                .addGroup(panelCargarFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57))
+        );
+
+        getContentPane().add(panelCargarFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 120, 750, 500));
+
+        jLabel85.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jLabel85.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel85.setText("Buscar por:");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre ", "Ciiudad destino ", "Importe ", "Fecha salida ", "Fecha regreso " }));
+
+        jLabel86.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel86.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/lupa.png"))); // NOI18N
+
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane7.setViewportView(jTable3);
+
+        jPanel36.setBackground(new java.awt.Color(60, 147, 214));
+
+        jLabel87.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jLabel87.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel87.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel87.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Login_37128.png"))); // NOI18N
+        jLabel87.setText("Salir");
+
+        javax.swing.GroupLayout jPanel36Layout = new javax.swing.GroupLayout(jPanel36);
+        jPanel36.setLayout(jPanel36Layout);
+        jPanel36Layout.setHorizontalGroup(
+            jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel87, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+        );
+        jPanel36Layout.setVerticalGroup(
+            jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel87, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout panelBuscarHotelLayout = new javax.swing.GroupLayout(panelBuscarHotel);
+        panelBuscarHotel.setLayout(panelBuscarHotelLayout);
+        panelBuscarHotelLayout.setHorizontalGroup(
+            panelBuscarHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBuscarHotelLayout.createSequentialGroup()
+                .addGroup(panelBuscarHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBuscarHotelLayout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addGroup(panelBuscarHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel86)
+                            .addComponent(jLabel85))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelBuscarHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBox1, 0, 215, Short.MAX_VALUE)
+                            .addComponent(jTextField2)))
+                    .addGroup(panelBuscarHotelLayout.createSequentialGroup()
+                        .addGap(343, 343, 343)
+                        .addComponent(jPanel36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBuscarHotelLayout.createSequentialGroup()
+                .addGap(0, 63, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 646, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
+        );
+        panelBuscarHotelLayout.setVerticalGroup(
+            panelBuscarHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBuscarHotelLayout.createSequentialGroup()
+                .addGap(96, 96, 96)
+                .addGroup(panelBuscarHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel85)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addGroup(panelBuscarHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel86)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addComponent(jPanel36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
+        );
+
+        getContentPane().add(panelBuscarHotel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 70, 750, 510));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -3235,8 +3560,8 @@ public class Menu extends javax.swing.JFrame {
         comboCiudadPasaje.setSelectedItem(jTablaPasaje.getValueAt(filaPasaje, 1));
 
         jcomboTipoTransporte.setSelectedItem(jTablaPasaje.getValueAt(filaPasaje, 2));
-        jtCupoPasaje.setText( jTablaPasaje.getValueAt(filaPasaje, 3).toString());
-        jtImportePasaje.setText( jTablaPasaje.getValueAt(filaPasaje, 4).toString());
+        jtCupoPasaje.setText(jTablaPasaje.getValueAt(filaPasaje, 3).toString());
+        jtImportePasaje.setText(jTablaPasaje.getValueAt(filaPasaje, 4).toString());
 
         if ("Habilitado".equalsIgnoreCase(jTablaPasaje.getValueAt(filaPasaje, 5).toString())) {
             jrEstadoCiudad.setSelected(true);
@@ -3284,6 +3609,87 @@ public class Menu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_salirBuscarPasajeMouseClicked
 
+    private void jlSalirCargarFechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlSalirCargarFechaMouseClicked
+        // TODO add your handling code here:
+        slide.jPanelXDerecha(panelCargarFecha.getX(), 1500, 10, 10, panelCargarFecha);
+        if (panelBarraTareas.getX() == 0) {
+            slide.jPanelXIzquierda(panelHoteles.getX(), 300, 10, 10, panelHoteles);
+        } else {
+            slide.jPanelXIzquierda(panelHoteles.getX(), 70, 10, 10, panelHoteles);
+        }
+    }//GEN-LAST:event_jlSalirCargarFechaMouseClicked
+
+    private void jlGuardarCargarFechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlGuardarCargarFechaMouseClicked
+        // TODO add your handling code here:
+
+        String regresof = null;
+        String salidaf = null;
+        String salidaD;
+        String salidaM;
+        String regresoD;
+        String regresoM;
+//
+//        try {
+        int salidaDia = (int) diaSalida.getValue();
+        int salidaMes = (int) mesSalida.getValue();
+        int regresoDia = (int) diaRegreso.getValue();
+        int regresoMes = (int) mesRegreso.getValue();
+
+        if (salidaDia >= 10) {
+            salidaD = diaSalida.getValue().toString();
+        } else {
+            salidaD = "0" + diaSalida.getValue().toString();
+        }
+        if (salidaMes >= 10) {
+            salidaM = mesSalida.getValue().toString();
+        } else {
+            salidaM = "0" + mesSalida.getValue().toString();
+        }
+
+        if (regresoDia >= 10) {
+            regresoD = diaRegreso.getValue().toString();
+        } else {
+            regresoD = "0" + diaRegreso.getValue().toString();
+        }
+        if (regresoMes >= 10) {
+            regresoM = mesRegreso.getValue().toString();
+        } else {
+            regresoM = "0" + mesRegreso.getValue().toString();
+        }
+
+        salidaf = salidaD + "/" + salidaM + "/" + anioSalida.getValue().toString();
+        regresof = regresoD + "/" + regresoM + "/" + anioRegreso.getValue().toString();
+        DateTimeFormatter forma = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate salidaFecha = LocalDate.parse(salidaf, forma);
+        LocalDate regresoFecha = LocalDate.parse(regresof, forma);
+        if (salidaFecha.getDayOfYear() != (int) diaSalida.getValue()) {
+            JOptionPane.showMessageDialog(null, "La fecha ingresada excede los limites del mes elegido. Se modifico al valor maximo permitido");
+        }
+        if (regresoFecha.getDayOfYear() != (int) diaRegreso.getValue()) {
+            JOptionPane.showMessageDialog(null, "La fecha ingresada excede los limites del mes elegido. Se modifico al valor maximo permitido");
+        }
+        JOptionPane.showMessageDialog(null, salidaFecha);
+        JOptionPane.showMessageDialog(null, regresoFecha);
+
+        jtFechaSalidaHotel.setText(salidaFecha.toString());
+        jtFechaRegresoHotel.setText(regresoFecha.toString());
+        slide.jPanelXDerecha(panelCargarFecha.getX(), 1500, 10, 10, panelCargarFecha);
+        if (panelBarraTareas.getX() == 0) {
+            slide.jPanelXIzquierda(panelHoteles.getX(), 300, 10, 10, panelHoteles);
+        } else {
+            slide.jPanelXIzquierda(panelHoteles.getX(), 70, 10, 10, panelHoteles);
+        }
+
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null,"La fecha ngresada es incorrecta, intentelo de nuevo");
+//        }
+
+    }//GEN-LAST:event_jlGuardarCargarFechaMouseClicked
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3323,8 +3729,13 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel PanelBotonHoteles;
     private javax.swing.JPanel PanelMiCuenta;
     private javax.swing.JPanel PanelViajes;
+    private javax.swing.JSpinner anioRegreso;
+    private javax.swing.JSpinner anioSalida;
     private javax.swing.JComboBox<String> comboCiudadHotel;
     private javax.swing.JComboBox<String> comboCiudadPasaje;
+    private javax.swing.JSpinner diaRegreso;
+    private javax.swing.JSpinner diaSalida;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox10;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
@@ -3390,16 +3801,20 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel73;
@@ -3410,6 +3825,14 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel78;
     private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel80;
+    private javax.swing.JLabel jLabel81;
+    private javax.swing.JLabel jLabel82;
+    private javax.swing.JLabel jLabel83;
+    private javax.swing.JLabel jLabel84;
+    private javax.swing.JLabel jLabel85;
+    private javax.swing.JLabel jLabel86;
+    private javax.swing.JLabel jLabel87;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLcambiarSesion;
     private javax.swing.JPanel jPBuscarAlojamiento;
@@ -3439,7 +3862,11 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel31;
     private javax.swing.JPanel jPanel32;
+    private javax.swing.JPanel jPanel33;
     private javax.swing.JPanel jPanel34;
+    private javax.swing.JPanel jPanel35;
+    private javax.swing.JPanel jPanel36;
+    private javax.swing.JPanel jPanel37;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -3465,21 +3892,22 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTable jTablaCiudades;
     private javax.swing.JTable jTablaPasaje;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JCheckBox jcContrasenia;
     private javax.swing.JComboBox<String> jcbTipoBusquedaCiudad;
     private javax.swing.JComboBox<String> jcomboTipoTransporte;
-    private com.toedter.calendar.JDateChooser jdFechaRegreso;
-    private com.toedter.calendar.JDateChooser jdFechaSalida;
     private javax.swing.JLabel jlBotonEliminarCiudad;
     private javax.swing.JLabel jlBotonEliminarPasaje;
     private javax.swing.JLabel jlBotonEmpleados;
@@ -3491,6 +3919,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlCancelarUsuario;
     private javax.swing.JLabel jlDesabilitar;
     private javax.swing.JLabel jlEditarPerfil;
+    private javax.swing.JLabel jlGuardarCargarFecha;
     private javax.swing.JLabel jlGuardarCiudad;
     private javax.swing.JLabel jlGuardarUsuario;
     private javax.swing.JLabel jlHabilitar;
@@ -3499,6 +3928,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlMisVentas;
     private javax.swing.JLabel jlSacarPanelVerMisVentas;
     private javax.swing.JLabel jlSalirBuscarCiudad;
+    private javax.swing.JLabel jlSalirCargarFecha;
     private javax.swing.JLabel jlSalirCiudad;
     private javax.swing.JLabel jlSalirPasaje;
     private javax.swing.JLabel jlUsuario;
@@ -3516,6 +3946,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField jtCupoHotel;
     private javax.swing.JTextField jtCupoPasaje;
     private javax.swing.JTable jtEmpleados;
+    private javax.swing.JTextField jtFechaRegresoHotel;
+    private javax.swing.JTextField jtFechaSalidaHotel;
     private javax.swing.JTextField jtImporteDiario;
     private javax.swing.JTextField jtImportePasaje;
     private javax.swing.JTextField jtNombre;
@@ -3524,12 +3956,16 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField jtPalabraClave;
     private javax.swing.JTextField jtProvincia;
     private javax.swing.JTextArea jtServicios;
+    private javax.swing.JSpinner mesRegreso;
+    private javax.swing.JSpinner mesSalida;
     private javax.swing.JPanel panelBarraTareas;
     private javax.swing.JPanel panelBotonEditarPerfil;
     private javax.swing.JPanel panelBotonEmpleados;
     private javax.swing.JPanel panelBotonMiCuenta;
     private javax.swing.JPanel panelBotonPaquetes;
     private javax.swing.JPanel panelBotonViajes;
+    private javax.swing.JPanel panelBuscarHotel;
+    private javax.swing.JPanel panelCargarFecha;
     private javax.swing.JPanel panelHoteles;
     private javax.swing.JPanel panelNombreUsuario;
     private javax.swing.JPanel panelPaquetes;
@@ -3777,5 +4213,7 @@ public class Menu extends javax.swing.JFrame {
         jtCupoPasaje.setText(" ");
 
     }
+    
+    
 
 }

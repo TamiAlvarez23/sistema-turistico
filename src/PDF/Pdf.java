@@ -126,18 +126,10 @@ public class Pdf {
            tablaPasajeHotel.addCell("10/1/2024");
            tablaPasajeHotel.addCell("4");
            documento.add(tablaPasajeHotel);
-           // Fin datos Pasaje  y Hotel         
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+           // Fin datos Pasaje  y Hotel    
+           
+           //completar formas de pago, importe, cantidad de dias
+
             documento.close();
             archivo.close();
             
