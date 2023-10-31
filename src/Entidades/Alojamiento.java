@@ -29,10 +29,12 @@ public class Alojamiento {
     
     private String tipoAlojamiento;
     
+    private String habilitacion;
+    
     public Alojamiento() {
     }
 
-    public Alojamiento(LocalDate fechaIngreso, LocalDate fechaEgreso, boolean estado, String servicio, double importeDiario, Ciudad ciudadDestino, String nombre, String tipoAlojamiento) {
+    public Alojamiento(LocalDate fechaIngreso, LocalDate fechaEgreso, boolean estado, String servicio, double importeDiario, Ciudad ciudadDestino, String nombre, String tipoAlojamiento, int cupo) {
         this.fechaIngreso = fechaIngreso;
         this.fechaEgreso = fechaEgreso;
         this.estado = estado;
@@ -41,10 +43,11 @@ public class Alojamiento {
         this.ciudadDestino = ciudadDestino;
         this.nombre = nombre;
         this.tipoAlojamiento = tipoAlojamiento;
+        this.cupoAlojamiento = cupo;
     }
     
 
-    public Alojamiento(int idAlojamiento, LocalDate fechaIngreso, LocalDate fechaEgreso, boolean estado, String servicio, double importeDiario, Ciudad ciudadDestino, String nombre, String tipoAlojamiento) {
+    public Alojamiento(int idAlojamiento, LocalDate fechaIngreso, LocalDate fechaEgreso, boolean estado, String servicio, double importeDiario, Ciudad ciudadDestino, String nombre, String tipoAlojamiento, int cupo) {
         this.idAlojamiento = idAlojamiento;
         this.fechaIngreso = fechaIngreso;
         this.fechaEgreso = fechaEgreso;
@@ -54,6 +57,7 @@ public class Alojamiento {
         this.ciudadDestino = ciudadDestino;
         this.nombre = nombre;
         this.tipoAlojamiento = tipoAlojamiento;
+        this.cupoAlojamiento = cupo;
     }
 
     public String getNombre() {
@@ -136,6 +140,16 @@ public class Alojamiento {
 
     public void setTipoAlojamiento(String tipoAlojamiento) {
         this.tipoAlojamiento = tipoAlojamiento;
+    }
+
+    public String getHabilitacion() {
+        if(estado){
+            return "Habilitado";
+        
+        }else{
+            return "Deshabiltado";
+        
+        }
     }
     
     

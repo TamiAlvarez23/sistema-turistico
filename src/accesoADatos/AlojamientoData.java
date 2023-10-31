@@ -24,7 +24,7 @@ public class AlojamientoData {
     }
     
     public void agregarAlojamiento(Alojamiento alojamiento) {
-        String sql = "INSERT INTO Alojamiento (fechaIngreso, fechaEgreso, estado, servicio, importeDiario, ciudadDestino, nombre, tipoAlojamiento) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Alojamiento ((fechaIngreso, fechaEgreso, estado, servicio, importeDiario, cupoAlojamiento, ciudadDestino, nombre, tipoAlojamiento) VALUES (?, ?, ?, ?, ?, ?, ?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             
@@ -33,9 +33,10 @@ public class AlojamientoData {
             ps.setBoolean(3, alojamiento.isEstado());
             ps.setString(4, alojamiento.getServicio());
             ps.setDouble(5, alojamiento.getImporteDiario());
-            ps.setInt(6, alojamiento.getCiudadDestino().getIdCiudad());
-            ps.setString(7, alojamiento.getNombre());
-            ps.setString(8, alojamiento.getTipoAlojamiento());
+            ps.setInt(6, alojamiento.getCupoAlojamiento());
+            ps.setInt(7, alojamiento.getCiudadDestino().getIdCiudad());
+            ps.setString(8, alojamiento.getNombre());
+            ps.setString(9, alojamiento.getTipoAlojamiento());
             ps.executeUpdate();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alojamiento");
@@ -92,6 +93,7 @@ public class AlojamientoData {
         
         List<Alojamiento> alojamientos = new ArrayList<>();
         String sql = "SELECT * FROM Alojamiento";
+        CiudadData ciudadData = new CiudadData();
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -101,13 +103,12 @@ public class AlojamientoData {
                 alojamiento.setIdAlojamiento(rs.getInt("idAlojamiento"));
                 alojamiento.setFechaIngreso(rs.getDate("fechaIngreso").toLocalDate());
                 alojamiento.setFechaEgreso(rs.getDate("fechaEgreso").toLocalDate());
-                alojamiento.setEstado(true);
+                alojamiento.setEstado(rs.getBoolean("estado"));
                 alojamiento.setServicio(rs.getString("servicio"));
                 alojamiento.setImporteDiario(rs.getDouble("importeDiario"));
                 alojamiento.setNombre(rs.getString("nombre"));
                 alojamiento.setTipoAlojamiento(rs.getString("tipoAlojamiento"));
-                int idCiudadDestino = rs.getInt("ciudadDestino");
-                Ciudad ciudadDestino = (Ciudad) rs.getObject("ciudadDestino");
+                Ciudad ciudadDestino = ciudadData.obtenerCiudadPorId(rs.getInt("ciudadDestino"));
                 alojamiento.setCiudadDestino(ciudadDestino);
                 alojamientos.add(alojamiento);
             }
