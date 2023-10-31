@@ -44,7 +44,7 @@ public class Pdf {
             Image imagen = Image.getInstance("src/posiblesVistas/logo sin fondo ni letras.png");
             
             Paragraph fecha = new Paragraph();
-            Font negrita = new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD, BaseColor.BLUE);
+            Font negrita = new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD, BaseColor.BLUE);
             fecha.add(Chunk.NEWLINE);
             Date date = new Date();
             fecha.add("Fecha: "+ new SimpleDateFormat("dd/mm/yyyy").format(date)+"\n\n" );
@@ -57,12 +57,12 @@ public class Pdf {
             Encabesado.setHorizontalAlignment(Element.ALIGN_LEFT);
             
             Encabesado.addCell(imagen);
-            String nombre = "TAGUS";
-            String numero = "351 000 0000";
-            String eslogan = "Viaja, Conoce y disfruta";
+            String nombre = "TAGUS - Viajá, conocé y disfrutá";
+            String numero = "Contactanos al 351-000-0000";
+            String ra = "Agencia de viaje S.A";
             
             Encabesado.addCell("");
-            Encabesado.addCell("\n\nEmpresa: " + nombre  + "\n\nEslogan: " + eslogan + "\n\nNumero: " + numero);
+            Encabesado.addCell("\n\n " + nombre  + "\n\nRazón Social: " + ra + "\n\nNúmero: " + numero);
             Encabesado.addCell(fecha);
             documento.add(Encabesado);
             
@@ -70,21 +70,37 @@ public class Pdf {
             //datos Cliente
             Paragraph datosCliente = new Paragraph();
             datosCliente.add(Chunk.NEWLINE);
-            datosCliente.add("Datos del Cliente "+"\n\n");
+            datosCliente.add("Datos de nuestro cliente "+"\n\n");
             documento.add(datosCliente);
             
             PdfPTable tablaCliente = new PdfPTable(6);
             tablaCliente.setWidthPercentage(100);
             tablaCliente.getDefaultCell().setBorder(0);
-            float[] columnaCliente = new float[]{25f, 50f,30f,40f, 40f,20f};
+            float[] columnaCliente = new float[]{30f, 45f,35f,70f, 40f,30f};
             tablaCliente.setWidths(columnaCliente);
             tablaCliente.setHorizontalAlignment(Element.ALIGN_LEFT);
-            PdfPCell cliente1 = new PdfPCell(new Phrase("Dni"));
-            PdfPCell cliente2 = new PdfPCell(new Phrase("Nombre Completo"));
-            PdfPCell cliente3 = new PdfPCell(new Phrase("Telefono"));
-            PdfPCell cliente4 = new PdfPCell(new Phrase("Gmail"));
-            PdfPCell cliente5 = new PdfPCell(new Phrase("Metodo de pago"));
-            PdfPCell cliente6 = new PdfPCell(new Phrase("Cuotas"));
+            PdfPCell cliente1 = new PdfPCell(new Phrase("DNI", negrita));
+            PdfPCell cliente2 = new PdfPCell(new Phrase("Nombre Completo", negrita));
+            PdfPCell cliente3 = new PdfPCell(new Phrase("Teléfono", negrita));
+            PdfPCell cliente4 = new PdfPCell(new Phrase("Mail", negrita));
+            PdfPCell cliente5 = new PdfPCell(new Phrase("Financiación", negrita));
+            PdfPCell cliente6 = new PdfPCell(new Phrase("Cuotas", negrita));
+            
+//            cliente1.setBorder(0);
+//            cliente2.setBorder(0);
+//            cliente3.setBorder(0);
+//            cliente4.setBorder(0);
+//            cliente5.setBorder(0);
+//            cliente3.setBorder(0);
+            
+            cliente1.setBackgroundColor(BaseColor.ORANGE);
+            cliente2.setBackgroundColor(BaseColor.ORANGE);
+            cliente3.setBackgroundColor(BaseColor.ORANGE);
+            cliente4.setBackgroundColor(BaseColor.ORANGE);
+            cliente5.setBackgroundColor(BaseColor.ORANGE);
+            cliente6.setBackgroundColor(BaseColor.ORANGE);
+            
+            
             
             tablaCliente.addCell(cliente1);
             tablaCliente.addCell(cliente2);
@@ -92,6 +108,10 @@ public class Pdf {
             tablaCliente.addCell(cliente4);
             tablaCliente.addCell(cliente5);
             tablaCliente.addCell(cliente6);
+            
+            //for (int i = 0; i < tabla; i++) {
+              //recorre cliente//  
+           // }*/
             tablaCliente.addCell("54645612");
             tablaCliente.addCell("Agustin Colongne");
             tablaCliente.addCell("3512305123");
@@ -107,14 +127,23 @@ public class Pdf {
            PdfPTable tablaPasajeHotel = new PdfPTable(5);
            tablaPasajeHotel.setWidthPercentage(100);
            tablaPasajeHotel.getDefaultCell().setBorder(0);
-           float[] columnaPasajeHotel = new float[]{20f, 50f, 30f, 40f,40f};
+           float[] columnaPasajeHotel = new float[]{25f, 25f, 30f, 30f,30f};
            tablaPasajeHotel.setWidths(columnaPasajeHotel);
            tablaPasajeHotel.setHorizontalAlignment(Element.ALIGN_LEFT);
-           PdfPCell pasajeHotel1 = new PdfPCell(new Phrase("Desde ciudad/Provincia/Pais"));
-           PdfPCell pasajeHotel2 = new PdfPCell(new Phrase("Hasta ciudad/Provincia/Pais"));
-           PdfPCell pasajeHotel3 = new PdfPCell(new Phrase("Fecha Salida"));
-           PdfPCell pasajeHotel4 = new PdfPCell(new Phrase("Fecha Regreso"));
-           PdfPCell pasajeHotel5 = new PdfPCell(new Phrase("Cantidad de Persona"));
+           PdfPCell pasajeHotel1 = new PdfPCell(new Phrase("Desde", negrita));
+           PdfPCell pasajeHotel2 = new PdfPCell(new Phrase("Hasta", negrita));
+           PdfPCell pasajeHotel3 = new PdfPCell(new Phrase("Fecha de viaje", negrita));
+           PdfPCell pasajeHotel4 = new PdfPCell(new Phrase("Fecha de regreso", negrita));
+           PdfPCell pasajeHotel5 = new PdfPCell(new Phrase("Cant.personas", negrita));
+           
+            
+            pasajeHotel1.setBackgroundColor(BaseColor.LIGHT_GRAY);
+            pasajeHotel2.setBackgroundColor(BaseColor.LIGHT_GRAY);
+            pasajeHotel3.setBackgroundColor(BaseColor.LIGHT_GRAY);
+            pasajeHotel4.setBackgroundColor(BaseColor.LIGHT_GRAY);
+            pasajeHotel5.setBackgroundColor(BaseColor.LIGHT_GRAY);
+            
+            
            tablaPasajeHotel.addCell(pasajeHotel1);
            tablaPasajeHotel.addCell(pasajeHotel2);
            tablaPasajeHotel.addCell(pasajeHotel3);
@@ -125,9 +154,14 @@ public class Pdf {
            tablaPasajeHotel.addCell("23/12/2023");
            tablaPasajeHotel.addCell("10/1/2024");
            tablaPasajeHotel.addCell("4");
+           
+         
+            
            documento.add(tablaPasajeHotel);
            // Fin datos Pasaje  y Hotel    
            
+            
+            
            //completar formas de pago, importe, cantidad de dias
 
             documento.close();
