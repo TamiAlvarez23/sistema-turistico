@@ -323,6 +323,7 @@ public class Menu extends javax.swing.JFrame {
         jTable3 = new javax.swing.JTable();
         jPanel36 = new javax.swing.JPanel();
         jLabel87 = new javax.swing.JLabel();
+        jLabel88 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1500, 750));
@@ -1925,7 +1926,7 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(jPguardarperfil, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPguardarperfil3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPguardarperfil1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPaneleditarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 100, -1, 520));
@@ -2750,7 +2751,7 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel59.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
         jLabel59.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel59.setText("Dia:");
+        jLabel59.setText("Día:");
 
         jLabel63.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
         jLabel63.setForeground(new java.awt.Color(0, 0, 0));
@@ -2776,7 +2777,7 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel81.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
         jLabel81.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel81.setText("Dia:");
+        jLabel81.setText("Día:");
 
         diaRegreso.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
 
@@ -2956,44 +2957,53 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(jLabel87, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
+        jLabel88.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/buscar_hotel.png"))); // NOI18N
+
         javax.swing.GroupLayout panelBuscarHotelLayout = new javax.swing.GroupLayout(panelBuscarHotel);
         panelBuscarHotel.setLayout(panelBuscarHotelLayout);
         panelBuscarHotelLayout.setHorizontalGroup(
             panelBuscarHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBuscarHotelLayout.createSequentialGroup()
+                .addGap(0, 57, Short.MAX_VALUE)
+                .addGroup(panelBuscarHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBuscarHotelLayout.createSequentialGroup()
+                        .addGroup(panelBuscarHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel85)
+                            .addComponent(jLabel86))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelBuscarHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(209, 209, 209))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBuscarHotelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 646, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47))))
             .addGroup(panelBuscarHotelLayout.createSequentialGroup()
                 .addGroup(panelBuscarHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelBuscarHotelLayout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addGroup(panelBuscarHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel86)
-                            .addComponent(jLabel85))
-                        .addGap(18, 18, 18)
-                        .addGroup(panelBuscarHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox1, 0, 215, Short.MAX_VALUE)
-                            .addComponent(jTextField2)))
-                    .addGroup(panelBuscarHotelLayout.createSequentialGroup()
                         .addGap(343, 343, 343)
-                        .addComponent(jPanel36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelBuscarHotelLayout.createSequentialGroup()
+                        .addGap(303, 303, 303)
+                        .addComponent(jLabel88)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBuscarHotelLayout.createSequentialGroup()
-                .addGap(0, 63, Short.MAX_VALUE)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 646, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
         );
         panelBuscarHotelLayout.setVerticalGroup(
             panelBuscarHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBuscarHotelLayout.createSequentialGroup()
-                .addGap(96, 96, 96)
+                .addGap(33, 33, 33)
+                .addComponent(jLabel88)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelBuscarHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel85)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
+                .addGap(29, 29, 29)
                 .addGroup(panelBuscarHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel86)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel86))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(jPanel36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
@@ -3921,6 +3931,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel85;
     private javax.swing.JLabel jLabel86;
     private javax.swing.JLabel jLabel87;
+    private javax.swing.JLabel jLabel88;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLcambiarSesion;
     private javax.swing.JPanel jPBuscarAlojamiento;
