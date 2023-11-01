@@ -184,7 +184,6 @@ public class AlojamientoData {
             ps.setString(4, alojamiento.getServicio());
             ps.setDouble(5, alojamiento.getImporteDiario());
             ps.setInt(6, alojamiento.getCupoAlojamiento());
-            JOptionPane.showMessageDialog(null, alojamiento.getCupoAlojamiento());
             ps.setInt(7, alojamiento.getCiudadDestino().getIdCiudad());
             ps.setString(8, alojamiento.getNombre());
             ps.setString(9, alojamiento.getTipoAlojamiento());
