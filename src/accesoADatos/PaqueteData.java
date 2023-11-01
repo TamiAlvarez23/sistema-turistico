@@ -126,6 +126,8 @@ public class PaqueteData {
             ps.setInt(6, paquete.getCupo());
             ps.setInt(7, paquete.getIdPaquete());
             ps.executeUpdate();
+            
+            
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al acceder a tabla Paquete");
         }

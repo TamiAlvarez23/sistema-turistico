@@ -38,6 +38,12 @@ public class PasajeData {
             ps.setInt(4, pasaje.getCupo());
             ps.setBoolean(5, pasaje.isEstado());
             ps.executeUpdate();
+            
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                pasaje.setIdPasaje(rs.getInt(1));
+                JOptionPane.showMessageDialog(null, "Se guardó con éxito el pasaje");
+            }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla Pasaje " + e);
         }
@@ -133,9 +139,14 @@ public class PasajeData {
 
     public void eliminarPasaje(int idPasaje) {
         String deleteQuery = "DELETE FROM Pasaje WHERE idPasaje = ?";
-        try (PreparedStatement preparedStatement = con.prepareStatement(deleteQuery)) {
-            preparedStatement.setInt(1, idPasaje);
-            preparedStatement.executeUpdate();
+        try (PreparedStatement ps = con.prepareStatement(deleteQuery)) {
+            ps.setInt(1, idPasaje);
+            ps.executeUpdate();
+           
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "Se eliminó el pasaje correctamente");
+            }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla Pasaje");
         }

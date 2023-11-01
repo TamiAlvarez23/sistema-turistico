@@ -39,6 +39,12 @@ public class AlojamientoData {
             ps.setString(9, alojamiento.getTipoAlojamiento());
             ps.executeUpdate();
             
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                alojamiento.setIdAlojamiento(rs.getInt(1));
+                JOptionPane.showMessageDialog(null, "Se guardó con éxito el hotel");
+            }
+            
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alojamiento");
         }
@@ -200,6 +206,11 @@ public class AlojamientoData {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idAlojamiento);
             ps.executeUpdate();
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "Se eliminó el hotel correctamente");
+            
+            }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alojamiento");
         }

@@ -47,6 +47,10 @@ public class Pasaje {
     public int getIdPasaje() {
         return idPasaje;
     }
+
+    public void setIdPasaje(int idPasaje) {
+        this.idPasaje = idPasaje;
+    }
     
     public String getTipoTransporte() {
         return TipoTransporte;

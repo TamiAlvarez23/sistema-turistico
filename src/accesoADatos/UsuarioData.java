@@ -43,7 +43,12 @@ public class UsuarioData {
             ps.setString(5, usuario.getClaveUsuario());
             ps.setBoolean(6, usuario.isEstadoUsuario());
             ps.execute();
-
+            
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                usuario.setIdUsuario(rs.getInt(1));
+                JOptionPane.showMessageDialog(null, "Se guardó con éxito el Usuario");
+            }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Usuario");
         }
