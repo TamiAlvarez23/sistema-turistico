@@ -4,7 +4,6 @@ import Entidades.Alojamiento;
 import Entidades.Ciudad;
 import Entidades.Paquete;
 import Entidades.Pasaje;
-import com.sun.org.apache.bcel.internal.generic.RETURN;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -59,12 +58,21 @@ public class PaqueteData {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Paquete paquete = new Paquete();
+                
+                Ciudad ciudadOrigen = cd.obtenerCiudadPorId(rs.getInt("origen"));
+                Ciudad ciudadDestino = cd.obtenerCiudadPorId(rs.getInt("destino"));
+                Alojamiento alojamiento = ad.obtenerAlojamientoPorId(rs.getInt("alojamiento"));
+                Pasaje pasaje = pd.obtenerPasajePorId(rs.getInt("pasaje"));
+                boolean estado = rs.getBoolean("estado");
+                int cupo = rs.getInt("cupo");
                 paquete.setIdPaquete(rs.getInt("idPaquete"));
-                paquete.setOrigen((Ciudad) rs.getObject("origen"));
-                paquete.setDestino((Ciudad) rs.getObject("destino"));
-                paquete.setAlojamiento((Alojamiento) rs.getObject("alojamiento"));
-                paquete.setPasaje((Pasaje) rs.getObject("pasaje"));
-                paquete.setCupo(rs.getInt("cupo"));
+                paquete.setOrigen(ciudadOrigen);
+                paquete.setDestino(ciudadDestino);
+                paquete.setPasaje(pasaje);
+                paquete.setAlojamiento(alojamiento);
+                paquete.setEstado(estado);
+                paquete.setCupo(cupo);
+                return paquete;
 
             }
         } catch (SQLException e) {
@@ -107,14 +115,16 @@ public class PaqueteData {
     }
 
     public void actualizarPaquete(Paquete paquete) {
-        String sql = "UPDATE Paquete SET origen = ?, destino = ?, alojamiento = ?, pasaje = ? WHERE idPaquete = ?";
+        String sql = "UPDATE Paquete SET origen = ?, destino = ?, alojamiento = ?, pasaje = ? , estado = ?, cupo = ? WHERE idPaquete = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, paquete.getOrigen().getIdCiudad());
             ps.setInt(2, paquete.getDestino().getIdCiudad());
             ps.setInt(3, paquete.getAlojamiento().getIdAlojamiento());
             ps.setInt(4, paquete.getPasaje().getIdPasaje());
-            ps.setInt(5, paquete.getIdPaquete());
+            ps.setBoolean(5, paquete.isEstado());
+            ps.setInt(6, paquete.getCupo());
+            ps.setInt(7, paquete.getIdPaquete());
             ps.executeUpdate();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "error al acceder a tabla paquete");
