@@ -10,10 +10,12 @@ import Entidades.Ciudad;
 import Entidades.Paquete;
 import Entidades.Pasaje;
 import Entidades.Usuario;
+import PDF.Pdf;
 import accesoADatos.AlojamientoData;
 import accesoADatos.CiudadData;
 import accesoADatos.PaqueteData;
 import accesoADatos.PasajeData;
+import accesoADatos.PresupuestoData;
 import accesoADatos.UsuarioData;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -60,6 +62,7 @@ public class Menu extends javax.swing.JFrame {
     private DefaultTableModel modeloHotelPaquete = new DefaultTableModel();
     private DefaultTableModel modeloPaquete = new DefaultTableModel();
     private DefaultTableModel modeloPaqueteVenta = new DefaultTableModel();
+    private DefaultTableModel modeloPresupuesto = new DefaultTableModel();
     private Ciudad ciudadRecuperada = new Ciudad();
 
     /**
@@ -82,6 +85,7 @@ public class Menu extends javax.swing.JFrame {
         armarCabeceraTablaHotelPaquete();
         armarCabeceraTablaPaquete();
         armarCabeceraTablaPaqueteVenta();
+        armarCabeceraTablaPresupuesto();
         agruparJRB();
         llenarComboConCiudades(comboCiudadHotel);
         llenarComboConCiudades(comboCiudadPasaje);
@@ -196,12 +200,12 @@ public class Menu extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
+        jtnombreCliente = new javax.swing.JTextField();
+        jtApellidoCliente = new javax.swing.JTextField();
+        dniCliente = new javax.swing.JTextField();
+        jtTelefonoCliente = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        mailCliente = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         botonDetallesPrecio = new javax.swing.JLabel();
         jPanel30 = new javax.swing.JPanel();
@@ -216,12 +220,8 @@ public class Menu extends javax.swing.JFrame {
         jScrollPane14 = new javax.swing.JScrollPane();
         jtPasajePaqueteVenta = new javax.swing.JTextArea();
         jLabel19 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        cantidadPersonasSpiner = new javax.swing.JSpinner();
         jLabel32 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<>();
-        jLabel36 = new javax.swing.JLabel();
-        jLabel39 = new javax.swing.JLabel();
-        jSpinner2 = new javax.swing.JSpinner();
         jlIdPaqueteVenta = new javax.swing.JLabel();
         jlIdHotelPaqueteVenta = new javax.swing.JLabel();
         jlIdPasajePaqueteVenta = new javax.swing.JLabel();
@@ -400,6 +400,13 @@ public class Menu extends javax.swing.JFrame {
         jPanel45 = new javax.swing.JPanel();
         salirBuscarPaqueteVenta = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
+        detallePrecio = new javax.swing.JPanel();
+        jLabel45 = new javax.swing.JLabel();
+        jScrollPane15 = new javax.swing.JScrollPane();
+        tablaPresupuesto = new javax.swing.JTable();
+        jLabel46 = new javax.swing.JLabel();
+        jPanel46 = new javax.swing.JPanel();
+        jLabel69 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1500, 150));
@@ -1565,6 +1572,11 @@ public class Menu extends javax.swing.JFrame {
         jLabel73.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/verificado (1).png"))); // NOI18N
         jLabel73.setText("Guardar");
         jLabel73.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel73.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel73MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
         jPanel30.setLayout(jPanel30Layout);
@@ -1587,6 +1599,11 @@ public class Menu extends javax.swing.JFrame {
         jLabel79.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/descargar (2).png"))); // NOI18N
         jLabel79.setText("Descargar");
         jLabel79.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel79.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel79MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
         jPanel31.setLayout(jPanel31Layout);
@@ -1612,17 +1629,17 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(jLabel35))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTextField10)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtApellidoCliente)
+                    .addComponent(jtnombreCliente, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dniCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(70, 70, 70)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel37)
                     .addComponent(jLabel21))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField12)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtTelefonoCliente)
+                    .addComponent(mailCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(59, 59, 59)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1639,22 +1656,22 @@ public class Menu extends javax.swing.JFrame {
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel33)
                             .addComponent(jLabel37)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jtnombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtTelefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel34)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtApellidoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mailCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel35)
-                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(dniCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1706,21 +1723,11 @@ public class Menu extends javax.swing.JFrame {
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel19.setText("Datos Seleccionados");
 
+        cantidadPersonasSpiner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
+
         jLabel32.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(0, 0, 0));
         jLabel32.setText("Cantidad de Personas:");
-
-        jComboBox5.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
-        jComboBox5.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "Débito", "Tarjeta de crédito" }));
-
-        jLabel36.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
-        jLabel36.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel36.setText("Formas de pago");
-
-        jLabel39.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
-        jLabel39.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel39.setText("Cuotas:");
 
         jlIdPaqueteVenta.setForeground(new Color(0,0,0,0)
         );
@@ -1750,20 +1757,12 @@ public class Menu extends javax.swing.JFrame {
                                 .addGap(43, 43, 43))
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(jPanel8Layout.createSequentialGroup()
-                                        .addComponent(jLabel36)
-                                        .addGap(46, 46, 46)
-                                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(41, 41, 41)
-                                        .addComponent(jLabel39)
-                                        .addGap(0, 0, 0)
-                                        .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jScrollPane14, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
                                     .addComponent(jScrollPane13, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
                                         .addComponent(jLabel32)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(cantidadPersonasSpiner, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(81, 81, 81)
                                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jlIdPaqueteVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1797,19 +1796,13 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(47, 47, 47)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel32))
-                        .addGap(35, 35, 35)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel39)
-                            .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel36)))
+                            .addComponent(cantidadPersonasSpiner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel32)))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jlIdPasajePaqueteVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jlIdHotelPaqueteVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(36, 36, 36)
+                .addGap(100, 100, 100)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -1827,7 +1820,7 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        getContentPane().add(panelPaquetes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 1430, 750));
+        getContentPane().add(panelPaquetes, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1430, 750));
 
         jPanelVerMisVentas.setBackground(new Color(0,0,0,0));
         jPanelVerMisVentas.setMaximumSize(new java.awt.Dimension(750, 530));
@@ -3739,6 +3732,78 @@ public class Menu extends javax.swing.JFrame {
 
         getContentPane().add(buscarPaqueteVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 810, 750));
 
+        jLabel45.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jLabel45.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel45.setText("Presupuesto:");
+
+        tablaPresupuesto.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane15.setViewportView(tablaPresupuesto);
+
+        jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel46.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/factura 128.png"))); // NOI18N
+
+        jPanel46.setBackground(new java.awt.Color(60, 147, 214));
+
+        jLabel69.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        jLabel69.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel69.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel69.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Login_37128.png"))); // NOI18N
+        jLabel69.setText("Salir");
+
+        javax.swing.GroupLayout jPanel46Layout = new javax.swing.GroupLayout(jPanel46);
+        jPanel46.setLayout(jPanel46Layout);
+        jPanel46Layout.setHorizontalGroup(
+            jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel69, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+        );
+        jPanel46Layout.setVerticalGroup(
+            jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel69, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout detallePrecioLayout = new javax.swing.GroupLayout(detallePrecio);
+        detallePrecio.setLayout(detallePrecioLayout);
+        detallePrecioLayout.setHorizontalGroup(
+            detallePrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(detallePrecioLayout.createSequentialGroup()
+                .addContainerGap(51, Short.MAX_VALUE)
+                .addGroup(detallePrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detallePrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel45)
+                        .addGroup(detallePrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detallePrecioLayout.createSequentialGroup()
+                                .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 751, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detallePrecioLayout.createSequentialGroup()
+                                .addComponent(jLabel46)
+                                .addGap(370, 370, 370))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detallePrecioLayout.createSequentialGroup()
+                        .addComponent(jPanel46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(354, 354, 354))))
+        );
+        detallePrecioLayout.setVerticalGroup(
+            detallePrecioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(detallePrecioLayout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(jLabel46)
+                .addGap(40, 40, 40)
+                .addComponent(jLabel45)
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addComponent(jPanel46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
+        );
+
+        getContentPane().add(detallePrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 840, 750));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -4444,18 +4509,23 @@ public class Menu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "La fecha ingresada excede los límites del mes elegido. Se modificó al valor maximo permitido");
         }
 
-        jtFechaSalidaHotel.setText(salidaFecha.toString());
-        jtFechaRegresoHotel.setText(regresoFecha.toString());
-        slide.jPanelXDerecha(panelCargarFecha.getX(), 1500, 10, 10, panelCargarFecha);
-        if (panelBarraTareas.getX() == 0) {
-            slide.jPanelXIzquierda(panelHoteles.getX(), 300, 10, 10, panelHoteles);
+        if (regresoFecha.compareTo(salidaFecha) > 0) {
+            jtFechaSalidaHotel.setText(salidaFecha.toString());
+            jtFechaRegresoHotel.setText(regresoFecha.toString());
+            slide.jPanelXDerecha(panelCargarFecha.getX(), 1500, 10, 10, panelCargarFecha);
+            if (panelBarraTareas.getX() == 0) {
+                slide.jPanelXIzquierda(panelHoteles.getX(), 300, 10, 10, panelHoteles);
+            } else {
+                slide.jPanelXIzquierda(panelHoteles.getX(), 70, 10, 10, panelHoteles);
+            }
+
+        } else if (regresoFecha.compareTo(salidaFecha) == 0) {
+            JOptionPane.showMessageDialog(null, "Las fechas no pueden ser iguales");
+
         } else {
-            slide.jPanelXIzquierda(panelHoteles.getX(), 70, 10, 10, panelHoteles);
+            JOptionPane.showMessageDialog(null, "La fecha de salida no puede ser menor a la de regreso");
         }
 
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null,"La fecha ngresada es incorrecta, intentelo de nuevo");
-//        }
 
     }//GEN-LAST:event_jlGuardarCargarFechaMouseClicked
 
@@ -5310,35 +5380,143 @@ public class Menu extends javax.swing.JFrame {
 
     private void botonDetallesPrecioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonDetallesPrecioMouseClicked
         // TODO add your handling code here:
+       
         AlojamientoData alojamientoData = new AlojamientoData();
         PasajeData pasajeData = new PasajeData();
         PaqueteData paqueteData = new PaqueteData();
         Alojamiento alojamiento = new Alojamiento();
         Pasaje pasaje = new Pasaje();
-        Paquete paquete  = new Paquete();
+        Paquete paquete = new Paquete();
+        double importeHotelTotal = 0;
+        double importePasaje = 0;
+        double importeHotel = 0;
+        double importeTotal =0;
+        long dias = 0;
+        Date inicio = null;
+        Date fin;
+        Date inicioTempotadad = null;
+        Date finTemporada;
+        String temporada = "";
+
         int idPaquete = Integer.parseInt(jlIdPasajePaqueteVenta.getText());
-        int idPasaje= Integer.parseInt(jlIdPasajePaqueteVenta.getText());
+        int idPasaje = Integer.parseInt(jlIdPasajePaqueteVenta.getText());
         int idHotel = Integer.parseInt(jlIdHotelPaqueteVenta.getText());
         alojamiento = alojamientoData.obtenerAlojamientoPorId(idHotel);
         pasaje = pasajeData.obtenerPasajePorId(idPasaje);
-        paquete= paqueteData.obtenerPaquetePorId(idPaquete);
-        
+        paquete = paqueteData.obtenerPaquetePorId(idPaquete);
+
         SimpleDateFormat forma = new SimpleDateFormat("dd-MM-yyyy");
-        LocalDate salida =  alojamiento.getFechaIngreso();
+        SimpleDateFormat forma2 = new SimpleDateFormat("dd-MM");
+
+        LocalDate salida = alojamiento.getFechaIngreso();
         LocalDate regreso = alojamiento.getFechaEgreso();
-        
+
         try {
-            Date inicio = forma.parse(salida.toString());
-            Date fin = forma.parse(regreso.toString());
-            
+            inicio = forma.parse(salida.toString());
+
+            fin = forma.parse(regreso.toString());
+
             long tiempo = fin.getTime() - inicio.getTime();
             TimeUnit unidad = TimeUnit.DAYS;
-            long dias = unidad.convert(tiempo, TimeUnit.MILLISECONDS);
+            dias = unidad.convert(tiempo, TimeUnit.MILLISECONDS);
+            dias = dias/365;
+
+            inicioTempotadad = forma2.parse("01-01");
+            finTemporada = forma2.parse("31-01");
+            importePasaje = pasaje.getImporte();
+            importeHotel = alojamiento.getImporteDiario();
+            importeHotelTotal = alojamiento.getImporteDiario() * dias;
+            importeTotal = importeHotelTotal + importePasaje;
+
+            if (inicioTempotadad.compareTo(inicio) <= 0 && finTemporada.compareTo(inicio) >= 0) {
+                temporada = "Temporada alta";
+                importeTotal *=  0.30;
+            }
+            
+            inicioTempotadad = forma2.parse("01-07");
+            finTemporada = forma2.parse("31-07");
+            if (inicioTempotadad.compareTo(inicio) <= 0 && finTemporada.compareTo(inicio) >= 0) {
+                temporada = "Temporada alta";
+                importeTotal *= 0.30;
+            }
+            
+            inicioTempotadad = forma2.parse("01-02");
+            finTemporada = forma2.parse("29-07");
+            if (inicioTempotadad.compareTo(inicio) <= 0 && finTemporada.compareTo(inicio) >= 0) {
+                temporada = "Temporada media";
+                importeTotal *=  0.15;
+            }
+            inicioTempotadad = forma2.parse("01-06");
+            finTemporada = forma2.parse("30-06");
+            if (inicioTempotadad.compareTo(inicio) <= 0 && finTemporada.compareTo(inicio) >= 0) {
+                temporada = "Temporada media";
+                importeTotal *= 0.15;
+            }
+            
+            if(temporada.equals("")){
+                temporada = "Temporada baja";
+            }
+            
+            importeTotal = importeTotal * Integer.parseInt(cantidadPersonasSpiner.getValue().toString());
+            
+            
+            
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(null, "Error de tiempo");
         }
+
+       
+        String precioPasajeString = Double.toString(importePasaje);
+        String importeTotalString = Double.toString(importeTotal);
+        String cantidadPersonas = cantidadPersonasSpiner.getValue().toString();
+        modeloPresupuesto.addRow(new Object[]{
+            precioPasajeString,
+            importeTotalString,
+            temporada,
+            cantidadPersonas,
+            dias
+              
+        });
+        
+        
+        slide.jPanelXDerecha(panelPaquetes.getX(), 1500, 10, 10, panelPaquetes);
+        if (panelBarraTareas.getX() == 0) {
+            slide.jPanelXIzquierda(detallePrecio.getX(), 600, 10, 10, detallePrecio);
+        } else {
+            slide.jPanelXIzquierda(detallePrecio.getX(), 350, 10, 10, detallePrecio);
+        }
+        
+        
+        
+        
+       
+        
         
     }//GEN-LAST:event_botonDetallesPrecioMouseClicked
+
+    private void jLabel79MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel79MouseClicked
+        // TODO add your handling code here:
+        PresupuestoData presupuestoData = new PresupuestoData();
+        
+        Pdf hola = new Pdf();
+        hola.pdf();
+    }//GEN-LAST:event_jLabel79MouseClicked
+
+    private void jLabel73MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel73MouseClicked
+        // TODO add your handling code here:
+        PresupuestoData presupuestoData = new PresupuestoData();
+        String nombreCliente = jtnombreCliente.getText();
+        String apellido = jtApellidoCliente.getText();
+        String dniCli = dniCliente.getText();
+        
+                
+        
+        
+        
+        
+        
+//        int idPresupuesto = presupuestoData.guardarPresupuesto(presupuesto);
+    }//GEN-LAST:event_jLabel73MouseClicked
 
     /**
      * @param args the command line arguments
@@ -5396,15 +5574,17 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel buscarPaqueteVenta;
     private javax.swing.JLabel buscarPaqueteVentas;
     private javax.swing.JPanel buscarPasajePaquete;
+    private javax.swing.JSpinner cantidadPersonasSpiner;
     private javax.swing.JComboBox<Ciudad> comboCiudadHotel;
     private javax.swing.JComboBox<String> comboCiudadPasaje;
     private javax.swing.JComboBox<String> comboTipoBusquedaPaquete;
     private javax.swing.JComboBox<String> comboTipoBusquedaPaqueteVenta;
+    private javax.swing.JPanel detallePrecio;
     private javax.swing.JSpinner diaRegreso;
     private javax.swing.JSpinner diaSalida;
+    private javax.swing.JTextField dniCliente;
     private javax.swing.JTextField jBusquedaHotel;
     private javax.swing.JTextField jBusquedaPasaje;
-    private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboTipoAlojamiento;
     private javax.swing.JComboBox<String> jComboTipoBusquedaHotel;
     private javax.swing.JLabel jLabel1;
@@ -5439,16 +5619,16 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
@@ -5473,6 +5653,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel71;
@@ -5539,6 +5720,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel43;
     private javax.swing.JPanel jPanel44;
     private javax.swing.JPanel jPanel45;
+    private javax.swing.JPanel jPanel46;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
@@ -5563,6 +5745,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane14;
+    private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -5571,17 +5754,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
     private javax.swing.JTable jTablaCiudades;
     private javax.swing.JTable jTablaHotel;
     private javax.swing.JTable jTablaPasaje;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JComboBox<String> jTipoBusquedaPasaje;
     private javax.swing.JCheckBox jcContrasenia;
     private javax.swing.JComboBox<String> jcbTipoBusquedaCiudad;
@@ -5629,6 +5805,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JRadioButton jrEstadoPasaje;
     private javax.swing.JRadioButton jrHabilitado;
     private javax.swing.JTextField jtApellido;
+    private javax.swing.JTextField jtApellidoCliente;
     private javax.swing.JTextField jtBusquedaCiudad;
     private javax.swing.JTextField jtBusquedaHotelPaquete;
     private javax.swing.JTextField jtBusquedaPaquete;
@@ -5654,7 +5831,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextArea jtPasajePaqueteVenta;
     private javax.swing.JTextField jtProvincia;
     private javax.swing.JTextArea jtServicios;
+    private javax.swing.JTextField jtTelefonoCliente;
+    private javax.swing.JTextField jtnombreCliente;
     private javax.swing.JLabel label;
+    private javax.swing.JTextField mailCliente;
     private javax.swing.JSpinner mesRegreso;
     private javax.swing.JSpinner mesSalida;
     private javax.swing.JPanel panelBarraTareas;
@@ -5679,6 +5859,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTable tablaPaquete;
     private javax.swing.JTable tablaPaqueteVenta;
     private javax.swing.JTable tablaPasajePaquete;
+    private javax.swing.JTable tablaPresupuesto;
     // End of variables declaration//GEN-END:variables
   class FondoPanel extends JPanel {
 
@@ -5962,6 +6143,17 @@ public class Menu extends javax.swing.JFrame {
         modeloPaqueteVenta.addColumn("Regreso");
         tablaPaqueteVenta.setModel(modeloPaqueteVenta);
     }
+    
+    private void armarCabeceraTablaPresupuesto() {
+        modeloPresupuesto.addColumn("Precio pasaje");
+        modeloPresupuesto.addColumn("Precio hotel");
+        modeloPresupuesto.addColumn("Temporada");
+        modeloPresupuesto.addColumn("Cantidad Personas");
+        modeloPresupuesto.addColumn("Cantidad Dias");
+        tablaPresupuesto.setModel(modeloPresupuesto);
+    }
+    
+    
 
     public void borrarfilas(JTable tabla) {
         int f = tabla.getRowCount() - 1;

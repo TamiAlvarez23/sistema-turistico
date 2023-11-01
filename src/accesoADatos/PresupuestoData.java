@@ -35,7 +35,7 @@ import javax.swing.JOptionPane;
 
     }
 
-    public void guardarPresupuesto(Presupuesto presupuesto) {
+    public int guardarPresupuesto(Presupuesto presupuesto) {
         String sql = "INSERT INTO presupuesto (idPaquete, nombreCliente, apellidoCliente, dniCliente, telefonoCliente, mailCliente, pagoCliente, cuotasCliente, idUsuario) VALUES (?,?,?,?, ?, ?, ?,?,?)";
         PreparedStatement ps;
         try {
@@ -52,11 +52,16 @@ import javax.swing.JOptionPane;
             ps.setObject(10, presupuesto.getIdUsuario());
             
             ps.execute();
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                presupuesto.setIdPresupuesto(rs.getInt(1));
+                JOptionPane.showMessageDialog(null, "Se guardó con éxito el paquete");
+            }
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Se encuentran campos vacíos para generar el resumen de presupuesto");
         }
-
+        return presupuesto.getIdPresupuesto();
     }
 
  public void eliminarPresupuesto(int idPresupuesto) {
