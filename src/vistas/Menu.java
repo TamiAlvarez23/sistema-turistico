@@ -5802,7 +5802,12 @@ public class Menu extends javax.swing.JFrame {
         
         if(destino){
             
-            String palabra = comboDestinoPaqueteVenta.getSelectedItem();
+            String palabra = comboDestinoPaqueteVenta.getSelectedItem().toString();
+            int tamanio = palabra.length();
+            for(int letra = 0; letra < tamanio; letra ++){
+            
+            
+            }
             paqueteData.obtenerPorCiudadDestino(WIDTH);
         
         }
