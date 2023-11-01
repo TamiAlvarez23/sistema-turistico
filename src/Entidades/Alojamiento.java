@@ -11,23 +11,23 @@ public class Alojamiento {
 
     private int idAlojamiento;
 
-    private LocalDate fechaIngreso;
+    private LocalDate fechaIngreso;//8
 
-    private LocalDate fechaEgreso;
+    private LocalDate fechaEgreso;//7
 
     private boolean estado;
 
-    private String servicio;
+    private String servicio;//9
 
-    private double importeDiario;
+    private double importeDiario;//6
     
-    private int cupoAlojamiento;
+    private int cupoAlojamiento;//5
 
-    private Ciudad ciudadDestino;
+    private Ciudad ciudadDestino;//3
     
-    private String nombre;
+    private String nombre;//1
     
-    private String tipoAlojamiento;
+    private String tipoAlojamiento;//2
     
     private String habilitacion;
     

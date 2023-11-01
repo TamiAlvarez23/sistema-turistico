@@ -87,6 +87,27 @@ public class PasajeData {
         }
         return pasajes;
     }
+    public List<Pasaje> obtenerTodosLosPasajesActivos() {
+        List<Pasaje> pasajes = new ArrayList<>();
+        String selectQuery = "SELECT * FROM Pasaje where estado = 1";
+        try (PreparedStatement ps = con.prepareStatement(selectQuery)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("idPasaje");
+                String tipoTransporte = rs.getString("tipoTransporte");
+                double importe = rs.getDouble("importe");
+                Ciudad nombreCiudadOrigen = ciudadData.obtenerCiudadPorId(rs.getInt("nombreCiudadOrigen"));
+                boolean estado = rs.getBoolean("estado");
+                int cupo = rs.getInt("cupoPasaje");
+                pasajes.add(new Pasaje(id, tipoTransporte, importe, nombreCiudadOrigen, estado, cupo));
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla pasaje");
+        }
+        return pasajes;
+    }
+    
+    
 
     public void actualizarPasaje(Pasaje pasaje) {
         String updateQuery = "UPDATE Pasaje SET tipoTransporte = ?, importe = ?, nombreCiudadOrigen = ?, cupoPasaje = ?,  estado = ? WHERE idPasaje = ?";

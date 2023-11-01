@@ -7,10 +7,12 @@ package vistas;
 
 import Entidades.Alojamiento;
 import Entidades.Ciudad;
+import Entidades.Paquete;
 import Entidades.Pasaje;
 import Entidades.Usuario;
 import accesoADatos.AlojamientoData;
 import accesoADatos.CiudadData;
+import accesoADatos.PaqueteData;
 import accesoADatos.PasajeData;
 import accesoADatos.UsuarioData;
 import java.awt.Color;
@@ -49,7 +51,10 @@ public class Menu extends javax.swing.JFrame {
     private DefaultTableModel modeloCiudad = new DefaultTableModel();
     private DefaultTableModel modeloEmpleado = new DefaultTableModel();
     private DefaultTableModel modeloPasaje = new DefaultTableModel();
+    private DefaultTableModel modeloPasajePaquete = new DefaultTableModel();
     private DefaultTableModel modeloHotel = new DefaultTableModel();
+    private DefaultTableModel modeloHotelPaquete = new DefaultTableModel();
+    private DefaultTableModel modeloPaquete = new DefaultTableModel();
     private Ciudad ciudadRecuperada = new Ciudad();
 
     /**
@@ -67,7 +72,10 @@ public class Menu extends javax.swing.JFrame {
         armarCabeceraTablaCiudad();
         armarCabeceraTablaEmpleados();
         armarCabeceraTablaPasaje();
+        armarCabeceraTablaPasajePaquete();
         armarCabeceraTablaHotel();
+        armarCabeceraTablaHotelPaquete();
+        armarCabeceraTablaPaquete();
         agruparJRB();
         llenarComboConCiudades(comboCiudadHotel);
         llenarComboConCiudades(comboCiudadPasaje);
@@ -244,23 +252,27 @@ public class Menu extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jPanel18 = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
+        botonGuardarArmarPaquete = new javax.swing.JLabel();
         jPanel19 = new javax.swing.JPanel();
-        jLabel75 = new javax.swing.JLabel();
+        botonCancelarArmarPaquete = new javax.swing.JLabel();
         jPanel20 = new javax.swing.JPanel();
-        jLabel76 = new javax.swing.JLabel();
+        botonEliminarArmarPaquete = new javax.swing.JLabel();
         jPanel21 = new javax.swing.JPanel();
-        jLabel77 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        salirArmarPaquete = new javax.swing.JLabel();
         jPanel38 = new javax.swing.JPanel();
         botonBuscarPasajePaquete = new javax.swing.JLabel();
         jPanel39 = new javax.swing.JPanel();
         botonBuscarHotelPaquete = new javax.swing.JLabel();
         jLabel92 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        jrEstadoPaquete = new javax.swing.JRadioButton();
         jPanel40 = new javax.swing.JPanel();
         botonBuscarPaquete = new javax.swing.JLabel();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jtHotelPaquete = new javax.swing.JTextArea();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        jtPasajePaquete = new javax.swing.JTextArea();
+        jlIdPasajePaquete = new javax.swing.JLabel();
+        jlIdAlojamientoPaquete = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jPanelCiudad = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -347,31 +359,31 @@ public class Menu extends javax.swing.JFrame {
         buscarPasajePaquete = new javax.swing.JPanel();
         jLabel94 = new javax.swing.JLabel();
         label = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField4 = new javax.swing.JTextField();
+        TipoBusquedaPasajePaquete = new javax.swing.JComboBox<>();
+        jtBusquedaPasajePaquete = new javax.swing.JTextField();
         jLabel95 = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tablaPasajePaquete = new javax.swing.JTable();
         jPanel41 = new javax.swing.JPanel();
         salirBuscarPasajePaquete = new javax.swing.JLabel();
         buscarHotelPaquete = new javax.swing.JPanel();
         jLabel97 = new javax.swing.JLabel();
         jLabel98 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        TipoBusquedaHotelPaquete = new javax.swing.JComboBox<>();
         jLabel99 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        jtBusquedaHotelPaquete = new javax.swing.JTextField();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        tablaHotelPaquete = new javax.swing.JTable();
         jPanel43 = new javax.swing.JPanel();
         salirBuscarHotelPaquete = new javax.swing.JLabel();
         buscarPaquete = new javax.swing.JPanel();
         jLabel101 = new javax.swing.JLabel();
         jLabel102 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        comboTipoBusquedaPaquete = new javax.swing.JComboBox<>();
         jLabel103 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        jtBusquedaPaquete = new javax.swing.JTextField();
         jScrollPane10 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
+        tablaPaquete = new javax.swing.JTable();
         jPanel44 = new javax.swing.JPanel();
         salirBuscarPaquete = new javax.swing.JLabel();
 
@@ -2085,22 +2097,27 @@ public class Menu extends javax.swing.JFrame {
         jPanel18.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel18.setPreferredSize(new java.awt.Dimension(105, 36));
 
-        jLabel19.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/verificado (1).png"))); // NOI18N
-        jLabel19.setText("Guardar");
-        jLabel19.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonGuardarArmarPaquete.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        botonGuardarArmarPaquete.setForeground(new java.awt.Color(255, 255, 255));
+        botonGuardarArmarPaquete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        botonGuardarArmarPaquete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/verificado (1).png"))); // NOI18N
+        botonGuardarArmarPaquete.setText("Guardar");
+        botonGuardarArmarPaquete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonGuardarArmarPaquete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonGuardarArmarPaqueteMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+            .addComponent(botonGuardarArmarPaquete, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(botonGuardarArmarPaquete, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
         jPanel19.setBackground(new java.awt.Color(60, 147, 214));
@@ -2108,60 +2125,60 @@ public class Menu extends javax.swing.JFrame {
         jPanel19.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel19.setPreferredSize(new java.awt.Dimension(105, 36));
 
-        jLabel75.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
-        jLabel75.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel75.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel75.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/boton-eliminar.png"))); // NOI18N
-        jLabel75.setText("Cancelar");
-        jLabel75.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonCancelarArmarPaquete.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        botonCancelarArmarPaquete.setForeground(new java.awt.Color(255, 255, 255));
+        botonCancelarArmarPaquete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        botonCancelarArmarPaquete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/boton-eliminar.png"))); // NOI18N
+        botonCancelarArmarPaquete.setText("Cancelar");
+        botonCancelarArmarPaquete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);
         jPanel19Layout.setHorizontalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel75, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+            .addComponent(botonCancelarArmarPaquete, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel75, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(botonCancelarArmarPaquete, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
         jPanel20.setBackground(new java.awt.Color(60, 147, 214));
         jPanel20.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel20.setPreferredSize(new java.awt.Dimension(105, 36));
 
-        jLabel76.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel76.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
-        jLabel76.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel76.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel76.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/borrar (1).png"))); // NOI18N
-        jLabel76.setText("Eliminar");
-        jLabel76.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonEliminarArmarPaquete.setBackground(new java.awt.Color(255, 255, 255));
+        botonEliminarArmarPaquete.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        botonEliminarArmarPaquete.setForeground(new java.awt.Color(255, 255, 255));
+        botonEliminarArmarPaquete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        botonEliminarArmarPaquete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/borrar (1).png"))); // NOI18N
+        botonEliminarArmarPaquete.setText("Eliminar");
+        botonEliminarArmarPaquete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
         jPanel20.setLayout(jPanel20Layout);
         jPanel20Layout.setHorizontalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel76, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+            .addComponent(botonEliminarArmarPaquete, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel76, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(botonEliminarArmarPaquete, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
         jPanel21.setBackground(new java.awt.Color(60, 147, 214));
         jPanel21.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel21.setPreferredSize(new java.awt.Dimension(105, 36));
 
-        jLabel77.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
-        jLabel77.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel77.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel77.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Login_37128.png"))); // NOI18N
-        jLabel77.setText("Salir");
-        jLabel77.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel77.addMouseListener(new java.awt.event.MouseAdapter() {
+        salirArmarPaquete.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        salirArmarPaquete.setForeground(new java.awt.Color(255, 255, 255));
+        salirArmarPaquete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        salirArmarPaquete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Login_37128.png"))); // NOI18N
+        salirArmarPaquete.setText("Salir");
+        salirArmarPaquete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salirArmarPaquete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel77MouseClicked(evt);
+                salirArmarPaqueteMouseClicked(evt);
             }
         });
 
@@ -2169,11 +2186,11 @@ public class Menu extends javax.swing.JFrame {
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel77, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+            .addComponent(salirArmarPaquete, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel77, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(salirArmarPaquete, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
         jPanel38.setBackground(new java.awt.Color(60, 147, 214));
@@ -2252,6 +2269,20 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(botonBuscarPaquete, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
+        jtHotelPaquete.setColumns(20);
+        jtHotelPaquete.setRows(5);
+        jScrollPane11.setViewportView(jtHotelPaquete);
+
+        jtPasajePaquete.setColumns(20);
+        jtPasajePaquete.setRows(5);
+        jScrollPane12.setViewportView(jtPasajePaquete);
+
+        jlIdPasajePaquete.setForeground(new Color(0,0,0,0));
+        jlIdPasajePaquete.setText(" ");
+
+        jlIdAlojamientoPaquete.setForeground(new Color(0,0,0,0));
+        jlIdAlojamientoPaquete.setText(" ");
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -2259,63 +2290,82 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addGap(64, 64, 64)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                         .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(118, 118, 118)
                         .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(111, 111, 111)
-                        .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53))
+                        .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel92)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(60, 60, 60)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel7Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jPanel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel7Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jPanel39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jrEstadoPaquete)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel23)
                             .addComponent(jLabel22)
-                            .addComponent(jLabel92))
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(80, 80, 80)
-                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jPanel39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jRadioButton1))
-                        .addGap(0, 53, Short.MAX_VALUE))))
+                            .addComponent(jlIdPasajePaquete, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jlIdAlojamientoPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(53, 53, 53))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jPanel40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel22)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(75, 75, 75)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel23)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addComponent(jPanel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(61, 61, 61)
-                        .addComponent(jPanel39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(47, 47, 47)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel92)
-                    .addComponent(jRadioButton1))
-                .addGap(50, 50, 50)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlIdPasajePaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlIdAlojamientoPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jPanel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)
+                        .addComponent(jPanel39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34)))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jrEstadoPaquete)
+                        .addGap(50, 50, 50)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel92))
                 .addGap(37, 37, 37))
         );
 
@@ -2326,22 +2376,21 @@ public class Menu extends javax.swing.JFrame {
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
-                .addContainerGap(63, Short.MAX_VALUE)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61))
-            .addGroup(jPanel15Layout.createSequentialGroup()
                 .addGap(487, 487, 487)
                 .addComponent(jLabel30)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
+                .addGap(0, 63, Short.MAX_VALUE)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel30)
-                .addGap(28, 28, 28)
+                .addGap(10, 10, 10)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanelArmarPaqueteLayout = new javax.swing.GroupLayout(jPanelArmarPaquete);
@@ -2351,7 +2400,7 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(jPanelArmarPaqueteLayout.createSequentialGroup()
                 .addGap(149, 149, 149)
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addContainerGap(247, Short.MAX_VALUE))
         );
         jPanelArmarPaqueteLayout.setVerticalGroup(
             jPanelArmarPaqueteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3270,11 +3319,17 @@ public class Menu extends javax.swing.JFrame {
         label.setForeground(new java.awt.Color(0, 0, 0));
         label.setText("Buscar por:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre ciudad origen", "Tipo transporte" }));
+        TipoBusquedaPasajePaquete.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre ciudad origen", "Tipo transporte" }));
+
+        jtBusquedaPasajePaquete.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtBusquedaPasajePaqueteKeyReleased(evt);
+            }
+        });
 
         jLabel95.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/avion 128.png"))); // NOI18N
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tablaPasajePaquete.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -3282,7 +3337,12 @@ public class Menu extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane8.setViewportView(jTable3);
+        tablaPasajePaquete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaPasajePaqueteMouseClicked(evt);
+            }
+        });
+        jScrollPane8.setViewportView(tablaPasajePaquete);
 
         jPanel41.setBackground(new java.awt.Color(60, 147, 214));
 
@@ -3325,8 +3385,8 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(label))
                         .addGap(46, 46, 46)
                         .addGroup(buscarPasajePaqueteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TipoBusquedaPasajePaquete, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jtBusquedaPasajePaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(195, 195, 195))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buscarPasajePaqueteLayout.createSequentialGroup()
                         .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 703, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3342,12 +3402,12 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jLabel95)
                 .addGap(18, 18, 18)
                 .addGroup(buscarPasajePaqueteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TipoBusquedaPasajePaquete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label))
                 .addGap(29, 29, 29)
                 .addGroup(buscarPasajePaqueteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel94)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtBusquedaPasajePaquete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
@@ -3366,12 +3426,18 @@ public class Menu extends javax.swing.JFrame {
         jLabel98.setForeground(new java.awt.Color(0, 0, 0));
         jLabel98.setText("Buscar por:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        TipoBusquedaHotelPaquete.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre hotel", "Ciudad destino" }));
 
         jLabel99.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel99.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/lupa (1).png"))); // NOI18N
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        jtBusquedaHotelPaquete.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtBusquedaHotelPaqueteKeyReleased(evt);
+            }
+        });
+
+        tablaHotelPaquete.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -3379,7 +3445,12 @@ public class Menu extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane9.setViewportView(jTable4);
+        tablaHotelPaquete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaHotelPaqueteMouseClicked(evt);
+            }
+        });
+        jScrollPane9.setViewportView(tablaHotelPaquete);
 
         jPanel43.setBackground(new java.awt.Color(60, 147, 214));
 
@@ -3425,8 +3496,8 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(jLabel98))
                         .addGap(77, 77, 77)
                         .addGroup(buscarHotelPaqueteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox2, 0, 225, Short.MAX_VALUE)
-                            .addComponent(jTextField5)))
+                            .addComponent(TipoBusquedaHotelPaquete, 0, 225, Short.MAX_VALUE)
+                            .addComponent(jtBusquedaHotelPaquete)))
                     .addGroup(buscarHotelPaqueteLayout.createSequentialGroup()
                         .addGap(309, 309, 309)
                         .addComponent(jPanel43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -3440,11 +3511,11 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(buscarHotelPaqueteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel98)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TipoBusquedaHotelPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addGroup(buscarHotelPaqueteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel99)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtBusquedaHotelPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
@@ -3463,23 +3534,26 @@ public class Menu extends javax.swing.JFrame {
         jLabel102.setForeground(new java.awt.Color(0, 0, 0));
         jLabel102.setText("Buscar por:");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboTipoBusquedaPaquete.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ciudad origen", "Ciudad destino", "Nombre hotel", "Tipo transporte" }));
 
         jLabel103.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel103.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/lupa (1).png"))); // NOI18N
 
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+        jtBusquedaPaquete.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtBusquedaPaqueteKeyReleased(evt);
+            }
+        });
+
+        tablaPaquete.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane10.setViewportView(jTable5);
+        jScrollPane10.setViewportView(tablaPaquete);
 
         jPanel44.setBackground(new java.awt.Color(60, 147, 214));
 
@@ -3524,8 +3598,8 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(jLabel102))
                         .addGap(54, 54, 54)
                         .addGroup(buscarPaqueteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(comboTipoBusquedaPaquete, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jtBusquedaPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(buscarPaqueteLayout.createSequentialGroup()
                         .addGap(300, 300, 300)
                         .addComponent(jPanel44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -3539,11 +3613,11 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(buscarPaqueteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel102)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboTipoBusquedaPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(buscarPaqueteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel103)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtBusquedaPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
@@ -4444,8 +4518,8 @@ public class Menu extends javax.swing.JFrame {
             alojamiento = new Alojamiento(salidaFecha, regresoFecha, estado, servicio, importeDiario, ciudad, nombre, tipoAlojamiento, cupo);
             alojamientoData.agregarAlojamiento(alojamiento);
             formularioHotel();
-        }else{
-            alojamiento = new Alojamiento(id,salidaFecha, regresoFecha, estado, servicio, importeDiario, ciudad, nombre, tipoAlojamiento, cupo);
+        } else {
+            alojamiento = new Alojamiento(id, salidaFecha, regresoFecha, estado, servicio, importeDiario, ciudad, nombre, tipoAlojamiento, cupo);
             alojamientoData.actualizarAlojamiento(alojamiento);
             formularioHotel();
         }
@@ -4484,18 +4558,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void jTablaHotelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablaHotelMouseClicked
         // TODO add your handling code here:
-        /*
-        modeloHotel.addColumn("Id");
-        modeloHotel.addColumn("Nombre ");
-        modeloHotel.addColumn("Nombre ciudad");
-        modeloHotel.addColumn("Cupo");
-        modeloHotel.addColumn("Importe diario");
-        modeloHotel.addColumn("Fecha salida");
-        modeloHotel.addColumn("Fecha regreso");
-        modeloHotel.addColumn("Tipo alojamiento");
-        modeloHotel.addColumn("Estado");
-        
-         */
+
         slide.jPanelXDerecha(panelBuscarHotel.getX(), 1500, 10, 10, panelBuscarHotel);
         if (panelBarraTareas.getX() == 0) {
             slide.jPanelXIzquierda(panelHoteles.getX(), 70, 10, 10, panelHoteles);
@@ -4505,7 +4568,7 @@ public class Menu extends javax.swing.JFrame {
         AlojamientoData alojamientoData = new AlojamientoData();
         Alojamiento alojamiento = new Alojamiento();
         int fila = jTablaHotel.getSelectedRow();
-        
+
         jlIdHotel.setText(jTablaHotel.getValueAt(fila, 0).toString());
         alojamiento = alojamientoData.obtenerAlojamientoPorId(Integer.parseInt(jlIdHotel.getText()));
         jtNombreHotel.setText((String) jTablaHotel.getValueAt(fila, 1));
@@ -4529,55 +4592,110 @@ public class Menu extends javax.swing.JFrame {
     private void botonBuscarPaqueteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonBuscarPaqueteMouseClicked
         // TODO add your handling code here:
         slide.jPanelXDerecha(jPanelArmarPaquete.getX(), 1500, 10, 10, jPanelArmarPaquete);
-        if(panelBarraTareas.getX() == 0){
+        if (panelBarraTareas.getX() == 0) {
             slide.jPanelXIzquierda(buscarPaquete.getX(), 600, 10, 10, buscarPaquete);
-        }else{
+        } else {
             slide.jPanelXIzquierda(buscarPaquete.getX(), 350, 10, 10, buscarPaquete);
         }
+
+        PaqueteData paqueteData = new PaqueteData();
+        List<Paquete> paquetes = new ArrayList<>();
+        paquetes = paqueteData.obtenerTodosLosPaquetes();
+        borrarfilasPaquete(tablaPaquete);
+        for (Paquete paquete : paquetes) {
+            modeloPaquete.addRow(new Object[]{
+                paquete.getIdPaquete(),
+                paquete.getAlojamiento().getNombre(),
+                paquete.getOrigen().getNombre(),
+                paquete.getDestino().getNombre(),
+                paquete.getPasaje().getTipoTransporte(),
+                paquete.getAlojamiento().getFechaIngreso(),
+                paquete.getAlojamiento().getFechaEgreso(),
+                paquete.getCupo(),
+                paquete.getHabilitacion()
+            });
+        }
+
+
     }//GEN-LAST:event_botonBuscarPaqueteMouseClicked
 
     private void botonBuscarPasajePaqueteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonBuscarPasajePaqueteMouseClicked
         // TODO add your handling code here:
         slide.jPanelXDerecha(jPanelArmarPaquete.getX(), 1500, 10, 10, jPanelArmarPaquete);
-        if(panelBarraTareas.getX() == 0){
+        if (panelBarraTareas.getX() == 0) {
             slide.jPanelXIzquierda(buscarPasajePaquete.getX(), 600, 10, 10, buscarPasajePaquete);
-        }else{
+        } else {
             slide.jPanelXIzquierda(buscarPasajePaquete.getX(), 350, 10, 10, buscarPasajePaquete);
+        }
+        PasajeData pasajeData = new PasajeData();
+        List<Pasaje> pasajes = new ArrayList<>();
+        pasajes = pasajeData.obtenerTodosLosPasajesActivos();
+        borrarfilasPasajePaquete(tablaPasajePaquete);
+        for (Pasaje pasaje : pasajes) {
+            modeloPasajePaquete.addRow(new Object[]{
+                pasaje.getIdPasaje(),
+                pasaje.getNombreCiudadOrigen().getNombre(),
+                pasaje.getTipoTransporte(),
+                pasaje.getCupo(),
+                pasaje.getImporte(),
+                pasaje.getHabilitacion()
+
+            });
         }
     }//GEN-LAST:event_botonBuscarPasajePaqueteMouseClicked
 
     private void botonBuscarHotelPaqueteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonBuscarHotelPaqueteMouseClicked
         // TODO add your handling code here:
         slide.jPanelXDerecha(jPanelArmarPaquete.getX(), 1500, 10, 10, jPanelArmarPaquete);
-        if(panelBarraTareas.getX() == 0){
+        if (panelBarraTareas.getX() == 0) {
             slide.jPanelXIzquierda(buscarHotelPaquete.getX(), 600, 10, 10, buscarHotelPaquete);
-        }else{
+        } else {
             slide.jPanelXIzquierda(buscarHotelPaquete.getX(), 350, 10, 10, buscarHotelPaquete);
         }
+
+        AlojamientoData alojamientoData = new AlojamientoData();
+        List<Alojamiento> alojamientos = new ArrayList<>();
+        alojamientos = alojamientoData.obtenerTodosLosAlojamientosActivos();
+        borrarfilasHotelPaquete(tablaHotelPaquete);
+        for (Alojamiento alojamiento : alojamientos) {
+            modeloHotelPaquete.addRow(new Object[]{
+                alojamiento.getIdAlojamiento(),
+                alojamiento.getNombre(),
+                alojamiento.getCiudadDestino().getNombre(),
+                alojamiento.getCupoAlojamiento(),
+                alojamiento.getImporteDiario(),
+                alojamiento.getFechaIngreso(),
+                alojamiento.getFechaEgreso(),
+                alojamiento.getTipoAlojamiento(),
+                alojamiento.getHabilitacion()
+            });
+        }
+
+
     }//GEN-LAST:event_botonBuscarHotelPaqueteMouseClicked
 
-    private void jLabel77MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel77MouseClicked
+    private void salirArmarPaqueteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirArmarPaqueteMouseClicked
         // TODO add your handling code here:
         slide.jPanelXDerecha(jPanelArmarPaquete.getX(), 1500, 10, 10, jPanelArmarPaquete);
-    }//GEN-LAST:event_jLabel77MouseClicked
+    }//GEN-LAST:event_salirArmarPaqueteMouseClicked
 
     private void salirBuscarPaqueteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirBuscarPaqueteMouseClicked
         // TODO add your handling code here:
         slide.jPanelXDerecha(buscarPaquete.getX(), 1500, 10, 10, buscarPaquete);
-        if(panelBarraTareas.getX() == 0){
+        if (panelBarraTareas.getX() == 0) {
             slide.jPanelXIzquierda(jPanelArmarPaquete.getX(), 300, 10, 10, jPanelArmarPaquete);
-        }else{
+        } else {
             slide.jPanelXIzquierda(jPanelArmarPaquete.getX(), 70, 10, 10, jPanelArmarPaquete);
         }
-        
+
     }//GEN-LAST:event_salirBuscarPaqueteMouseClicked
 
     private void salirBuscarPasajePaqueteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirBuscarPasajePaqueteMouseClicked
         // TODO add your handling code here:
         slide.jPanelXDerecha(buscarPasajePaquete.getX(), 1500, 10, 10, buscarPasajePaquete);
-        if(panelBarraTareas.getX() == 0){
+        if (panelBarraTareas.getX() == 0) {
             slide.jPanelXIzquierda(jPanelArmarPaquete.getX(), 300, 10, 10, jPanelArmarPaquete);
-        }else{
+        } else {
             slide.jPanelXIzquierda(jPanelArmarPaquete.getX(), 70, 10, 10, jPanelArmarPaquete);
         }
     }//GEN-LAST:event_salirBuscarPasajePaqueteMouseClicked
@@ -4585,12 +4703,277 @@ public class Menu extends javax.swing.JFrame {
     private void salirBuscarHotelPaqueteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirBuscarHotelPaqueteMouseClicked
         // TODO add your handling code here:
         slide.jPanelXDerecha(buscarHotelPaquete.getX(), 1500, 10, 10, buscarHotelPaquete);
-        if(panelBarraTareas.getX() == 0){
+        if (panelBarraTareas.getX() == 0) {
             slide.jPanelXIzquierda(jPanelArmarPaquete.getX(), 300, 10, 10, jPanelArmarPaquete);
-        }else{
+        } else {
             slide.jPanelXIzquierda(jPanelArmarPaquete.getX(), 70, 10, 10, jPanelArmarPaquete);
         }
     }//GEN-LAST:event_salirBuscarHotelPaqueteMouseClicked
+
+    private void jtBusquedaPasajePaqueteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtBusquedaPasajePaqueteKeyReleased
+        // TODO add your handling code here:
+        PasajeData pasajeData = new PasajeData();
+        List<Pasaje> pasajes = new ArrayList<>();
+        pasajes = pasajeData.obtenerTodosLosPasajes();
+        String tipoBusqueda = TipoBusquedaPasajePaquete.getSelectedItem().toString();
+        borrarfilasPasajePaquete(tablaPasajePaquete);
+
+        switch (tipoBusqueda) {
+            case "Nombre ciudad origen": {
+                for (Pasaje pasaje : pasajes) {
+                    if (pasaje.getNombreCiudadOrigen().getNombre().toUpperCase().startsWith(jtBusquedaPasajePaquete.getText().toUpperCase())) {
+                        modeloPasajePaquete.addRow(new Object[]{
+                            pasaje.getIdPasaje(),
+                            pasaje.getNombreCiudadOrigen().getNombre(),
+                            pasaje.getTipoTransporte(),
+                            pasaje.getCupo(),
+                            pasaje.getImporte(),
+                            pasaje.getHabilitacion()
+
+                        });
+                    }
+                }
+
+                break;
+            }
+
+            case "Tipo transporte": {
+                for (Pasaje pasaje : pasajes) {
+                    if (pasaje.getTipoTransporte().toUpperCase().startsWith(jtBusquedaPasajePaquete.getText().toUpperCase())) {
+                        modeloPasajePaquete.addRow(new Object[]{
+                            pasaje.getIdPasaje(),
+                            pasaje.getNombreCiudadOrigen().getNombre(),
+                            pasaje.getTipoTransporte(),
+                            pasaje.getCupo(),
+                            pasaje.getImporte(),
+                            pasaje.getHabilitacion()
+
+                        });
+                    }
+
+                }
+                break;
+            }
+
+        }
+
+
+    }//GEN-LAST:event_jtBusquedaPasajePaqueteKeyReleased
+
+    private void tablaPasajePaqueteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPasajePaqueteMouseClicked
+        // TODO add your handling code here:
+        slide.jPanelXDerecha(buscarPasajePaquete.getX(), 1500, 10, 10, buscarPasajePaquete);
+        if (panelBarraTareas.getX() == 0) {
+            slide.jPanelXIzquierda(jPanelArmarPaquete.getX(), 300, 10, 10, jPanelArmarPaquete);
+        } else {
+            slide.jPanelXIzquierda(jPanelArmarPaquete.getX(), 70, 10, 10, jPanelArmarPaquete);
+        }
+        PasajeData pasajeData = new PasajeData();
+        Pasaje pasaje;
+        int fila = tablaPasajePaquete.getSelectedRow();
+
+        int idPasajeTabla = Integer.parseInt(tablaPasajePaquete.getValueAt(fila, 0).toString());
+        jlIdPasajePaquete.setText(tablaPasajePaquete.getValueAt(fila, 0).toString());
+        pasaje = pasajeData.obtenerPasajePorId(idPasajeTabla);
+        jtPasajePaquete.setText("Tipo de transporte: " + pasaje.getTipoTransporte() + " | Ciudad de salida: " + pasaje.getNombreCiudadOrigen().getNombre() + " | Importe: " + pasaje.getImporte() + " | Cupo disponible: " + pasaje.getCupo());
+
+    }//GEN-LAST:event_tablaPasajePaqueteMouseClicked
+
+    private void jtBusquedaHotelPaqueteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtBusquedaHotelPaqueteKeyReleased
+        // TODO add your handling code here:
+        AlojamientoData alojamientoData = new AlojamientoData();
+        List<Alojamiento> alojamientos = new ArrayList<>();
+        alojamientos = alojamientoData.obtenerTodosLosAlojamientosActivos();
+        String tipoBusqueda = (String) TipoBusquedaHotelPaquete.getSelectedItem();
+        borrarfilasHotelPaquete(tablaHotelPaquete);
+        switch (tipoBusqueda) {
+            case "Nombre hotel": {
+
+                for (Alojamiento alojamiento : alojamientos) {
+                    if (alojamiento.getNombre().toUpperCase().startsWith(jtBusquedaHotelPaquete.getText().toUpperCase())) {
+                        modeloHotelPaquete.addRow(new Object[]{
+                            alojamiento.getIdAlojamiento(),
+                            alojamiento.getNombre(),
+                            alojamiento.getCiudadDestino().getNombre(),
+                            alojamiento.getCupoAlojamiento(),
+                            alojamiento.getImporteDiario(),
+                            alojamiento.getFechaIngreso(),
+                            alojamiento.getFechaEgreso(),
+                            alojamiento.getTipoAlojamiento(),
+                            alojamiento.getHabilitacion()
+                        });
+
+                    }
+                }
+                break;
+            }
+
+            case "Ciudad destino": {
+
+                for (Alojamiento alojamiento : alojamientos) {
+                    if (alojamiento.getCiudadDestino().getNombre().toUpperCase().startsWith(jtBusquedaHotelPaquete.getText().toUpperCase())) {
+                        modeloHotelPaquete.addRow(new Object[]{
+                            alojamiento.getIdAlojamiento(),
+                            alojamiento.getNombre(),
+                            alojamiento.getCiudadDestino().getNombre(),
+                            alojamiento.getCupoAlojamiento(),
+                            alojamiento.getImporteDiario(),
+                            alojamiento.getFechaIngreso(),
+                            alojamiento.getFechaEgreso(),
+                            alojamiento.getTipoAlojamiento(),
+                            alojamiento.getHabilitacion()
+                        });
+
+                    }
+
+                }
+
+            }
+
+        }
+    }//GEN-LAST:event_jtBusquedaHotelPaqueteKeyReleased
+
+    private void tablaHotelPaqueteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaHotelPaqueteMouseClicked
+        // TODO add your handling code here:
+        slide.jPanelXDerecha(buscarHotelPaquete.getX(), 1500, 10, 10, buscarHotelPaquete);
+        if (panelBarraTareas.getX() == 0) {
+            slide.jPanelXIzquierda(jPanelArmarPaquete.getX(), 300, 10, 10, jPanelArmarPaquete);
+        } else {
+            slide.jPanelXIzquierda(jPanelArmarPaquete.getX(), 70, 10, 10, jPanelArmarPaquete);
+        }
+        AlojamientoData alojamientoData = new AlojamientoData();
+        Alojamiento alojamiento;
+        int fila = tablaHotelPaquete.getSelectedRow();
+
+        int idAlojamientoTabla = Integer.parseInt(tablaHotelPaquete.getValueAt(fila, 0).toString());
+        alojamiento = alojamientoData.obtenerAlojamientoPorId(idAlojamientoTabla);
+        jlIdAlojamientoPaquete.setText(tablaHotelPaquete.getValueAt(fila, 0).toString());
+        jtHotelPaquete.setText("Nombre: " + alojamiento.getNombre() + " | Tipo de Alojamiento: " + alojamiento.getTipoAlojamiento() + " | Cupo Disponible: " + alojamiento.getCupoAlojamiento() + " | Importe Diario: " + alojamiento.getImporteDiario() + " | Fecha de ingreso: " + alojamiento.getFechaEgreso() + " | Fecha egreso: " + alojamiento.getFechaEgreso() + " | Servicio: " + alojamiento.getServicio());
+
+
+    }//GEN-LAST:event_tablaHotelPaqueteMouseClicked
+
+    private void botonGuardarArmarPaqueteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonGuardarArmarPaqueteMouseClicked
+        // TODO add your handling code here:
+        PaqueteData paqueteData = new PaqueteData();
+        Paquete paquete;
+        AlojamientoData alojamientoData = new AlojamientoData();
+        Alojamiento alojamiento = new Alojamiento();
+        PasajeData pasajeData = new PasajeData();
+        Pasaje pasaje = new Pasaje();
+        int idPasaje = Integer.parseInt(jlIdPasajePaquete.getText());
+        pasaje = pasajeData.obtenerPasajePorId(idPasaje);
+        int idHotel = Integer.parseInt(jlIdAlojamientoPaquete.getText());
+        alojamiento = alojamientoData.obtenerAlojamientoPorId(idHotel);
+        boolean estado = jrEstadoPaquete.isSelected();
+        int cupoPaquete = alojamiento.getCupoAlojamiento() - pasaje.getCupo();
+
+        paquete = new Paquete(pasaje.getNombreCiudadOrigen(), alojamiento.getCiudadDestino(), alojamiento, estado, pasaje, cupoPaquete);
+        paqueteData.agregarPaquete(paquete);
+
+
+    }//GEN-LAST:event_botonGuardarArmarPaqueteMouseClicked
+
+    private void jtBusquedaPaqueteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtBusquedaPaqueteKeyReleased
+        // TODO add your handling code here:
+
+        PaqueteData paqueteData = new PaqueteData();
+        List<Paquete> paquetes = new ArrayList<>();
+        paquetes = paqueteData.obtenerTodosLosPaquetes();
+        String tipoBusqueda = comboTipoBusquedaPaquete.getSelectedItem().toString();
+        borrarfilasPaquete(tablaPaquete);
+        switch (tipoBusqueda) {
+            case "Ciudad origen": {
+                for (Paquete paquete : paquetes) {
+                    if (paquete.getOrigen().getNombre().toUpperCase().startsWith(jtBusquedaPaquete.getText().toUpperCase())) {
+                        modeloPaquete.addRow(new Object[]{
+                            paquete.getIdPaquete(),
+                            paquete.getAlojamiento().getNombre(),
+                            paquete.getOrigen().getNombre(),
+                            paquete.getDestino().getNombre(),
+                            paquete.getPasaje().getTipoTransporte(),
+                            paquete.getAlojamiento().getFechaIngreso(),
+                            paquete.getAlojamiento().getFechaEgreso(),
+                            paquete.getCupo(),
+                            paquete.getHabilitacion()
+                        });
+
+                    }
+
+                }
+                break;
+            }
+
+            case "Ciudad destino": {
+                for (Paquete paquete : paquetes) {
+                    if (paquete.getDestino().getNombre().toUpperCase().startsWith(jtBusquedaPaquete.getText().toUpperCase())) {
+                        modeloPaquete.addRow(new Object[]{
+                            paquete.getIdPaquete(),
+                            paquete.getAlojamiento().getNombre(),
+                            paquete.getOrigen().getNombre(),
+                            paquete.getDestino().getNombre(),
+                            paquete.getPasaje().getTipoTransporte(),
+                            paquete.getAlojamiento().getFechaIngreso(),
+                            paquete.getAlojamiento().getFechaEgreso(),
+                            paquete.getCupo(),
+                            paquete.getHabilitacion()
+                        });
+
+                    }
+
+                }
+                break;
+
+            }
+
+            case "Nombre hotel": {
+
+                for (Paquete paquete : paquetes) {
+                    if (paquete.getAlojamiento().getNombre().toUpperCase().startsWith(jtBusquedaPaquete.getText().toUpperCase())) {
+                        modeloPaquete.addRow(new Object[]{
+                            paquete.getIdPaquete(),
+                            paquete.getAlojamiento().getNombre(),
+                            paquete.getOrigen().getNombre(),
+                            paquete.getDestino().getNombre(),
+                            paquete.getPasaje().getTipoTransporte(),
+                            paquete.getAlojamiento().getFechaIngreso(),
+                            paquete.getAlojamiento().getFechaEgreso(),
+                            paquete.getCupo(),
+                            paquete.getHabilitacion()
+                        });
+
+                    }
+
+                }
+                break;
+
+            }
+
+            case "Tipo transporte": {
+                for (Paquete paquete : paquetes) {
+                    if (paquete.getPasaje().getTipoTransporte().toUpperCase().startsWith(jtBusquedaPaquete.getText().toUpperCase())) {
+                        modeloPaquete.addRow(new Object[]{
+                            paquete.getIdPaquete(),
+                            paquete.getAlojamiento().getNombre(),
+                            paquete.getOrigen().getNombre(),
+                            paquete.getDestino().getNombre(),
+                            paquete.getPasaje().getTipoTransporte(),
+                            paquete.getAlojamiento().getFechaIngreso(),
+                            paquete.getAlojamiento().getFechaEgreso(),
+                            paquete.getCupo(),
+                            paquete.getHabilitacion()
+                        });
+
+                    }
+
+                }
+                break;
+
+            }
+        }
+
+
+    }//GEN-LAST:event_jtBusquedaPaqueteKeyReleased
 
     /**
      * @param args the command line arguments
@@ -4631,24 +5014,27 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel PanelBotonHoteles;
     private javax.swing.JPanel PanelMiCuenta;
     private javax.swing.JPanel PanelViajes;
+    private javax.swing.JComboBox<String> TipoBusquedaHotelPaquete;
+    private javax.swing.JComboBox<String> TipoBusquedaPasajePaquete;
     private javax.swing.JSpinner anioRegreso;
     private javax.swing.JSpinner anioSalida;
     private javax.swing.JLabel botonBuscarHotelPaquete;
     private javax.swing.JLabel botonBuscarPaquete;
     private javax.swing.JLabel botonBuscarPasajePaquete;
+    private javax.swing.JLabel botonCancelarArmarPaquete;
+    private javax.swing.JLabel botonEliminarArmarPaquete;
+    private javax.swing.JLabel botonGuardarArmarPaquete;
     private javax.swing.JPanel buscarHotelPaquete;
     private javax.swing.JPanel buscarPaquete;
     private javax.swing.JPanel buscarPasajePaquete;
     private javax.swing.JComboBox<Ciudad> comboCiudadHotel;
     private javax.swing.JComboBox<String> comboCiudadPasaje;
+    private javax.swing.JComboBox<String> comboTipoBusquedaPaquete;
     private javax.swing.JSpinner diaRegreso;
     private javax.swing.JSpinner diaSalida;
     private javax.swing.JTextField jBusquedaHotel;
     private javax.swing.JTextField jBusquedaPasaje;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox10;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JComboBox<String> jComboBox7;
@@ -4671,7 +5057,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
@@ -4733,9 +5118,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel73;
     private javax.swing.JLabel jLabel74;
-    private javax.swing.JLabel jLabel75;
-    private javax.swing.JLabel jLabel76;
-    private javax.swing.JLabel jLabel77;
     private javax.swing.JLabel jLabel78;
     private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
@@ -4814,9 +5196,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPguardarperfil1;
     private javax.swing.JPanel jPguardarperfil3;
     private javax.swing.JPanel jPmisVentas;
-    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -4830,18 +5213,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTable jTablaPasaje;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
-    private javax.swing.JTable jTable5;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JComboBox<String> jTipoBusquedaPasaje;
     private javax.swing.JCheckBox jcContrasenia;
@@ -4864,9 +5239,11 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlGuardarHotel;
     private javax.swing.JLabel jlGuardarUsuario;
     private javax.swing.JLabel jlHabilitar;
+    private javax.swing.JLabel jlIdAlojamientoPaquete;
     private javax.swing.JLabel jlIdCiudad;
     private javax.swing.JLabel jlIdHotel;
     private javax.swing.JLabel jlIdPasaje;
+    private javax.swing.JLabel jlIdPasajePaquete;
     private javax.swing.JLabel jlMisVentas;
     private javax.swing.JLabel jlSacarPanelVerMisVentas;
     private javax.swing.JLabel jlSalirBuscarCiudad;
@@ -4880,10 +5257,14 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JRadioButton jrDesabilitado;
     private javax.swing.JRadioButton jrEstadoCiudad;
     private javax.swing.JRadioButton jrEstadoHotel;
+    private javax.swing.JRadioButton jrEstadoPaquete;
     private javax.swing.JRadioButton jrEstadoPasaje;
     private javax.swing.JRadioButton jrHabilitado;
     private javax.swing.JTextField jtApellido;
     private javax.swing.JTextField jtBusquedaCiudad;
+    private javax.swing.JTextField jtBusquedaHotelPaquete;
+    private javax.swing.JTextField jtBusquedaPaquete;
+    private javax.swing.JTextField jtBusquedaPasajePaquete;
     private javax.swing.JTextField jtCiudad;
     private javax.swing.JPasswordField jtContraseniaInvisible;
     private javax.swing.JTextField jtContraseniaVisible;
@@ -4892,12 +5273,14 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTable jtEmpleados;
     private javax.swing.JTextField jtFechaRegresoHotel;
     private javax.swing.JTextField jtFechaSalidaHotel;
+    private javax.swing.JTextArea jtHotelPaquete;
     private javax.swing.JTextField jtImporteDiario;
     private javax.swing.JTextField jtImportePasaje;
     private javax.swing.JTextField jtNombre;
     private javax.swing.JTextField jtNombreHotel;
     private javax.swing.JTextField jtNombreUsuario;
     private javax.swing.JTextField jtPais;
+    private javax.swing.JTextArea jtPasajePaquete;
     private javax.swing.JTextField jtProvincia;
     private javax.swing.JTextArea jtServicios;
     private javax.swing.JLabel label;
@@ -4915,10 +5298,14 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel panelHoteles;
     private javax.swing.JPanel panelNombreUsuario;
     private javax.swing.JPanel panelPaquetes;
+    private javax.swing.JLabel salirArmarPaquete;
     private javax.swing.JLabel salirBuscarHotelPaquete;
     private javax.swing.JLabel salirBuscarPaquete;
     private javax.swing.JLabel salirBuscarPasaje;
     private javax.swing.JLabel salirBuscarPasajePaquete;
+    private javax.swing.JTable tablaHotelPaquete;
+    private javax.swing.JTable tablaPaquete;
+    private javax.swing.JTable tablaPasajePaquete;
     // End of variables declaration//GEN-END:variables
   class FondoPanel extends JPanel {
 
@@ -5139,6 +5526,16 @@ public class Menu extends javax.swing.JFrame {
         jTablaPasaje.setModel(modeloPasaje);
     }
 
+    private void armarCabeceraTablaPasajePaquete() {
+        modeloPasajePaquete.addColumn("Id");
+        modeloPasajePaquete.addColumn("Nombre ciudad");
+        modeloPasajePaquete.addColumn("Tipo Transporte");
+        modeloPasajePaquete.addColumn("Cupo");
+        modeloPasajePaquete.addColumn("Importe");
+        modeloPasajePaquete.addColumn("Estado");
+        tablaPasajePaquete.setModel(modeloPasajePaquete);
+    }
+
     private void armarCabeceraTablaHotel() {
         modeloHotel.addColumn("Id");
         modeloHotel.addColumn("Nombre ");
@@ -5150,6 +5547,33 @@ public class Menu extends javax.swing.JFrame {
         modeloHotel.addColumn("Tipo alojamiento");
         modeloHotel.addColumn("Estado");
         jTablaHotel.setModel(modeloHotel);
+    }
+
+    private void armarCabeceraTablaHotelPaquete() {
+        modeloHotelPaquete.addColumn("Id");
+        modeloHotelPaquete.addColumn("Nombre ");
+        modeloHotelPaquete.addColumn("Nombre ciudad");
+        modeloHotelPaquete.addColumn("Cupo");
+        modeloHotelPaquete.addColumn("Importe diario");
+        modeloHotelPaquete.addColumn("Fecha salida");
+        modeloHotelPaquete.addColumn("Fecha regreso");
+        modeloHotelPaquete.addColumn("Tipo alojamiento");
+        modeloHotelPaquete.addColumn("Estado");
+        tablaHotelPaquete.setModel(modeloHotelPaquete);
+
+    }
+
+    private void armarCabeceraTablaPaquete() {
+        modeloPaquete.addColumn("Id");
+        modeloPaquete.addColumn("Nombre Hotel");
+        modeloPaquete.addColumn("Ciudad Origen");
+        modeloPaquete.addColumn("Ciudad Destino");
+        modeloPaquete.addColumn("Tipo transpote");
+        modeloPaquete.addColumn("Fecha salida");
+        modeloPaquete.addColumn("Fecha regreso");
+        modeloPaquete.addColumn("Cupo");
+        modeloPaquete.addColumn("Estado");
+        tablaPaquete.setModel(modeloPaquete);
 
     }
 
@@ -5179,10 +5603,34 @@ public class Menu extends javax.swing.JFrame {
         }
     }
 
+    public void borrarfilasPasajePaquete(JTable tabla) {
+        int f = tabla.getRowCount() - 1;
+        for (; f >= 0; f--) {
+            modeloPasajePaquete.removeRow(f);
+
+        }
+    }
+
     public void borrarfilasHotel(JTable tabla) {
         int f = tabla.getRowCount() - 1;
         for (; f >= 0; f--) {
             modeloHotel.removeRow(f);
+
+        }
+    }
+
+    public void borrarfilasHotelPaquete(JTable tabla) {
+        int f = tabla.getRowCount() - 1;
+        for (; f >= 0; f--) {
+            modeloHotelPaquete.removeRow(f);
+
+        }
+    }
+
+    public void borrarfilasPaquete(JTable tabla) {
+        int f = tabla.getRowCount() - 1;
+        for (; f >= 0; f--) {
+            modeloPaquete.removeRow(f);
 
         }
     }
@@ -5233,8 +5681,8 @@ public class Menu extends javax.swing.JFrame {
         jtCupoPasaje.setText(" ");
 
     }
-    
-    private void formularioHotel(){
+
+    private void formularioHotel() {
         jtFechaSalidaHotel.setText("");
         jtFechaRegresoHotel.setText("");
         jtNombreHotel.setText("");
@@ -5244,7 +5692,7 @@ public class Menu extends javax.swing.JFrame {
         jrEstadoHotel.setSelected(false);
         jComboTipoAlojamiento.setSelectedIndex(0);
         jtServicios.setText("");
-    
+
     }
 
 }

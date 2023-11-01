@@ -4,11 +4,13 @@ import Entidades.Alojamiento;
 import Entidades.Ciudad;
 import Entidades.Paquete;
 import Entidades.Pasaje;
+import com.sun.org.apache.bcel.internal.generic.RETURN;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,15 +32,23 @@ public class PaqueteData {
     }
 
     public void agregarPaquete(Paquete paquete) {
-        String sql = "INSERT INTO Paquete (origen, destino, alojamiento, pasaje) VALUES (?, ?, ?, ?)";
-        try (PreparedStatement ps = con.prepareStatement(sql)) {
+        String sql = "INSERT INTO Paquete (origen, destino, alojamiento, pasaje, estado, cupo) VALUES (?, ?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS );
             ps.setInt(1, paquete.getOrigen().getIdCiudad());
             ps.setInt(2, paquete.getDestino().getIdCiudad());
             ps.setInt(3, paquete.getAlojamiento().getIdAlojamiento());
             ps.setInt(4, paquete.getPasaje().getIdPasaje());
+            ps.setBoolean(5, paquete.isEstado());
+            ps.setInt(6, paquete.getCupo());
             ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                paquete.setIdPaquete(rs.getInt(1));
+                JOptionPane.showMessageDialog(null, "Se guardo con exito el paquete");
+            }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error al acceder a tabla paquete");
+            JOptionPane.showMessageDialog(null, "error al acceder a tabla paquete " + e);
         }
     }
 
@@ -54,6 +64,7 @@ public class PaqueteData {
                 paquete.setDestino((Ciudad) rs.getObject("destino"));
                 paquete.setAlojamiento((Alojamiento) rs.getObject("alojamiento"));
                 paquete.setPasaje((Pasaje) rs.getObject("pasaje"));
+                paquete.setCupo(rs.getInt("cupo"));
 
             }
         } catch (SQLException e) {
@@ -64,18 +75,28 @@ public class PaqueteData {
 
     public List<Paquete> obtenerTodosLosPaquetes() {
         List<Paquete> paquetes = new ArrayList<>();
+        Paquete paquete;
         String sql = "SELECT * FROM Paquete";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Paquete paquete = new Paquete();
+                paquete = new Paquete();
+                
+                Ciudad ciudadOrigen = cd.obtenerCiudadPorId(rs.getInt("origen"));
+                Ciudad ciudadDestino = cd.obtenerCiudadPorId(rs.getInt("destino"));
+                Alojamiento alojamiento = ad.obtenerAlojamientoPorId(rs.getInt("alojamiento"));
+                Pasaje pasaje = pd.obtenerPasajePorId(rs.getInt("pasaje"));
+                boolean estado = rs.getBoolean("estado");
+                int cupo = rs.getInt("cupo");
                 paquete.setIdPaquete(rs.getInt("idPaquete"));
-                Ciudad ciu = cd.obtenerCiudadPorId(rs.getInt("origen"));
-                Ciudad ciu2 = cd.obtenerCiudadPorId(rs.getInt("destino"));
-                Alojamiento alo = ad.obtenerAlojamientoPorId(rs.getInt(sql));
-                Pasaje pas = pd.obtenerPasajePorId(rs.getInt("pasaje"));
+                paquete.setOrigen(ciudadOrigen);
+                paquete.setDestino(ciudadDestino);
+                paquete.setPasaje(pasaje);
+                paquete.setAlojamiento(alojamiento);
+                paquete.setEstado(estado);
+                paquete.setCupo(cupo);
                 paquetes.add(paquete);
             }
             ps.close();
@@ -238,11 +259,11 @@ public class PaqueteData {
     public List<Paquete> obtenerPorCiudadOrigenDestino(int idCiudadOrigen, int idCiudadDestino) {
         List<Paquete> paquetes = new ArrayList<>();
 
-        String sql = "SELECT P.idPaquete, CO.nombre AS origen, CD.nombre AS destino " +
-                 "FROM Paquete P " +
-                 "INNER JOIN Ciudad CO ON P.origen = CO.idCiudad " +
-                 "INNER JOIN Ciudad CD ON P.destino = CD.idCiudad " +
-                 "WHERE CO.idCiudad = ? AND CD.idCiudad = ?";
+        String sql = "SELECT P.idPaquete, CO.nombre AS origen, CD.nombre AS destino "
+                + "FROM Paquete P "
+                + "INNER JOIN Ciudad CO ON P.origen = CO.idCiudad "
+                + "INNER JOIN Ciudad CD ON P.destino = CD.idCiudad "
+                + "WHERE CO.idCiudad = ? AND CD.idCiudad = ?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);

@@ -134,6 +134,34 @@ public class AlojamientoData {
         }
         return alojamientos;
     }
+    public List<Alojamiento> obtenerTodosLosAlojamientosActivos() {
+        
+        List<Alojamiento> alojamientos = new ArrayList<>();
+        String sql = "SELECT * FROM Alojamiento where estado = 1";
+        CiudadData ciudadData = new CiudadData();
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Alojamiento alojamiento = new Alojamiento();
+                alojamiento.setIdAlojamiento(rs.getInt("idAlojamiento"));
+                alojamiento.setFechaIngreso(rs.getDate("fechaIngreso").toLocalDate());
+                alojamiento.setFechaEgreso(rs.getDate("fechaEgreso").toLocalDate());
+                alojamiento.setEstado(rs.getBoolean("estado"));
+                alojamiento.setServicio(rs.getString("servicio"));
+                alojamiento.setImporteDiario(rs.getDouble("importeDiario"));
+                alojamiento.setNombre(rs.getString("nombre"));
+                alojamiento.setTipoAlojamiento(rs.getString("tipoAlojamiento"));
+                Ciudad ciudadDestino = ciudadData.obtenerCiudadPorId(rs.getInt("ciudadDestino"));
+                alojamiento.setCiudadDestino(ciudadDestino);
+                alojamientos.add(alojamiento);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alojamiento");
+        }
+        return alojamientos;
+    }
     
     public void actualizarAlojamiento(Alojamiento alojamiento) {
         String sql = "UPDATE alojamiento SET fechaIngreso = ?, fechaEgreso = ?, estado = ?, servicio = ?, importeDiario = ?, cupoAlojamiento = ?, ciudadDestino = ?, nombre = ?, tipoAlojamiento = ? WHERE idAlojamiento = ?";
