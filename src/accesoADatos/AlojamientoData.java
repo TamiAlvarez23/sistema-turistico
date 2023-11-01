@@ -188,10 +188,10 @@ public class AlojamientoData {
             int exito = ps.executeUpdate();
          
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Se modifico el alojamiento con exito");
+                JOptionPane.showMessageDialog(null, "Se modificó el hotel con éxito");
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alojamiento");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alojamiento");
         }
     }
     

@@ -45,7 +45,7 @@ public class UsuarioData {
             ps.execute();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla usuario");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Usuario");
         }
 
     }

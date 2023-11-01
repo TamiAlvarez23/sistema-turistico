@@ -37,7 +37,7 @@ public class CiudadData {
         ResultSet rs = ps.getGeneratedKeys();
         if (rs.next()) {
             ciudad.setIdCiudad(rs.getInt(1));
-            JOptionPane.showMessageDialog(null, "Se guardo con exito la ciudad");
+            JOptionPane.showMessageDialog(null, "Se guardó con éxito la ciudad");
         }
         
         ps.close();
@@ -61,10 +61,10 @@ public class CiudadData {
                 String provincia = rs.getString("provincia");
                 return new Ciudad(id, nombre, pais, estado, provincia);
             }else{
-            JOptionPane.showMessageDialog(null, "no existe la ciudad");
+            JOptionPane.showMessageDialog(null, "La ciudad no existe");
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error al acceder a la tabla ciudad");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ciudad");
         }
         return null;
     }
@@ -83,10 +83,10 @@ public class CiudadData {
                 String provincia = rs.getString("provincia");
                 return new Ciudad(id, nombre, pais, estado, provincia);
             }else{
-            JOptionPane.showMessageDialog(null, "no existe la ciudad");
+            JOptionPane.showMessageDialog(null, "La ciudad no existe");
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error al acceder a la tabla ciudad");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ciudad");
         }
         return null;
     }
@@ -105,7 +105,7 @@ public class CiudadData {
                 ciudades.add(new Ciudad(id, nombre, pais, estado, provincia));
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error al acceder a la tabla ciudad");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ciudad");
         }
         return ciudades;
     }
@@ -124,7 +124,7 @@ public class CiudadData {
                 ciudades.add(new Ciudad(id, nombre, pais, estado, provincia));
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error al acceder a la tabla ciudad");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ciudad");
         }
         return ciudades;
     }
@@ -139,7 +139,7 @@ public class CiudadData {
             ps.setInt(5, ciudad.getIdCiudad());
             ps.executeUpdate();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error al acceder a la tabla ciudad");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ciudad");
         }
     }
 
@@ -150,7 +150,7 @@ public class CiudadData {
             ps.executeUpdate();
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "Se elimino la ciudad correctamente");
+                JOptionPane.showMessageDialog(null, "Se eliminó la ciudad correctamente");
             }
         } catch (SQLException e) {
            JOptionPane.showMessageDialog(null, "No se puede acceder a la tabla ciudad");

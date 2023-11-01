@@ -39,7 +39,7 @@ public class PasajeData {
             ps.setBoolean(5, pasaje.isEstado());
             ps.executeUpdate();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla pasaje " + e);
+            JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla Pasaje " + e);
         }
     }
 
@@ -63,7 +63,7 @@ public class PasajeData {
                 pasaje = new Pasaje(id, tipoTransporte, importe, nombreCiudadOrigen, estado, cupo);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla pasaje");
+            JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla Pasaje");
         }
         return pasaje;
     }
@@ -83,7 +83,7 @@ public class PasajeData {
                 pasajes.add(new Pasaje(id, tipoTransporte, importe, nombreCiudadOrigen, estado, cupo));
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla pasaje");
+            JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla Pasaje");
         }
         return pasajes;
     }
@@ -102,7 +102,7 @@ public class PasajeData {
                 pasajes.add(new Pasaje(id, tipoTransporte, importe, nombreCiudadOrigen, estado, cupo));
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla pasaje");
+            JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla Pasaje");
         }
         return pasajes;
     }
@@ -124,10 +124,10 @@ public class PasajeData {
             int exito = ps.executeUpdate();
          
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Se modifico el pasaje con exito");
+                JOptionPane.showMessageDialog(null, "Se modificó el pasaje con éxito");
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de pasaje " +e);
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de Pasaje " +e);
         }
     }
 
@@ -137,7 +137,7 @@ public class PasajeData {
             preparedStatement.setInt(1, idPasaje);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla pasaje");
+            JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla Pasaje");
         }
     }
 }

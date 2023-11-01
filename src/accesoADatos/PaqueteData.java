@@ -44,10 +44,10 @@ public class PaqueteData {
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 paquete.setIdPaquete(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Se guardo con exito el paquete");
+                JOptionPane.showMessageDialog(null, "Se guardó con eéito el paquete");
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error al acceder a tabla paquete " + e);
+            JOptionPane.showMessageDialog(null, "Error al acceder a tabla Paquete " + e);
         }
     }
 
@@ -76,7 +76,7 @@ public class PaqueteData {
 
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error al acceder a tabla paquete");
+            JOptionPane.showMessageDialog(null, "Error al acceder a tabla Paquete");
         }
         return null;
     }
@@ -109,7 +109,7 @@ public class PaqueteData {
             }
             ps.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error al acceder a tabla paquete");
+            JOptionPane.showMessageDialog(null, "Error al acceder a tabla Paquete");
         }
         return paquetes;
     }
@@ -127,7 +127,7 @@ public class PaqueteData {
             ps.setInt(7, paquete.getIdPaquete());
             ps.executeUpdate();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error al acceder a tabla paquete");
+            JOptionPane.showMessageDialog(null, "Error al acceder a tabla Paquete");
         }
     }
 
@@ -137,7 +137,7 @@ public class PaqueteData {
             ps.setInt(1, idPaquete);
             ps.executeUpdate();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error al acceder a tabla paquete");
+            JOptionPane.showMessageDialog(null, "Error al acceder a tabla Paquete");
         }
     }
 
@@ -157,7 +157,7 @@ public class PaqueteData {
                 paquetes.add(paquete);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error al acceder a la tabla de ciudad");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de Ciudad");
         }
         return paquetes;
     }
@@ -179,7 +179,7 @@ public class PaqueteData {
                 paquetes.add(paquete);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error al acceder a la tabla de ciudad");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de Ciudad");
         }
         return paquetes;
 
@@ -205,7 +205,7 @@ public class PaqueteData {
                 paquetes.add(paquete);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de alojameinto");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de Alojamiento");
         }
         return paquetes;
 
@@ -232,7 +232,7 @@ public class PaqueteData {
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de alojameinto");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de Alojamiento");
         }
         return paquetes;
 
@@ -260,7 +260,7 @@ public class PaqueteData {
                 paquetes.add(paquete);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error al acceder a la tabla de alojamiento");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de Alojamiendo");
         }
 
         return paquetes;
@@ -289,7 +289,7 @@ public class PaqueteData {
                 paquetes.add(paquete);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error al acceder a la tabla de paquete");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de Paquete");
         }
 
         return paquetes;
@@ -320,7 +320,7 @@ public class PaqueteData {
                 paquetes.add(paquete);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error al acceder a la tabla de paquete");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de Paquete");
         }
 
         return paquetes;
@@ -353,7 +353,7 @@ public class PaqueteData {
                 paquetes.add(paquete);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error al acceder a la tabla de paquete");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de Paquete");
         }
 
         return paquetes;
@@ -387,7 +387,7 @@ public class PaqueteData {
                 paquetes.add(paquete);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error al acceder a la tabla de paquete");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de Paquete");
         }
 
         return paquetes;
@@ -419,7 +419,7 @@ public class PaqueteData {
                 paquetes.add(paquete);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error al acceder a la tabla de alojamiento");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de Alojamiento");
         }
 
         return paquetes;
@@ -446,7 +446,7 @@ public class PaqueteData {
                 paquetes.add(paquete);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "error al acceder a la tabla de alojamiento");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de Alojamiento");
         }
         return paquetes;
     }
