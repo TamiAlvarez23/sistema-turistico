@@ -1400,8 +1400,7 @@ public class Menu extends javax.swing.JFrame {
                                 .addComponent(jPanel35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGap(111, 111, 111)
-                        .addComponent(jlIdHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jlIdHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
@@ -2308,34 +2307,30 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(111, 111, 111)
                         .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel92)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabel92)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(60, 60, 60)
-                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel7Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jPanel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel7Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jPanel39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(60, 60, 60)
+                                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jPanel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jPanel39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jrEstadoPaquete)))
                             .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(jrEstadoPaquete)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel23)
-                            .addComponent(jLabel22)
-                            .addComponent(jlIdPasajePaquete, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jlIdAlojamientoPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(243, 243, 243)
-                        .addComponent(jlIdPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel23)
+                                    .addComponent(jLabel22)
+                                    .addComponent(jlIdPasajePaquete, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jlIdAlojamientoPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(243, 243, 243)
+                                .addComponent(jlIdPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(53, 53, 53))
         );
@@ -4086,13 +4081,13 @@ public class Menu extends javax.swing.JFrame {
         int filaSeleccionada = jtEmpleados.getSelectedRow();
 
         if (jrDesabilitado.isSelected()) {
-            JOptionPane.showMessageDialog(null, "No se puede desabilitar un empleado desabilitado");
+            JOptionPane.showMessageDialog(null, "No se puede deshabilitar un empleado deshabilitado");
         } else {
             int empleadoSeleccionado = (int) jtEmpleados.getValueAt(filaSeleccionada, 0);
 
             usuario = usuarioData.buscarUsuarioPorId(empleadoSeleccionado);
             if (usuario.getIdUsuario() == u.getIdUsuario()) {
-                JOptionPane.showMessageDialog(null, "No se puede Desabiliar un perfil logeado");
+                JOptionPane.showMessageDialog(null, "No se puede Deshabiliar un perfil logueado");
 
             } else {
                 usuario.setEstadoUsuario(false);
@@ -4115,7 +4110,7 @@ public class Menu extends javax.swing.JFrame {
     private void jlBotonEliminarCiudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBotonEliminarCiudadMouseClicked
         // TODO add your handling code here:
         CiudadData ciudadData = new CiudadData();
-        int confirmacionCiudad = JOptionPane.showConfirmDialog(this.jPanelCiudad, "Se eliminara la ciudad DEFINITIVAMENTE ¿Esta seguro de esta accion?");
+        int confirmacionCiudad = JOptionPane.showConfirmDialog(this.jPanelCiudad, "Se eliminara la ciudad DEFINITIVAMENTE ¿Está seguro de esta acción?");
 
         if (confirmacionCiudad == 0) {
             ciudadData.eliminarCiudad(Integer.parseInt(jlIdCiudad.getText()));
@@ -4124,7 +4119,7 @@ public class Menu extends javax.swing.JFrame {
 
             formularioCiudad();
         } else {
-            JOptionPane.showMessageDialog(null, "No se elimino la ciudad");
+            JOptionPane.showMessageDialog(null, "No se eliminó la ciudad");
         }
 
     }//GEN-LAST:event_jlBotonEliminarCiudadMouseClicked
@@ -4159,7 +4154,7 @@ public class Menu extends javax.swing.JFrame {
 
                     formularioPasaje();
                 } else {
-                    JOptionPane.showMessageDialog(this, "El cupo maximo del Avion es de: 380");
+                    JOptionPane.showMessageDialog(this, "El cupo máximo del Avión es de: 380");
                     jtCupoPasaje.setText("");
                 }
                 break;
@@ -4197,7 +4192,7 @@ public class Menu extends javax.swing.JFrame {
                     formularioPasaje();
 
                 } else {
-                    JOptionPane.showMessageDialog(this, "El cupo maximo del Tren es de: 1600");
+                    JOptionPane.showMessageDialog(this, "El cupo máximo del Tren es de: 1600");
                     jtCupoPasaje.setText("");
 
                 }
@@ -4212,7 +4207,7 @@ public class Menu extends javax.swing.JFrame {
     private void jlBotonEliminarPasajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBotonEliminarPasajeMouseClicked
         // TODO add your handling code here:
         PasajeData pasajeData = new PasajeData();
-        int confirmacion = JOptionPane.showConfirmDialog(this, "Se eliminara definitivamente el pasaje ¿Esta seguro de esta accion?");
+        int confirmacion = JOptionPane.showConfirmDialog(this, "Se eliminará definitivamente el pasaje ¿Está seguro de esta acción?");
         if (confirmacion == 0) {
             pasajeData.eliminarPasaje(Integer.parseInt(jlIdPasaje.getText()));
             formularioPasaje();
@@ -4341,10 +4336,10 @@ public class Menu extends javax.swing.JFrame {
         
         
         if (salidaFecha.getDayOfYear() != (int) diaSalida.getValue()) {
-            JOptionPane.showMessageDialog(null, "La fecha ingresada excede los limites del mes elegido. Se modifico al valor maximo permitido");
+            JOptionPane.showMessageDialog(null, "La fecha ingresada excede los límites del mes elegido. Se modificó al valor maximo permitido");
         }
         if (regresoFecha.getDayOfYear() != (int) diaRegreso.getValue()) {
-            JOptionPane.showMessageDialog(null, "La fecha ingresada excede los limites del mes elegido. Se modifico al valor maximo permitido");
+            JOptionPane.showMessageDialog(null, "La fecha ingresada excede los límites del mes elegido. Se modificó al valor maximo permitido");
         }
         
 

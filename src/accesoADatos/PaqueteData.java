@@ -44,7 +44,7 @@ public class PaqueteData {
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 paquete.setIdPaquete(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Se guardó con eéito el paquete");
+                JOptionPane.showMessageDialog(null, "Se guardó con éxito el paquete");
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al acceder a tabla Paquete " + e);
