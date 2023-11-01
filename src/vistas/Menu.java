@@ -273,6 +273,7 @@ public class Menu extends javax.swing.JFrame {
         jtPasajePaquete = new javax.swing.JTextArea();
         jlIdPasajePaquete = new javax.swing.JLabel();
         jlIdAlojamientoPaquete = new javax.swing.JLabel();
+        jlIdPaquete = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jPanelCiudad = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -1006,6 +1007,8 @@ public class Menu extends javax.swing.JFrame {
         jLabel56.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
         jLabel56.setForeground(new java.awt.Color(0, 0, 0));
         jLabel56.setText("Cupo:");
+
+        jtCupoPasaje.setToolTipText("");
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -2283,6 +2286,9 @@ public class Menu extends javax.swing.JFrame {
         jlIdAlojamientoPaquete.setForeground(new Color(0,0,0,0));
         jlIdAlojamientoPaquete.setText(" ");
 
+        jlIdPaquete.setForeground(new Color(0,0,0,0));
+        jlIdPaquete.setText(" ");
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -2327,7 +2333,10 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(jLabel22)
                             .addComponent(jlIdPasajePaquete, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jlIdAlojamientoPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jlIdAlojamientoPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(243, 243, 243)
+                        .addComponent(jlIdPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(53, 53, 53))
         );
         jPanel7Layout.setVerticalGroup(
@@ -2336,7 +2345,9 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jlIdPasajePaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlIdAlojamientoPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jlIdAlojamientoPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlIdPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3553,6 +3564,11 @@ public class Menu extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tablaPaquete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaPaqueteMouseClicked(evt);
+            }
+        });
         jScrollPane10.setViewportView(tablaPaquete);
 
         jPanel44.setBackground(new java.awt.Color(60, 147, 214));
@@ -4133,11 +4149,9 @@ public class Menu extends javax.swing.JFrame {
             case "Avión": {
                 if (cupo > 0 && cupo <= 380) {
                     if (jlIdPasaje.getText().equals(" ")) {
-                        JOptionPane.showMessageDialog(null, "v");
                         pasaje = new Pasaje(tipoTransporte, importe, ciudad, estado, cupo);
                         pasajeData.agregarPasaje(pasaje);
                     } else {
-                        JOptionPane.showMessageDialog(null, "f");
                         id = Integer.parseInt(jlIdPasaje.getText());
                         pasaje = new Pasaje(id, tipoTransporte, importe, ciudad, estado, cupo);
                         pasajeData.actualizarPasaje(pasaje);
@@ -4163,7 +4177,7 @@ public class Menu extends javax.swing.JFrame {
                     formularioPasaje();
 
                 } else {
-                    JOptionPane.showMessageDialog(this, "El cupo maximo del Colectivo es de: 60");
+                    JOptionPane.showMessageDialog(this, "El cupo máximo del Colectivo es de: 60");
                     jtCupoPasaje.setText("");
 
                 }
@@ -4324,14 +4338,15 @@ public class Menu extends javax.swing.JFrame {
         DateTimeFormatter forma = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate salidaFecha = LocalDate.parse(salidaf, forma);
         LocalDate regresoFecha = LocalDate.parse(regresof, forma);
+        
+        
         if (salidaFecha.getDayOfYear() != (int) diaSalida.getValue()) {
             JOptionPane.showMessageDialog(null, "La fecha ingresada excede los limites del mes elegido. Se modifico al valor maximo permitido");
         }
         if (regresoFecha.getDayOfYear() != (int) diaRegreso.getValue()) {
             JOptionPane.showMessageDialog(null, "La fecha ingresada excede los limites del mes elegido. Se modifico al valor maximo permitido");
         }
-        JOptionPane.showMessageDialog(null, salidaFecha);
-        JOptionPane.showMessageDialog(null, regresoFecha);
+        
 
         jtFechaSalidaHotel.setText(salidaFecha.toString());
         jtFechaRegresoHotel.setText(regresoFecha.toString());
@@ -4502,11 +4517,11 @@ public class Menu extends javax.swing.JFrame {
         String fechaSalida = jtFechaSalidaHotel.getText();
         String fechaRegreso = jtFechaRegresoHotel.getText();
         DateTimeFormatter forma = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        int id = Integer.parseInt(jlIdHotel.getText());
         LocalDate salidaFecha = LocalDate.parse(fechaSalida, forma);
         LocalDate regresoFecha = LocalDate.parse(fechaRegreso, forma);
         String nombre = jtNombreHotel.getText();
-        int cupo = Integer.parseInt(jtCupoHotel.getText());
+        int cupo = Integer.parseInt(jtCupoHotel.getText().toString());
+        
         String ciudadNombreCombo = comboCiudadHotel.getSelectedItem().toString();
         Ciudad ciudad = ciudadData.obtenerCiudadPorNombre(ciudadNombreCombo);
         double importeDiario = Double.parseDouble(jtImporteDiario.getText());
@@ -4515,10 +4530,12 @@ public class Menu extends javax.swing.JFrame {
         String tipoAlojamiento = (String) jComboTipoAlojamiento.getSelectedItem();
 
         if (jlIdHotel.getText().equals(" ")) {
+            
             alojamiento = new Alojamiento(salidaFecha, regresoFecha, estado, servicio, importeDiario, ciudad, nombre, tipoAlojamiento, cupo);
             alojamientoData.agregarAlojamiento(alojamiento);
             formularioHotel();
         } else {
+            int id = Integer.parseInt(jlIdHotel.getText());
             alojamiento = new Alojamiento(id, salidaFecha, regresoFecha, estado, servicio, importeDiario, ciudad, nombre, tipoAlojamiento, cupo);
             alojamientoData.actualizarAlojamiento(alojamiento);
             formularioHotel();
@@ -4586,7 +4603,7 @@ public class Menu extends javax.swing.JFrame {
 
         }
         jtServicios.setText(alojamiento.getServicio());
-        JOptionPane.showMessageDialog(null, jtServicios.getText());
+        
     }//GEN-LAST:event_jTablaHotelMouseClicked
 
     private void botonBuscarPaqueteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonBuscarPaqueteMouseClicked
@@ -4774,6 +4791,7 @@ public class Menu extends javax.swing.JFrame {
 
         int idPasajeTabla = Integer.parseInt(tablaPasajePaquete.getValueAt(fila, 0).toString());
         jlIdPasajePaquete.setText(tablaPasajePaquete.getValueAt(fila, 0).toString());
+        
         pasaje = pasajeData.obtenerPasajePorId(idPasajeTabla);
         jtPasajePaquete.setText("Tipo de transporte: " + pasaje.getTipoTransporte() + " | Ciudad de salida: " + pasaje.getNombreCiudadOrigen().getNombre() + " | Importe: " + pasaje.getImporte() + " | Cupo disponible: " + pasaje.getCupo());
 
@@ -4868,8 +4886,17 @@ public class Menu extends javax.swing.JFrame {
         boolean estado = jrEstadoPaquete.isSelected();
         int cupoPaquete = alojamiento.getCupoAlojamiento() - pasaje.getCupo();
 
-        paquete = new Paquete(pasaje.getNombreCiudadOrigen(), alojamiento.getCiudadDestino(), alojamiento, estado, pasaje, cupoPaquete);
-        paqueteData.agregarPaquete(paquete);
+        if (jlIdPaquete.getText().equals(" ")) {
+            paquete = new Paquete(pasaje.getNombreCiudadOrigen(), alojamiento.getCiudadDestino(), alojamiento, estado, pasaje, cupoPaquete);
+            paqueteData.agregarPaquete(paquete);
+
+        } else {
+            int idPaquete = Integer.parseInt(jlIdPaquete.getText().toString());
+
+            paquete = new Paquete(idPaquete, pasaje.getNombreCiudadOrigen(), alojamiento.getCiudadDestino(), alojamiento, estado, pasaje, cupoPaquete);
+            paqueteData.actualizarPaquete(paquete);
+
+        }
 
 
     }//GEN-LAST:event_botonGuardarArmarPaqueteMouseClicked
@@ -4974,6 +5001,36 @@ public class Menu extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jtBusquedaPaqueteKeyReleased
+
+    private void tablaPaqueteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPaqueteMouseClicked
+        // TODO add your handling code here:
+        slide.jPanelXDerecha(buscarPaquete.getX(), 1500, 10, 10, buscarPaquete);
+        if (panelBarraTareas.getX() == 0) {
+            slide.jPanelXIzquierda(jPanelArmarPaquete.getX(), 300, 10, 10, jPanelArmarPaquete);
+        } else {
+            slide.jPanelXIzquierda(jPanelArmarPaquete.getX(), 70, 10, 10, jPanelArmarPaquete);
+        }
+        PaqueteData paqueteData = new PaqueteData();
+        Paquete paquete = new Paquete();
+        int fila = tablaPaquete.getSelectedRow();
+
+        int idPaqueteTabla = Integer.parseInt(tablaPaquete.getValueAt(fila, 0).toString());
+
+        paquete = paqueteData.obtenerPaquetePorId(idPaqueteTabla);
+        int idPasaje = paquete.getPasaje().getIdPasaje();
+        int idHotel = paquete.getAlojamiento().getIdAlojamiento();
+        jlIdPaquete.setText(""+idPaqueteTabla);
+        jlIdPasajePaquete.setText(idPasaje+"");
+        jlIdAlojamientoPaquete.setText(idHotel+"");
+        jtHotelPaquete.setText("Nombre: " + paquete.getAlojamiento().getNombre() + " | Tipo de Alojamiento: " + paquete.getAlojamiento().getTipoAlojamiento() + " | Cupo Disponible: " + paquete.getAlojamiento().getCupoAlojamiento() + " | Importe Diario: " + paquete.getAlojamiento().getImporteDiario() + " | Fecha de ingreso: " + paquete.getAlojamiento().getFechaEgreso() + " | Fecha egreso: " + paquete.getAlojamiento().getFechaEgreso() + " | Servicio: " + paquete.getAlojamiento().getServicio());
+        jtPasajePaquete.setText("Tipo de transporte: " + paquete.getPasaje().getTipoTransporte() + " | Ciudad de salida: " + paquete.getPasaje().getNombreCiudadOrigen().getNombre() + " | Importe: " + paquete.getPasaje().getImporte() + " | Cupo disponible: " + paquete.getPasaje().getCupo());
+        if ("Habilitado".equals(tablaPaquete.getValueAt(fila, 8))) {
+            jrEstadoPaquete.setSelected(true);
+        } else {
+            jrEstadoPaquete.setSelected(false);
+        }
+
+    }//GEN-LAST:event_tablaPaqueteMouseClicked
 
     /**
      * @param args the command line arguments
@@ -5242,6 +5299,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlIdAlojamientoPaquete;
     private javax.swing.JLabel jlIdCiudad;
     private javax.swing.JLabel jlIdHotel;
+    private javax.swing.JLabel jlIdPaquete;
     private javax.swing.JLabel jlIdPasaje;
     private javax.swing.JLabel jlIdPasajePaquete;
     private javax.swing.JLabel jlMisVentas;
@@ -5678,7 +5736,7 @@ public class Menu extends javax.swing.JFrame {
         jcomboTipoTransporte.setSelectedItem(0);
         jrEstadoPasaje.setSelected(false);
         jtImportePasaje.setText(" ");
-        jtCupoPasaje.setText(" ");
+        jtCupoPasaje.setText("");
 
     }
 

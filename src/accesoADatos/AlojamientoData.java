@@ -34,6 +34,7 @@ public class AlojamientoData {
             ps.setString(4, alojamiento.getServicio());
             ps.setDouble(5, alojamiento.getImporteDiario());
             ps.setInt(6, alojamiento.getCupoAlojamiento());
+            JOptionPane.showMessageDialog(null, alojamiento.getCupoAlojamiento());
             ps.setInt(7, alojamiento.getCiudadDestino().getIdCiudad());
             ps.setString(8, alojamiento.getNombre());
             ps.setString(9, alojamiento.getTipoAlojamiento());
@@ -64,6 +65,7 @@ public class AlojamientoData {
                 alojamiento.setNombre(rs.getString("nombre"));
                 alojamiento.setTipoAlojamiento(rs.getString("tipoAlojamiento"));
                 Ciudad ciudadDestinoo = ciudadData.obtenerCiudadPorId(rs.getInt("ciudadDestino"));
+                alojamiento.setCupoAlojamiento(rs.getInt("cupoAlojamiento"));
                 alojamiento.setCiudadDestino(ciudadDestinoo);
                 return alojamiento;
                 
@@ -97,6 +99,7 @@ public class AlojamientoData {
                 alojamiento.setTipoAlojamiento(rs.getString("tipoAlojamiento"));
                 Ciudad ciudadDestinoo = ciudadData.obtenerCiudadPorId(rs.getInt("ciudadDestino"));
                 alojamiento.setCiudadDestino(ciudadDestinoo);
+                alojamiento.setCupoAlojamiento(rs.getInt("cupoAlojamiento"));
                 alojamientos.add(alojamiento);
             }
         } catch (SQLException e) {
@@ -127,6 +130,7 @@ public class AlojamientoData {
                 alojamiento.setTipoAlojamiento(rs.getString("tipoAlojamiento"));
                 Ciudad ciudadDestino = ciudadData.obtenerCiudadPorId(rs.getInt("ciudadDestino"));
                 alojamiento.setCiudadDestino(ciudadDestino);
+                alojamiento.setCupoAlojamiento(rs.getInt("cupoAlojamiento"));
                 alojamientos.add(alojamiento);
             }
         } catch (SQLException e) {
@@ -155,6 +159,7 @@ public class AlojamientoData {
                 alojamiento.setTipoAlojamiento(rs.getString("tipoAlojamiento"));
                 Ciudad ciudadDestino = ciudadData.obtenerCiudadPorId(rs.getInt("ciudadDestino"));
                 alojamiento.setCiudadDestino(ciudadDestino);
+                alojamiento.setCupoAlojamiento(rs.getInt("cupoAlojamiento"));
                 alojamientos.add(alojamiento);
             }
         } catch (SQLException e) {
@@ -174,6 +179,7 @@ public class AlojamientoData {
             ps.setString(4, alojamiento.getServicio());
             ps.setDouble(5, alojamiento.getImporteDiario());
             ps.setInt(6, alojamiento.getCupoAlojamiento());
+            JOptionPane.showMessageDialog(null, alojamiento.getCupoAlojamiento());
             ps.setInt(7, alojamiento.getCiudadDestino().getIdCiudad());
             ps.setString(8, alojamiento.getNombre());
             ps.setString(9, alojamiento.getTipoAlojamiento());
