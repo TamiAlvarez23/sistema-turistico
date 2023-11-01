@@ -138,6 +138,11 @@ public class CiudadData {
             ps.setString(4, ciudad.getProvincia());
             ps.setInt(5, ciudad.getIdCiudad());
             ps.executeUpdate();
+            int exito  = ps.executeUpdate();
+            if(exito == 1){
+                JOptionPane.showMessageDialog(null, "Se actualizo la ciudad con exito");
+            
+            }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ciudad");
         }

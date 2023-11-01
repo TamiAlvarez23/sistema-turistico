@@ -389,7 +389,9 @@ public class Menu extends javax.swing.JFrame {
         salirBuscarPaquete = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1500, 750));
         setMinimumSize(new java.awt.Dimension(1500, 750));
+        setPreferredSize(new java.awt.Dimension(1500, 750));
         setResizable(false);
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1234,6 +1236,11 @@ public class Menu extends javax.swing.JFrame {
         jLabel68.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/boton-eliminar.png"))); // NOI18N
         jLabel68.setText("Cancelar");
         jLabel68.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel68.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel68MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -1282,6 +1289,11 @@ public class Menu extends javax.swing.JFrame {
         jLabel74.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/borrar (1).png"))); // NOI18N
         jLabel74.setText("Eliminar");
         jLabel74.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel74.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel74MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
         jPanel26.setLayout(jPanel26Layout);
@@ -1473,7 +1485,7 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        getContentPane().add(panelHoteles, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 1430, 750));
+        getContentPane().add(panelHoteles, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1430, 750));
 
         panelPaquetes.setBackground(new Color(0,0,0,0));
 
@@ -5037,6 +5049,20 @@ public class Menu extends javax.swing.JFrame {
         slide.jPanelXDerecha(panelHoteles.getX(), 1500, 10, 10, panelHoteles);
         
     }//GEN-LAST:event_botonSalirHotelMouseClicked
+
+    private void jLabel68MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel68MouseClicked
+        // TODO add your handling code here:
+       formularioHotel();
+    }//GEN-LAST:event_jLabel68MouseClicked
+
+    private void jLabel74MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel74MouseClicked
+        // TODO add your handling code here:
+        AlojamientoData alojamientoData = new AlojamientoData();
+        if(!jlIdHotel.getText().equals(" ")){
+            alojamientoData.eliminarAlojamiento(Integer.parseInt(jlIdHotel.getText()));
+            formularioHotel();
+        }
+    }//GEN-LAST:event_jLabel74MouseClicked
 
     /**
      * @param args the command line arguments
