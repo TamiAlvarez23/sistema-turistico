@@ -2419,7 +2419,7 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanelArmarPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 1430, 750));
+        getContentPane().add(jPanelArmarPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1430, 750));
 
         jPanelCiudad.setBackground(new Color(0,0,0,0));
 
