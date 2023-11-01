@@ -171,7 +171,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel12 = new javax.swing.JPanel();
         jLabel68 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
-        jLabel69 = new javax.swing.JLabel();
+        botonSalirHotel = new javax.swing.JLabel();
         jPanel26 = new javax.swing.JPanel();
         jLabel74 = new javax.swing.JLabel();
         jtFechaSalidaHotel = new javax.swing.JTextField();
@@ -389,9 +389,7 @@ public class Menu extends javax.swing.JFrame {
         salirBuscarPaquete = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1500, 750));
         setMinimumSize(new java.awt.Dimension(1500, 750));
-        setPreferredSize(new java.awt.Dimension(1500, 750));
         setResizable(false);
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -934,6 +932,7 @@ public class Menu extends javax.swing.JFrame {
 
         jlSalirPasaje.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
         jlSalirPasaje.setForeground(new java.awt.Color(255, 255, 255));
+        jlSalirPasaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlSalirPasaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Login_37128.png"))); // NOI18N
         jlSalirPasaje.setText("Salir");
         jlSalirPasaje.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1251,22 +1250,27 @@ public class Menu extends javax.swing.JFrame {
         jPanel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel14.setPreferredSize(new java.awt.Dimension(105, 36));
 
-        jLabel69.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
-        jLabel69.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel69.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel69.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Login_37128.png"))); // NOI18N
-        jLabel69.setText("Salir");
-        jLabel69.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonSalirHotel.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 18)); // NOI18N
+        botonSalirHotel.setForeground(new java.awt.Color(255, 255, 255));
+        botonSalirHotel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        botonSalirHotel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/posiblesVistas/Login_37128.png"))); // NOI18N
+        botonSalirHotel.setText("Salir");
+        botonSalirHotel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonSalirHotel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonSalirHotelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel69, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+            .addComponent(botonSalirHotel, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel69, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(botonSalirHotel, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
         jPanel26.setBackground(new java.awt.Color(60, 147, 214));
@@ -1469,7 +1473,7 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        getContentPane().add(panelHoteles, new org.netbeans.lib.awtextra.AbsoluteConstraints(1500, 0, 1430, 750));
+        getContentPane().add(panelHoteles, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 1430, 750));
 
         panelPaquetes.setBackground(new Color(0,0,0,0));
 
@@ -3765,7 +3769,6 @@ public class Menu extends javax.swing.JFrame {
 
     private void PanelBotonHotelesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelBotonHotelesMouseClicked
         // TODO add your handling code here:
-        llenarComboConCiudades(comboCiudadHotel);
         PanelBotonHoteles.setBackground(new Color(246, 135, 18));
         sacarPaneles();
         traerPanel(panelHoteles);
@@ -3924,6 +3927,7 @@ public class Menu extends javax.swing.JFrame {
             ciudadData.actualizarCiudad(ciudad);
             formularioCiudad();
         }
+        llenarComboConCiudades(comboCiudadHotel);
     }//GEN-LAST:event_jlGuardarCiudadMouseClicked
 
     private void jlCancelarCudadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCancelarCudadMouseClicked
@@ -4006,7 +4010,7 @@ public class Menu extends javax.swing.JFrame {
 
             }
 
-            case "Pais": {
+            case "País": {
                 for (Ciudad ciudad : ciudades) {
                     if (ciudad.getPais().toUpperCase().startsWith(jtBusquedaCiudad.getText().toUpperCase())) {
                         modeloCiudad.addRow(new Object[]{
@@ -4267,7 +4271,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void jlSalirPasajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlSalirPasajeMouseClicked
         // TODO add your handling code here:
-        salida(PanelViajes);
+        salida(panelBotonViajes);
         slide.jPanelXDerecha(PanelViajes.getX(), 1500, 10, 10, PanelViajes);
 
     }//GEN-LAST:event_jlSalirPasajeMouseClicked
@@ -5027,6 +5031,13 @@ public class Menu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tablaPaqueteMouseClicked
 
+    private void botonSalirHotelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonSalirHotelMouseClicked
+        // TODO add your handling code here:
+        salida(PanelBotonHoteles);
+        slide.jPanelXDerecha(panelHoteles.getX(), 1500, 10, 10, panelHoteles);
+        
+    }//GEN-LAST:event_botonSalirHotelMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -5076,6 +5087,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel botonCancelarArmarPaquete;
     private javax.swing.JLabel botonEliminarArmarPaquete;
     private javax.swing.JLabel botonGuardarArmarPaquete;
+    private javax.swing.JLabel botonSalirHotel;
     private javax.swing.JPanel buscarHotelPaquete;
     private javax.swing.JPanel buscarPaquete;
     private javax.swing.JPanel buscarPasajePaquete;
@@ -5163,7 +5175,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
-    private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel71;
