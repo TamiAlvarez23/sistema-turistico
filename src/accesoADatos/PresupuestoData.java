@@ -61,9 +61,14 @@ import javax.swing.JOptionPane;
 
  public void eliminarPresupuesto(int idPresupuesto) {
         String deleteQuery = "DELETE FROM presupuesto WHERE idPresupuesto = ?";
-        try (PreparedStatement preparedStatement = con.prepareStatement(deleteQuery)) {
-            preparedStatement.setInt(1, idPresupuesto);
-            preparedStatement.executeUpdate();
+        try (PreparedStatement ps = con.prepareStatement(deleteQuery)) {
+            ps.setInt(1, idPresupuesto);
+
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Se eliminó el presupuesto con éxito");
+
+            }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "No se pudo acceder al presupuesto");
         }

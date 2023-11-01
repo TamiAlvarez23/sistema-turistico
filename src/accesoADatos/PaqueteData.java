@@ -127,7 +127,10 @@ public class PaqueteData {
             ps.setInt(7, paquete.getIdPaquete());
             ps.executeUpdate();
             
-            
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Se actualizo el paquete con éxito");
+            }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al acceder a tabla Paquete");
         }
@@ -137,7 +140,12 @@ public class PaqueteData {
         String sql = "DELETE FROM Paquete WHERE idPaquete = ?";
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, idPaquete);
-            ps.executeUpdate();
+           
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Se eliminó el paquete con éxito");
+
+            }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al acceder a tabla Paquete");
         }

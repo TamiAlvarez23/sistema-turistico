@@ -141,11 +141,10 @@ public class PasajeData {
         String deleteQuery = "DELETE FROM Pasaje WHERE idPasaje = ?";
         try (PreparedStatement ps = con.prepareStatement(deleteQuery)) {
             ps.setInt(1, idPasaje);
-            ps.executeUpdate();
-           
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "Se eliminó el pasaje correctamente");
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Se eliminó el pasaje con éxito");
+
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "No se pudo acceder a la tabla Pasaje");

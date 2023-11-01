@@ -138,10 +138,10 @@ public class CiudadData {
             ps.setString(4, ciudad.getProvincia());
             ps.setInt(5, ciudad.getIdCiudad());
             ps.executeUpdate();
-            int exito  = ps.executeUpdate();
-            if(exito == 1){
-                JOptionPane.showMessageDialog(null, "Se actualizo la ciudad con exito");
-            
+             int exito = ps.executeUpdate();
+         
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Se guardaron los cambios de ciudad con éxito");
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ciudad");
@@ -152,7 +152,7 @@ public class CiudadData {
         String deleteQuery = "DELETE FROM Ciudad WHERE idCiudad = ?";
         try (PreparedStatement ps = con.prepareStatement(deleteQuery)) {
             ps.setInt(1, idCiudad);
-            ps.executeUpdate();
+            
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null, "Se eliminó la ciudad correctamente");

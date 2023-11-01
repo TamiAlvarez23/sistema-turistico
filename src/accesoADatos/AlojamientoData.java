@@ -26,7 +26,7 @@ public class AlojamientoData {
     public void agregarAlojamiento(Alojamiento alojamiento) {
         String sql = "INSERT INTO Alojamiento (fechaIngreso, fechaEgreso, estado, servicio, importeDiario, cupoAlojamiento, ciudadDestino, nombre, tipoAlojamiento) VALUES (?, ?, ?, ?, ?, ?, ?,?,?)";
         try {
-            PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             
             ps.setDate(1, Date.valueOf(alojamiento.getFechaIngreso()));
             ps.setDate(2, Date.valueOf(alojamiento.getFechaEgreso()));
@@ -189,11 +189,11 @@ public class AlojamientoData {
             ps.setString(8, alojamiento.getNombre());
             ps.setString(9, alojamiento.getTipoAlojamiento());
             ps.setInt(10, alojamiento.getIdAlojamiento());
-            ps.executeUpdate();
+            
             int exito = ps.executeUpdate();
          
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Se modificó el hotel con éxito");
+                JOptionPane.showMessageDialog(null, "Se guardaron los cambios de hotel con éxito");
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alojamiento");
@@ -205,10 +205,10 @@ public class AlojamientoData {
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idAlojamiento);
-            ps.executeUpdate();
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "Se eliminó el hotel correctamente");
+            
+            int exito  = ps.executeUpdate();
+            if(exito == 1){
+                JOptionPane.showMessageDialog(null, "Se eliminó el hotel con éxito");
             
             }
         } catch (SQLException e) {
