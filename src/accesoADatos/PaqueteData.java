@@ -60,6 +60,7 @@ public class PaqueteData {
                 Paquete paquete = new Paquete();
                 
                 Ciudad ciudadOrigen = cd.obtenerCiudadPorId(rs.getInt("origen"));
+                JOptionPane.showMessageDialog(null, ciudadOrigen.getNombre());
                 Ciudad ciudadDestino = cd.obtenerCiudadPorId(rs.getInt("destino"));
                 Alojamiento alojamiento = ad.obtenerAlojamientoPorId(rs.getInt("alojamiento"));
                 Pasaje pasaje = pd.obtenerPasajePorId(rs.getInt("pasaje"));
@@ -173,19 +174,27 @@ public class PaqueteData {
     }
 
     public List<Paquete> obtenerPorCiudadDestino(int idCiudadDestino) {
-        Paquete paquete = new Paquete();
+        
         List<Paquete> paquetes = new ArrayList<>();
 
-        String sql = "SELECT * FROM Paquete WHERE destino = ?";
+        String sql = "SELECT * FROM Paquete WHERE destino = ? AND estado = 1";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idCiudadDestino);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
-                paquete.setIdPaquete(rs.getInt("idPaquete"));
-                paquete.getDestino().setIdCiudad(rs.getInt("idCiudad"));
-
+                
+                
+                Ciudad ciudadOrigen = cd.obtenerCiudadPorId(rs.getInt("origen"));
+                
+                Ciudad ciudadDestino = cd.obtenerCiudadPorId(rs.getInt("destino"));
+                Alojamiento alojamiento = ad.obtenerAlojamientoPorId(rs.getInt("alojamiento"));
+                Pasaje pasaje = pd.obtenerPasajePorId(rs.getInt("pasaje"));
+                boolean estado = rs.getBoolean("estado");
+                int cupo = rs.getInt("cupo");
+                int id = rs.getInt("idPaquete");
+                Paquete paquete = new Paquete(id, ciudadOrigen, ciudadDestino, alojamiento, estado, pasaje, cupo);
                 paquetes.add(paquete);
             }
         } catch (SQLException e) {
